@@ -299,6 +299,7 @@
       if (Date.now() > caseAnimUntil) {
         caseIndex = (best === 0) ? N - 1 : (best === N + 1) ? 0 : best - 1;
       }
+      caseThumbSync();
       caseCards.forEach(function (card, i) {
         card.classList.toggle('is-center', i === best);
       });
@@ -336,6 +337,24 @@
     /* the section's prev/next buttons drive the same index */
     var cPrev = document.querySelector('[data-cases-prev]');
     var cNext = document.querySelector('[data-cases-next]');
+    /* the customer logos under the rail are thumbnails for the slides */
+    var caseThumbs = Array.prototype.slice.call(document.querySelectorAll('.cases__thumb'));
+    function caseThumbSync() {
+      caseThumbs.forEach(function (t) {
+        var on = parseInt(t.getAttribute('data-cs-index'), 10) === caseIndex;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', String(on));
+      });
+    }
+    caseThumbs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        caseStop();
+        caseGoTo(parseInt(t.getAttribute('data-cs-index'), 10));
+        caseThumbSync();
+        caseStart();
+      });
+    });
+
     /* a manual click also resets the auto-slide clock, so the timer never
        fires mid-interaction and skips a step under the visitor's feet */
     function caseManual(delta) {
@@ -348,10 +367,15 @@
 
     caseGoTo(0, true);
     caseHighlight();
+    /* card widths settle after images/fonts load — re-centre then */
+    window.addEventListener('load', function () {
+      caseGoTo(caseIndex, true);
+      caseHighlight();
+    });
   }
 
   /* ---------- 6. Product stack accordion (scroll-driven) --------------- */
-  var ORDER = ['architect', 'studio', 'blocks'];
+  var ORDER = ['architect', 'controller', 'studio', 'blocks'];
   var accs   = Array.prototype.slice.call(document.querySelectorAll('.stack-acc .acc'));
   var planes = Array.prototype.slice.call(document.querySelectorAll('.plane'));
   var scene  = document.getElementById('stackScene');
