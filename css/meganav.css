@@ -711,7 +711,7 @@
    darken to --bg-accent-hover, 0 6px 18px accent shadow, 1px lift. */
 #lyzr-mega-nav-wrap .bdm,
 #lyzr-mega-nav-wrap .bsi{
-  block-size:2.5rem !important;
+  block-size:2rem !important;
   padding:0 var(--space-6) !important;
   font-size:var(--fs-small) !important;
   font-weight:var(--fw-medium) !important;
