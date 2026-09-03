@@ -62,7 +62,7 @@
     var off = document.createElement('canvas');
     off.width = W; off.height = H;
     var octx = off.getContext('2d', { alpha: false });
-    if (!coverDraw(octx, W, H)) { if (!img.naturalWidth) return; }
+    if (!coverDraw(octx, W, H)) return;
     try {
       srcData = octx.getImageData(0, 0, W, H);
       outData = ctx.createImageData(W, H);
@@ -105,15 +105,16 @@
     if (mode === 'rings') { return ringsFrame(); }
     var src = srcData.data, out = outData.data;
     var energy = 0;
+    var damp = over ? 6 : 5;   /* idle water calms about twice as fast */
     var x, y, i;
     for (y = 1; y < H - 1; y++) {
       var row = y * W;
       for (x = 1; x < W - 1; x++) {
         i = row + x;
         var v = ((buf1[i - 1] + buf1[i + 1] + buf1[i - W] + buf1[i + W]) >> 1) - buf2[i];
-        v -= v >> 6;                        /* damping */
+        v -= v >> damp;                     /* damping */
         buf2[i] = v;
-        if (v > 4 || v < -4) energy++;
+        if (v > 9 || v < -9) energy++;
         /* refraction: sample the source shifted by the local slope */
         var dx = buf1[i - 1] - buf1[i + 1];
         var dy = buf1[i - W] - buf1[i + W];
@@ -132,7 +133,7 @@
     ctx.putImageData(outData, 0, 0);
 
     if (energy === 0) { calm++; } else { calm = 0; }
-    if (calm > 30 && !over) {                /* water settled, pointer gone */
+    if (calm > 24 && !over) {                /* water settled, pointer gone */
       canvas.classList.remove('is-on');
       running = false;
       return;
@@ -201,4 +202,26 @@
 
   if (img.complete) { /* buffers built lazily on first hover */ }
   else img.addEventListener('load', function () { ready = false; });
+
+  /* ---- intro splash: the water shakes once on load, then rests ------- */
+  function whenSimReady(fn) {
+    if (simImg.complete && simImg.naturalWidth) { fn(); }
+    else { simImg.addEventListener('load', fn, { once: true }); }
+  }
+  function introSplash() {
+    whenSimReady(function () {
+      start();
+      if (!ready) return;
+      var r = media.getBoundingClientRect();
+      /* a run of drops along the swimmers' diagonal */
+      var pts = [[0.18, 0.55], [0.36, 0.34], [0.52, 0.62], [0.70, 0.38], [0.85, 0.58]];
+      pts.forEach(function (p, i) {
+        window.setTimeout(function () {
+          drop(r.width * p[0], r.height * p[1], 850);
+        }, 200 * i);
+      });
+    });
+  }
+  if (document.readyState === 'complete') { window.setTimeout(introSplash, 1000); }
+  else { window.addEventListener('load', function () { window.setTimeout(introSplash, 1000); }); }
 })();
