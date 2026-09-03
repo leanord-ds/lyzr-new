@@ -1,0 +1,750 @@
+
+
+/* ============================================================
+   LYZR MEGA NAV  ·  scoped widget  ·  #lyzr-mega-nav-wrap
+   WordPress / Elementor safe. Matches the production nav on
+   lyzr.ai (same wrapper id, same lmn- id prefix).
+   ============================================================ */
+#lyzr-mega-nav-wrap *,#lyzr-mega-nav-wrap *::before,#lyzr-mega-nav-wrap *::after{box-sizing:border-box;margin:0;padding:0}
+#lyzr-mega-nav-wrap{--nav-bg:#1A110D;
+  --nav-border:rgba(255,255,255,.07);
+  --nav-text:rgba(240,232,228,.60);
+  --nav-text-h:#F0E8E4;
+  --nav-hover:rgba(255,255,255,.07);
+  --panel:#FFFFFF;
+  --mahogany:#6B4C4C;
+  --mauve:#8A6060;
+  --rose:#C96A5A;
+  --ink:#2A1F1A;
+  --ink2:rgba(42,31,26,.52);
+  --ink3:rgba(42,31,26,.30);
+  --border:#EAE3DA;
+  --border2:#D4CBC0;
+  --card:#F2EDE8;
+  --parch:#F9F5F1;
+  --feat-bg:#F6F1EC;
+  --plat-bg:#F9F5F1;
+  --nav-h:56px;
+  --fd:'Playfair Display',Georgia,serif;
+  --fs:'DM Sans',sans-serif;
+  --sp:cubic-bezier(.22,.68,0,1.15);
+  --ea:cubic-bezier(.25,.8,.25,1);}
+#lyzr-mega-nav-wrap,#lyzr-mega-nav-wrap{font-family:var(--fs);background:transparent;color:var(--ink);min-height:0;overflow-x:hidden}
+#lyzr-mega-nav-wrap nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav-h);background:var(--nav-bg);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-bottom:1px solid var(--nav-border)}
+#lyzr-mega-nav-wrap .ni{height:100%;max-width:1455px;margin:0 auto;padding:0 28px;display:flex;align-items:center}
+#lyzr-mega-nav-wrap .logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0;margin-right:32px}
+#lyzr-mega-nav-wrap .lm{width:30px;height:30px;border-radius:6px;background:var(--mahogany);display:flex;align-items:center;justify-content:center}
+#lyzr-mega-nav-wrap .lm svg{width:15px;height:15px;fill:#F2EDE8}
+#lyzr-mega-nav-wrap .lt{font-size:15.5px;font-weight:600;color:var(--nav-text-h);letter-spacing:-.02em}
+#lyzr-mega-nav-wrap .nl{display:flex;align-items:center;gap:1px;flex:1}
+#lyzr-mega-nav-wrap .nit{position:relative;display:inline-block}
+#lyzr-mega-nav-wrap .ntrig{position:relative;display:flex;align-items:center;gap:4px;
+  padding:5px 11px;font-size:13px;font-weight:400;
+  color:var(--nav-text);background:none;border:none;cursor:pointer;
+  border-radius:6px;transition:color .15s,background .15s;white-space:nowrap;}
+#lyzr-mega-nav-wrap .ntrig:hover,#lyzr-mega-nav-wrap .ntrig.active{color:var(--nav-text-h);background:var(--nav-hover)}
+#lyzr-mega-nav-wrap .ntrig svg.cv{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.38;flex-shrink:0;transition:transform .25s var(--sp),opacity .15s}
+#lyzr-mega-nav-wrap .ntrig.active svg.cv,#lyzr-mega-nav-wrap .ntrig:hover svg.cv{opacity:.70}
+#lyzr-mega-nav-wrap .ntrig.active svg.cv{transform:rotate(180deg)}
+#lyzr-mega-nav-wrap .ntrig::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:0;height:2px;border-radius:9999px;background:var(--rose);transition:width .2s var(--ea)}
+#lyzr-mega-nav-wrap .ntrig.active::after{width:18px}
+#lyzr-mega-nav-wrap .npln{padding:5px 11px;font-size:13px;font-weight:400;color:var(--nav-text);border-radius:6px;transition:color .15s,background .15s;white-space:nowrap}
+#lyzr-mega-nav-wrap .npln:hover{color:var(--nav-text-h);background:var(--nav-hover)}
+#lyzr-mega-nav-wrap .nr{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+#lyzr-mega-nav-wrap .atrk{display:inline-flex;align-items:center;gap:5px;
+  padding:5px 10px;
+  font-size:12.5px;font-weight:500;
+  color:var(--nav-text);
+  border-radius:6px;
+  transition:color .15s,background .15s;white-space:nowrap;}
+#lyzr-mega-nav-wrap .atrk svg{stroke:var(--rose);flex-shrink:0;transition:stroke .15s,transform .2s var(--sp)}
+#lyzr-mega-nav-wrap .atrk:hover{color:var(--nav-text-h);background:var(--nav-hover)}
+#lyzr-mega-nav-wrap .atrk:hover svg{stroke:var(--rose);transform:rotate(20deg) scale(1.15)}
+#lyzr-mega-nav-wrap .bsi{padding:5px 14px;font-size:12.5px;font-weight:500;color:var(--nav-text);background:none;border:1px solid rgba(255,255,255,.14);border-radius:9999px;cursor:pointer;transition:color .15s,border-color .15s,background .15s;white-space:nowrap}
+#lyzr-mega-nav-wrap .bsi:hover{color:var(--nav-text-h);border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.07)}
+#lyzr-mega-nav-wrap .bdm{padding:6px 16px;font-size:12.5px;font-weight:500;color:#F2EDE8;background:var(--mahogany);border:none;border-radius:9999px;cursor:pointer;transition:background .15s,transform .12s,box-shadow .15s;white-space:nowrap}
+#lyzr-mega-nav-wrap .bdm:hover{background:var(--mauve);transform:translateY(-1px);box-shadow:0 6px 20px rgba(107,76,76,.42)}
+#lyzr-mega-nav-wrap .hbg{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:5px;margin-left:auto}
+#lyzr-mega-nav-wrap .hbg span{display:block;width:20px;height:1.5px;background:var(--nav-text);border-radius:2px;transition:transform .24s,opacity .2s}
+#lyzr-mega-nav-wrap .hbg.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+#lyzr-mega-nav-wrap .hbg.open span:nth-child(2){opacity:0}
+#lyzr-mega-nav-wrap .hbg.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+#lyzr-mega-nav-wrap .drop{position:absolute;top:100%;left:0;padding-top:10px;margin-top:15px;
+  transform-origin:top left;
+  opacity:0;
+  transform:scaleY(.94) translateZ(0);
+  pointer-events:none;
+  background:var(--panel);
+  border:1px solid var(--border);border-radius:16px;
+  box-shadow:0 4px 8px rgba(42,31,26,.06),0 14px 36px rgba(42,31,26,.12),0 30px 60px rgba(42,31,26,.07);
+  will-change:opacity,transform;
+  transition:
+    opacity .34s cubic-bezier(.22,1,.36,1),
+    transform .42s cubic-bezier(.22,1,.36,1);
+  z-index:400;overflow:hidden;}
+#lyzr-mega-nav-wrap .drop.center{left:50%;transform:translateX(-50%) scaleY(.94) translateZ(0);transform-origin:top center}
+#lyzr-mega-nav-wrap .drop.center.open{opacity:1;pointer-events:auto;transform:translateX(-50%) scaleY(1) translateZ(0)}
+#lyzr-mega-nav-wrap .drop.open{opacity:1;pointer-events:auto;transform:scaleY(1) translateZ(0)}
+/* invisible hit-test bridge: fills the visual gap above each panel so hovering
+   through that gap never drops out of the menu's hover chain (see JS syncBridge) */
+#lyzr-mega-nav-wrap .lmn-hover-bridge{position:absolute;top:0;left:0;width:0;height:0;z-index:399;background:transparent;}
+#lyzr-mega-nav-wrap .drop.no-anim{transition:none !important;}
+#lyzr-mega-nav-wrap .di{padding:22px 24px 24px}
+#lyzr-mega-nav-wrap .slbl{font-size:8.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--mahogany);margin-bottom:14px;
+  display:flex;align-items:center;gap:6px;}
+#lyzr-mega-nav-wrap .slbl::before{content:'';display:inline-block;width:16px;height:2px;border-radius:9999px;background:var(--mahogany);opacity:.35;flex-shrink:0}
+#lyzr-mega-nav-wrap .ua svg{width:8px;height:8px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+#lyzr-mega-nav-wrap .crow{display:flex;align-items:center;
+  padding:5px 4px 8px 0;
+  margin-bottom:6px;
+  cursor:pointer;
+  border-bottom:1.5px solid transparent;
+  transition:border-color .18s cubic-bezier(.25,.8,.25,1);}
+#lyzr-mega-nav-wrap .crow:hover{background:none;border-color:var(--rose)}
+#lyzr-mega-nav-wrap .crow-left{display:flex;align-items:center;gap:6px}
+#lyzr-mega-nav-wrap .cic{width:15px;height:15px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+#lyzr-mega-nav-wrap .cic svg{width:13px;height:13px;stroke:var(--rose);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#lyzr-mega-nav-wrap .ctit{font-size:11.5px;font-weight:600;color:var(--ink);transition:color .15s}
+#lyzr-mega-nav-wrap .crow-arr{color:var(--mahogany);opacity:.75;flex-shrink:0;
+  margin-left:3px;
+  transition:opacity .15s,transform .22s cubic-bezier(.34,1.56,.64,1);}
+#lyzr-mega-nav-wrap .crow:hover .crow-arr{opacity:1;transform:translate(2px,-2px) rotate(-45deg)}
+#lyzr-mega-nav-wrap .crow:hover .ctit{color:var(--mahogany)}
+#lyzr-mega-nav-wrap .crow-arr{color:var(--mahogany);
+  opacity:.75;           
+  flex-shrink:0;
+  margin-left:3px;       
+  transition:opacity .14s,transform .2s var(--sp);}
+#lyzr-mega-nav-wrap .crow:hover .crow-arr{opacity:1;transform:translate(1px,-1px)}
+#lyzr-mega-nav-wrap .crow:hover .ctit{color:var(--mahogany)}
+#lyzr-mega-nav-wrap a.ml,#lyzr-mega-nav-wrap a.mml,#lyzr-mega-nav-wrap a.feat-cta,#lyzr-mega-nav-wrap a.mbsi,#lyzr-mega-nav-wrap a.mbsd{text-decoration:none;cursor:pointer}
+#lyzr-mega-nav-wrap a.ml,#lyzr-mega-nav-wrap a.mml{display:flex}
+#lyzr-mega-nav-wrap a.bsi,#lyzr-mega-nav-wrap a.bdm{display:inline-flex;align-items:center;justify-content:center;text-align:center}
+#lyzr-mega-nav-wrap a.feat-cta{display:inline-flex}
+#lyzr-mega-nav-wrap a.mbsi,#lyzr-mega-nav-wrap a.mbsd{display:block;text-align:center}
+#lyzr-mega-nav-wrap .ml{display:flex;align-items:center;justify-content:space-between;
+  padding:4.5px 4px;
+  font-size:12px;font-weight:400;color:var(--ink2);
+  background:none;border:none;cursor:pointer;
+  width:100%;text-align:left;border-radius:5px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  transition:color .12s,background .12s;}
+#lyzr-mega-nav-wrap .ml:hover{color:var(--ink);background:rgba(107,76,76,.055)}
+#lyzr-mega-nav-wrap .ml-arr{color:var(--mahogany);opacity:0;flex-shrink:0;margin-left:4px;transition:opacity .12s,transform .18s var(--sp)}
+#lyzr-mega-nav-wrap .ml:hover .ml-arr{opacity:1;transform:translate(1px,-1px)}
+#lyzr-mega-nav-wrap #lmn-drop-solutions{width:1060px}
+#lyzr-mega-nav-wrap #lmn-drop-solutions:has(.sol-v2){width:1080px}
+#lyzr-mega-nav-wrap .sol-funcs{display:grid;gap:0;align-items:start}
+#lyzr-mega-nav-wrap .sol-v1 .sol-funcs{grid-template-columns:repeat(5,1fr)}
+#lyzr-mega-nav-wrap .sol-v2 .sol-funcs{grid-template-columns:repeat(4,1fr)}
+#lyzr-mega-nav-wrap .scol{padding:0 12px}
+#lyzr-mega-nav-wrap .scol:first-child{padding-left:0}
+#lyzr-mega-nav-wrap .scol:last-child{padding-right:0}
+#lyzr-mega-nav-wrap .scol-hr{height:1px;background:var(--border);margin:6px 4px;border:0}
+/* Solutions V2 — rich items with one-liner subtitles */
+#lyzr-mega-nav-wrap .sol-v2 .scol{padding:0 13px}
+#lyzr-mega-nav-wrap .sol-v2 .scol:first-child{padding-left:0}
+#lyzr-mega-nav-wrap .sol-v2 .scol:last-child{padding-right:0}
+#lyzr-mega-nav-wrap .sol-v2 .slbl{margin-bottom:12px}
+#lyzr-mega-nav-wrap .mlx{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+  padding:9px 9px;border-radius:9px;text-decoration:none;
+  transition:background .15s ease;}
+#lyzr-mega-nav-wrap .mlx + .mlx{margin-top:1px}
+#lyzr-mega-nav-wrap .mlx:hover{background:rgba(107,76,76,.05)}
+#lyzr-mega-nav-wrap .mlx-txt{display:flex;flex-direction:column;min-width:0;gap:2px}
+#lyzr-mega-nav-wrap .mlx-name{font-size:13px;font-weight:300;color:var(--ink);line-height:1.25;letter-spacing:-.01em}
+#lyzr-mega-nav-wrap .mlx-sub{font-size:10.5px;font-weight:400;color:var(--ink2);line-height:1.38;margin-top:1px}
+#lyzr-mega-nav-wrap .mlx-arr{color:var(--rose);opacity:0;flex-shrink:0;margin-top:3px;
+  transition:opacity .14s,transform .2s var(--sp)}
+#lyzr-mega-nav-wrap .mlx:hover .mlx-name{color:var(--mahogany)}
+#lyzr-mega-nav-wrap .mlx:hover .mlx-arr{opacity:1;transform:translate(1px,-1px)}
+#lyzr-mega-nav-wrap .sol-divider{height:1px;background:var(--border);margin:18px 0 16px}
+#lyzr-mega-nav-wrap .sol-ind-row{display:flex;gap:10px;align-items:stretch}
+#lyzr-mega-nav-wrap .sol-inds{display:grid;grid-template-columns:repeat(2,1fr);gap:0;align-items:start;
+  background:var(--parch);
+  border-radius:10px;
+  padding:14px 0 14px;
+  flex:1;}
+#lyzr-mega-nav-wrap .scol2{padding:0 12px}
+#lyzr-mega-nav-wrap .scol2:first-child{padding-left:14px}
+#lyzr-mega-nav-wrap .scol2:last-child{padding-right:14px}
+#lyzr-mega-nav-wrap .sol-other{display:grid;grid-template-columns:1fr;gap:0;align-items:start;
+  background:var(--parch);
+  border-radius:10px;
+  padding:14px 0 14px;
+  flex:1;}
+#lyzr-mega-nav-wrap #lmn-drop-platform{width:700px}
+#lyzr-mega-nav-wrap .ptag{font-size:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:9999px;line-height:1;white-space:nowrap;flex-shrink:0}
+#lyzr-mega-nav-wrap .ptag.live{color:var(--rose);background:rgba(201,106,90,.13)}
+#lyzr-mega-nav-wrap .ptag.oss{color:var(--mahogany);background:rgba(107,76,76,.11)}
+#lyzr-mega-nav-wrap .ptag.new{color:var(--rose);background:rgba(201,106,90,.13)}
+#lyzr-mega-nav-wrap .pv.is-disabled,#lyzr-mega-nav-wrap .mv.is-disabled,#lyzr-mega-nav-wrap .mml.is-disabled{opacity:.42;pointer-events:none;cursor:default}
+#lyzr-mega-nav-wrap .pv.is-disabled .pv-arr,#lyzr-mega-nav-wrap .mv.is-disabled .mv-arr,#lyzr-mega-nav-wrap .mml.is-disabled>span{opacity:0}
+#lyzr-mega-nav-wrap .ptag.q4{color:rgba(42,31,26,.48);background:rgba(42,31,26,.06)}
+#lyzr-mega-nav-wrap .mv-left{display:flex;align-items:center;gap:7px;min-width:0}
+#lyzr-mega-nav-wrap .mml-l{display:flex;align-items:center;gap:8px;min-width:0}
+#lyzr-mega-nav-wrap #lmn-drop-partners{width:500px}
+#lyzr-mega-nav-wrap #lmn-drop-partners .plat-inner{grid-template-columns:1fr 1fr}
+#lyzr-mega-nav-wrap .plat-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;align-items:stretch}
+#lyzr-mega-nav-wrap .plat-prod{background:var(--plat-bg);border-radius:10px;padding:14px 16px;
+  
+  display:flex;flex-direction:column;}
+#lyzr-mega-nav-wrap .plat-mods{padding:14px 0 14px 20px;background:transparent}
+#lyzr-mega-nav-wrap .pv{display:flex;align-items:center;justify-content:space-between;
+  gap:6px;padding:4.5px 4px;
+  border-radius:5px;cursor:pointer;
+  transition:background .13s;}
+#lyzr-mega-nav-wrap .pv:hover{background:rgba(107,76,76,.07)}
+#lyzr-mega-nav-wrap .pv:hover .pv-name{color:var(--mahogany)}
+#lyzr-mega-nav-wrap .pv-left{display:flex;align-items:center;gap:7px}
+#lyzr-mega-nav-wrap .pv-ic{width:14px;height:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+#lyzr-mega-nav-wrap .pv-ic svg{width:13px;height:13px;stroke:var(--rose);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#lyzr-mega-nav-wrap .pv-name{font-size:12px;font-weight:500;color:var(--ink);transition:color .13s}
+#lyzr-mega-nav-wrap .pv-arr{color:var(--mahogany);opacity:.65;
+  flex-shrink:0;margin-left:5px;
+  transition:opacity .12s,transform .18s var(--sp);}
+#lyzr-mega-nav-wrap .pv:hover .pv-arr{opacity:1;transform:translate(1px,-1px)}
+#lyzr-mega-nav-wrap .mv{display:flex;align-items:center;justify-content:space-between;
+  padding:3.5px 4px;
+  border-radius:5px;cursor:pointer;
+  transition:background .12s;}
+#lyzr-mega-nav-wrap .mv:hover{background:rgba(107,76,76,.055)}
+#lyzr-mega-nav-wrap .mv:hover .mv-name{color:var(--ink)}
+#lyzr-mega-nav-wrap .mv:hover .mv-arr{opacity:1;transform:translate(1px,-1px)}
+#lyzr-mega-nav-wrap .mv-name{font-size:12px;font-weight:400;color:var(--ink2);white-space:nowrap;transition:color .12s}
+#lyzr-mega-nav-wrap .mv-arr{color:var(--mahogany);opacity:0;flex-shrink:0;margin-left:6px;transition:opacity .12s,transform .18s var(--sp)}
+#lyzr-mega-nav-wrap #lmn-drop-resources{width:800px}
+#lyzr-mega-nav-wrap .res-top{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+#lyzr-mega-nav-wrap .rc{padding:0 14px}
+#lyzr-mega-nav-wrap .rc:first-child{padding-left:0}
+#lyzr-mega-nav-wrap .rc:last-child{padding-right:0}
+#lyzr-mega-nav-wrap .res-feat{margin-top:16px;padding:16px;
+  background:var(--feat-bg);border-radius:10px;}
+#lyzr-mega-nav-wrap .res-feat .slbl{margin-bottom:12px}
+#lyzr-mega-nav-wrap .feat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#lyzr-mega-nav-wrap .feat-card{display:flex;flex-direction:column;
+  border-radius:10px;overflow:hidden;
+  border:1px solid var(--border);background:var(--panel);
+  cursor:pointer;
+  transition:border-color .15s,box-shadow .18s,transform .2s var(--sp);}
+#lyzr-mega-nav-wrap .feat-card:hover{border-color:var(--border2);box-shadow:0 4px 18px rgba(107,76,76,.12);transform:translateY(-2px)}
+#lyzr-mega-nav-wrap .feat-img{width:100%;height:110px;overflow:hidden;position:relative;flex-shrink:0}
+#lyzr-mega-nav-wrap .feat-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ea)}
+#lyzr-mega-nav-wrap .feat-card:hover .feat-img img{transform:scale(1.07)}
+#lyzr-mega-nav-wrap .feat-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(42,31,26,.35) 100%)}
+#lyzr-mega-nav-wrap .feat-body{padding:10px 12px 12px;flex:1;display:flex;flex-direction:column;gap:3px}
+#lyzr-mega-nav-wrap .feat-lbl{font-size:8.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:3px}
+#lyzr-mega-nav-wrap .feat-lbl.r{color:var(--rose)}
+#lyzr-mega-nav-wrap .feat-lbl.m{color:var(--ink3)}
+#lyzr-mega-nav-wrap .feat-title{font-size:12px;font-weight:600;color:var(--ink);line-height:1.38;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#lyzr-mega-nav-wrap .feat-cta{display:inline-flex;align-items:center;gap:3px;margin-top:7px;font-size:10.5px;font-weight:600;color:var(--rose);background:none;border:none;cursor:pointer;padding:0;transition:color .12s,gap .15s}
+#lyzr-mega-nav-wrap .feat-cta:hover{color:var(--mahogany);gap:5px}
+#lyzr-mega-nav-wrap .feat-cta svg{width:8px;height:8px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s var(--sp)}
+#lyzr-mega-nav-wrap .feat-cta:hover svg{transform:translate(1px,-1px)}
+
+/* ---- Featured video cards (replace old feed cards) ---- */
+#lyzr-mega-nav-wrap .feat-card.feat-video{cursor:pointer;outline:none}
+#lyzr-mega-nav-wrap .feat-card.feat-video .feat-img{height:200px}
+#lyzr-mega-nav-wrap .feat-card.feat-video .feat-img::after{background:linear-gradient(180deg,rgba(20,14,11,0) 32%,rgba(20,14,11,.30) 62%,rgba(20,14,11,.86) 100%)}
+#lyzr-mega-nav-wrap .feat-card.feat-video:focus-visible .feat-img{outline:2px solid var(--rose);outline-offset:2px}
+#lyzr-mega-nav-wrap .feat-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1);width:38px;height:38px;border-radius:50%;background:rgba(249,245,241,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(20,14,11,.32);z-index:2;transition:transform .3s var(--sp),background .2s}
+#lyzr-mega-nav-wrap .feat-play svg{width:12px;height:12px;fill:var(--mahogany);margin-left:2px}
+#lyzr-mega-nav-wrap .feat-card.feat-video:hover .feat-play{transform:translate(-50%,-50%) scale(1.12);background:#fff}
+#lyzr-mega-nav-wrap .feat-ov{position:absolute;left:0;right:0;bottom:0;padding:9px 11px 10px;z-index:2}
+#lyzr-mega-nav-wrap .feat-ov .feat-lbl{margin-bottom:4px}
+#lyzr-mega-nav-wrap .feat-ov .feat-lbl.r{color:#F0B8A8}
+#lyzr-mega-nav-wrap .feat-ov .feat-lbl.m{color:rgba(240,232,228,.72)}
+#lyzr-mega-nav-wrap .feat-ov .feat-title{color:#F9F5F1}
+
+/* ---- Video lightbox modal ---- */
+#lyzr-mega-nav-wrap .lmn-vmodal{position:fixed;inset:0;z-index:999997;background:rgba(17,12,9,.92);display:flex;align-items:center;justify-content:center;padding:64px 76px;opacity:0;pointer-events:none;transition:opacity .22s var(--ea)}
+#lyzr-mega-nav-wrap .lmn-vmodal.open{opacity:1;pointer-events:auto}
+#lyzr-mega-nav-wrap .lmn-vmodal-box{position:relative;width:100%;max-width:860px}
+#lyzr-mega-nav-wrap .lmn-vmodal-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+#lyzr-mega-nav-wrap .lmn-vmodal-frame video{width:100%;height:100%;display:block;background:#000}
+#lyzr-mega-nav-wrap .lmn-vmodal-fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px;background:#1A110D}
+#lyzr-mega-nav-wrap .lmn-vmodal-fallback.show{display:flex}
+#lyzr-mega-nav-wrap .lmn-vmodal-fallback p{font-size:13px;color:rgba(249,245,241,.72)}
+#lyzr-mega-nav-wrap .lmn-vmodal-fallback a{font-size:13px;font-weight:600;color:#F0B8A8;text-decoration:none;padding:8px 18px;border:1px solid rgba(255,255,255,.2);border-radius:9999px;transition:background .15s}
+#lyzr-mega-nav-wrap .lmn-vmodal-fallback a:hover{background:rgba(255,255,255,.08)}
+#lyzr-mega-nav-wrap .lmn-vmodal-cap{margin-top:14px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+#lyzr-mega-nav-wrap .lmn-vmodal-lbl{display:block;font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E39C86;margin-bottom:4px}
+#lyzr-mega-nav-wrap .lmn-vmodal-title{font-size:13.5px;font-weight:500;color:#F9F5F1;line-height:1.4}
+#lyzr-mega-nav-wrap .lmn-vmodal-link{flex-shrink:0;font-size:11.5px;font-weight:500;color:rgba(249,245,241,.68);text-decoration:none;white-space:nowrap;padding-top:2px;transition:color .15s}
+#lyzr-mega-nav-wrap .lmn-vmodal-link:hover{color:#F9F5F1}
+#lyzr-mega-nav-wrap .lmn-vmodal-close,#lyzr-mega-nav-wrap .lmn-vmodal-arr{position:absolute;border-radius:50%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);color:#F9F5F1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,transform .15s}
+#lyzr-mega-nav-wrap .lmn-vmodal-close:hover,#lyzr-mega-nav-wrap .lmn-vmodal-arr:hover{background:rgba(255,255,255,.2)}
+#lyzr-mega-nav-wrap .lmn-vmodal-close{top:-46px;right:0;width:32px;height:32px}
+#lyzr-mega-nav-wrap .lmn-vmodal-arr{top:50%;transform:translateY(-50%);width:44px;height:44px;z-index:3}
+#lyzr-mega-nav-wrap .lmn-vmodal-arr:hover{transform:translateY(-50%) scale(1.08)}
+#lyzr-mega-nav-wrap .lmn-vmodal-arr.prev{left:-60px}
+#lyzr-mega-nav-wrap .lmn-vmodal-arr.next{right:-60px}
+@media(max-width:900px){
+  #lyzr-mega-nav-wrap .lmn-vmodal{padding:56px 16px}
+  #lyzr-mega-nav-wrap .lmn-vmodal-arr.prev{left:4px}
+  #lyzr-mega-nav-wrap .lmn-vmodal-arr.next{right:4px}
+  #lyzr-mega-nav-wrap .lmn-vmodal-close{top:-40px;right:0}
+}
+#lyzr-mega-nav-wrap .mbd{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:290;background:#FFF;overflow-y:auto;transform:translateX(100%);transition:transform .28s var(--ea);border-top:1px solid var(--border)}
+#lyzr-mega-nav-wrap .mbd.open{transform:translateX(0)}
+#lyzr-mega-nav-wrap .mbi{padding:16px 20px 60px}
+#lyzr-mega-nav-wrap .ms{border-bottom:1px solid var(--border);padding:2px 0}
+#lyzr-mega-nav-wrap .mtr{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 0;font-size:14px;font-weight:500;color:var(--ink);background:none;border:none;cursor:pointer}
+#lyzr-mega-nav-wrap .mtr svg{width:12px;height:12px;stroke:var(--ink2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .22s}
+#lyzr-mega-nav-wrap .mtr.open svg{transform:rotate(180deg)}
+#lyzr-mega-nav-wrap .mpl{display:block;padding:12px 0;font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border)}
+#lyzr-mega-nav-wrap .msb{overflow:hidden;max-height:0;transition:max-height .30s var(--ea)}
+#lyzr-mega-nav-wrap .msb.open{max-height:2400px}
+#lyzr-mega-nav-wrap .msbi{padding:4px 0 16px}
+#lyzr-mega-nav-wrap .msl{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mahogany);padding:10px 0 6px;display:flex;align-items:center;gap:5px}
+#lyzr-mega-nav-wrap .msl::before{content:'';display:inline-block;width:12px;height:2px;border-radius:9999px;background:var(--mahogany);opacity:.38;flex-shrink:0}
+#lyzr-mega-nav-wrap .mml{display:flex;align-items:center;justify-content:space-between;padding:9px 0;font-size:13.5px;color:var(--ink2);background:none;border:none;width:100%;text-align:left;cursor:pointer;border-bottom:1px solid rgba(42,31,26,.04)}
+#lyzr-mega-nav-wrap .mml:last-child{border-bottom:none}
+#lyzr-mega-nav-wrap .mml span{font-size:11px;color:var(--rose)}
+#lyzr-mega-nav-wrap .mbs{display:flex;flex-direction:column;gap:9px;padding:20px 0}
+#lyzr-mega-nav-wrap .mbsi{padding:12px;font-size:13.5px;font-weight:500;color:var(--ink2);background:none;border:1px solid var(--border2);border-radius:9999px;cursor:pointer}
+#lyzr-mega-nav-wrap .mbsd{padding:12px;font-size:13.5px;font-weight:500;color:#F2EDE8;background:var(--mahogany);border:none;border-radius:9999px;cursor:pointer}
+@media(max-width:960px){#lyzr-mega-nav-wrap .nl,#lyzr-mega-nav-wrap .nr{display:none}
+#lyzr-mega-nav-wrap .hbg{display:flex}
+#lyzr-mega-nav-wrap .mbd{display:block}
+#lyzr-mega-nav-wrap .ni{padding:0 18px}
+#lyzr-mega-nav-wrap .logo{margin-right:0}}
+/* ============================================================
+   WORDPRESS / ELEMENTOR OVERRIDES
+   ============================================================ */
+/* themes style bare `nav` (Kadence does); lock our box down hard */
+#lyzr-mega-nav-wrap nav{position:fixed !important;top:var(--wpbar,0px) !important;left:0 !important;right:0 !important;bottom:auto !important;width:auto !important;height:var(--nav-h) !important;min-height:0 !important;max-height:none !important;margin:0 !important;padding:0 !important;z-index:9990 !important;background:var(--nav-bg) !important;border:0 !important;border-bottom:1px solid var(--nav-border) !important;float:none !important;transform:none !important;display:block !important}
+#lyzr-mega-nav-wrap .mbd{top:calc(var(--nav-h) + var(--wpbar,0px))}
+#lyzr-mega-nav-wrap a{text-decoration:none !important;box-shadow:none !important;color:inherit}
+#lyzr-mega-nav-wrap a:hover,#lyzr-mega-nav-wrap a:focus{text-decoration:none !important}
+#lyzr-mega-nav-wrap button{font-family:inherit;text-transform:none !important;letter-spacing:normal;-webkit-appearance:none;appearance:none;line-height:normal}
+/* themes force font-family / line-height / border-radius with !important;
+   re-assert ours so the nav renders identically on any theme */
+#lyzr-mega-nav-wrap,
+#lyzr-mega-nav-wrap div,#lyzr-mega-nav-wrap span,#lyzr-mega-nav-wrap p,
+#lyzr-mega-nav-wrap a,#lyzr-mega-nav-wrap button,#lyzr-mega-nav-wrap input{
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif !important}
+#lyzr-mega-nav-wrap .lt{font-family:'Playfair Display',Georgia,serif !important}
+#lyzr-mega-nav-wrap,#lyzr-mega-nav-wrap div,#lyzr-mega-nav-wrap span,
+#lyzr-mega-nav-wrap a,#lyzr-mega-nav-wrap button{line-height:normal !important}
+#lyzr-mega-nav-wrap .feat-title{line-height:1.38 !important}
+#lyzr-mega-nav-wrap .ctit,#lyzr-mega-nav-wrap .pv-name,#lyzr-mega-nav-wrap .mv-name,
+#lyzr-mega-nav-wrap .ml,#lyzr-mega-nav-wrap .mml{line-height:1.35 !important}
+#lyzr-mega-nav-wrap img{max-width:100% !important;height:auto !important;display:block !important;
+  border-radius:0 !important;box-shadow:none !important;border:0 !important;filter:none !important}
+#lyzr-mega-nav-wrap ul,#lyzr-mega-nav-wrap li{list-style:none;margin:0;padding:0}
+#lyzr-mega-nav-wrap .lt,#lyzr-mega-nav-wrap .ctit,#lyzr-mega-nav-wrap .pv-name,
+#lyzr-mega-nav-wrap .mv-name,#lyzr-mega-nav-wrap .feat-title{text-transform:none !important}
+#lyzr-mega-nav-wrap .logo img{width:90px;height:auto}
+/* keyboard focus */
+#lyzr-mega-nav-wrap a:focus-visible,#lyzr-mega-nav-wrap button:focus-visible{outline:2px solid var(--rose);outline-offset:2px;border-radius:6px}
+
+/* ============================================================
+   RESPONSIVE
+   The source only had one real breakpoint (960px). Between
+   961px and ~1100px the 1060px Solutions panel overflowed the
+   viewport. These rules make every panel fit at any width; JS
+   additionally nudges panels back inside the viewport edge.
+   ============================================================ */
+#lyzr-mega-nav-wrap .drop{max-width:calc(100vw - 24px)}
+
+/* small laptops: mega panels go fluid, Functions drops to 3 columns */
+@media(max-width:1140px){
+  #lyzr-mega-nav-wrap #lmn-drop-solutions,
+  #lyzr-mega-nav-wrap #lmn-drop-solutions:has(.sol-v2){width:calc(100vw - 24px)}
+  #lyzr-mega-nav-wrap .sol-v1 .sol-funcs{grid-template-columns:repeat(3,1fr);row-gap:16px}
+  #lyzr-mega-nav-wrap .sol-v2 .sol-funcs{grid-template-columns:repeat(2,1fr);row-gap:16px}
+}
+@media(max-width:1040px){
+  #lyzr-mega-nav-wrap #lmn-drop-resources{width:calc(100vw - 24px)}
+  #lyzr-mega-nav-wrap .res-top{grid-template-columns:repeat(2,1fr);row-gap:14px}
+  #lyzr-mega-nav-wrap .ni{padding:0 20px}
+  #lyzr-mega-nav-wrap .ntrig,#lyzr-mega-nav-wrap .npln{padding:5px 8px}
+  #lyzr-mega-nav-wrap .atrk{display:none}
+}
+
+/* tablet + mobile: drawer takes over */
+@media(max-width:960px){
+  #lyzr-mega-nav-wrap .nl,#lyzr-mega-nav-wrap .nr{display:none}
+  #lyzr-mega-nav-wrap .hbg{display:flex}
+  #lyzr-mega-nav-wrap .mbd{display:block}
+  #lyzr-mega-nav-wrap .ni{padding:0 18px}
+  #lyzr-mega-nav-wrap .logo{margin-right:0}
+}
+@media(max-width:600px){
+  #lyzr-mega-nav-wrap .ni{padding:0 16px}
+  #lyzr-mega-nav-wrap .mbi{padding:14px 16px 72px}
+  #lyzr-mega-nav-wrap .mml{font-size:14px;padding:11px 0}
+  #lyzr-mega-nav-wrap .mtr,#lyzr-mega-nav-wrap .mpl{font-size:15px;padding:13px 0}
+  #lyzr-mega-nav-wrap .mbsi,#lyzr-mega-nav-wrap .mbsd{padding:13px;font-size:14px}
+}
+@media(max-width:380px){
+  #lyzr-mega-nav-wrap .ni{padding:0 12px}
+  #lyzr-mega-nav-wrap .logo img{width:78px}
+  #lyzr-mega-nav-wrap .mbi{padding:12px 14px 72px}
+}
+
+/* touch: no hover-open, taller tap targets (min 44px) */
+@media(hover:none){
+  #lyzr-mega-nav-wrap .mtr,#lyzr-mega-nav-wrap .mpl{min-height:44px}
+  #lyzr-mega-nav-wrap .mml{min-height:40px}
+  #lyzr-mega-nav-wrap .hbg{padding:10px;margin-right:-4px}
+}
+
+/* drawer: real viewport height on iOS, momentum scroll */
+#lyzr-mega-nav-wrap .mbd{-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@supports(height:100dvh){
+  #lyzr-mega-nav-wrap .mbd{height:calc(100dvh - var(--nav-h) - var(--wpbar,0px));bottom:auto}
+}
+/* JS sets max-height from scrollHeight; this is the no-JS fallback */
+#lyzr-mega-nav-wrap .msb.open{max-height:none}
+
+@media(prefers-reduced-motion:reduce){
+  #lyzr-mega-nav-wrap *,#lyzr-mega-nav-wrap *::before,#lyzr-mega-nav-wrap *::after{
+    animation:none !important;transition:none !important}
+}
+
+/* ============================================================
+   MOBILE DRAWER FIXES
+   1. .mml had no font-weight, so a theme's bold leaked in.
+      Desktop's .ml is 400 - match it.
+   2. Kill hover/focus/active box-shadows themes put on buttons
+      and links (they stick after a tap on touch screens).
+   3. Section headings that map to a real page are now links.
+   ============================================================ */
+#lyzr-mega-nav-wrap{font-weight:400;-webkit-tap-highlight-color:transparent}
+#lyzr-mega-nav-wrap .mml{font-weight:400 !important}
+#lyzr-mega-nav-wrap .mml span{font-weight:400 !important}
+
+/* no lingering tap/hover shadow anywhere in the drawer */
+#lyzr-mega-nav-wrap .mbd,
+#lyzr-mega-nav-wrap .mbd *,
+#lyzr-mega-nav-wrap .mbd *:hover,
+#lyzr-mega-nav-wrap .mbd *:focus,
+#lyzr-mega-nav-wrap .mbd *:active,
+#lyzr-mega-nav-wrap .hbg,
+#lyzr-mega-nav-wrap .hbg:hover,
+#lyzr-mega-nav-wrap .hbg:focus,
+#lyzr-mega-nav-wrap .hbg:active{box-shadow:none !important;text-shadow:none !important;filter:none !important}
+/* keyboard focus ring uses outline, so it survives the rule above */
+#lyzr-mega-nav-wrap .mbd a:focus-visible,
+#lyzr-mega-nav-wrap .mbd button:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+
+/* clickable section headings keep the exact .msl look */
+#lyzr-mega-nav-wrap a.msl{text-decoration:none !important;cursor:pointer;transition:color .15s}
+#lyzr-mega-nav-wrap a.msl:hover{color:var(--rose)}
+#lyzr-mega-nav-wrap .msl-arr{font-size:10px;line-height:1;color:var(--rose);opacity:.85;margin-left:1px}
+@media(hover:none){
+  /* a tappable heading needs a usable target */
+  #lyzr-mega-nav-wrap a.msl{padding:12px 0 8px}
+}
+
+
+/* ============================================================
+   LOGO SIZE LOCK
+   Some page templates still carry an older copy of the nav CSS
+   (<style id="lmn-style">) that loads AFTER this widget and sets
+   `.logo img{width:auto}`. Same specificity + later in the
+   cascade meant it won, and the logo fell back to its natural
+   441x170. Raising specificity (a.logo) and using !important
+   makes the size hold no matter what loads afterwards.
+   ============================================================ */
+#lyzr-mega-nav-wrap a.logo{height:auto !important;align-items:center}
+#lyzr-mega-nav-wrap a.logo img{
+  width:90px !important;
+  height:auto !important;
+  min-width:0 !important;
+  max-width:90px !important;
+  max-height:36px !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+@media(max-width:380px){
+  #lyzr-mega-nav-wrap a.logo img{width:78px !important;max-width:78px !important}
+}
+
+
+/* ============================================================
+   HARDENING AGAINST THE STALE #lmn-style SHEET
+   The function-page template (jeff / jazon / diane / skott /
+   procurement / banking-agents / insurance-ai-agent-benjie)
+   still ships an older copy of this nav's CSS. It loads AFTER
+   this widget, so at equal specificity it wins. Each rule below
+   re-asserts a value that copy was stealing.
+   Deleting <style id="lmn-style"> from those templates is the
+   real cleanup; this keeps the nav correct until then.
+   ============================================================ */
+
+/* (a) it sets `.plat-inner{grid-template-columns:repeat(4,1fr)}`
+       for its own 4-column markup. This build has 3 columns, so
+       the Products card was squeezed and "Control Plane",
+       "Agentic OS" and "Sovereign AI" wrapped onto two lines. */
+#lyzr-mega-nav-wrap .plat-inner{grid-template-columns:1fr 1fr 1fr !important}
+#lyzr-mega-nav-wrap #lmn-drop-partners .plat-inner{grid-template-columns:1fr 1fr !important}
+#lyzr-mega-nav-wrap #lmn-drop-platform{width:700px !important}
+#lyzr-mega-nav-wrap .drop{max-width:calc(100vw - 24px) !important}
+#lyzr-mega-nav-wrap .pv-name{white-space:nowrap}
+
+/* (b) it sets `#lyzr-mega-nav-wrap *{text-transform:none!important}`,
+       which flattened the NEW / OSS pills and the small caps labels. */
+#lyzr-mega-nav-wrap .ptag,
+#lyzr-mega-nav-wrap .slbl,
+#lyzr-mega-nav-wrap .feat-lbl,
+#lyzr-mega-nav-wrap .msl,
+#lyzr-mega-nav-wrap a.msl{text-transform:uppercase !important}
+
+/* (c) its `.bdm:hover` block is corrupted - a hamburger rule was
+       merged into it, so a second `background:none` overrode the
+       hover colour and the button went transparent while lifting.
+       No lift, no shadow: hover is a colour change only. */
+#lyzr-mega-nav-wrap .bdm,
+#lyzr-mega-nav-wrap .bdm:hover,
+#lyzr-mega-nav-wrap .bdm:focus,
+#lyzr-mega-nav-wrap .bdm:active{
+  transform:none !important;
+  box-shadow:none !important;
+  flex-direction:row !important;
+  margin-left:0 !important;
+  padding:6px 16px !important;
+  gap:0 !important;
+  transition:background .15s !important;
+}
+#lyzr-mega-nav-wrap .bdm{background:var(--mahogany) !important}
+#lyzr-mega-nav-wrap .bdm:hover{background:var(--mauve) !important}
+
+/* (d) it also strips the dropdown elevation, retunes the small-caps
+       tracking and nudges the drawer line-height. These win ties by
+       loading later, so qualify with the element tag to out-specify. */
+#lyzr-mega-nav-wrap div.drop{
+  box-shadow:0 4px 8px rgba(42,31,26,.06),0 14px 36px rgba(42,31,26,.12),0 30px 60px rgba(42,31,26,.07) !important}
+#lyzr-mega-nav-wrap div.slbl{letter-spacing:.24em !important}
+#lyzr-mega-nav-wrap div.feat-lbl{letter-spacing:.18em !important}
+#lyzr-mega-nav-wrap a.ml,#lyzr-mega-nav-wrap a.mml{line-height:1.35 !important}
+#lyzr-mega-nav-wrap a.mml{font-size:13.5px !important}
+@media(max-width:600px){
+  #lyzr-mega-nav-wrap a.mml{font-size:14px !important}
+}
+
+
+
+/* == Lyzr homepage theme override (site tokens) ======================= */
+#lyzr-mega-nav-wrap{
+  --nav-bg:#160F0A;
+  --nav-border:rgb(250 250 249 / .08);
+  --nav-text:rgb(250 250 249 / .62);
+  --nav-text-h:#FAFAF9;
+  --nav-hover:rgb(250 250 249 / .08);
+  --mahogany:#724B4B;
+  --mauve:#8A6060;
+  --rose:#D96354;
+  --ink:#160F0A;
+  --ink2:rgb(22 15 10 / .55);
+  --ink3:rgb(22 15 10 / .32);
+  --panel:#FAFAF9;
+  --card:#F1EEEB;
+  --parch:#FAFAF9;
+  --feat-bg:#F5F2EF;
+  --plat-bg:#FAFAF9;
+  --border:#E8E3DD;
+  --border2:#D7D0C8;
+  --fd:'Aeonik','Figtree',system-ui,sans-serif;
+  --fs:'Aeonik','Figtree',system-ui,sans-serif;
+}
+#lyzr-mega-nav-wrap .bdm:hover{background:#8A6060;}
+
+
+/* == v2: transparent navbar, light secondary, "Book a demo" button style == */
+#lyzr-mega-nav-wrap{--nav-bg:transparent; --nav-border:transparent;}
+#lyzr-mega-nav-wrap nav{
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  transition:background .25s ease,border-color .25s ease;
+}
+#lyzr-mega-nav-wrap.lmn-scrolled{
+  --nav-bg:rgb(250 250 249 / .94);
+  --nav-border:rgb(22 15 10 / .08);
+  --nav-text:rgb(22 15 10 / .64);
+  --nav-text-h:#160F0A;
+  --nav-hover:rgb(22 15 10 / .06);
+}
+#lyzr-mega-nav-wrap.lmn-scrolled nav{backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);}
+
+/* logo swaps with the nav surface */
+#lyzr-mega-nav-wrap .logo img.logo-dark{display:none !important}
+#lyzr-mega-nav-wrap.lmn-scrolled .logo img.logo-dark{display:inline-block !important}
+#lyzr-mega-nav-wrap.lmn-scrolled .logo img.logo-light{display:none !important}
+
+/* primary CTA: the attached "Book a demo" style (terracotta, 10px radius) */
+#lyzr-mega-nav-wrap .bdm{
+  background:#BD4C3F !important;color:#FAFAF9 !important;
+  border-radius:40px !important;padding:8px 18px !important;font-weight:500;
+}
+#lyzr-mega-nav-wrap .bdm:hover{background:#9B392E !important;box-shadow:0 6px 20px rgb(189 76 63 / .38);}
+
+/* secondary button: light */
+#lyzr-mega-nav-wrap .bsi{
+  background:#FAFAF9 !important;color:#160F0A !important;
+  border:1px solid rgb(22 15 10 / .14) !important;border-radius:14px !important;padding:7px 16px;
+}
+#lyzr-mega-nav-wrap .bsi:hover{background:#F1EEEB !important;color:#160F0A !important;border-color:rgb(22 15 10 / .26) !important;}
+
+/* mobile drawer buttons follow the same pair */
+#lyzr-mega-nav-wrap .mbsd{background:#BD4C3F !important;color:#FAFAF9 !important;border-radius:10px !important;}
+#lyzr-mega-nav-wrap .mbsd:hover{background:#9B392E !important;}
+#lyzr-mega-nav-wrap .mbsi{background:#FAFAF9 !important;color:#160F0A !important;border:1px solid rgb(22 15 10 / .16) !important;border-radius:10px !important;}
+
+
+/* == v3: smooth motion pass ============================================ */
+#lyzr-mega-nav-wrap nav{
+  transition:background .45s cubic-bezier(.22,1,.36,1),
+             border-color .45s cubic-bezier(.22,1,.36,1),
+             top .55s cubic-bezier(.22,1,.36,1);
+}
+#lyzr-mega-nav-wrap .ntrig,
+#lyzr-mega-nav-wrap .npln,
+#lyzr-mega-nav-wrap .atrk{
+  transition:color .28s cubic-bezier(.25,.8,.25,1),background .28s cubic-bezier(.25,.8,.25,1);
+}
+#lyzr-mega-nav-wrap .logo img{transition:opacity .3s ease;}
+#lyzr-mega-nav-wrap .bdm{
+  transition:background .3s cubic-bezier(.32,.72,0,1),
+             transform .3s cubic-bezier(.32,.72,0,1),
+             box-shadow .35s cubic-bezier(.32,.72,0,1) !important;
+}
+#lyzr-mega-nav-wrap .bdm:hover{transform:translateY(-2px);}
+#lyzr-mega-nav-wrap .bsi{
+  transition:background .3s cubic-bezier(.32,.72,0,1),
+             color .3s cubic-bezier(.32,.72,0,1),
+             border-color .3s cubic-bezier(.32,.72,0,1),
+             transform .3s cubic-bezier(.32,.72,0,1) !important;
+}
+#lyzr-mega-nav-wrap .bsi:hover{transform:translateY(-1px);}
+#lyzr-mega-nav-wrap .drop{
+  transition:opacity .4s cubic-bezier(.22,1,.36,1),
+             transform .5s cubic-bezier(.22,1,.36,1);
+}
+#lyzr-mega-nav-wrap .mbd{transition:transform .4s cubic-bezier(.22,1,.36,1);}
+@media (prefers-reduced-motion:reduce){
+  #lyzr-mega-nav-wrap nav,#lyzr-mega-nav-wrap .drop,#lyzr-mega-nav-wrap .mbd,
+  #lyzr-mega-nav-wrap .bdm,#lyzr-mega-nav-wrap .bsi{transition:none !important;}
+}
+
+
+/* == v4: nav link spec (user CSS) ====================================== */
+#lyzr-mega-nav-wrap .nl{gap:10px;}
+#lyzr-mega-nav-wrap .ntrig{gap:6px;font-size:14px;color:rgb(255 255 255);}
+#lyzr-mega-nav-wrap .npln{color:rgb(255 255 255);}
+#lyzr-mega-nav-wrap .atrk{color:rgb(255 255 255);}
+/* scrolled (light) surface keeps readable dark links */
+#lyzr-mega-nav-wrap.lmn-scrolled .ntrig,
+#lyzr-mega-nav-wrap.lmn-scrolled .npln,
+#lyzr-mega-nav-wrap.lmn-scrolled .atrk{color:var(--nav-text);}
+#lyzr-mega-nav-wrap.lmn-scrolled .ntrig:hover,#lyzr-mega-nav-wrap.lmn-scrolled .ntrig.active,
+#lyzr-mega-nav-wrap.lmn-scrolled .npln:hover,
+#lyzr-mega-nav-wrap.lmn-scrolled .atrk:hover{color:var(--nav-text-h);}
+
+/* brand logo sizing in the nav */
+#lyzr-mega-nav-wrap .logo img{block-size:27px; inline-size:auto; display:block;}
+#lyzr-mega-nav-wrap .logo img.logo-dark{display:none !important}
+#lyzr-mega-nav-wrap.lmn-scrolled .logo img.logo-dark{display:block !important}
+#lyzr-mega-nav-wrap.lmn-scrolled .logo img.logo-light{display:none !important}
+
+/* a11y: while the video modal is aria-hidden nothing inside it is focusable */
+#lyzr-mega-nav-wrap .lmn-vmodal[aria-hidden="true"]{visibility:hidden;}
+
+/* unified hover: mild 1px lift, soft shadow, 300ms everywhere */
+#lyzr-mega-nav-wrap .bdm,#lyzr-mega-nav-wrap .bsi{
+  transition:background 300ms cubic-bezier(.25,.8,.25,1),
+             color 300ms cubic-bezier(.25,.8,.25,1),
+             border-color 300ms cubic-bezier(.25,.8,.25,1),
+             transform 300ms cubic-bezier(.25,.8,.25,1),
+             box-shadow 300ms cubic-bezier(.25,.8,.25,1) !important;
+}
+#lyzr-mega-nav-wrap .bdm:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgb(189 76 63 / .28) !important;}
+#lyzr-mega-nav-wrap .bsi:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgb(22 15 10 / .10) !important;}
+
+
+/* == v5: the light nav surface EXPANDS in on scroll ==================== */
+/* the bar itself stays transparent; its surface is a layer that grows
+   down from the top edge, slow and eased, so the nav appears to expand */
+#lyzr-mega-nav-wrap nav{background:transparent !important; border-bottom-color:transparent !important;}
+#lyzr-mega-nav-wrap nav::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:rgb(250 250 249 / .96);
+  box-shadow:0 1px 0 rgb(22 15 10 / .08), 0 10px 30px rgb(22 15 10 / .05);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  transform:scaleY(0); transform-origin:top;
+  opacity:0;
+  transition:transform .8s cubic-bezier(.22,1,.36,1),
+             opacity .55s cubic-bezier(.22,1,.36,1);
+  will-change:transform,opacity;
+}
+#lyzr-mega-nav-wrap.lmn-scrolled nav::before{transform:scaleY(1); opacity:1;}
+/* the link/logo color swap follows the surface at the same slow pace */
+#lyzr-mega-nav-wrap .ntrig,
+#lyzr-mega-nav-wrap .npln,
+#lyzr-mega-nav-wrap .atrk{transition:color .55s cubic-bezier(.22,1,.36,1),background .28s cubic-bezier(.25,.8,.25,1);}
+@media (prefers-reduced-motion:reduce){
+  #lyzr-mega-nav-wrap nav::before{transition:none;}
+}
+
+
+/* == v6: nav CTAs share the open-water "Book a demo" hover exactly ===== */
+#lyzr-mega-nav-wrap .bdm:hover{
+  background:var(--bg-accent-hover, #9B392E) !important;
+  transform:translateY(-1px) !important;
+  box-shadow:var(--shadow-accent, 0 8px 24px rgb(217 99 84 / .28)) !important;
+}
+#lyzr-mega-nav-wrap .bsi:hover{
+  background:#FAFAF9 !important;
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-accent, 0 8px 24px rgb(217 99 84 / .28)) !important;
+  border-color:rgb(22 15 10 / .22) !important;
+}
+
+
+/* == v7: nav CTAs ARE the site button =================================
+   The anchors carry the real .btn / .btn--primary classes; this block
+   only clears the widget's own metrics so the site button shows through,
+   sized to sit inside the 56px bar. Hover = identical to "Book a demo":
+   darken to --bg-accent-hover, 0 6px 18px accent shadow, 1px lift. */
+#lyzr-mega-nav-wrap .bdm,
+#lyzr-mega-nav-wrap .bsi{
+  block-size:2.5rem !important;
+  padding:0 var(--space-6) !important;
+  font-size:var(--fs-small) !important;
+  font-weight:var(--fw-medium) !important;
+  letter-spacing:-0.005em !important;
+  border-radius:40px !important;
+  transform:none !important;
+  transition:background 300ms cubic-bezier(.25,.8,.25,1),
+             color 300ms cubic-bezier(.25,.8,.25,1),
+             border-color 300ms cubic-bezier(.25,.8,.25,1),
+             transform 150ms cubic-bezier(0,0,.2,1),
+             box-shadow 300ms cubic-bezier(.25,.8,.25,1) !important;
+}
+#lyzr-mega-nav-wrap .bdm{
+  background:var(--bg-accent, #BD4C3F) !important;
+  color:var(--text-on-accent, #FAFAF9) !important;
+  border:1px solid transparent !important;
+}
+#lyzr-mega-nav-wrap .bdm:hover{
+  background:var(--bg-accent-hover, #9B392E) !important;
+  box-shadow:0 6px 18px rgb(189 76 63 / .28) !important;
+  transform:translateY(-1px) !important;
+  padding:0 var(--space-6) !important;
+}
+#lyzr-mega-nav-wrap .bdm:active{transform:translateY(1px) !important;}
+#lyzr-mega-nav-wrap .bsi{
+  background:#FAFAF9 !important;
+  color:#160F0A !important;
+  border:1px solid rgb(22 15 10 / .14) !important;
+}
+#lyzr-mega-nav-wrap .bsi:hover{
+  background:#F1EEEB !important;
+  border-color:rgb(22 15 10 / .26) !important;
+  box-shadow:0 4px 14px rgb(22 15 10 / .12) !important;
+  transform:translateY(-1px) !important;
+}
+#lyzr-mega-nav-wrap .bsi:active{transform:translateY(1px) !important;}

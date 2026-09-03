@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lyzr — Your agents are moving fast</title>
+<title>Lyzr: Your agents are moving fast</title>
 <meta name="description" content="Build agents anywhere. Control them from one place. Your data stays in your environment. Your IP stays yours. Enterprise agentic AI, deployed on your terms.">
 <meta name="theme-color" content="#160F0A">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lyzr — Get your Agents off The Bench">
+<meta property="og:title" content="Lyzr: Get your Agents off The Bench">
 <meta property="og:description" content="Build agents anywhere. Control them from one place. Your data stays in your environment.">
 <meta property="og:image" content="assets/hero-locker.webp">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,52 +19,791 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/meganav.css">
+<link rel="stylesheet" href="css/ribbon.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ===================== HEADER ===================== -->
-<header class="site-header" id="siteHeader">
-  <div class="site-header__inner">
-    <nav class="nav-group nav-group--left" aria-label="Primary">
-      <a class="nav-link" href="#resources">Resources</a>
-      <a class="nav-link" href="#platform">Platform</a>
-      <a class="nav-link" href="#solutions">Solutions</a>
-    </nav>
+<!-- ===================== ANNOUNCEMENT RIBBON + MEGA NAV ===================== -->
+<div id="lyzr-ribbon" role="region" aria-label="Announcement">
+  <div class="rb-inner">
 
-    <a class="brand" href="/" aria-label="Lyzr — home">
-      <img src="assets/lyzr-wordmark.webp" alt="Lyzr" width="258" height="64">
+    <span class="rb-tag">
+      <span class="rb-dot" aria-hidden="true"></span>
+      New
+    </span>
+
+    <span class="rb-rule rb-rule-tag" aria-hidden="true"></span>
+
+    <span class="rb-msg">
+      <strong>Lyzr launches Control Plane for AI Agents</strong>
+    </span>
+
+    <span class="rb-rule" aria-hidden="true"></span>
+
+    <a class="rb-cta" href="https://www.lyzr.ai/control-plane/"
+       target="_blank" rel="noopener noreferrer">
+      Access now
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      <span class="rb-sr">(opens in a new tab)</span>
     </a>
 
-    <div class="nav-group nav-group--right">
-      <a class="nav-link" href="#customers">Customers</a>
-      <a class="nav-link" href="#pricing">Pricing</a>
-      <a class="nav-cta" href="#demo">Book a demo</a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-    </div>
   </div>
 
-  <div class="mobile-menu" id="mobileMenu" hidden>
-    <a href="#resources">Resources</a>
-    <a href="#platform">Platform</a>
-    <a href="#solutions">Solutions</a>
-    <a href="#customers">Customers</a>
-    <a href="#pricing">Pricing</a>
-    <a class="btn btn--primary btn--block" href="#demo">Book a demo</a>
+  <button class="rb-close" id="rb-close" type="button" aria-label="Dismiss announcement">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+  </button>
+</div>
+
+<div id="lyzr-mega-nav-wrap">
+<nav aria-label="Main">
+  <div class="ni">
+    <a class="logo" href="https://www.lyzr.ai/" aria-label="Lyzr">
+      <img class="logo-light" src="assets/logo-lyzr-white.webp" alt="Lyzr" width="70" height="27" loading="eager" decoding="async"><img class="logo-dark" src="assets/logo-lyzr-dark.webp" alt="" width="70" height="27" loading="eager" decoding="async">
+    </a>
+    <div class="nl">
+
+      <!-- ① SOLUTIONS -->
+      <div class="nit" id="lmn-nit-solutions">
+        <button class="ntrig" type="button" aria-expanded="false" aria-haspopup="true" id="lmn-t-solutions">Solutions<svg class="cv" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+        <div class="drop" id="lmn-drop-solutions" role="region" aria-label="Solutions">
+
+          <!-- ================================================================
+               SOLUTIONS  ::  V1 = ORIGINAL        STATUS: ACTIVE
+               TO SWITCH VERSIONS: put a bare  <!==  line above this block
+               and a bare  ==>  line below it, then delete the two bare
+               comment lines that wrap the V2 block further down.
+               ================================================================>
+          <div class="sol-v1">
+            <div class="di">
+                        <div class="slbl">Functions</div>
+                        <div class="sol-funcs">
+                          <div class="scol">
+                            <a class="crow" href="https://www.lyzr.ai/jeff/" target="_blank" rel="noopener noreferrer">
+                              <div class="crow-left">
+                                <div class="cic"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 01-12 0"/><path d="M12 14v7"/><path d="M8 21h8"/></svg></div>
+                                <span class="ctit">Customer Support</span>
+                                <span class="crow-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                              </div>
+                            </a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/support/ai-cross-channel-support-agent/" target="_blank" rel="noopener noreferrer">AI Cross Channel Support<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/support/email-triage-agent/" target="_blank" rel="noopener noreferrer">Email Triage Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/support/ai-phone-support-agent/" target="_blank" rel="noopener noreferrer">AI Phone Support<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/support/support-interaction-assistance-agent/" target="_blank" rel="noopener noreferrer">Support Interaction<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/support/crm-case-generator-agent/" target="_blank" rel="noopener noreferrer">CRM Case Generator<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                          </div>
+                          <div class="scol">
+                            <a class="crow" href="https://www.lyzr.ai/procurement/" target="_blank" rel="noopener noreferrer">
+                              <div class="crow-left">
+                                <div class="cic"><svg viewBox="0 0 24 24"><path d="M6 3h12l3 7H3L6 3z"/><path d="M3 10v4a2 2 0 002 2h14a2 2 0 002-2v-4"/></svg></div>
+                                <span class="ctit">Procurement</span>
+                                <span class="crow-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                              </div>
+                            </a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/procurement/supplier-onboarding-agent/" target="_blank" rel="noopener noreferrer">Supplier Onboarding<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/procurement/supplier-sourcing-agent/" target="_blank" rel="noopener noreferrer">Supplier Sourcing<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/procurement/supplier-performance-analysis-agent/" target="_blank" rel="noopener noreferrer">Supplier Performance<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/procurement/contract-review-agent/" target="_blank" rel="noopener noreferrer">Contract Reviews<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/procurement/contract-search-agent/" target="_blank" rel="noopener noreferrer">Contract Search Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                          </div>
+                          <div class="scol">
+                            <a class="crow" href="https://www.lyzr.ai/diane/" target="_blank" rel="noopener noreferrer">
+                              <div class="crow-left">
+                                <div class="cic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                                <span class="ctit">Human Resources</span>
+                                <span class="crow-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                              </div>
+                            </a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/hr/ai-ld-agent/" target="_blank" rel="noopener noreferrer">AI L&amp;D<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/hr/esat-survey-agent/" target="_blank" rel="noopener noreferrer">ESAT Survey<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/hr/ai-performance-review-agent/" target="_blank" rel="noopener noreferrer">AI Performance Review<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/hr/employee-onboarding-agent/" target="_blank" rel="noopener noreferrer">Employee Onboarding<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/hr/ai-hiring-assistant/" target="_blank" rel="noopener noreferrer">AI Hiring Assistant<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                          </div>
+                          <div class="scol">
+                            <a class="crow" href="https://www.lyzr.ai/jazon/" target="_blank" rel="noopener noreferrer">
+                              <div class="crow-left">
+                                <div class="cic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                                <span class="ctit">Sales</span>
+                                <span class="crow-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                              </div>
+                            </a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/sales/ai-sdr-agent/" target="_blank" rel="noopener noreferrer">AI SDR<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/sales/ai-deal-nurturer/" target="_blank" rel="noopener noreferrer">AI Deal Nurturer<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/sales/lead-enrichment-agent/" target="_blank" rel="noopener noreferrer">Lead Enrichment<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/marketing/abm-agent/" target="_blank" rel="noopener noreferrer">ABM Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/marketing/ai-internal-communication-agent/" target="_blank" rel="noopener noreferrer">AI Internal Communication<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                          </div>
+                          <div class="scol">
+                            <a class="crow" href="https://www.lyzr.ai/skott/" target="_blank" rel="noopener noreferrer">
+                              <div class="crow-left">
+                                <div class="cic"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+                                <span class="ctit">Marketing</span>
+                                <span class="crow-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                              </div>
+                            </a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/marketing/ai-social-media-agent/" target="_blank" rel="noopener noreferrer">AI Social Media Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/marketing/aeo-geo-optimizer-agent/" target="_blank" rel="noopener noreferrer">AEO/GEO Optimizer Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/marketing/ai-internal-communication-agent/" target="_blank" rel="noopener noreferrer">AI Internal Communication Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/marketing/abm-agent/" target="_blank" rel="noopener noreferrer">ABM Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            <a class="ml" href="https://www.lyzr.ai/blueprints/marketing/ai-content-creation-agent/" target="_blank" rel="noopener noreferrer">AI Content Creation Agent<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                          </div>
+                        </div>
+                        <div class="sol-ind-row" style="margin-top:16px">
+              
+                          <div class="sol-inds">
+                            <div style="grid-column:span 2;padding:0 14px 10px;">
+                              <div class="slbl" style="margin-bottom:0">Industries</div>
+                            </div>
+                            <div class="scol2">
+                              <a class="crow" href="https://www.lyzr.ai/banking-agents/" target="_blank" rel="noopener noreferrer">
+                                <div class="crow-left">
+                                  <div class="cic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M3 10h18"/><path d="M5 6l7-3 7 3"/><path d="M4 10v11"/><path d="M20 10v11"/><path d="M8 14v3"/><path d="M12 14v3"/><path d="M16 14v3"/></svg></div>
+                                  <span class="ctit">Banking</span>
+                                  <span class="crow-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                                </div>
+                              </a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/banking/kyc-compliance-agent/" target="_blank" rel="noopener noreferrer">KYC Processing<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/banking/ai-loan-origination-agent/" target="_blank" rel="noopener noreferrer">AI loan Origination<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/banking/ai-loan-servicing-agent/" target="_blank" rel="noopener noreferrer">AI Loan Servicing<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/banking/regulatory-monitoring-agent/" target="_blank" rel="noopener noreferrer">Regulatory Monitoring<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/banking/customer-onboarding-agent/" target="_blank" rel="noopener noreferrer">Customer Onboarding<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            </div>
+                            <div class="scol2">
+                              <a class="crow" href="https://www.lyzr.ai/insurance-ai-agent-benjie/" target="_blank" rel="noopener noreferrer">
+                                <div class="crow-left">
+                                  <div class="cic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                                  <span class="ctit">Insurance</span>
+                                  <span class="crow-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                                </div>
+                              </a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/insurance/regulatory-compliance-audit-agent/" target="_blank" rel="noopener noreferrer">Regulatory Compliance<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/insurance/claims-processing-agent/" target="_blank" rel="noopener noreferrer">Claims Processing<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/insurance/policy-underwriting-support-agent/" target="_blank" rel="noopener noreferrer">Policy Underwriting<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/insurance/partner-quality-assurance-audit-agent/" target="_blank" rel="noopener noreferrer">Partner Quality Assurance<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/blueprints/insurance/document-extraction-for-litigation-agent/" target="_blank" rel="noopener noreferrer">Litigation Clause Extraction<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            </div>
+                          </div>
+              
+                          <div class="sol-other">
+                            <div style="grid-column:span 1;padding:0 14px 10px;">
+                              <div class="slbl" style="margin-bottom:0">Others</div>
+                            </div>
+                            <div class="scol2" style="grid-column:span 1">
+                              <a class="ml" href="https://www.lyzr.ai/fintech/" target="_blank" rel="noopener noreferrer">Fintech<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/healthcare-agents/" target="_blank" rel="noopener noreferrer">Healthcare<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/agentic-commerce/" target="_blank" rel="noopener noreferrer">Agentic Commerce<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/private-equity/" target="_blank" rel="noopener noreferrer">Private Equity<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                              <a class="ml" href="https://www.lyzr.ai/government/" target="_blank" rel="noopener noreferrer">Government<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          </div>
+          <===================== END SOLUTIONS V1 ===================== -->
+
+
+          <!-- ================================================================
+               SOLUTIONS  ::  V2 = NEW             STATUS: INACTIVE
+               TO ENABLE: delete the single line below that is just  <!==
+               and the single line further down that is just  ==>
+               (and comment out the V1 block above).
+               ================================================================ -->
+          
+          <div class="sol-v2">
+            <div class="di">
+                        <div class="sol-funcs">
+
+                          <div class="scol">
+                            <div class="slbl">By Industry</div>
+                            <a class="mlx" href="https://www.lyzr.ai/banking-agents/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Banking</span><span class="mlx-sub">Lending, onboarding, and compliance</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/insurance-ai-agent-benjie/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Insurance</span><span class="mlx-sub">Claims, underwriting, and policy</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/government/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Government</span><span class="mlx-sub">Secure public-sector AI services</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/healthcare-agents/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Healthcare</span><span class="mlx-sub">Patient and clinical workflow agents</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/fintech/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Fintech</span><span class="mlx-sub">Fraud, onboarding, and payments</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/ecommerce-agents/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">E-commerce</span><span class="mlx-sub">Discovery, support, and conversion</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                          </div>
+
+                          <div class="scol">
+                            <div class="slbl">By Function</div>
+                            <a class="mlx" href="https://www.lyzr.ai/jazon/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Revenue</span><span class="mlx-sub">Pipeline generation and sales</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/skott/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Marketing</span><span class="mlx-sub">Content, campaigns, and demand</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/jeff/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Customer Service</span><span class="mlx-sub">Resolution and ticket deflection</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/diane/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Human Resources</span><span class="mlx-sub">Hiring, onboarding, and people ops</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/procurement/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Procurement</span><span class="mlx-sub">Sourcing, supplier, and contracts</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/legal-industry/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Legal</span><span class="mlx-sub">Contract review and compliance</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                          </div>
+
+                          <div class="scol">
+                            <div class="slbl">By Team</div>
+                            <a class="mlx" href="https://www.lyzr.ai/teams/compliance-teams/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Compliance &amp; Governance</span><span class="mlx-sub">Control plane, audit trails, and RAI</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/teams/ai-and-automation-teams/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">AI &amp; Automation</span><span class="mlx-sub">Agent building, evaluation, and deployment</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/teams/revenue-and-sales-team/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Revenue &amp; Sales</span><span class="mlx-sub">Pipeline intelligence and deal acceleration</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/teams/platform-teams/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">IT &amp; Platform</span><span class="mlx-sub">Agent infrastructure and platform engineering</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/teams/digital-transformation-teams/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Digital Transformation</span><span class="mlx-sub">Enterprise AI strategy and process reimagination</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                          </div>
+
+                          <div class="scol">
+                            <div class="slbl">By Role</div>
+                            <a class="mlx" href="https://www.lyzr.ai/roles/cio/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">CIO</span><span class="mlx-sub">Governance, control, and agent infrastructure</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/roles/cto/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">CTO</span><span class="mlx-sub">Sovereign AI and production architecture</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/roles/ceo/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">CEO</span><span class="mlx-sub">Agentic OS and enterprise transformation</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/roles/md/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Managing Director</span><span class="mlx-sub">Co-sell, joint GTM, and SI partnerships</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                            <a class="mlx" href="https://www.lyzr.ai/roles/heads-of-ai/" target="_blank" rel="noopener noreferrer">
+                              <span class="mlx-txt"><span class="mlx-name">Head of AI</span><span class="mlx-sub">Agent deployment, simulation, and scale</span></span>
+                              <span class="mlx-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+          </div>
+         
+          <!-- ===================== END SOLUTIONS V2 ===================== -->
+
+        </div>
+      </div>
+
+      <!-- PLATFORM -->
+      <div class="nit" id="lmn-nit-platform">
+        <button class="ntrig" type="button" aria-expanded="false" aria-haspopup="true" id="lmn-t-platform">Platform<svg class="cv" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+        <div class="drop" id="lmn-drop-platform" role="region" aria-label="Platform">
+          <div class="di">
+            <!-- Full-height warm background for products only -->
+            <div class="plat-inner">
+
+              <!-- Products column — warm bg via plat-prod -->
+              <div class="plat-prod">
+                <div class="slbl" style="margin-bottom:12px">Products</div>
+                <a class="pv" href="https://studio.lyzr.ai/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+                    <span class="pv-name">Agent Studio</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <a class="pv" href="https://architect.new/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                    <span class="pv-name">Architect</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <a class="pv" href="https://www.lyzr.ai/control-plane/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+                    <span class="pv-name">Control Plane</span><span class="ptag new">New</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <a class="pv" href="https://www.lyzr.ai/agentic-os/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+                    <span class="pv-name">Agentic OS</span><span class="ptag new">New</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <a class="pv" href="https://www.lyzr.ai/sovereign-ai/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <span class="pv-name">Sovereign AI</span><span class="ptag new">New</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <div class="pv is-disabled" aria-disabled="true">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                    <span class="pv-name">Lyzr Nitro</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </div>
+                <div class="pv is-disabled" aria-disabled="true">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L19 10l-5.1 1.2L12 17l-1.9-5.8L5 10l5.1-1.2L12 3z"/></svg></div>
+                    <span class="pv-name">Lyzr Optimus</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </div>
+              </div><!-- /.plat-prod -->
+
+              <!-- Modules column — white background (no bg class) -->
+              <div class="plat-mods">
+                <div class="slbl" style="margin-bottom:12px">Modules</div>
+                <a class="mv" href="https://www.lyzr.ai/responsible-ai-as-a-service/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Responsible AI</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/orchestration-as-a-service/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Orchestration as a Service</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/agents-as-a-service/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Agents as a Service</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/agent-types-in-production/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Types of Agents</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/hallucination-manager-as-a-service/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Hallucination Manager</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/knowledge-base-as-a-service/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Knowledge Base</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/knowledge-graph-as-a-service/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Knowledge Graph</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+              </div>
+
+              <!-- Open Source & Dev column -->
+              <div class="plat-mods">
+                <div class="slbl" style="margin-bottom:12px">Open Source &amp; Dev</div>
+               
+                <a class="mv" href="https://www.lyzr.ai/cognis/" target="_blank" rel="noopener noreferrer"><span class="mv-name">AI Agent Memory</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/oss/opengap/" target="_blank" rel="noopener noreferrer"><span class="mv-left"><span class="mv-name">OpenGAP</span><span class="ptag oss">OSS</span></span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/oss/gitagent/" target="_blank" rel="noopener noreferrer"><span class="mv-left"><span class="mv-name">GitAgent</span><span class="ptag oss">OSS</span></span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://docs.lyzr.ai/enterprise/get-started/intro" target="_blank" rel="noopener noreferrer"><span class="mv-name">Docs &amp; API</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="npln" href="https://www.lyzr.ai/customers/" target="_blank" rel="noopener noreferrer">Customers</a>
+      <a class="npln" href="https://www.lyzr.ai/pricing/" target="_blank" rel="noopener noreferrer">Pricing</a>
+      <!-- ③b PARTNERS -->
+      <div class="nit" id="lmn-nit-partners">
+        <button class="ntrig" type="button" aria-expanded="false" aria-haspopup="true" id="lmn-t-partners">Partners<svg class="cv" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+        <div class="drop" id="lmn-drop-partners" role="region" aria-label="Partners">
+          <div class="di">
+            <div class="plat-inner">
+
+              <!-- Technology Partners — warm bg -->
+              <div class="plat-prod">
+                <div class="slbl" style="margin-bottom:12px">Technology Partners</div>
+                <a class="pv" href="https://www.lyzr.ai/partners/aws/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+                    <span class="pv-name">Amazon Web Services</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <a class="pv" href="https://www.lyzr.ai/partners/google/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div>
+                    <span class="pv-name">Google Cloud</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <a class="pv" href="https://www.lyzr.ai/partners/microsoft/" target="_blank" rel="noopener noreferrer">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/><path d="M12 12l9-5M12 12v10M12 12L3 7"/></svg></div>
+                    <span class="pv-name">Microsoft Azure</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </a>
+                <div class="pv is-disabled" aria-disabled="true">
+                  <div class="pv-left">
+                    <div class="pv-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+                    <span class="pv-name">NVIDIA</span>
+                  </div>
+                  <span class="pv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span>
+                </div>
+              </div>
+
+              <!-- Ecosystem Partners -->
+              <div class="plat-mods">
+                <div class="slbl" style="margin-bottom:12px">Ecosystem Partners</div>
+                <a class="mv" href="https://www.lyzr.ai/gsi-si/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Consulting Partners</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="mv" href="https://www.lyzr.ai/partners/" target="_blank" rel="noopener noreferrer"><span class="mv-name">Reseller Partners</span><span class="mv-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ③ RESOURCES -->
+      <div class="nit" id="lmn-nit-resources">
+        <button class="ntrig" type="button" aria-expanded="false" aria-haspopup="true" id="lmn-t-resources">Resources<svg class="cv" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+        <div class="drop center" id="lmn-drop-resources" role="region" aria-label="Resources">
+          <div class="di">
+
+            <!-- Row 1: 4 equal columns matching image exactly -->
+            <div class="res-top">
+
+              <!-- Col 1: Learn -->
+              <div class="rc">
+                <div class="slbl">Learn</div>
+                <a class="ml" href="https://www.lyzr.ai/blog/" target="_blank" rel="noopener noreferrer">Blogs<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/playbook/" target="_blank" rel="noopener noreferrer">Playbook<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/templates/" target="_blank" rel="noopener noreferrer">Templates<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://university.lyzr.ai/" target="_blank" rel="noopener noreferrer">Courses<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/research/" target="_blank" rel="noopener noreferrer">Research<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/agent-types-in-production/" target="_blank" rel="noopener noreferrer">Types of Agents<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+              </div>
+
+              <!-- Col 2: Playbooks -->
+              <div class="rc">
+                <div class="slbl">Playbooks &amp; Templates</div>
+                <a class="ml" href="https://www.lyzr.ai/playbook/how-to-take-agents-to-production/" target="_blank" rel="noopener noreferrer">Agents to Production<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/playbook/bfsi-guide-to-dispute-management/" target="_blank" rel="noopener noreferrer">Banking Dispute Management<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/playbook/analyst-army-starter-pack/" target="_blank" rel="noopener noreferrer">The Field Guide for Analysts<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/template/ai-sales-agents-use-cases/" target="_blank" rel="noopener noreferrer">AI Sales Agents Use Cases<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/template/insurance-ai-agents-use-cases/" target="_blank" rel="noopener noreferrer">Insurance AI Agents Use Cases<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/template/architect-agent-usecases/" target="_blank" rel="noopener noreferrer">Architect Agent Use cases<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+              </div>
+
+              <!-- Col 3: Analyze -->
+              <div class="rc">
+                <div class="slbl">Analyze</div>
+                <a class="ml" href="https://www.lyzr.ai/case-studies/" target="_blank" rel="noopener noreferrer">Case Studies<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/comparison/" target="_blank" rel="noopener noreferrer">Comparison<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/assessments/" target="_blank" rel="noopener noreferrer">Assessments<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/glossaries/" target="_blank" rel="noopener noreferrer">Glossary<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/state-of-ai-agents/" target="_blank" rel="noopener noreferrer">State of AI Agents<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/wall-of-love/" target="_blank" rel="noopener noreferrer">Wall of Love<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/ai-enterprise-platform-assessment" target="_blank" rel="noopener noreferrer">Enterprise Assessment<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/lyzr-analyst-recognition/" target="_blank" rel="noopener noreferrer">Analyst Recognition<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+              </div>
+
+              <!-- Col 4: Connect -->
+              <div class="rc">
+                <div class="slbl">Connect</div>
+                <a class="ml" href="https://www.lyzr.ai/partners/" target="_blank" rel="noopener noreferrer">Partner Program<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/partners/aws/" target="_blank" rel="noopener noreferrer">AWS<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/community/" target="_blank" rel="noopener noreferrer">Community<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+                <a class="ml" href="https://www.lyzr.ai/book-demo/" target="_blank" rel="noopener noreferrer">Book a Demo<span class="ml-arr ua"><svg viewBox="0 0 10 10"><path d="M2 8L8 2M8 2H3M8 2v5" stroke="currentColor"/></svg></span></a>
+              </div>
+
+            </div>
+
+            <!-- Row 2: Featured strip — warm bg, 2 video cards side by side -->
+            <div class="res-feat">
+              <div class="slbl">Featured</div>
+              <div class="feat-row">
+                <div class="feat-card feat-video" data-video-idx="0" role="button" tabindex="0" aria-label="Play video: Nathan Latka — Still Shocked Lyzr's Siva Beat Palantir">
+                  <div class="feat-img">
+                    <img src="data:image/jpeg;base64,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" alt="Nathan Latka Top Founders interview with Lyzr's Siva" loading="lazy">
+                    <div class="feat-play"><svg viewBox="0 0 12 12"><path d="M2.5 1.5v9l8-4.5-8-4.5z"/></svg></div>
+                    <div class="feat-ov">
+                      <div class="feat-lbl r">Founderpath</div>
+                      <div class="feat-title">Nathan Latka: Still Shocked Lyzr's Siva Beat Palantir</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="feat-card feat-video" data-video-idx="1" role="button" tabindex="0" aria-label="Play video: AI Agent Startup Just Let Its Agent Run Its $100M Fundraise">
+                  <div class="feat-img">
+                    <img src="data:image/jpeg;base64,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rEgZW45lTlW9XxUf3m30yq95t9Mp6Cv0+UNkVjfMrXccJyo6R8Vod5t9Mp3o30ynoK/T5Q2RWN8yA8SEMrSMZHxWh3o303J3m30ynoK/T5Q2RWN/lR0jTrTlQecfFR/ebfTcnebfTcnoK/T5Q2RWJATADA3QhlaR+yo/vNvpuTvNvpuT0Ffp8obIrEhyreYNCoZGnjurQ7zb6bk7zb6bk9BX6fKJ2RWN/lG9I+KqJgOcfFR/ebfTcnebfTcnoK/T5Q2RWJDlWnoTlB0j4qP7zb6bk7zb6bk9BX6fKGyKxv8AKN6R8VXlG5zkZUf3m303J3m303KPQYjp8obIrEhyjekJyjTx3So/vNvpuTvNvpuTZ+I6fKGyKxv8o3pHxVeVbjGRhR/ebfTcnebfTcnoMR0+UNkVjf5RvSE329IWh3m303J3m303J6DEdPlDZFYkOVHSPinKDGMjHRlR/ebfTcnebfTcnoMR0+UNkViQ5RvSE5Ro6FH95t9Nyd5t9NyegxHT5Q2RWJDlR0j4pyo6R8VH95t9Nyd5t9NybPr9PlDZFYkOVHSPinKjpHxUf3m303J3m303Js+v0+UNkViQ5UdI+KcqOkfFR/ebfTcnebfTcmz6/T5Q2RWJDlR0j4pyo6R8VH95t9Nyd5t9NybPr9PkbIrEhyo6R8U5UdI+Kj+82+m5O82+m5Nn1+nyNkViQ5UdI+Ko6QGNwyNVod5t9NyuZTNY8ODicLJSwNeM4ya0a5mSj4VVhUjJ8miGv3lsfs/mVFqUv3lsfs/mVFrQxvuJ9zuz4giItQqEREAREQBERAEREAREQBERAEREBJWLzifUPyXRLnbF5xPqH5Lol6jwv7H6s2KfCERF0zIEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREBz9+8tj9n8yotSl+8tj9n8yotePxvuJ9zVnxMIiLUKhERAEREAREQBERAEREAREQBERASVi84n1D8l0S52xecT6h+S6Jeo8L+x+rNinwhERdMyBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAc/fvLY/Z/MqLUpfvLY/Z/MqLXj8b7ifc1Z8TCIi1CoREQBERAEREAREQBERAEREAREQElYvOJ9Q/JdEudsXnE+ofkuiXqPC/sfqzYp8IREXTMgREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQHP37y2P2fzKi1KX7y2P2fzKi14/G+4n3NWfEwiItQqEREAREQBERAEREAREQBERAEREBJWLzifUPyXRLnbF5xPqH5Lol6jwv7H6s2KfCERF0zIEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREBz9+8tj9n8yotSl+8tj9n8yotePxvuJ9zVnxMIiLUKhERAEREAREQH/9k=" alt="Yahoo Finance interview about Lyzr's $100M fundraise" loading="lazy">
+                    <div class="feat-play"><svg viewBox="0 0 12 12"><path d="M2.5 1.5v9l8-4.5-8-4.5z"/></svg></div>
+                    <div class="feat-ov">
+                      <div class="feat-lbl m">Yahoo Finance</div>
+                      <div class="feat-title">AI Agent Startup Just Let Its Agent Run Its $100M Fundraise</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.nl -->
+    <div class="nr">
+      <a class="atrk" href="https://www.lyzr.ai/usecases/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="none"><path d="M8 1l1.5 4.5H14l-3.5 2.5 1.5 4.5L8 10l-4 2.5 1.5-4.5L2 5.5h4.5L8 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        Agent Usecases
+      </a>
+      <a class="bsi btn" href="https://studio.lyzr.ai/" target="_blank" rel="noopener noreferrer">Agent Studio</a>
+      <a class="bdm btn btn--primary" href="https://www.lyzr.ai/book-demo" target="_blank" rel="noopener noreferrer">Talk to Us</a>
+    </div>
+    <button class="hbg" id="lmn-ham" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="lmn-mobDraw"><span></span><span></span><span></span></button>
   </div>
-</header>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mbd" id="lmn-mobDraw" role="navigation" aria-label="Mobile menu">
+  <div class="mbi">
+    <div class="ms">
+      <button class="mtr" type="button" aria-expanded="false" data-mob="lmn-m-sol">Solutions<svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+      <div class="msb" id="lmn-m-sol">
+        <div class="msbi">
+
+         <!-- MOBILE SOLUTIONS :: V1 = ORIGINAL   STATUS: ACTIVE
+        <a class="msl msl-link" href="https://www.lyzr.ai/jeff/" target="_blank" rel="noopener noreferrer">Customer Support<span class="msl-arr" aria-hidden="true">↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/support/ai-cross-channel-support-agent/" target="_blank" rel="noopener noreferrer">AI Cross Channel Support<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/support/email-triage-agent/" target="_blank" rel="noopener noreferrer">Email Triage Agent<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/support/ai-phone-support-agent/" target="_blank" rel="noopener noreferrer">AI Phone Support<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/support/support-interaction-assistance-agent/" target="_blank" rel="noopener noreferrer">Support Interaction<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/support/crm-case-generator-agent/" target="_blank" rel="noopener noreferrer">CRM Case Generator<span>↗</span></a>
+        <a class="msl msl-link" href="https://www.lyzr.ai/procurement/" target="_blank" rel="noopener noreferrer">Procurement<span class="msl-arr" aria-hidden="true">↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/procurement/supplier-onboarding-agent/" target="_blank" rel="noopener noreferrer">Supplier Onboarding<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/procurement/supplier-sourcing-agent/" target="_blank" rel="noopener noreferrer">Supplier Sourcing<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/procurement/supplier-performance-analysis-agent/" target="_blank" rel="noopener noreferrer">Supplier Performance<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/procurement/contract-review-agent/" target="_blank" rel="noopener noreferrer">Contract Reviews<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/procurement/contract-search-agent/" target="_blank" rel="noopener noreferrer">Contract Search Agent<span>↗</span></a>
+        <a class="msl msl-link" href="https://www.lyzr.ai/diane/" target="_blank" rel="noopener noreferrer">Human Resources<span class="msl-arr" aria-hidden="true">↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/hr/ai-ld-agent/" target="_blank" rel="noopener noreferrer">AI L&amp;D<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/hr/esat-survey-agent/" target="_blank" rel="noopener noreferrer">ESAT Survey<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/hr/ai-performance-review-agent/" target="_blank" rel="noopener noreferrer">AI Performance Review<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/hr/employee-onboarding-agent/" target="_blank" rel="noopener noreferrer">Employee Onboarding<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/hr/ai-hiring-assistant/" target="_blank" rel="noopener noreferrer">AI Hiring Assistant<span>↗</span></a>
+        <a class="msl msl-link" href="https://www.lyzr.ai/jazon/" target="_blank" rel="noopener noreferrer">Sales<span class="msl-arr" aria-hidden="true">↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/sales/ai-sdr-agent/" target="_blank" rel="noopener noreferrer">AI SDR<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/sales/ai-deal-nurturer/" target="_blank" rel="noopener noreferrer">AI Deal Nurturer<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/sales/lead-enrichment-agent/" target="_blank" rel="noopener noreferrer">Lead Enrichment<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/marketing/abm-agent/" target="_blank" rel="noopener noreferrer">ABM Agent<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/marketing/ai-internal-communication-agent/" target="_blank" rel="noopener noreferrer">AI Internal Communication<span>↗</span></a>
+        <a class="msl msl-link" href="https://www.lyzr.ai/skott/" target="_blank" rel="noopener noreferrer">Marketing<span class="msl-arr" aria-hidden="true">↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/marketing/ai-social-media-agent/" target="_blank" rel="noopener noreferrer">AI Social Media Agent<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/marketing/aeo-geo-optimizer-agent/" target="_blank" rel="noopener noreferrer">AEO/GEO Optimizer Agent<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/marketing/ai-internal-communication-agent/" target="_blank" rel="noopener noreferrer">AI Internal Communication Agent<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/marketing/abm-agent/" target="_blank" rel="noopener noreferrer">ABM Agent<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/marketing/ai-content-creation-agent/" target="_blank" rel="noopener noreferrer">AI Content Creation Agent<span>↗</span></a>
+        <a class="msl msl-link" href="https://www.lyzr.ai/banking-agents/" target="_blank" rel="noopener noreferrer">Banking<span class="msl-arr" aria-hidden="true">↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/banking/kyc-compliance-agent/" target="_blank" rel="noopener noreferrer">KYC Processing<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/banking/ai-loan-origination-agent/" target="_blank" rel="noopener noreferrer">AI loan Origination<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/banking/ai-loan-servicing-agent/" target="_blank" rel="noopener noreferrer">AI Loan Servicing<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/banking/regulatory-monitoring-agent/" target="_blank" rel="noopener noreferrer">Regulatory Monitoring<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/banking/customer-onboarding-agent/" target="_blank" rel="noopener noreferrer">Customer Onboarding<span>↗</span></a>
+        <a class="msl msl-link" href="https://www.lyzr.ai/insurance-ai-agent-benjie/" target="_blank" rel="noopener noreferrer">Insurance<span class="msl-arr" aria-hidden="true">↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/insurance/regulatory-compliance-audit-agent/" target="_blank" rel="noopener noreferrer">Regulatory Compliance<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/insurance/claims-processing-agent/" target="_blank" rel="noopener noreferrer">Claims Processing<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/insurance/policy-underwriting-support-agent/" target="_blank" rel="noopener noreferrer">Policy Underwriting<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/insurance/partner-quality-assurance-audit-agent/" target="_blank" rel="noopener noreferrer">Partner Quality Assurance<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/blueprints/insurance/document-extraction-for-litigation-agent/" target="_blank" rel="noopener noreferrer">Litigation Clause Extraction<span>↗</span></a>
+        <div class="msl">Others</div>
+        <a class="mml" href="https://www.lyzr.ai/fintech/" target="_blank" rel="noopener noreferrer">Fintech<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/healthcare-agents/" target="_blank" rel="noopener noreferrer">Healthcare<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/agentic-commerce/" target="_blank" rel="noopener noreferrer">Agentic Commerce<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/private-equity/" target="_blank" rel="noopener noreferrer">Private Equity<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/government/" target="_blank" rel="noopener noreferrer">Government<span>↗</span></a>
+      
+         END MOBILE SOLUTIONS V1 -->
+
+        <!-- MOBILE SOLUTIONS :: V2 = NEW   STATUS: INACTIVE
+             TO ENABLE: delete the bare  <!==  and  ==>  lines below. -->
+        
+        <div class="msl">By Industry</div>
+        <a class="mml" href="https://www.lyzr.ai/banking-agents/" target="_blank" rel="noopener noreferrer">Banking<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/insurance-ai-agent-benjie/" target="_blank" rel="noopener noreferrer">Insurance<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/government/" target="_blank" rel="noopener noreferrer">Government<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/healthcare-agents/" target="_blank" rel="noopener noreferrer">Healthcare<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/fintech/" target="_blank" rel="noopener noreferrer">Fintech<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/ecommerce-agents/" target="_blank" rel="noopener noreferrer">E-commerce<span>↗</span></a>
+        
+
+        <div class="msl">By Function</div>
+        <a class="mml" href="https://www.lyzr.ai/jazon/" target="_blank" rel="noopener noreferrer">Revenue<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/skott/" target="_blank" rel="noopener noreferrer">Marketing<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/jeff/" target="_blank" rel="noopener noreferrer">Customer Service<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/diane/" target="_blank" rel="noopener noreferrer">Human Resources<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/procurement/" target="_blank" rel="noopener noreferrer">Procurement<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/legal-industry/" target="_blank" rel="noopener noreferrer">Legal<span>↗</span></a>
+        
+
+        <div class="msl">By Team</div>
+        <a class="mml" href="https://www.lyzr.ai/teams/compliance-teams/">Compliance &amp; Governance<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/teams/ai-and-automation-teams/">AI &amp; Automation<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/teams/revenue-and-sales-team/">Revenue &amp; Sales<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/teams/platform-teams/">IT &amp; Platform<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/teams/digital-transformation-teams/">Digital Transformation<span>↗</span></a>
+        <div class="msl">By Role</div>
+        <a class="mml" href="https://www.lyzr.ai/roles/cio/">CIO<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/roles/cto/">CTO<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/roles/ceo/">CEO<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/roles/md/">Managing Director<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/roles/heads-of-ai/">Head of AI<span>↗</span></a>
+      
+        
+        <!-- END MOBILE SOLUTIONS V2 -->
+
+      </div></div>
+    </div>
+    <div class="ms">
+      <button class="mtr" type="button" aria-expanded="false" data-mob="lmn-m-plat">Platform<svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+      <div class="msb" id="lmn-m-plat"><div class="msbi">
+        <div class="msl">Products</div>
+        <a class="mml" href="https://studio.lyzr.ai/" target="_blank" rel="noopener noreferrer">Agent Studio<span>↗</span></a>
+        <a class="mml" href="https://architect.new/" target="_blank" rel="noopener noreferrer">Architect<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/control-plane/" target="_blank" rel="noopener noreferrer"><span class="mml-l">Control Plane<span class="ptag new">New</span></span><span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/agentic-os/" target="_blank" rel="noopener noreferrer"><span class="mml-l">Agentic OS<span class="ptag new">New</span></span><span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/sovereign-ai/" target="_blank" rel="noopener noreferrer"><span class="mml-l">Sovereign AI<span class="ptag new">New</span></span><span>↗</span></a>
+        <a class="mml is-disabled" aria-disabled="true">Lyzr Nitro<span>↗</span></a>
+        <a class="mml is-disabled" aria-disabled="true">Lyzr Optimus<span>↗</span></a>
+        <div class="msl">Modules</div>
+        <a class="mml" href="https://www.lyzr.ai/responsible-ai-as-a-service/" target="_blank" rel="noopener noreferrer">Responsible AI<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/orchestration-as-a-service/" target="_blank" rel="noopener noreferrer">Orchestration as a Service<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/agents-as-a-service/" target="_blank" rel="noopener noreferrer">Agents as a Service<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/agent-types-in-production/" target="_blank" rel="noopener noreferrer">Types of Agents<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/hallucination-manager-as-a-service/" target="_blank" rel="noopener noreferrer">Hallucination Manager<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/knowledge-base-as-a-service/" target="_blank" rel="noopener noreferrer">Knowledge Base<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/knowledge-graph-as-a-service/" target="_blank" rel="noopener noreferrer">Knowledge Graph<span>↗</span></a>
+        <div class="msl">Open Source &amp; Dev</div>
+        <a class="mml" href="https://www.lyzr.ai/cognis/" target="_blank" rel="noopener noreferrer">Cognis Memory<span>↗</span></a>
+        <a class="mml" href="#" target="_blank" rel="noopener noreferrer">AI agent memory<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/oss/opengap/" target="_blank" rel="noopener noreferrer"><span class="mml-l">OpenGAP<span class="ptag oss">OSS</span></span><span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/oss/gitagent/" target="_blank" rel="noopener noreferrer"><span class="mml-l">GitAgent<span class="ptag oss">OSS</span></span><span>↗</span></a>
+        <a class="mml" href="https://docs.lyzr.ai/enterprise/get-started/intro" target="_blank" rel="noopener noreferrer">Docs &amp; API<span>↗</span></a>
+      </div></div>
+    </div>
+    <a class="mpl" href="https://www.lyzr.ai/customers/" target="_blank" rel="noopener noreferrer">Customers</a>
+    <a class="mpl" href="https://www.lyzr.ai/pricing/" target="_blank" rel="noopener noreferrer">Pricing</a>
+    <div class="ms">
+      <button class="mtr" type="button" aria-expanded="false" data-mob="lmn-m-part">Partners<svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+      <div class="msb" id="lmn-m-part"><div class="msbi">
+        <div class="msl">Technology Partners</div>
+        <a class="mml" href="https://www.lyzr.ai/partnership/aws/" target="_blank" rel="noopener noreferrer">Amazon Web Services<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/partners/google/" target="_blank" rel="noopener noreferrer">Google Cloud<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/partners/microsoft/" target="_blank" rel="noopener noreferrer">Microsoft Azure<span>↗</span></a>
+        <a class="mml is-disabled" aria-disabled="true">NVIDIA<span>↗</span></a>
+        <div class="msl">Ecosystem Partners</div>
+        <a class="mml" href="https://www.lyzr.ai/gsi-si/" target="_blank" rel="noopener noreferrer">Global System Integrators<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/partners/" target="_blank" rel="noopener noreferrer">Reseller Partners<span>↗</span></a>
+       
+      </div></div>
+    </div>
+    <div class="ms">
+      <button class="mtr" type="button" aria-expanded="false" data-mob="lmn-m-res">Resources<svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor"/></svg></button>
+      <div class="msb" id="lmn-m-res"><div class="msbi">
+        <div class="msl">Learn</div>
+        <a class="mml" href="https://www.lyzr.ai/blog/" target="_blank" rel="noopener noreferrer">Blogs<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/playbook/" target="_blank" rel="noopener noreferrer">Playbook<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/templates/" target="_blank" rel="noopener noreferrer">Templates<span>↗</span></a>
+        <a class="mml" href="https://academy.lyzr.ai/" target="_blank" rel="noopener noreferrer">Courses<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/research/" target="_blank" rel="noopener noreferrer">Research<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/agent-types-in-production/" target="_blank" rel="noopener noreferrer">Types of Agents<span>↗</span></a>
+        <div class="msl">Playbooks &amp; Templates</div>
+        <a class="mml" href="https://www.lyzr.ai/playbook/how-to-take-agents-to-production/" target="_blank" rel="noopener noreferrer">Agents to Production<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/playbook/bfsi-guide-to-dispute-management/" target="_blank" rel="noopener noreferrer">Banking Dispute Management<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/playbook/analyst-army-starter-pack/" target="_blank" rel="noopener noreferrer">The Field Guide for Analysts<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/template/ai-sales-agents-use-cases/" target="_blank" rel="noopener noreferrer">AI Sales Agents Use Cases<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/template/insurance-ai-agents-use-cases/" target="_blank" rel="noopener noreferrer">Insurance AI Agents Use Cases<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/template/architect-agent-usecases/" target="_blank" rel="noopener noreferrer">Architect Agent Use cases<span>↗</span></a>
+        <div class="msl">Analyze</div>
+        <a class="mml" href="https://www.lyzr.ai/case-studies/" target="_blank" rel="noopener noreferrer">Case Studies<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/comparison/" target="_blank" rel="noopener noreferrer">Comparison<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/assessments/" target="_blank" rel="noopener noreferrer">Assessments<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/glossaries/" target="_blank" rel="noopener noreferrer">Glossary<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/state-of-ai-agents/" target="_blank" rel="noopener noreferrer">State of AI Agents<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/wall-of-love/" target="_blank" rel="noopener noreferrer">Wall of Love<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/ai-enterprise-platform-assessment" target="_blank" rel="noopener noreferrer">Enterprise Assessment<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/lyzr-analyst-recognition/" target="_blank" rel="noopener noreferrer">Analyst Recognition<span>↗</span></a>
+        <div class="msl">Connect</div>
+        <a class="mml" href="https://www.lyzr.ai/partners/" target="_blank" rel="noopener noreferrer">Partner Program<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/partnership/aws/" target="_blank" rel="noopener noreferrer">AWS<span>↗</span></a>
+        <a class="mml" href="#" target="_blank" rel="noopener noreferrer">Community Forum<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/book-demo/" target="_blank" rel="noopener noreferrer">Book a Demo<span>↗</span></a>
+        <div class="msl">Featured</div>
+        <a class="mml" href="https://www.lyzr.ai/template/101-ai-use-cases/" target="_blank" rel="noopener noreferrer">Template — 100+ AI Usecases<span>↗</span></a>
+        <a class="mml" href="https://www.lyzr.ai/playbook/how-to-take-agents-to-production/" target="_blank" rel="noopener noreferrer">Playbook — Agents to production<span>↗</span></a>
+      </div></div>
+    </div>
+    <div class="mbs">
+      <a class="mbsi" href="https://studio.lyzr.ai/" target="_blank" rel="noopener noreferrer">Agent Studio</a>
+      <a class="mbsd" href="https://www.lyzr.ai/book-demo" target="_blank" rel="noopener noreferrer">Talk to Us</a>
+    </div>
+  </div>
+</div>
+<!-- VIDEO LIGHTBOX MODAL -->
+<div class="lmn-vmodal" id="lmn-vmodal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Featured video player">
+  <div class="lmn-vmodal-box">
+    <button class="lmn-vmodal-close" id="lmn-vmodal-close" type="button" aria-label="Close video">
+      <svg viewBox="0 0 16 16" width="13" height="13" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lmn-vmodal-arr prev" id="lmn-vmodal-prev" type="button" aria-label="Previous video">
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lmn-vmodal-arr next" id="lmn-vmodal-next" type="button" aria-label="Next video">
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lmn-vmodal-frame">
+      <video id="lmn-vmodal-video" controls playsinline preload="none" referrerpolicy="no-referrer"></video>
+      <div class="lmn-vmodal-fallback" id="lmn-vmodal-fallback">
+        <p>This video can't be played inline here.</p>
+        <a id="lmn-vmodal-fallback-link" href="#" target="_blank" rel="noopener noreferrer">Watch it directly ↗</a>
+      </div>
+    </div>
+    <div class="lmn-vmodal-cap">
+      <div>
+        <span class="lmn-vmodal-lbl" id="lmn-vmodal-lbl">LinkedIn</span>
+        <div class="lmn-vmodal-title" id="lmn-vmodal-title">Title</div>
+      </div>
+      <a class="lmn-vmodal-link" id="lmn-vmodal-link" href="#" target="_blank" rel="noopener noreferrer">View source ↗</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<!---Book a Demo-->
+
+
+
+
+<!-- LYZR BOOK DEMO CONNECTOR -->
+<div id="lyzr-modal-container" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:999998;background:rgba(0,0,0,0.5);">
+  <iframe id="lyzr-modal-iframe" src="https://lead-scoring-agent-by-lyzr.vercel.app/book-demo-modal?page=home" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:999999;background:transparent;" frameborder="0" allow="clipboard-write"></iframe>
+</div>
+
 
 <main id="main">
 
 <!-- ===================== HERO ===================== -->
 <section class="hero-lockup" aria-labelledby="heroTitle">
   <div class="hero-lockup__media" data-parallax-media>
-    <img src="assets/hero-pool.webp" alt="" width="1800" height="1214" fetchpriority="high" decoding="async">
+    <img src="assets/hero-pool.webp" alt="" width="1800" height="1013" fetchpriority="high" decoding="async">
   </div>
   <div class="hero-lockup__scrim" aria-hidden="true"></div>
 
@@ -113,9 +852,8 @@
 <!-- ===================== INTRO + STATS ===================== -->
 <section class="container container--xl" aria-labelledby="introTitle">
   <div class="intro">
-    <div class="reveal">
-      <h2 class="intro__lede" id="introTitle">Build agents anywhere. Control them from one place. Your data stays in your environment.</h2>
-      <p class="intro__sub">Your IP stays yours.</p>
+    <div class="intro__col reveal">
+      <h2 class="intro__lede" id="introTitle">Build agents anywhere.<br>Control them from one place.<br><span class="intro__lede-dim">Your IP stays yours.</span></h2>
       <a class="oc-link" href="#open-controller">Go to open controller
         <span class="oc-link__go"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </a>
@@ -126,10 +864,12 @@
         <p class="stat-row__value" data-count="1000000" data-suffix="M+" data-format="millions">1M+</p>
         <p class="stat-row__label">Production agents running across customer environments</p>
       </div>
+      <hr class="stats__hr" aria-hidden="true">
       <div class="stat-row">
         <p class="stat-row__value" data-count="300" data-suffix="%">300%</p>
         <p class="stat-row__label">Quarter-on-quarter growth in deployed agentic workloads</p>
       </div>
+      <hr class="stats__hr" aria-hidden="true">
       <div class="stat-row">
         <p class="stat-row__value">2026</p>
         <p class="stat-row__label">Named one of the top AI startups by CB Insights</p>
@@ -141,7 +881,7 @@
 <!-- ===================== CASE STUDIES ===================== -->
 <section class="cases" id="customers" aria-labelledby="casesTitle">
   <div class="cases__head reveal">
-    <h2 class="cases__title" id="casesTitle">Real Impact<br>for Real Clients</h2>
+    <h2 class="cases__title" id="casesTitle">The world&rsquo;s top enterprises<br>run on Lyzr</h2>
     <div class="carousel-nav">
       <button class="carousel-btn" data-cases-prev aria-label="Previous case study">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg>
@@ -180,7 +920,7 @@
       <div class="case-card__scrim" aria-hidden="true"></div>
       <div class="case-card__content">
         <img class="case-card__logo" src="assets/cslogo-crowncastle-w.webp" alt="Crown Castle" loading="lazy" decoding="async">
-        <h3 class="case-card__title">How Crown Castle cut tower permitting by 72%&mdash;turning weeks of approvals into days</h3>
+        <h3 class="case-card__title">How Crown Castle cut tower permitting by 72%, turning weeks of approvals into days</h3>
         <span class="case-card__more">Read full story
           <span class="case-card__go"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
         </span>
@@ -254,9 +994,6 @@
 <section class="stack-sec container container--xl" id="developers" aria-label="Your entire agent ecosystem">
   <div class="stack-sec__head reveal">
     <h2 class="big-title stack-sec__title" id="stackTitle">Your entire agent ecosystem,<br>One view.</h2>
-    <a class="dev-link" href="#docs">I&rsquo;m a developer
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-    </a>
   </div>
 
   <div class="stack-grid" id="stackScene">
@@ -264,26 +1001,44 @@
     <svg class="planes reveal" viewBox="0 0 700 620" role="img" aria-label="Four stacked product layers: Open Controller, Architect, Agent Studio and Agent Blocks">
       <g class="plane" data-plane="blocks" data-active="false" transform="translate(0,300)">
         <path d="M1.2576 133.806L264.07 0.540023L667.258 133.806L421.039 285.54L1.2576 133.806Z" fill="var(--bg-canvas)" stroke="var(--espresso-950)" stroke-width="1"/>
-        <text class="plane__label" x="428" y="250" text-anchor="end" fill="var(--espresso-950)" transform="rotate(20 428 250)">Agent Blocks</text>
+        <text class="plane__label" x="430" y="245" text-anchor="end" fill="var(--espresso-950)" transform="rotate(20 430 245)">Agent Blocks</text>
       </g>
       <g class="plane" data-plane="studio" data-active="false" transform="translate(0,200)">
         <path d="M1.2576 133.806L264.07 0.540023L667.258 133.806L421.039 285.54L1.2576 133.806Z" fill="var(--cream-50)" stroke="var(--espresso-950)" stroke-width="1"/>
-        <text class="plane__label" x="428" y="250" text-anchor="end" fill="var(--espresso-950)" transform="rotate(20 428 250)">Agent Studio</text>
+        <text class="plane__label" x="430" y="245" text-anchor="end" fill="var(--espresso-950)" transform="rotate(20 430 245)">Agent Studio</text>
       </g>
-      <g class="plane" data-plane="architect" data-active="true" transform="translate(0,100)">
+      <g class="plane" data-plane="architect" data-active="false" transform="translate(0,100)">
         <path d="M1.2576 133.806L264.07 0.540023L667.258 133.806L421.039 285.54L1.2576 133.806Z" fill="var(--green-deep)"/>
-        <text class="plane__label" x="428" y="250" text-anchor="end" fill="var(--cream-50)" transform="rotate(20 428 250)">Architect</text>
+        <text class="plane__label" x="430" y="245" text-anchor="end" fill="var(--cream-50)" transform="rotate(20 430 245)">Architect</text>
       </g>
-      <g class="plane" data-plane="controller" data-active="false">
+      <g class="plane" data-plane="controller" data-active="true">
         <path d="M1.2576 133.806L264.07 0.540023L667.258 133.806L421.039 285.54L1.2576 133.806Z" fill="var(--cream-50)" stroke="var(--espresso-950)" stroke-width="1"/>
-        <text class="plane__label" x="428" y="250" text-anchor="end" fill="var(--espresso-950)" transform="rotate(20 428 250)">Open Controller</text>
+        <text class="plane__label" x="430" y="245" text-anchor="end" fill="var(--espresso-950)" transform="rotate(20 430 245)">Open Controller</text>
       </g>
     </svg>
 
     <div class="stack-acc reveal">
+      <section class="acc" data-plane="controller">
+        <h3 class="acc__heading">
+          <button class="acc__trigger" id="acc-controller" aria-expanded="true" aria-controls="acc-panel-controller">
+            Open Controller
+            <svg class="acc__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </h3>
+        <div class="acc__panel" id="acc-panel-controller" role="region" aria-labelledby="acc-controller">
+          <div class="acc__inner">
+            <p class="acc__desc">One pane to run, monitor, and govern every agent in production, wherever it was built.</p>
+            <div class="chip-row">
+              <span class="chip">Evaluations</span><span class="chip">Guardrails</span><span class="chip">Human-in-the-loop</span>
+              <span class="chip">Versioning</span><span class="chip">Observability</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="acc" data-plane="architect">
         <h3 class="acc__heading">
-          <button class="acc__trigger" id="acc-architect" aria-expanded="true" aria-controls="acc-panel-architect">
+          <button class="acc__trigger" id="acc-architect" aria-expanded="false" aria-controls="acc-panel-architect">
             Architect
             <svg class="acc__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
@@ -299,24 +1054,6 @@
         </div>
       </section>
 
-      <section class="acc" data-plane="controller">
-        <h3 class="acc__heading">
-          <button class="acc__trigger" id="acc-controller" aria-expanded="false" aria-controls="acc-panel-controller">
-            Open Controller
-            <svg class="acc__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-        </h3>
-        <div class="acc__panel" id="acc-panel-controller" role="region" aria-labelledby="acc-controller">
-          <div class="acc__inner">
-            <p class="acc__desc">One pane to run, monitor, and govern every agent in production &mdash; wherever it was built.</p>
-            <div class="chip-row">
-              <span class="chip">Evaluations</span><span class="chip">Guardrails</span><span class="chip">Human-in-the-loop</span>
-              <span class="chip">Versioning</span><span class="chip">Observability</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="acc" data-plane="studio">
         <h3 class="acc__heading">
           <button class="acc__trigger" id="acc-studio" aria-expanded="false" aria-controls="acc-panel-studio">
@@ -326,7 +1063,7 @@
         </h3>
         <div class="acc__panel" id="acc-panel-studio" role="region" aria-labelledby="acc-studio">
           <div class="acc__inner">
-            <p class="acc__desc">The pro-code workbench for engineering teams &mdash; design, test, and ship production agents from one place.</p>
+            <p class="acc__desc">The pro-code workbench for engineering teams. Design, test, and ship production agents from one place.</p>
             <div class="chip-row">
               <span class="chip">Workflows</span><span class="chip">Integrations</span><span class="chip">Testing</span>
               <span class="chip">Deployments</span>
@@ -406,7 +1143,7 @@
 </section>
 
 <!-- ===================== QUOTE ===================== -->
-<section class="container container--xl" style="padding-block: 0 var(--section-y);">
+<section class="quote-sec container container--xl" style="padding-block: 0 var(--section-y);">
   <figure class="quote-band" data-fx="zoom-in" data-fx-scale="0.92" style="margin:0;">
     <blockquote class="quote-band__text" style="margin:0;">“Lyzr is the most customer obsessed company in the Agentic AI Space”</blockquote>
     <figcaption class="quote-band__cite">Fortune 100 CEO</figcaption>
@@ -429,20 +1166,52 @@
 
     <div class="wb-cards">
       <article class="wb-card wb-card--mahogany is-active" data-phase="understand">
-        <p class="wb-card__role">Reimagination Consultants</p>
-        <p class="wb-card__line">Documents the process as it really runs</p>
+        <p class="wb-card__role">Forward-Deployed Consultant</p>
+        <p class="wb-card__line">Owns the problem and defines the target state.</p>
+        <div class="wb-card__stepswrap">
+        <ol class="wb-card__steps">
+          <li style="--i:0"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Map how the work actually happens today.</li>
+          <li style="--i:1"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Design the ideal agent-powered workflow.</li>
+          <li style="--i:2"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Build the business case and change plan.</li>
+          <li style="--i:3"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Measure results and continuously improve.</li>
+        </ol>
+        </div>
       </article>
       <article class="wb-card wb-card--terracotta" data-phase="design">
-        <p class="wb-card__role">Rapid Prototyping</p>
-        <p class="wb-card__line">Working agents in days, not decks</p>
+        <p class="wb-card__role">Forward-Deployed Solution Architect</p>
+        <p class="wb-card__line">Owns feasibility and the path to production.</p>
+        <div class="wb-card__stepswrap">
+        <ol class="wb-card__steps">
+          <li style="--i:0"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Map data, systems, and integration dependencies.</li>
+          <li style="--i:1"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Define access, security, and governance requirements.</li>
+          <li style="--i:2"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Clear approvals and prove the access path early.</li>
+          <li style="--i:3"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Choose the right deployment architecture.</li>
+        </ol>
+        </div>
       </article>
       <article class="wb-card wb-card--green" data-phase="prove">
-        <p class="wb-card__role">Team Applied AI</p>
-        <p class="wb-card__line">Proves it in production, not on slides</p>
+        <p class="wb-card__role">Forward-Deployed Agent Engineer</p>
+        <p class="wb-card__line">Owns the build, testing, and deployment.</p>
+        <div class="wb-card__stepswrap">
+        <ol class="wb-card__steps">
+          <li style="--i:0"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Start building immediately with available data.</li>
+          <li style="--i:1"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Connect agents, tools, knowledge, and systems.</li>
+          <li style="--i:2"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Test, evaluate, and add the right guardrails.</li>
+          <li style="--i:3"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Deploy to production and improve continuously.</li>
+        </ol>
+        </div>
       </article>
       <article class="wb-card wb-card--espresso" data-phase="land">
-        <p class="wb-card__role">Land and Expand</p>
-        <p class="wb-card__line">Building on day one, not day ninety</p>
+        <p class="wb-card__role">Forward-Deployed Product Manager</p>
+        <p class="wb-card__line">Owns adoption and the user experience.</p>
+        <div class="wb-card__stepswrap">
+        <ol class="wb-card__steps">
+          <li style="--i:0"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Understand where and how users actually work.</li>
+          <li style="--i:1"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Design the simplest possible user experience.</li>
+          <li style="--i:2"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Test with real users and remove friction.</li>
+          <li style="--i:3"><svg class="wb-step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="1.6"/><path class="tick-path" d="M8 12.5l2.6 2.6L16 9.6"/></svg>Drive rollout, onboarding, and ongoing adoption.</li>
+        </ol>
+        </div>
       </article>
     </div>
     </figure>
@@ -459,11 +1228,11 @@
       <p class="security__note">Lyzr is built for enterprise security, governance, and compliance across identity, data, access, and infrastructure.</p>
     </div>
     <ul class="security__badges">
-      <li class="sec-badge reveal"><img src="assets/badge-iso27001.webp" alt="" loading="lazy"><span>ISO 27001</span></li>
-      <li class="sec-badge reveal"><img src="assets/badge-ccpa.webp" alt="" loading="lazy"><span>CCPA</span></li>
-      <li class="sec-badge reveal"><img src="assets/badge-hipaa.webp" alt="" loading="lazy"><span>HIPAA</span></li>
-      <li class="sec-badge reveal"><img src="assets/badge-soc.webp" alt="" loading="lazy"><span>SOC 2</span></li>
-      <li class="sec-badge reveal"><img src="assets/badge-gdpr.webp" alt="" loading="lazy"><span>GDPR</span></li>
+      <li class="sec-badge reveal"><span class="sec-badge__tile"><img src="assets/cert-gdpr.webp" alt="" width="240" height="230" loading="lazy" decoding="async"></span><span>GDPR Compliant</span></li>
+      <li class="sec-badge reveal"><span class="sec-badge__tile"><img src="assets/cert-soc2.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></span><span>SOC 2 Type II</span></li>
+      <li class="sec-badge reveal"><span class="sec-badge__tile"><img src="assets/cert-iso.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></span><span>ISO 27001 Certified</span></li>
+      <li class="sec-badge reveal"><span class="sec-badge__tile"><img src="assets/cert-hipaa.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></span><span>HIPAA Compliant</span></li>
+      <li class="sec-badge reveal"><span class="sec-badge__tile"><img src="assets/cert-ccpa.webp" alt="" width="199" height="240" loading="lazy" decoding="async"></span><span>CCPA</span></li>
     </ul>
   </div>
 </section>
@@ -476,12 +1245,12 @@
       <img class="hl-card__logo" src="assets/award-cbinsights.webp" alt="CB Insights" width="340" height="38" loading="lazy" decoding="async">
       <span class="hl-card__title">Top 100 AI Startup</span>
     </a>
-    <a class="hl-card hl-card--green reveal" href="#news-2">
+    <a class="hl-card hl-card--terracotta reveal" href="#news-2">
       <img class="hl-card__logo" src="assets/award-gartner.webp" alt="Gartner" width="340" height="78" loading="lazy" decoding="async">
       <span class="hl-card__title">Tech innovator in Agentic AI</span>
     </a>
-    <a class="hl-card hl-card--terracotta reveal" href="#news-3">
-      <img class="hl-card__logo" src="assets/award-cbinsights.webp" alt="CB Insights" width="340" height="38" loading="lazy" decoding="async">
+    <a class="hl-card hl-card--green reveal" href="#news-3">
+      <img class="hl-card__logo hl-card__logo--aws" src="assets/logo-aws.webp" alt="AWS" width="120" height="72" loading="lazy" decoding="async">
       <span class="hl-card__title">Gen AI Innovator 2025</span>
     </a>
     <a class="hl-card hl-card--espresso reveal" href="#news-4">
@@ -493,7 +1262,7 @@
 
 
 <!-- ===================== FINAL CTA ===================== -->
-<section class="container container--xl" id="demo" aria-labelledby="ctaTitle">
+<section class="cta-sec container container--xl" id="demo" aria-labelledby="ctaTitle">
   <div class="open-water" data-fx="zoom-in" data-fx-scale="0.86">
     <img data-fx="drift" data-fx-drift="46" src="assets/cta-sailing.webp" alt="" width="1600" height="773" loading="lazy" decoding="async">
     <h2 class="open-water__title" id="ctaTitle">Ready for<br>open water?</h2>
@@ -509,11 +1278,7 @@
 
     <div class="site-footer__top">
       <h2 class="site-footer__claim">Sovereign, Agnostic, Human first.</h2>
-      <span class="footer-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4l16 16M20 4L4 20"/><path d="M12 2v4M12 18v4"/>
-        </svg>
-      </span>
+      <img class="footer-logo" src="assets/logo-lyzr-white.webp" alt="Lyzr" width="104" height="40" loading="lazy" decoding="async">
     </div>
 
     <div class="footer-cols footer-cols--wide">
@@ -654,5 +1419,9 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/water-data.js" defer></script>
+<script src="js/water.js" defer></script>
+<script src="js/meganav.js"></script>
+<script src="js/ribbon.js"></script>
 </body>
 </html>

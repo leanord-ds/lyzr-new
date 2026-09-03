@@ -1,5 +1,5 @@
 /* =========================================================================
-   AEONIK WARM — Web Design System
+   AEONIK WARM - Web Design System
    Type scale: Major Third (1.250) · Base 16px
    Palette: Cream #FAFAF9 · Espresso #160F0A · Mahogany #724B4B · Terracotta #D96354
    Dual-mode: light is the default; dark is applied by system preference
@@ -9,7 +9,7 @@
 /* -------------------------------------------------------------------------
    1. FONT FACE
    Aeonik is a licensed typeface (CoType Foundry). Self-host the woff2 files
-   under /fonts and keep the fallback stack — it is metric-adjacent, so an
+   under /fonts and keep the fallback stack - it is metric-adjacent, so an
    unlicensed environment degrades without reflow chaos.
    ------------------------------------------------------------------------- */
 @font-face { font-family:"Figtree"; src:url("../fonts/Figtree-300.woff2") format("woff2");
@@ -39,11 +39,11 @@
 :root {
 
   /* =======================================================================
-     2. COLOR PRIMITIVES  (never reference these directly in components —
+     2. COLOR PRIMITIVES  (never reference these directly in components -
         use the semantic tokens in §3)
      ======================================================================= */
 
-  /* Espresso — the warm dark axis. Its light end is the system's sand/tan. */
+  /* Espresso - the warm dark axis. Its light end is the system's sand/tan. */
   --espresso-50:  #FAF6F3;
   --espresso-100: #F3EBE6;
   --espresso-200: #E7D9D0;
@@ -59,7 +59,7 @@
   --espresso-960: #17110E;   /* dark-mode subtle band */
   --espresso-975: #0F0A07;   /* dark-mode sunken / footer */
 
-  /* Mahogany — the muted secondary. Quiet, editorial, never shouts. */
+  /* Mahogany - the muted secondary. Quiet, editorial, never shouts. */
   --mahogany-50:  #FDF4F4;
   --mahogany-100: #F8E9E8;
   --mahogany-200: #F0D5D4;
@@ -72,7 +72,7 @@
   --mahogany-900: #3B2626;
   --mahogany-950: #211313;
 
-  /* Terracotta — the single accent. Scarce by design. */
+  /* Terracotta - the single accent. Scarce by design. */
   --terracotta-50:  #FFF1ED;
   --terracotta-100: #FFE3DD;
   --terracotta-200: #FFCAC0;
@@ -85,7 +85,7 @@
   --terracotta-900: #4E1913;
   --terracotta-950: #2C0A07;
 
-  /* Cream — the warm-neutral gray axis. */
+  /* Cream - the warm-neutral gray axis. */
   --cream-50:  #FAFAF9;      /* BRAND ANCHOR */
   --cream-100: #EDEDEB;
   --cream-200: #DCDCD9;
@@ -101,14 +101,14 @@
   --white: #FFFFFF;
   --black: #000000;
 
-  /* Status — hue-shifted to sit inside the warm world, not fight it. */
+  /* Status - hue-shifted to sit inside the warm world, not fight it. */
   --success-500: #4E7C59;  --success-100: #E4EFE7;  --success-700: #35563D;
   --warning-500: #C08A2E;  --warning-100: #F8EEDA;  --warning-700: #8A6117;
   --danger-500:  #B4362F;  --danger-100:  #F8E2E0;  --danger-700:  #7E211C;
   --info-500:    #4A6B82;  --info-100:    #E3EBF1;  --info-700:    #334A5B;
 
   /* =======================================================================
-     3. SEMANTIC COLOR — LIGHT MODE (default)
+     3. SEMANTIC COLOR - LIGHT MODE (default)
      Every component reads from here. Swapping modes swaps only this block.
      ======================================================================= */
 
@@ -117,7 +117,7 @@
   --bg-sunken:         var(--cream-100);      /* neutral alternating band */
   --bg-raised:         var(--white);          /* cards, popovers, menus */
   --bg-inverse:        var(--espresso-950);   /* dark section inside a light page */
-  --bg-accent:         var(--terracotta-600); /* solid accent fill — see A11y note */
+  --bg-accent:         var(--terracotta-600); /* solid accent fill - see A11y note */
   --bg-accent-hover:   var(--terracotta-700);
   --bg-accent-subtle:  var(--terracotta-50);
   --bg-brand:          var(--mahogany-700);
@@ -136,7 +136,7 @@
   --border-subtle:     var(--cream-200);       /* decorative hairline */
   --border-default:    var(--espresso-200);    /* card / section divider */
   --border-strong:     var(--espresso-300);    /* emphasised divider */
-  --border-control:    var(--espresso-600);    /* inputs, checkboxes — 3:1 min */
+  --border-control:    var(--espresso-600);    /* inputs, checkboxes - 3:1 min */
   --border-accent:     var(--terracotta-500);
   --border-focus:      var(--terracotta-600);
 
@@ -164,7 +164,7 @@
     --text-muted:        var(--espresso-500);
     --text-accent:       var(--terracotta-400);
     --text-brand:        var(--mahogany-300);
-    --text-on-accent:    var(--espresso-950);   /* inverts — see A11y note */
+    --text-on-accent:    var(--espresso-950);   /* inverts - see A11y note */
     --text-on-inverse:   var(--espresso-950);
     --text-inverse-muted:var(--espresso-800);
     --text-disabled:     var(--espresso-700);
@@ -220,7 +220,7 @@
 :root {
 
   /* =======================================================================
-     4. TYPOGRAPHY — Major Third (1.250), base 16px
+     4. TYPOGRAPHY - Major Third (1.250), base 16px
         Fluid between 375px and 1440px viewports. Below h6 the scale is
         fixed: small type must not shrink further on phones.
      ======================================================================= */
@@ -243,7 +243,7 @@
   --fs-small:     0.8rem;     /* 12.80 */
   --fs-caption:   0.64rem;    /* 10.24 */
 
-  /* Line height falls as size rises — the single most important rule here. */
+  /* Line height falls as size rises - the single most important rule here. */
   --lh-display: 0.98;
   --lh-h1:      1.04;
   --lh-h2:      1.08;
@@ -256,7 +256,7 @@
   --lh-tight:   1.20;
   --lh-flat:    1.00;
 
-  /* Optical tracking — large type needs negative, small caps need positive. */
+  /* Optical tracking - large type needs negative, small caps need positive. */
   --ls-display:  -0.035em;
   --ls-h1:       -0.030em;
   --ls-h2:       -0.026em;
@@ -277,10 +277,10 @@
   --measure-tight:  38ch;   /* card copy */
   --measure-base:   65ch;   /* body prose */
   --measure-wide:   78ch;   /* long-form article */
-  --measure-display:18ch;   /* hero headlines — never wider */
+  --measure-display:18ch;   /* hero headlines - never wider */
 
   /* =======================================================================
-     5. SPACING — 4px base grid
+     5. SPACING - 4px base grid
      ======================================================================= */
   --space-0:   0;
   --space-px:  1px;
@@ -308,11 +308,11 @@
   /* =======================================================================
      6. LAYOUT
      ======================================================================= */
-  --container-sm:   40rem;   /*  640 — prose */
-  --container-md:   56rem;   /*  896 — narrow marketing */
-  --container-lg:   72rem;   /* 1152 — standard */
-  --container-xl:   80rem;   /* 1280 — wide */
-  --container-full: 90rem;   /* 1440 — max canvas */
+  --container-sm:   40rem;   /*  640 - prose */
+  --container-md:   56rem;   /*  896 - narrow marketing */
+  --container-lg:   72rem;   /* 1152 - standard */
+  --container-xl:   80rem;   /* 1280 - wide */
+  --container-full: 90rem;   /* 1440 - max canvas */
 
   --gutter:      clamp(1.25rem, 4vw, 3rem);  /* 20 → 48 page inset */
   --grid-cols:   12;
@@ -341,7 +341,7 @@
   --border-width-hairline: 1px;
   --border-width-thick:    2px;
 
-  /* Warm shadows — espresso-tinted, never neutral black in light mode. */
+  /* Warm shadows - espresso-tinted, never neutral black in light mode. */
   --shadow-xs: 0 1px 2px  rgb(var(--shadow-color) / 0.05);
   --shadow-sm: 0 1px 3px  rgb(var(--shadow-color) / 0.07),
                0 1px 2px  rgb(var(--shadow-color) / 0.05);
@@ -402,7 +402,7 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: var(--space-24);
-  /* the page never scrolls sideways — entrance transforms and edge-peeking
+  /* the page never scrolls sideways - entrance transforms and edge-peeking
      carousels are clipped, not scrolled ('clip' avoids the sticky/scroll-
      container side effects of 'hidden' where supported) */
   overflow-x: hidden;
@@ -490,7 +490,7 @@ img, svg, video { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-sm);
 }
 
-/* Motion safety — required, not optional. */
+/* Motion safety - required, not optional. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

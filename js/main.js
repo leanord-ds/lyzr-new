@@ -1,5 +1,5 @@
 /* =========================================================================
-   Lyzr homepage — behaviour
+   Lyzr homepage - behaviour
    No dependencies. Everything degrades to a working static page if JS fails.
    ========================================================================= */
 (function () {
@@ -19,7 +19,7 @@
     var current = window.scrollY;
     var animating = false;
     /* the stylesheet's scroll-behavior:smooth would re-animate every
-       per-frame scrollTo into a crawl — the smoother needs raw writes */
+       per-frame scrollTo into a crawl - the smoother needs raw writes */
     document.documentElement.style.scrollBehavior = 'auto';
 
     function maxScroll() {
@@ -62,12 +62,11 @@
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(function () {
-      header.classList.toggle('is-stuck', window.scrollY > stickyThreshold);
+      if (header) header.classList.toggle('is-stuck', window.scrollY > stickyThreshold);
       ticking = false;
     });
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  if (header) { window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
 
   /* ---------- 1b. Hero parallax ---------------------------------------- */
   var pMedia = document.querySelector('[data-parallax-media]');
@@ -258,7 +257,7 @@
     var caseIndex = 0;              /* REAL index 0..N-1 */
     var caseAnimUntil = 0;          /* while a programmatic glide runs, clicks own the index */
     var caseTimer = null;
-    var CASE_INTERVAL = 5000;
+    var CASE_INTERVAL = 3800;
 
     function caseCenterOf(el) {
       return el.offsetLeft - (cases.clientWidth - el.clientWidth) / 2;
@@ -272,7 +271,7 @@
                          behavior: (smooth && !reduced) ? 'smooth' : 'auto' });
       }
       /* Wrapping never rewinds across the strip: teleport (instantly, and
-         invisibly — the clone is pixel-identical) to the matching clone on
+         invisibly - the clone is pixel-identical) to the matching clone on
          the far side, then glide ONE step in the travel direction. */
       if (i >= N) {            /* forward past the last card */
         to(0, false);          /* clone of last, at the front */
@@ -284,7 +283,7 @@
         to(i + 1, !instant);
       }
       caseIndex = wrapped;
-      caseAnimUntil = Date.now() + 750;
+      caseAnimUntil = Date.now() + 600;
     }
     /* highlight whichever card actually sits nearest the viewport centre */
     function caseHighlight() {
@@ -367,7 +366,7 @@
 
     caseGoTo(0, true);
     caseHighlight();
-    /* card widths settle after images/fonts load — re-centre then */
+    /* card widths settle after images/fonts load - re-centre then */
     window.addEventListener('load', function () {
       caseGoTo(caseIndex, true);
       caseHighlight();
@@ -375,7 +374,7 @@
   }
 
   /* ---------- 6. Product stack accordion (scroll-driven) --------------- */
-  var ORDER = ['architect', 'controller', 'studio', 'blocks'];
+  var ORDER = ['controller', 'architect', 'studio', 'blocks'];
   var accs   = Array.prototype.slice.call(document.querySelectorAll('.stack-acc .acc'));
   var planes = Array.prototype.slice.call(document.querySelectorAll('.plane'));
   var scene  = document.getElementById('stackScene');
@@ -406,8 +405,8 @@
   });
 
   /* Auto-advance: each open layer runs a progress bar, then hands over to
-     the next — paused while hovered/focused, off under reduced motion. */
-  var ACC_INTERVAL = 5000;
+     the next - paused while hovered/focused, off under reduced motion. */
+  var ACC_INTERVAL = 3500;
   var accTimer = null;
   var accVisible = false;
   var stackAcc = document.querySelector('.stack-acc');
@@ -490,9 +489,42 @@
         });
       }
     }
+    if (window.wbStepsRestart) window.wbStepsRestart();
   }
+  function wbHighlight(phase) {
+    wbTabs.forEach(function (t) {
+      var on = t.getAttribute('data-phase') === phase;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    wbCards.forEach(function (card) {
+      card.classList.toggle('is-active', card.getAttribute('data-phase') === phase);
+    });
+  }
+  window.wbHighlight = wbHighlight;
+  var wbMqDesk = window.matchMedia('(min-width: 901px)');
   wbTabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { wbSelect(t.getAttribute('data-phase')); });
+    t.addEventListener('click', function () {
+      if (!wbMqDesk.matches) {
+        /* mobile: highlight and glide to that card, no reordering */
+        var phase = t.getAttribute('data-phase');
+        wbHighlight(phase);
+        var card = document.querySelector('.wb-card[data-phase="' + phase + '"]');
+        if (card) card.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+        return;
+      }
+      wbSelect(t.getAttribute('data-phase'));
+      /* when the tabs are docked to the browser bottom, bring the cards
+         back into view so the highlighted card is seen */
+      /* the chosen card lands at the top of the stack: bring the photo's
+         top (where that card sits) into view, untouched by the FLIP
+         transforms still in flight */
+      var photo = document.querySelector('.wb-photo');
+      if (photo) {
+        var y = photo.getBoundingClientRect().top + window.pageYOffset - 96;
+        window.scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+      }
+    });
     t.addEventListener('keydown', function (e) {
       var d = 0;
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') d = 1;
@@ -561,7 +593,7 @@
           el.style.opacity = String(0.25 + 0.75 * e);
         } else if (type === 'drift') {
           /* continuous parallax: the image glides against the scroll while
-             its section is in view — oversized so edges never show */
+             its section is in view - oversized so edges never show */
           var st = parseFloat(el.getAttribute('data-fx-drift')) || 40;
           var off = (r.top + r.height / 2 - vh / 2) / vh;   /* -1 .. 1 */
           el.style.transform = 'translateY(' + (off * st) + 'px) scale(1.12)';
@@ -581,5 +613,70 @@
     window.addEventListener('resize', fxFrame);
     fxFrame();
   }
+
+
+  /* ---------- 6c. Workbench step cycler + docked phase tabs ------------ */
+  (function () {
+    var mqDesk = window.matchMedia('(min-width: 901px)');
+
+    /* one pointer at a time inside the active card */
+    var stepTimer = null, stepIdx = 0;
+    function stepItems() {
+      var card = document.querySelector('.wb-card.is-active');
+      return card ? Array.prototype.slice.call(card.querySelectorAll('.wb-card__steps li')) : [];
+    }
+    function stepShow(i) {
+      stepItems().forEach(function (l, n) { l.classList.toggle('is-on', n === i); });
+    }
+    function stepTick() {
+      var ls = stepItems();
+      if (!ls.length) return;
+      stepIdx = (stepIdx + 1) % ls.length;
+      stepShow(stepIdx);
+    }
+    function stepRestart() {
+      if (stepTimer) { clearInterval(stepTimer); stepTimer = null; }
+      stepIdx = 0;
+      if (!mqDesk.matches || reduced) return;   /* mobile: CSS shows all four */
+      stepShow(0);
+      stepTimer = setInterval(stepTick, 2600);
+    }
+    window.wbStepsRestart = stepRestart;
+    stepRestart();
+    window.addEventListener('resize', stepRestart);
+
+    /* dock the tabs to the browser bottom while inside the section */
+    var wbSec = document.getElementById('solutions');
+    var phases = document.querySelector('.wb-phases');
+    if (wbSec && phases) {
+      var floatTick = false;
+      function floatUpd() {
+        if (!mqDesk.matches) { phases.classList.remove('wb-phases--float'); return; }
+        var r = wbSec.getBoundingClientRect();
+        /* dock only while truly inside: gone the moment the section's end crosses the viewport bottom */
+        var on = r.top < window.innerHeight * 0.55 && r.bottom > window.innerHeight - 40;
+        phases.classList.toggle('wb-phases--float', on);
+      }
+      window.addEventListener('scroll', function () {
+        if (floatTick) return;
+        floatTick = true;
+        requestAnimationFrame(function () { floatUpd(); floatTick = false; });
+      }, { passive: true });
+      window.addEventListener('resize', floatUpd);
+      floatUpd();
+    }
+
+    /* mobile scroll spy: as each card crosses mid-viewport its tab lights */
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        if (mqDesk.matches) return;
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          if (window.wbHighlight) window.wbHighlight(en.target.getAttribute('data-phase'));
+        });
+      }, { rootMargin: '-35% 0px -45% 0px', threshold: 0 });
+      Array.prototype.forEach.call(document.querySelectorAll('.wb-card'), function (c) { spy.observe(c); });
+    }
+  })();
 
 })();
