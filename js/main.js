@@ -444,87 +444,46 @@
     });
   }
 
-  /* ---------- 6b. Workbench phase tabs --------------------------------- */
+  /* ---------- 6b. Workbench phase tabs -> pointer rows ------------------
+     Understand/Design/Prove/Land pick the SAME pointer row (1st..4th) in
+     ALL four role cards at once. The tabs auto-advance and pause when the
+     section is off screen; a click takes over and resets the clock. */
   var wbTabs  = Array.prototype.slice.call(document.querySelectorAll('.wb-phase'));
   var wbCards = Array.prototype.slice.call(document.querySelectorAll('.wb-card'));
-
-  var wbStack = document.querySelector('.wb-cards');
+  var WB_ORDER = ['understand', 'design', 'prove', 'land'];
 
   function wbSelect(phase, focusTab) {
+    var idx = WB_ORDER.indexOf(phase);
+    if (idx < 0) return;
     wbTabs.forEach(function (t) {
       var on = t.getAttribute('data-phase') === phase;
       t.setAttribute('aria-selected', String(on));
       t.tabIndex = on ? 0 : -1;
       if (on && focusTab) t.focus();
     });
-
-    var target = null;
     wbCards.forEach(function (card) {
-      var on = card.getAttribute('data-phase') === phase;
-      card.classList.toggle('is-active', on);
-      if (on) target = card;
-    });
-
-    /* FLIP: the selected card jumps to the top of the stack, everything
-       else slides down to make room */
-    if (wbStack && target && target !== wbStack.firstElementChild) {
-      var first = {};
-      wbCards.forEach(function (c) { first[c.getAttribute('data-phase')] = c.getBoundingClientRect().top; });
-      wbStack.insertBefore(target, wbStack.firstElementChild);
-      if (!reduced) {
-        wbCards.forEach(function (c) {
-          var d = first[c.getAttribute('data-phase')] - c.getBoundingClientRect().top;
-          var endT = c.classList.contains('is-active') ? ' scale(1.045)' : ' scale(1)';
-          c.style.transition = 'none';
-          /* start from the old spot at the old size, then glide + zoom together */
-          c.style.transform = 'translateY(' + d + 'px) scale(1)';
-          void c.offsetHeight;               /* reflow, then play */
-          c.style.transition = 'transform 620ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 620ms cubic-bezier(0.22, 1, 0.36, 1)';
-          c.style.transform = 'translateY(0)' + endT;
-          c.addEventListener('transitionend', function h() {
-            /* hand emphasis back to the stylesheet so future toggles animate */
-            c.style.transition = ''; c.style.transform = '';
-            c.removeEventListener('transitionend', h);
-          });
-        });
-      }
-    }
-    if (window.wbStepsRestart) window.wbStepsRestart();
-  }
-  function wbHighlight(phase) {
-    wbTabs.forEach(function (t) {
-      var on = t.getAttribute('data-phase') === phase;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-    });
-    wbCards.forEach(function (card) {
-      card.classList.toggle('is-active', card.getAttribute('data-phase') === phase);
+      var lis = card.querySelectorAll('.wb-card__steps li');
+      Array.prototype.forEach.call(lis, function (l, n) {
+        l.classList.toggle('is-on', n === idx);
+      });
     });
   }
-  window.wbHighlight = wbHighlight;
-  var wbMqDesk = window.matchMedia('(min-width: 901px)');
+
+  var wbTimer = null;
+  function wbNext() {
+    var cur = document.querySelector('.wb-phase[aria-selected="true"]');
+    var i = cur ? WB_ORDER.indexOf(cur.getAttribute('data-phase')) : -1;
+    wbSelect(WB_ORDER[(i + 1) % WB_ORDER.length]);
+  }
+  function wbPlay() { if (!wbTimer && !reduced) wbTimer = setInterval(wbNext, 3400); }
+  function wbPause() { if (wbTimer) { clearInterval(wbTimer); wbTimer = null; } }
+  function wbManual(phase, focusTab) {
+    wbSelect(phase, focusTab);
+    wbPause(); wbPlay();               /* restart the clock after a click */
+  }
+
   wbTabs.forEach(function (t, i) {
-    t.addEventListener('click', function () {
-      if (!wbMqDesk.matches) {
-        /* mobile: highlight and glide to that card, no reordering */
-        var phase = t.getAttribute('data-phase');
-        wbHighlight(phase);
-        var card = document.querySelector('.wb-card[data-phase="' + phase + '"]');
-        if (card) card.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
-        return;
-      }
-      wbSelect(t.getAttribute('data-phase'));
-      /* when the tabs are docked to the browser bottom, bring the cards
-         back into view so the highlighted card is seen */
-      /* the chosen card lands at the top of the stack: bring the photo's
-         top (where that card sits) into view, untouched by the FLIP
-         transforms still in flight */
-      var photo = document.querySelector('.wb-photo');
-      if (photo) {
-        var y = photo.getBoundingClientRect().top + window.pageYOffset - 96;
-        window.scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
-      }
-    });
+    t.addEventListener('click', function () { wbManual(t.getAttribute('data-phase')); });
     t.addEventListener('keydown', function (e) {
       var d = 0;
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') d = 1;
@@ -532,12 +491,59 @@
       if (!d) return;
       e.preventDefault();
       var next = wbTabs[(i + d + wbTabs.length) % wbTabs.length];
-      wbSelect(next.getAttribute('data-phase'), true);
+      wbManual(next.getAttribute('data-phase'), true);
     });
   });
-  wbCards.forEach(function (card) {
-    card.addEventListener('click', function () { wbSelect(card.getAttribute('data-phase')); });
-  });
+
+  wbSelect('understand');
+
+  /* premium floating bar: docked to the browser bottom only while the
+     visitor is inside the section; gone the moment its end crosses up */
+  var wbPhasesBar = document.querySelector('.wb-phases');
+  var wbSecFloat = document.getElementById('solutions');
+  if (wbPhasesBar && wbSecFloat) {
+    var wbFloatTick = false;
+    var wbMqDesk = window.matchMedia('(min-width: 901px)');
+    function wbFloatUpd() {
+      if (!wbMqDesk.matches) { wbPhasesBar.classList.remove('wb-phases--float'); return; }
+      var r = wbSecFloat.getBoundingClientRect();
+      var on = r.top < window.innerHeight * 0.55 && r.bottom > window.innerHeight - 40;
+      wbPhasesBar.classList.toggle('wb-phases--float', on);
+    }
+    window.addEventListener('scroll', function () {
+      if (wbFloatTick) return;
+      wbFloatTick = true;
+      requestAnimationFrame(function () { wbFloatUpd(); wbFloatTick = false; });
+    }, { passive: true });
+    window.addEventListener('resize', wbFloatUpd);
+    wbFloatUpd();
+  }
+
+  var wbSec = document.getElementById('solutions');
+  if (wbSec && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.isIntersecting ? wbPlay() : wbPause(); });
+    }, { threshold: 0.25 }).observe(wbSec);
+  } else {
+    wbPlay();
+  }
+
+  /* ---------- 3b. Section entrances: every section fades in ------------ */
+  (function () {
+    var secs = document.querySelectorAll('main > section:not(.hero-lockup), .site-footer');
+    if (!('IntersectionObserver' in window) || reduced) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-in');
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(secs, function (s) {
+      s.classList.add('sec-fade');
+      io.observe(s);
+    });
+  })();
 
   /* ---------- 7. Smooth in-page anchors -------------------------------- */
   document.addEventListener('click', function (e) {
@@ -614,6 +620,23 @@
     fxFrame();
   }
 
+
+  /* ---------- 3b. Section entrances: every section fades in ------------ */
+  (function () {
+    var secs = document.querySelectorAll('main > section:not(.hero-lockup), .site-footer');
+    if (!('IntersectionObserver' in window) || reduced) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-in');
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(secs, function (s) {
+      s.classList.add('sec-fade');
+      io.observe(s);
+    });
+  })();
 
   /* ---------- 6c. Workbench step cycler + docked phase tabs ------------ */
   (function () {

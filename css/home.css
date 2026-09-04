@@ -349,10 +349,9 @@
   transition:var(--transition-transform), box-shadow var(--duration-base) var(--ease-out),
              border-color var(--duration-fast) var(--ease-standard);
 }
-.pillar{transition:transform 550ms var(--ease-out), box-shadow 550ms var(--ease-out),
-                    border-color var(--duration-fast) var(--ease-standard);}
-.pillar:hover{transform:translateY(-8px) scale(1.02); box-shadow:var(--shadow-xl);
-              border-color:var(--border-default);}
+/* pillars fade in one after another on scroll; no hover motion */
+.pillar.reveal{transition-delay:var(--rd, 0ms);}
+.pillar.reveal.is-in{transition-delay:var(--rd, 0ms);}
 .pillar__tag{
   display:inline-flex; align-items:center; gap:var(--space-3);
   font-size:var(--fs-small); color:var(--mahogany-700); letter-spacing:0;
@@ -438,10 +437,9 @@
      the card into the cream page and break its text contrast */
   transition:transform 600ms var(--ease-out), box-shadow 600ms var(--ease-out);
 }
-.wb-card.is-active{transform:scale(1.045); box-shadow:var(--shadow-xl);}
+
 @media (prefers-reduced-motion:reduce){
   .wb-card{transition:none;}
-  .wb-card.is-active{transform:none;}
 }
 .wb-card__role{
   font-size:var(--fs-small); letter-spacing:0.02em; margin:0 0 var(--space-3);
@@ -453,11 +451,7 @@
 }
 /* numbered steps: collapsed on idle cards, expand on the active card and
    the four items rise in one after another */
-.wb-card__stepswrap{
-  display:grid; grid-template-rows:0fr;
-  transition:grid-template-rows 500ms var(--ease-out);
-}
-.wb-card.is-active .wb-card__stepswrap{grid-template-rows:1fr;}
+.wb-card__stepswrap{display:grid; grid-template-rows:1fr;}
 .wb-card__steps{
   overflow:hidden; min-block-size:0;
   list-style:none; margin:0; padding:0;
@@ -475,40 +469,25 @@
   stroke-dasharray:14; stroke-dashoffset:14;
 }
 @keyframes wbTickDraw{to{stroke-dashoffset:0;}}
-/* desktop: the check draws itself each time a pointer takes the stage */
-@media (min-width:901px) and (prefers-reduced-motion:no-preference){
-  .wb-card.is-active .wb-card__steps li.is-on .tick-path{
-    animation:wbTickDraw 480ms 240ms var(--ease-out) forwards;
-  }
-}
-/* mobile / reduced motion: ticks draw once as the card activates */
-@media (max-width:900px), (prefers-reduced-motion:reduce){
-  .wb-step__tick .tick-path{stroke-dashoffset:0;}
-  .wb-card.is-active .wb-step__tick .tick-path{
-    stroke-dashoffset:14;
-    animation:wbTickDraw 460ms calc(var(--i, 0) * 140ms + 150ms) var(--ease-out) forwards;
-  }
+.wb-card__steps li.is-on .tick-path{
+  animation:wbTickDraw 480ms 220ms var(--ease-out) forwards;
 }
 @media (prefers-reduced-motion:reduce){
   .wb-step__tick .tick-path{stroke-dashoffset:0 !important; animation:none !important;}
 }
-/* desktop: one pointer visible at a time, each fades through the same slot */
-@media (min-width:901px) and (prefers-reduced-motion:no-preference){
-  .wb-card__steps{display:grid;}
-  .wb-card__steps li{
-    grid-area:1/1;
-    margin-block-start:var(--space-5);
-    opacity:0; transform:translateY(12px);
-    transition:opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
-    pointer-events:none;
-  }
-  .wb-card.is-active .wb-card__steps li.is-on{opacity:1; transform:none;}
+/* one pointer per card: the active tab picks the same pointer row in all
+   four cards; the rows share one slot and fade through it */
+.wb-card__steps{display:grid;}
+.wb-card__steps li{
+  grid-area:1/1;
+  margin-block-start:var(--space-5);
+  opacity:0; transform:translateY(12px);
+  transition:opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
+  pointer-events:none;
 }
-/* mobile / reduced motion: the four pointers simply list out */
-@media (max-width:900px), (prefers-reduced-motion:reduce){
-  .wb-card__steps li{opacity:1; transform:none;}
-  .wb-card__steps li + li{margin-block-start:var(--space-2);}
-  .wb-card__steps li:first-child{margin-block-start:var(--space-5);}
+.wb-card__steps li.is-on{opacity:1; transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .wb-card__steps li{transition:none; transform:none;}
 }
 .wb-step__num{
   font-variant-numeric:tabular-nums;
@@ -545,11 +524,22 @@
   .wb-phase:hover{background:var(--espresso-200);}
   .wb-phase[aria-selected="true"]{background:var(--espresso-950); color:var(--cream-50);}
   .wb-cards{position:static; inline-size:100%;}
-  .wb-card.is-active{transform:none;}
   .wb-card__stepswrap{grid-template-rows:1fr;}
-  .wb-card{scroll-margin-top:8rem;}
-  .wb-card.is-active{outline:2px solid rgb(250 250 249 / .55); outline-offset:2px;}
+
 }
+
+/* accordion product icons - colored chips from the Making Headlines palette */
+.acc__ic{
+  display:inline-grid; place-items:center;
+  inline-size:2.1rem; aspect-ratio:1; border-radius:8px;
+  margin-inline-end:var(--space-4); flex-shrink:0;
+  color:var(--cream-50);
+}
+.acc__ic svg{inline-size:1.2rem; block-size:1.2rem;}
+.acc__ic--mah{background:var(--mahogany-700);}
+.acc__ic--ter{background:var(--terracotta-600);}
+.acc__ic--grn{background:var(--green-deep);}
+.acc__ic--esp{background:var(--espresso-950);}
 
 /* ---------- QUOTE BAND --------------------------------------------------- */
 .quote-band{
@@ -602,6 +592,10 @@
 /* whichever layer is open in the accordion turns green and lifts */
 .plane[data-active="true"]  path{fill:var(--green-deep); stroke:transparent;
                                  transform:translateY(-14px) scale(1.045);}
+.plane[data-plane="controller"][data-active="true"] path{fill:var(--mahogany-700);}
+.plane[data-plane="architect"][data-active="true"]  path{fill:var(--terracotta-600);}
+.plane[data-plane="studio"][data-active="true"]     path{fill:var(--green-deep);}
+.plane[data-plane="blocks"][data-active="true"]     path{fill:var(--espresso-950);}
 .plane[data-active="true"]  .plane__label{fill:var(--cream-50);
                                  transform-box:fill-box; transform-origin:100% 100%;
                                  transition:fill 320ms var(--ease-standard),
@@ -634,8 +628,8 @@
 @media (prefers-reduced-motion:reduce){ .acc::after{display:none;} }
 .acc__heading{margin:0;}
 .acc__trigger{
-  inline-size:100%; display:flex; align-items:center; justify-content:space-between;
-  gap:var(--space-6); padding:var(--space-6) 0;
+  inline-size:100%; display:flex; align-items:center; justify-content:flex-start;
+  gap:var(--space-3); padding:var(--space-6) 0;
   appearance:none; background:none; border:0; cursor:pointer; text-align:left;
   font-family:inherit; font-size:var(--fs-h4); letter-spacing:var(--ls-h4);
   font-weight:var(--fw-medium); color:var(--espresso-600);
@@ -643,7 +637,7 @@
 }
 .acc__trigger:hover{color:var(--text-secondary);}
 .acc[data-open] .acc__trigger{color:var(--text-primary);}
-.acc__icon{
+.acc__icon{margin-inline-start:auto; 
   flex:none; inline-size:1.4rem; block-size:1.4rem;
   transition:transform var(--duration-base) var(--ease-out);
 }
@@ -964,25 +958,6 @@
 .btn:hover:not(:disabled){transform:translateY(-1px);}
 .btn--primary:hover:not(:disabled){box-shadow:0 6px 18px rgb(189 76 63 / .28);}
 
-/* the phase tabs dock to the bottom of the browser while the visitor is
-   inside the workbench section (desktop only) */
-@media (min-width:901px){
-  /* the tabs exist only as the docked bar: hidden until the section is
-     in view, then fixed to the browser bottom */
-  .wb-phases{
-    visibility:hidden; opacity:0;
-    transition:opacity 350ms var(--ease-out);
-  }
-  .wb-phases--float{
-    visibility:visible; opacity:1;
-    position:fixed !important;
-    inset:auto auto 1.4rem 50% !important;
-    transform:translateX(-50%);
-    z-index:600;
-    background:rgb(22 15 10 / .74);
-    box-shadow:0 12px 32px rgb(22 15 10 / .30);
-  }
-}
 
 /* hero water ripple canvas: sits over the image, under the scrim */
 .hero-water{
@@ -994,3 +969,47 @@
 }
 .hero-water.is-on{opacity:1;}
 @media (prefers-reduced-motion:reduce){ .hero-water{display:none;} }
+
+/* == section-level entrance: every section fades in as it arrives ====== */
+.sec-fade{
+  opacity:0; transform:translateY(30px) scale(.992);
+  transform-origin:center top;
+  transition:opacity 800ms var(--ease-out), transform 900ms var(--ease-out);
+  will-change:opacity, transform;
+}
+.sec-fade.is-in{opacity:1; transform:none; will-change:auto;}
+@media (prefers-reduced-motion:reduce){
+  .sec-fade{opacity:1; transform:none; transition:none;}
+}
+
+/* == premium floating phase tabs (desktop): the bar lives at the bottom
+   of the browser while the visitor is inside the workbench section ===== */
+@media (min-width:901px){
+  .wb-phases{
+    position:fixed; inset:auto auto 1.5rem 50%; z-index:600;
+    transform:translate(-50%, 16px);
+    opacity:0; visibility:hidden;
+    padding:6px;
+    background:rgb(22 15 10 / .78);
+    backdrop-filter:blur(20px) saturate(180%);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    border:1px solid rgb(250 250 249 / .14);
+    box-shadow:0 18px 48px rgb(22 15 10 / .35),
+               0 2px 8px rgb(22 15 10 / .22),
+               inset 0 1px 0 rgb(250 250 249 / .08);
+    transition:opacity .45s cubic-bezier(.22,1,.36,1),
+               transform .55s cubic-bezier(.22,1,.36,1),
+               visibility 0s .45s;
+  }
+  .wb-phases--float{
+    opacity:1; visibility:visible;
+    transform:translate(-50%, 0);
+    transition:opacity .45s cubic-bezier(.22,1,.36,1),
+               transform .55s cubic-bezier(.22,1,.36,1);
+  }
+  .wb-phases .wb-phase{transition:background .3s cubic-bezier(.25,.8,.25,1), color .3s cubic-bezier(.25,.8,.25,1);}
+  .wb-phases .wb-phase[aria-selected="true"]{box-shadow:0 2px 10px rgb(0 0 0 / .25);}
+}
+@media (prefers-reduced-motion:reduce){
+  .wb-phases{transition:none;}
+}
