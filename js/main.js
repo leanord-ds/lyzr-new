@@ -263,27 +263,25 @@
       return el.offsetLeft - (cases.clientWidth - el.clientWidth) / 2;
     }
     function caseGoTo(i, instant) {
-      var wrapped = (i + N) % N;
-      var goingFwd = i >= caseIndex || i >= N;
+      /* no looping: clamp at both ends - next stays on the last slide,
+         prev stays on the first */
+      var clamped = Math.max(0, Math.min(N - 1, i));
       var maxScroll = cases.scrollWidth - cases.clientWidth;
       function to(track, smooth) {
         cases.scrollTo({ left: Math.max(0, Math.min(maxScroll, caseCenterOf(caseCards[track]))),
                          behavior: (smooth && !reduced) ? 'smooth' : 'auto' });
       }
-      /* Wrapping never rewinds across the strip: teleport (instantly, and
-         invisibly - the clone is pixel-identical) to the matching clone on
-         the far side, then glide ONE step in the travel direction. */
-      if (i >= N) {            /* forward past the last card */
-        to(0, false);          /* clone of last, at the front */
-        requestAnimationFrame(function () { to(1, true); });   /* real first */
-      } else if (i < 0) {      /* backward past the first card */
-        to(N + 1, false);      /* clone of first, at the back */
-        requestAnimationFrame(function () { to(N, true); });   /* real last */
-      } else {
-        to(i + 1, !instant);
-      }
-      caseIndex = wrapped;
+      to(clamped + 1, !instant);
+      caseIndex = clamped;
       caseAnimUntil = Date.now() + 600;
+      caseBtnSync();
+    }
+    /* prev disabled on the first slide, next disabled on the last */
+    function caseBtnSync() {
+      var p = document.querySelector('[data-cases-prev]');
+      var n = document.querySelector('[data-cases-next]');
+      if (p) { p.disabled = caseIndex <= 0;     p.setAttribute('aria-disabled', String(caseIndex <= 0)); }
+      if (n) { n.disabled = caseIndex >= N - 1; n.setAttribute('aria-disabled', String(caseIndex >= N - 1)); }
     }
     /* highlight whichever card actually sits nearest the viewport centre */
     function caseHighlight() {
@@ -299,6 +297,7 @@
         caseIndex = (best === 0) ? N - 1 : (best === N + 1) ? 0 : best - 1;
       }
       caseThumbSync();
+      caseBtnSync();
       caseCards.forEach(function (card, i) {
         card.classList.toggle('is-center', i === best);
       });
@@ -310,7 +309,10 @@
     /* auto-slide: pause while the visitor is on it, never under reduced motion */
     function caseStart() {
       if (reduced || caseTimer) return;
-      caseTimer = setInterval(function () { caseGoTo(caseIndex + 1); }, CASE_INTERVAL);
+      caseTimer = setInterval(function () {
+        if (caseIndex >= N - 1) { caseStop(); return; }  /* no loop: rest on the last slide */
+        caseGoTo(caseIndex + 1);
+      }, CASE_INTERVAL);
     }
     function caseStop() {
       clearInterval(caseTimer); caseTimer = null;
