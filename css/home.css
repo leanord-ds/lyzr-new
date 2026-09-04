@@ -130,7 +130,7 @@
   padding:calc(var(--nav-h) + var(--space-8)) var(--page-pad) var(--space-20);
 }
 .hero-word{
-  color:var(--cream-50); font-weight:var(--fw-medium);
+  color:var(--cream-50); font-weight:var(--fw-regular);
   font-size:var(--fs-display-2); line-height:0.96; letter-spacing:-0.03em;
   margin:0; text-wrap:balance;
   text-shadow:0 2px 32px rgb(22 15 10 / .35);
@@ -140,7 +140,6 @@
 .hero-marquee{
   position:relative; padding-block:var(--space-10);
   overflow:hidden;
-  border-top:1px solid rgb(250 250 249 / .14);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
 }
@@ -458,7 +457,8 @@
 }
 .wb-card__steps li{
   display:flex; gap:var(--space-3); align-items:center;
-  font-size:var(--fs-body); line-height:1.45;
+  font-size:var(--fs-h6); line-height:1.34; letter-spacing:-0.008em;
+  font-weight:var(--fw-medium);
   color:var(--cream-50);
 }
 .wb-step__tick{
@@ -872,6 +872,7 @@
   transition:var(--transition-colors);
 }
 .subscribe button:hover{background:var(--mahogany-600);}
+.subscribe p.subscribe-note{margin:0; font-size:var(--fs-small); color:var(--espresso-500); max-inline-size:none;}
 
 .footer-bottom{
   border-top:1px solid var(--espresso-900); padding-top:var(--space-8);
