@@ -469,18 +469,8 @@
     });
   }
 
-  var wbTimer = null;
-  function wbNext() {
-    var cur = document.querySelector('.wb-phase[aria-selected="true"]');
-    var i = cur ? WB_ORDER.indexOf(cur.getAttribute('data-phase')) : -1;
-    wbSelect(WB_ORDER[(i + 1) % WB_ORDER.length]);
-  }
-  function wbPlay() { if (!wbTimer && !reduced) wbTimer = setInterval(wbNext, 3400); }
-  function wbPause() { if (wbTimer) { clearInterval(wbTimer); wbTimer = null; } }
-  function wbManual(phase, focusTab) {
-    wbSelect(phase, focusTab);
-    wbPause(); wbPlay();               /* restart the clock after a click */
-  }
+  /* tabs are click-driven only - no auto-advance */
+  function wbManual(phase, focusTab) { wbSelect(phase, focusTab); }
 
   wbTabs.forEach(function (t, i) {
     t.addEventListener('click', function () { wbManual(t.getAttribute('data-phase')); });
@@ -519,14 +509,6 @@
     wbFloatUpd();
   }
 
-  var wbSec = document.getElementById('solutions');
-  if (wbSec && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { en.isIntersecting ? wbPlay() : wbPause(); });
-    }, { threshold: 0.25 }).observe(wbSec);
-  } else {
-    wbPlay();
-  }
 
   /* ---------- 3b. Section entrances: every section fades in ------------ */
   (function () {

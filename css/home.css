@@ -531,11 +531,22 @@
 /* accordion product icons - colored chips from the Making Headlines palette */
 .acc__ic{
   display:inline-grid; place-items:center;
-  inline-size:2.1rem; aspect-ratio:1; border-radius:8px;
-  margin-inline-end:var(--space-4); flex-shrink:0;
+  inline-size:0; aspect-ratio:1; border-radius:8px;
+  margin-inline-end:0; flex-shrink:0; overflow:hidden;
   color:var(--cream-50);
+  opacity:0; transform:scale(.6);
+  transition:inline-size 380ms var(--ease-out),
+             margin 380ms var(--ease-out),
+             opacity 300ms var(--ease-out),
+             transform 420ms cubic-bezier(.34,1.4,.64,1);
+}
+/* the icon chip appears only on the open item */
+.acc[data-open] .acc__ic{
+  inline-size:2.1rem; margin-inline-end:var(--space-4);
+  opacity:1; transform:scale(1);
 }
 .acc__ic svg{inline-size:1.2rem; block-size:1.2rem;}
+@media (prefers-reduced-motion:reduce){ .acc__ic{transition:none;} }
 .acc__ic--mah{background:var(--mahogany-700);}
 .acc__ic--ter{background:var(--terracotta-600);}
 .acc__ic--grn{background:var(--green-deep);}
