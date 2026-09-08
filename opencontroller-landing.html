@@ -389,18 +389,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .fq-i{border-bottom:1px solid var(--bd)}
 .fq-b{width:100%;display:flex;align-items:flex-start;gap:20px;padding:24px 2px;text-align:left}
 .fq-b .q{font-size:var(--t-h5);line-height:1.26;letter-spacing:-.014em;font-weight:500;color:var(--ink-2);transition:color .22s var(--e-std);max-width:34ch}
-.fq-b .chev{margin-left:auto;flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--bd-2);display:flex;align-items:center;justify-content:center;color:var(--esp-700);transition:transform .32s var(--e-out),background .22s var(--e-std),color .22s var(--e-std),border-color .22s var(--e-std);margin-top:2px}
+.fq-b .chev{margin-left:auto;flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--bd-2);display:flex;align-items:center;justify-content:center;color:var(--esp-700);transition:background .22s var(--e-std),color .22s var(--e-std),border-color .22s var(--e-std);margin-top:2px}
+.fq-b .chev .pm-v{transform-origin:12px 12px;transition:transform .3s var(--e-out)}
 .fq-b:hover .q{color:var(--ink)}
 .fq-b:hover .chev{border-color:var(--bd-3);background:var(--esp-50)}
 .fq-i.open .fq-b .q{color:var(--ink)}
-.fq-i.open .fq-b .chev{transform:rotate(180deg);background:var(--ter-600);border-color:var(--ter-600);color:var(--crm-50)}
+.fq-i.open .fq-b .chev{background:var(--ter-600);border-color:var(--ter-600);color:var(--crm-50)}
+.fq-i.open .fq-b .chev .pm-v{transform:scaleY(0)}
 .fq-p{overflow:hidden;height:0;transition:height .38s var(--e-out)}
 .fq-p p{padding:0 60px 26px 2px;font-size:var(--t-b);line-height:1.60;color:var(--mut);max-width:65ch}
 @media(max-width:560px){.fq-p p{padding-right:2px}.fq-b{gap:14px}}
 
 /* ---------------- CTA ---------------- */
 .cta{padding:0 0 var(--sec-y)}
-.cta-card{position:relative;border-radius:8px;overflow:hidden;min-height:clamp(340px,38vw,470px);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,4vw,52px)}
+.cta-card{position:relative;border-radius:8px;overflow:hidden;min-height:clamp(300px,32vw,420px);display:flex;align-items:center;padding:clamp(28px,4vw,52px)}
 .cta-card .bg{position:absolute;inset:0;
   background:
    radial-gradient(52% 78% at 74% 62%, rgb(114 75 75 / .55), transparent 70%),
@@ -410,8 +412,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   background:repeating-linear-gradient(101deg, rgb(255 255 255 / .05) 0 1px, transparent 1px 9px)}
 .cta-card > *{position:relative;z-index:2}
 .cta-card h2{color:#fff;font-size:var(--t-h2);line-height:1.08;letter-spacing:-.026em;font-weight:400;max-width:14ch;text-shadow:0 2px 20px rgb(22 15 10 / .4)}
-.cta-bot p{color:#fff;font-size:var(--t-b);line-height:1.60;max-width:38ch;margin-bottom:20px;text-shadow:0 1px 12px rgb(22 15 10 / .45)}
-.cta-slot{position:absolute;top:18px;right:18px;z-index:3;font-size:var(--t-s);letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:#fff;border:1px dashed rgb(255 255 255 / .5);border-radius:20px;padding:5px 13px}
+.cta-inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(24px,3.5vw,40px)}
+.cta-row{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,72px);align-items:center;width:100%}
+.cta-bot p{color:#fff;font-size:var(--t-bl);line-height:1.60;max-width:38ch;margin:0;text-shadow:0 1px 12px rgb(22 15 10 / .45)}
+@media(max-width:760px){.cta-row{grid-template-columns:1fr;gap:18px}}
 .cta .btn{height:2.75rem;font-size:var(--t-b);padding:0 1.5rem}
 
 /* ---------------- FOOTER ---------------- */
@@ -885,7 +889,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="fq-i open">
           <button class="fq-b" aria-expanded="true">
             <span class="q">How is this different from Lyzr Agent Studio?</span>
-            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path class="pm-h" d="M5 12h14"/><path class="pm-v" d="M12 5v14"/></svg></span>
           </button>
           <div class="fq-p"><p>Studio is where agents get built, a place to compose, prompt, and ship an agent quickly, run by us. The Control Plane assumes the agent already exists as a container in your repository and addresses the harder questions: who can run it, what it can spend, what it can access, and what happened when it did. Teams can use both: build agents in Studio, then govern the entire fleet, including Studio-built and hand-written agents, in the Control Plane.</p></div>
         </div>
@@ -893,7 +897,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="fq-i">
           <button class="fq-b" aria-expanded="false">
             <span class="q">Do we have to rewrite our agents?</span>
-            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path class="pm-h" d="M5 12h14"/><path class="pm-v" d="M12 5v14"/></svg></span>
           </button>
           <div class="fq-p"><p>No. The Control Plane is designed to govern agents that already exist in your environment. You can bring your current containerized agents and apply controls around identity, permissions, spend limits, access, and observability without rebuilding them from scratch.</p></div>
         </div>
@@ -901,7 +905,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="fq-i">
           <button class="fq-b" aria-expanded="false">
             <span class="q">Where does it run?</span>
-            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path class="pm-h" d="M5 12h14"/><path class="pm-v" d="M12 5v14"/></svg></span>
           </button>
           <div class="fq-p"><p>The Control Plane runs alongside your existing infrastructure and governs agents wherever they are deployed. Your agents remain in your containers and repositories, while the Control Plane provides centralized visibility, policy enforcement, and operational control.</p></div>
         </div>
@@ -909,7 +913,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="fq-i">
           <button class="fq-b" aria-expanded="false">
             <span class="q">Does it build our containers?</span>
-            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path class="pm-h" d="M5 12h14"/><path class="pm-v" d="M12 5v14"/></svg></span>
           </button>
           <div class="fq-p"><p>No. The Control Plane does not build or package your containers. Your team continues to own the agent code, container images, and deployment process. The Control Plane focuses on governing how those agents run, what they can access, and how their activity is monitored.</p></div>
         </div>
@@ -917,7 +921,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="fq-i">
           <button class="fq-b" aria-expanded="false">
             <span class="q">What if an agent misbehaves right now?</span>
-            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path class="pm-h" d="M5 12h14"/><path class="pm-v" d="M12 5v14"/></svg></span>
           </button>
           <div class="fq-p"><p>You can immediately investigate the agent's activity, review what it accessed or attempted to do, and apply controls to stop, restrict, or isolate it. The Control Plane helps teams respond quickly by providing visibility into agent actions and enforcing the policies you set.</p></div>
         </div>
@@ -925,7 +929,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="fq-i">
           <button class="fq-b" aria-expanded="false">
             <span class="q">Can it govern agents running outside our cluster?</span>
-            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path class="pm-h" d="M5 12h14"/><path class="pm-v" d="M12 5v14"/></svg></span>
           </button>
           <div class="fq-p"><p>Yes. The Control Plane can govern agents running across different environments, including agents outside your primary cluster. It provides a centralized layer for managing permissions, access, policies, and activity across your agent fleet.</p></div>
         </div>
@@ -956,10 +960,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <div class="wrap">
     <div class="cta-card" data-r>
       <div class="bg"></div>
-      <span class="cta-slot">Image slot</span>
-      <h2>You can't control what you can't see.</h2>
-      <div class="cta-bot">
-        <p>Find out what you're actually running. Install Open Controller in less than ten minutes with zero agent friction.</p>
+      <div class="cta-inner">
+        <div class="cta-row">
+          <h2>You can't control what you can't see.</h2>
+          <div class="cta-bot">
+            <p>Find out what you're actually running. Install Open Controller in less than ten minutes with zero agent friction.</p>
+          </div>
+        </div>
         <a href="#" class="btn btn-pri">Get Started</a>
       </div>
     </div>
@@ -1143,7 +1150,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   fq.forEach(function(it){
     fqSet(it,it.classList.contains('open'));
     it.querySelector('.fq-b').addEventListener('click',function(){
-      fqSet(it,!it.classList.contains('open'));
+      var willOpen=!it.classList.contains('open');
+      fq.forEach(function(o){ if(o!==it) fqSet(o,false); });
+      fqSet(it,willOpen);
     });
   });
   addEventListener('resize',function(){
