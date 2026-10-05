@@ -368,6 +368,22 @@ button{font:inherit}
 .hp-row-co{--logo-w:150px;--logo-h:36px}
 @media (max-width:1199px){.hp-row-co{--logo-w:140px;--logo-h:34px}}
 @media (max-width:767px){.hp-row-co{--logo-w:128px;--logo-h:32px}}
+/* Logo list: one optical-size system (equal visual weight, wide wordmarks capped by width) */
+:root{--lg:1}
+@media (max-width:1199px){:root{--lg:.94}}
+@media (max-width:767px){:root{--lg:.88}}
+.hp-row-co img{max-width:none;object-fit:contain;object-position:left center;display:block;flex:none}
+.hp-row-co img[alt^="Movate"]{width:calc(90px*var(--lg));height:calc(28px*var(--lg))}
+.hp-row-co img[alt^="LionAI"]{width:calc(50px*var(--lg));height:calc(30px*var(--lg))}
+.hp-row-co img[alt^="Prophet"]{width:calc(132px*var(--lg));height:calc(16px*var(--lg))}
+.hp-row-co img[alt^="Yugabyte"]{width:calc(132px*var(--lg));height:calc(18px*var(--lg))}
+.hp-row-co img[alt^="Awestruck"]{width:calc(132px*var(--lg));height:calc(15px*var(--lg))}
+.hp-row-co img[alt^="Growth"]{width:calc(32px*var(--lg));height:calc(32px*var(--lg))}
+.hp-row-co img[alt^="KPMG"]{width:calc(79px*var(--lg));height:calc(31px*var(--lg))}
+.hp-row-co img[alt^="Hitachi"]{width:calc(125px*var(--lg));height:calc(20px*var(--lg))}
+.hp-soon-co{min-height:0}
+.hp-soon-co img[alt^="Hitachi"]{width:calc(138px*var(--lg));height:calc(22px*var(--lg));max-width:none;flex:none}
+
 /* guest marquee: smaller, black and white, colour on hover */
 .hp-logos-list li{--logo-w:120px;--logo-h:36px}
 .hp-logos-list a{text-decoration:none}
