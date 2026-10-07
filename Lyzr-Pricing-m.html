@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing | Lyzr</title>
+<meta name="description" content="Lyzr prices the digital workforce in agent-months: a pool of governed agents in production, budgeted the way a finance team already budgets headcount. Governance, training and hardware are flat. Nothing is metered on tokens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== FIGMA "LYZR - TEST" TOKENS + COMPONENTS (Modules 2344:5002 / Solutions Pages 2344:5048) =====
+   Additive only: every name is --fg-* / .fg-*, so nothing existing is overridden and the page renders unchanged.
+   Values are read straight from the Figma variables. Where they differ from the live site tokens it is noted. */
+:root{
+  /* --- colour (Figma variable names in comments) --- */
+  --fg-canvas:#FAFAF9;            /* Canvas (0) */
+  --fg-white:#FFFFFF;
+  --fg-grey-900:#1F2022;          /* Grey (900) - text, secondary button */
+  --fg-grey-700:#6D675E;          /* Grey 700 (Subtext)  · site --grey-700 is #6B675F */
+  --fg-grey-400:#BAB4AC;          /* Grey 400 - row dividers, progress track · site is #B8B4AD */
+  --fg-grey-200:#E3E1DE;          /* Grey 200 - card border */
+  --fg-orange:#FF3300;            /* Orange variable · site accent is #FE4B1E */
+  --fg-orange-ui:#FE4B1E;         /* nav "Book a demo" fill + feature-list eyebrow (hard-coded in Figma) */
+  --fg-primary-blue:#111D39;      /* Color/Core Color/New Primary Blue - stat numerals */
+  --fg-blue:#003F7B;              /* Blue (icon tile) */
+  --fg-blue-panel:#043E77;        /* CTA panel fill (hard-coded) */
+  --fg-green:#003C27;             /* Green - testimonial panel, icon tile */
+  --fg-brown:#593132;             /* brown - icon tile */
+  --fg-ink:#070E1C;               /* feature-list item title */
+  --fg-hero-field:rgba(250,250,249,.6);
+
+  /* --- type (Aeonik TRIAL → --font-sans, JetBrains Mono → --font-mono; letter-spacing 0, Regular unless stated) --- */
+  --fg-t-hero:64px;   --fg-t-hero-lh:68px;      /* Title/Hero · Marketing/Display/Hero */
+  --fg-t-large:48px;  --fg-t-large-lh:52px;     /* Title/Large */
+  --fg-t-small:36px;  --fg-t-small-lh:42px;     /* Title/Small · Marketing/Heading/Small */
+  --fg-t-sub:24px;    --fg-t-sub-lh:30px;       /* Body/Subhead */
+  --fg-t-para:18px;   --fg-t-para-lh:24px;      /* Body/Para */
+  --fg-t-cap:14px;    --fg-t-cap-lh:18px;       /* Caption · Caption Mono (uppercase) */
+  --fg-t-blog:24px;   --fg-t-blog-lh:30px;  --fg-t-blog-w:500;   /* Blog/Title/S (Medium) */
+  --fg-t-logo:30px;   --fg-t-logo-track:2.4px;  --fg-t-logo-w:500; /* testimonial wordmark */
+  --fg-t-micro:12px;                                              /* compliance labels */
+
+  /* --- spacing --- */
+  --fg-space-s:24px;      /* Vertical Space / S */
+  --fg-space-48:48px;     /* Spacer 48 */
+  --fg-pad:60px;          /* section / grid margin */
+  --fg-gutter:24px;
+  --fg-frame:1440px; --fg-content:1320px;
+  --fg-gap-12:12px; --fg-gap-16:16px; --fg-gap-18:18px; --fg-gap-20:20px; --fg-gap-40:40px; --fg-gap-60:60px;
+  --fg-row-y:28px;        /* stat row + FAQ item vertical padding */
+  --fg-acc-y:24px;        /* accordion item vertical padding */
+
+  /* --- radius / borders / sizes --- */
+  --fg-r:4px;  --fg-r-lg:8px;  --fg-r-field:5px;  --fg-r-track:2px;  --fg-r-round:20px;
+  --fg-bw:1px;
+  --fg-btn-h:40px;  --fg-btn-px:16px;
+  --fg-field-h:60px;
+  --fg-tile:40px;   --fg-icon:24px;  --fg-arrow:40px;
+  --fg-card-pad:26px; --fg-card-pad-lg:40px; --fg-card-pad-blog:28px;
+  --fg-card-compact-h:328px;  --fg-card-award-h:320px;  --fg-card-blog-h:520px; --fg-blog-img-h:230px;
+  --fg-media-h:648px;
+  --fg-shadow:none;       /* Figma frames use no drop shadows */
+}
+@media (max-width:1199px){:root{--fg-pad:40px;--fg-t-hero:48px;--fg-t-hero-lh:52px;--fg-t-large:40px;--fg-t-large-lh:44px;--fg-t-small:30px;--fg-t-small-lh:36px;--fg-media-h:480px}}
+@media (max-width:767px){:root{--fg-pad:20px;--fg-gutter:16px;--fg-t-hero:36px;--fg-t-hero-lh:40px;--fg-t-large:30px;--fg-t-large-lh:34px;--fg-t-small:26px;--fg-t-small-lh:32px;--fg-t-sub:20px;--fg-t-sub-lh:26px;--fg-row-y:20px;--fg-media-h:260px}}
+
+/* type utilities */
+.fg-hero{font-size:var(--fg-t-hero);line-height:var(--fg-t-hero-lh);font-weight:400;letter-spacing:0}
+.fg-large{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;letter-spacing:0}
+.fg-small{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);font-weight:400;letter-spacing:0}
+.fg-sub{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);font-weight:400}
+.fg-para{font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);font-weight:400;color:var(--fg-grey-700)}
+.fg-cap{font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh)}
+.fg-eyebrow{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);font-weight:400;text-transform:uppercase;color:var(--fg-orange)}
+
+[class^="fg-"],[class*=" fg-"]{box-sizing:border-box}
+/* shared frame */
+.fg-sec{background:var(--fg-canvas);padding:var(--fg-pad)}
+.fg-wrap{max-width:var(--fg-frame);margin:0 auto}
+
+/* buttons: 40px, 4px radius, 16px side padding; Primary = orange, Secondary = grey-900 */
+.fg-btn{display:inline-flex;align-items:center;justify-content:center;height:var(--fg-btn-h);padding:0 var(--fg-btn-px);border:0;border-radius:var(--fg-r);background:var(--fg-grey-900);color:#fff;font:400 var(--fg-t-para)/var(--fg-t-para-lh) var(--font-sans);white-space:nowrap;text-decoration:none;cursor:pointer}
+.fg-btn--primary{background:var(--fg-orange)}
+.fg-btn--nav{background:var(--fg-orange-ui);width:136px}
+
+/* arrow buttons (carousels): 40px circle. light = white fill; outline = 1px grey-900 border */
+.fg-arrow{width:var(--fg-arrow);height:var(--fg-arrow);border-radius:var(--fg-r-round);background:#fff;display:grid;place-items:center;border:0;padding:0;cursor:pointer;color:var(--fg-grey-900)}
+.fg-arrow--outline{border:var(--fg-bw) solid var(--fg-grey-900)}
+
+/* icon tile: 40px square, 4px radius, 24px icon; colourways Orange / Green / Blue / Brown */
+.fg-tile{width:var(--fg-tile);height:var(--fg-tile);border-radius:var(--fg-r);background:var(--fg-orange);display:grid;place-items:center;flex:none;color:#fff}
+.fg-tile--green{background:var(--fg-green)} .fg-tile--blue{background:var(--fg-blue)} .fg-tile--brown{background:var(--fg-brown)}
+.fg-tile svg,.fg-tile i{width:var(--fg-icon);height:var(--fg-icon)}
+
+/* Card/Marketing 424×258 · white, 1px grey-200, pad 40, gap 24 */
+.fg-card{background:#fff;border:var(--fg-bw) solid var(--fg-grey-200);border-radius:var(--fg-r);overflow:hidden}
+.fg-card--mkt{display:flex;flex-direction:column;gap:var(--fg-gap-40);padding:var(--fg-card-pad-lg)}
+.fg-card--mkt .fg-card-body{display:flex;flex-direction:column;gap:var(--fg-space-s)}
+.fg-card--mkt h3{margin:0;font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);font-weight:400;letter-spacing:0;color:var(--fg-grey-900)}
+/* Card/Compact 312×328 · pad 26 · icon top, copy bottom (space-between), copy gap 18 */
+.fg-card--compact{display:flex;flex-direction:column;justify-content:space-between;padding:var(--fg-card-pad);min-height:var(--fg-card-compact-h)}
+.fg-card--compact .fg-copy{display:flex;flex-direction:column;gap:var(--fg-gap-18)}
+.fg-card--compact h3{margin:0;font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);font-weight:400;letter-spacing:0;color:var(--fg-grey-900)}
+.fg-card--compact p,.fg-card--mkt p{margin:0;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-700)}
+.fg-cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--fg-gutter)}
+.fg-cards-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--fg-gutter)}
+@media (max-width:1199px){.fg-cards-4,.fg-cards-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){.fg-cards-4,.fg-cards-3{grid-template-columns:1fr}.fg-card--compact{min-height:0;gap:var(--fg-gap-40)}}
+
+/* Section header: eyebrow + 48/52 title (760 max) left, 18/24 description (424) right, bottom-aligned */
+.fg-sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--fg-gutter);padding:var(--fg-pad);background:var(--fg-canvas)}
+.fg-sechead .fg-title{display:flex;flex-direction:column;gap:var(--fg-gap-12);max-width:760px}
+.fg-sechead h2{margin:0;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;letter-spacing:0;color:var(--fg-grey-900)}
+.fg-sechead .fg-desc{max-width:424px;margin:0;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-700)}
+@media (max-width:1199px){.fg-sechead{flex-direction:column;align-items:flex-start;gap:var(--fg-space-s)}}
+
+/* Layout/Stats: intro (423) left, rows (760) right; 64/68 numerals in primary blue; grey-400 bottom rule */
+.fg-stats{display:flex;justify-content:space-between;gap:var(--fg-gutter);padding:var(--fg-pad);background:var(--fg-canvas)}
+.fg-stats .fg-intro{display:flex;flex-direction:column;gap:var(--fg-space-s);width:423px;max-width:100%}
+.fg-stats h2{margin:0;font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);font-weight:400;letter-spacing:0;color:var(--fg-grey-900)}
+.fg-stats .fg-rows{width:760px;max-width:100%}
+.fg-stat-row{display:flex;align-items:center;gap:var(--fg-gap-20);padding:var(--fg-row-y) 0;border-bottom:var(--fg-bw) solid var(--fg-grey-400)}
+.fg-stat-num{flex:0 0 330px;font-size:var(--fg-t-hero);line-height:var(--fg-t-hero-lh);color:var(--fg-primary-blue)}
+.fg-stat-row p{flex:1;min-width:0;margin:0;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-700)}
+@media (max-width:1199px){.fg-stats{flex-direction:column;gap:var(--fg-gap-40)}.fg-stat-num{flex-basis:200px}}
+@media (max-width:767px){.fg-stat-row{flex-direction:column;align-items:flex-start;gap:8px}.fg-stat-num{flex-basis:auto}}
+
+/* FAQ: intro (404) + accordion (725), 131 gap; item = grey-400 top/bottom rule, pad 28; open title grey-900, closed grey-700 */
+.fg-faq{display:flex;align-items:center;justify-content:center;gap:131px;padding:0 var(--fg-pad);background:#fff}
+.fg-faq .fg-intro{display:flex;flex-direction:column;gap:var(--fg-space-s);width:404px;max-width:100%}
+.fg-faq h2{margin:0;font-size:var(--fg-t-hero);line-height:var(--fg-t-hero-lh);font-weight:400;letter-spacing:0;color:var(--fg-grey-900)}
+.fg-acc{width:725px;max-width:100%}
+.fg-acc-item{border-bottom:var(--fg-bw) solid var(--fg-grey-400);padding:var(--fg-row-y) 0}
+.fg-acc-item:first-child{border-top:var(--fg-bw) solid var(--fg-grey-400)}
+.fg-acc-q{display:flex;align-items:center;justify-content:space-between;gap:var(--fg-gap-16);width:100%;background:none;border:0;padding:0;text-align:left;font:400 var(--fg-t-sub)/var(--fg-t-sub-lh) var(--font-sans);color:var(--fg-grey-700);cursor:pointer}
+.fg-acc-item.is-open .fg-acc-q{color:var(--fg-grey-900)}
+.fg-acc-a{margin:var(--fg-gap-20) 0 0;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-700)}
+@media (max-width:1199px){.fg-faq{flex-direction:column;align-items:flex-start;gap:var(--fg-gap-40);padding-top:var(--fg-pad);padding-bottom:var(--fg-pad)}}
+
+/* Accordion with progress (Layout/Text only): 4px grey-400 track, 60px orange active indicator, mono index */
+.fg-prog{height:4px;border-radius:var(--fg-r-track);background:var(--fg-grey-400);overflow:hidden;position:relative}
+.fg-prog::after{content:"";position:absolute;inset:0 auto 0 0;width:60px;border-radius:var(--fg-r-track);background:var(--fg-orange)}
+.fg-acc-head{display:flex;align-items:center;gap:var(--fg-gap-16)}
+.fg-acc-head .fg-eyebrow{flex:none}
+
+/* Testimonial: green panel, 1320×436, pad 84/220, centred; 36/42 quote white; round white arrows at the edges */
+.fg-testi{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--fg-space-s);min-height:372px;padding:84px 220px;border-radius:var(--fg-r);background:var(--fg-green);color:#fff;text-align:center}
+.fg-testi .fg-logo{font-weight:var(--fg-t-logo-w);font-size:var(--fg-t-logo);letter-spacing:var(--fg-t-logo-track);color:var(--fg-canvas)}
+.fg-testi blockquote{margin:0;font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh)}
+.fg-testi .fg-attr{font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh)}
+.fg-testi .fg-arrows{position:absolute;left:36px;right:36px;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;pointer-events:none}
+.fg-testi .fg-arrows .fg-arrow{pointer-events:auto}
+@media (max-width:1199px){.fg-testi{padding:64px 96px}}
+@media (max-width:767px){.fg-testi{padding:56px 20px 88px}.fg-testi .fg-arrows{top:auto;bottom:20px;transform:none;justify-content:center;gap:12px}}
+
+/* Logo cloud: centred 36/42 heading, 12 slots 170×52 in 6 columns × 2 rows */
+.fg-logos{background:var(--fg-canvas);padding:var(--fg-pad)}
+.fg-logos h2{margin:0 auto 82px;max-width:867px;text-align:center;font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);font-weight:400;letter-spacing:0;color:var(--fg-grey-900)}
+.fg-logo-grid{display:grid;grid-template-columns:repeat(6,170px);justify-content:space-between;row-gap:37px;max-width:1170px;margin:0 auto}
+.fg-logo-slot{height:52px;overflow:hidden}
+@media (max-width:1199px){.fg-logo-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--fg-gutter)}}
+@media (max-width:767px){.fg-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Text + image (Type 3): 48/52 title, 648px media with 4px radius, 60 gap */
+.fg-textimg{display:flex;flex-direction:column;gap:var(--fg-gap-60);background:var(--fg-canvas);padding:var(--fg-pad)}
+.fg-media{height:var(--fg-media-h);border-radius:var(--fg-r);background:#fff;overflow:hidden}
+.fg-media img{width:100%;height:100%;object-fit:cover}
+
+/* Hero (module page): 64/68 headline, 18/24 body, mono eyebrow grey-900 (module) or orange (solutions); input field 507×60 */
+.fg-hero-sec{background:var(--fg-canvas);padding:var(--fg-pad)}
+.fg-field{display:flex;align-items:center;justify-content:space-between;height:var(--fg-field-h);width:507px;max-width:100%;padding:0 10px 0 20px;border:var(--fg-bw) solid #fff;border-radius:var(--fg-r-field);background:var(--fg-hero-field)}
+
+/* Feature list with media: 536 copy + 648 media (3:4); icon row = 24px icon + 24/30 title in --fg-ink, hairline between items */
+.fg-feat{display:grid;grid-template-columns:536px 648px;justify-content:space-between;gap:var(--fg-gutter);background:var(--fg-canvas);padding:var(--fg-pad)}
+.fg-feat-item{display:flex;flex-direction:column;gap:var(--fg-gap-20);padding-bottom:var(--fg-space-s);border-bottom:var(--fg-bw) solid var(--fg-grey-200)}
+.fg-feat-item:last-child{border-bottom:0}
+.fg-feat-item h3{margin:0;display:flex;align-items:center;gap:var(--fg-gap-12);font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);font-weight:400;letter-spacing:0;color:var(--fg-ink)}
+@media (max-width:1199px){.fg-feat{grid-template-columns:1fr}}
+
+/* Awards card (carousel): 312×320, pad 26, logo top-left (100×28), copy bottom; 24 gap between cards */
+.fg-award{display:flex;flex-direction:column;justify-content:space-between;width:312px;flex:none;min-height:var(--fg-card-award-h);padding:var(--fg-card-pad);background:#fff;border:var(--fg-bw) solid var(--fg-grey-200);border-radius:var(--fg-r)}
+.fg-award-track{display:flex;gap:var(--fg-gutter);overflow-x:auto;scrollbar-width:none}
+
+/* Compliance standards: grey-900 panel, white 48/52 title + 18/24 body (424), badge row, 12px labels */
+.fg-comp{display:grid;grid-template-columns:minmax(0,648px) 424px;justify-content:space-between;gap:var(--fg-gutter);background:var(--fg-grey-900);color:#fff;padding:58px var(--fg-pad) 60px}
+.fg-comp h2{margin:0;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;letter-spacing:0}
+.fg-comp p{margin:0;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh)}
+.fg-comp-labels{grid-column:1/-1;display:flex;justify-content:space-between;font-size:var(--fg-t-micro)}
+@media (max-width:1199px){.fg-comp{grid-template-columns:1fr}}
+
+/* Blog / related article card: white, 1px grey-200, 8px radius (the only 8px card), 230px image, pad 28 */
+.fg-blog{display:flex;flex-direction:column;min-height:var(--fg-card-blog-h);background:#fff;border:var(--fg-bw) solid var(--fg-grey-200);border-radius:var(--fg-r-lg);overflow:hidden}
+.fg-blog-img{height:var(--fg-blog-img-h);object-fit:cover;width:100%;background:var(--fg-grey-200)}
+.fg-blog-body{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:var(--fg-gap-16);padding:var(--fg-card-pad-blog)}
+.fg-blog-meta{display:flex;justify-content:space-between;font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.fg-blog h3{margin:0;font-size:var(--fg-t-blog);line-height:var(--fg-t-blog-lh);font-weight:var(--fg-t-blog-w);letter-spacing:0;color:var(--fg-grey-900)}
+.fg-blog-act{display:flex;align-items:center;justify-content:space-between;font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-900)}
+
+/* CTA panel: navy 4px-radius panel, 40 inset, 48/52 grey-900 headline over image, secondary button */
+.fg-cta{position:relative;overflow:hidden;border-radius:var(--fg-r);background:var(--fg-blue-panel);padding:var(--fg-card-pad-lg);min-height:520px}
+.fg-cta h2{margin:0 0 var(--fg-space-48);max-width:1054px;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;letter-spacing:0;color:var(--fg-grey-900)}
+/* ===== CASE STUDY PAGES (Figma node 2350:6016), additive tokens + components ===== */
+:root{
+  /* colour (new Figma variables) */
+  --fg-grey-100:#F1F0EE;          /* Grey 100 - framed media backdrop */
+  --fg-grey-300:#D1CCC8;          /* Grey 300 - section rule, fact-table rows, hero meta text */
+  --fg-grey-800:#4C4745;          /* Grey 800 - article body copy, callout copy */
+  --fg-status-ok:#003C27;         /* table status marker (green) */
+  --fg-status-hot:#FF3300;        /* table status marker (orange) */
+  /* type */
+  --fg-t-metric:72px;  --fg-t-metric-lh:72px;       /* finding numeral "01" */
+  --fg-t-article:18px; --fg-t-article-lh:28px;      /* checklist / numbered-list text (28 leading) */
+  --fg-t-num:24px;     --fg-t-num-lh:28px;          /* number inside brown marker */
+  /* layout */
+  --fg-article-nav-w:312px;  --fg-article-w:920px;  --fg-reading-w:648px;  --fg-article-gap:88px;
+  --fg-hero-h:720px;  --fg-hero-copy-w:610px;  --fg-hero-gap:42px;
+  --fg-sec-gap:30px;  --fg-sep-gap:18px;  --fg-list-gap:24px;
+  --fg-check:24px;    --fg-check-icon:16px;  --fg-num:40px;  --fg-dot:8px;
+  --fg-callout-bar:3px;  --fg-callout-pad:24px;
+  --fg-row-min:64px;  --fg-cell-y:14px;  --fg-cell-x:18px;  --fg-col-key:320px;  --fg-fact-key:170px;
+  --fg-fig-pad-y:64px;  --fg-fig-pad-x:18px;  --fg-fig-h:384px;  --fg-fig-cap-w:720px;
+  --fg-result-gap:56px;  --fg-result-key:200px;  --fg-result-rule-h:128px;  --fg-result-pad:40px;
+  --fg-shadow-media:0 18px 48px rgba(31,32,34,.07);   /* Framed interface screenshot only; --fg-shadow stays none */
+  --fg-check-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M13.3328 4L6.0002 11.3328L2.6672 7.99971' stroke='%23FF3300' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+@media (max-width:1199px){:root{--fg-article-gap:40px;--fg-t-metric:56px;--fg-t-metric-lh:56px;--fg-fig-pad-y:40px;--fg-fig-h:300px;--fg-hero-h:auto}}
+@media (max-width:767px){:root{--fg-t-metric:48px;--fg-t-metric-lh:48px;--fg-result-gap:24px;--fg-result-key:auto;--fg-fig-pad-y:24px;--fg-fig-pad-x:12px;--fg-fig-h:200px;--fg-col-key:42%;--fg-fact-key:110px;--fg-cell-x:12px}}
+
+/* Case-study hero: green 1320×720, copy column 610 + image (radius only on the right corners), 42 gap */
+.fg-case-hero{display:flex;gap:var(--fg-hero-gap);height:var(--fg-hero-h);background:var(--fg-green);color:#fff;overflow:hidden}
+.fg-case-copy{display:flex;flex-direction:column;justify-content:space-between;width:var(--fg-hero-copy-w);flex:none}
+.fg-case-head{display:flex;flex-direction:column;gap:var(--fg-space-s)}
+.fg-case-head h1{margin:0;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;letter-spacing:0;color:#fff}
+.fg-case-head p{margin:0;font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-200)}
+.fg-meta{display:flex;align-items:center;gap:var(--fg-gap-12);font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-300)}
+.fg-meta i{display:block;width:var(--fg-space-s);height:1px;background:var(--fg-grey-400)}
+.fg-metrics{display:flex;gap:30px}
+.fg-metric{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.fg-metric b{font-weight:400;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:#fff}
+.fg-metric span{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-200)}
+.fg-case-img{flex:1;min-width:0;border-radius:0 var(--fg-r) var(--fg-r) 0;background-size:cover;background-position:center}
+@media (max-width:1199px){.fg-case-hero{flex-direction:column;gap:var(--fg-gap-40)}.fg-case-copy{width:auto;gap:var(--fg-gap-40)}.fg-case-img{min-height:320px;border-radius:var(--fg-r)}}
+@media (max-width:767px){.fg-metrics{flex-direction:column;gap:var(--fg-space-s)}}
+
+/* Case-study hero band: full-bleed green behind nav (40 top) + hero (96 below nav, 54 bottom) */
+.fg-case-band{background:var(--fg-green);padding:var(--fg-gap-40) max(var(--fg-pad),calc((100% - var(--fg-content))/2)) 54px;color:#fff}
+.fg-case-band .fg-case-hero{margin-top:56px}
+
+/* Article layout: sticky 312 "In this article" nav + 920 content column (648 reading width), 88 gap */
+.fg-article{display:grid;grid-template-columns:var(--fg-article-nav-w) minmax(0,var(--fg-article-w));gap:var(--fg-article-gap);align-items:start;padding:76px var(--fg-pad) 0;background:var(--fg-canvas)}
+.fg-article-body{display:flex;flex-direction:column;gap:76px;min-width:0}
+.fg-reading{max-width:var(--fg-reading-w);display:flex;flex-direction:column;gap:var(--fg-sec-gap)}
+@media (max-width:1199px){.fg-article{grid-template-columns:minmax(0,1fr);padding-top:40px}.fg-toc{position:static}}
+
+/* Article navigation (TOC): canvas, pad 24, 8px radius; orange mono header; 18/24 links, active grey-900 / others grey-700 */
+.fg-toc{position:sticky;top:24px;display:flex;flex-direction:column;gap:var(--fg-space-s);padding:var(--fg-space-s);background:var(--fg-canvas);border-radius:var(--fg-r-lg)}
+.fg-toc-h{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-orange)}
+.fg-toc-links{display:flex;flex-direction:column;gap:var(--fg-gap-12)}
+.fg-toc-links a{font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-700);text-decoration:none}
+.fg-toc-links a.is-active,.fg-toc-links a[aria-current="true"]{color:var(--fg-grey-900)}
+@media (max-width:1199px){.fg-toc{position:static}}
+
+/* Section separator: mono orange label + 1px grey-300 rule, 18 gap · section title 24/30 Medium · body 18/24 grey-800 */
+.fg-sep{display:flex;flex-direction:column;gap:var(--fg-sep-gap);font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-orange)}
+.fg-sep::after{content:"";display:block;height:1px;background:var(--fg-grey-300)}
+.fg-sec-title{margin:0;font-size:var(--fg-t-blog);line-height:var(--fg-t-blog-lh);font-weight:var(--fg-t-blog-w);letter-spacing:0;color:var(--fg-grey-900)}
+.fg-body{margin:0;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-800)}
+.fg-body strong{font-weight:600;color:var(--fg-grey-900)}   /* Figma emphasis run (Inter Semi Bold, #1F2022) */
+
+/* Checklist item: 24px orange-outline checkbox (4px radius, 16px check) + 18/28 text, 18 gap, 24 between items */
+.fg-checks,.fg-nums{display:flex;flex-direction:column;gap:var(--fg-list-gap);margin:0;padding:0;list-style:none}
+.fg-checks li,.fg-nums li{display:flex;gap:var(--fg-gap-18);align-items:flex-start;background:var(--fg-canvas);border-radius:var(--fg-r);font-size:var(--fg-t-article);line-height:var(--fg-t-article-lh);color:var(--fg-grey-900)}
+.fg-checks li::before{content:"";flex:none;width:var(--fg-check);height:var(--fg-check);box-sizing:border-box;border:var(--fg-bw) solid var(--fg-orange);border-radius:var(--fg-r);background:var(--fg-canvas) var(--fg-check-img) center/var(--fg-check-icon) no-repeat}
+/* Numbered requirement: 40px brown tile, 4px radius, 24px canvas numeral */
+.fg-nums{counter-reset:fgn}
+.fg-nums li{counter-increment:fgn}
+.fg-nums li::before{content:counter(fgn);flex:none;display:grid;place-items:center;width:var(--fg-num);height:var(--fg-num);border-radius:var(--fg-r);background:var(--fg-brown);color:var(--fg-canvas);font-size:var(--fg-t-num);line-height:var(--fg-t-num-lh)}
+
+/* Editorial callout: white panel, 3px orange left bar, pad 24, gap 10; mono orange label + 18/24 grey-800 copy */
+.fg-callout{display:flex;flex-direction:column;gap:10px;padding:var(--fg-callout-pad);background:#fff;border-left:var(--fg-callout-bar) solid var(--fg-orange)}
+.fg-callout .fg-callout-l{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-orange)}
+.fg-callout p{margin:0;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-800)}
+
+/* Profile / data table: canvas, 4px radius; mono grey-700 header on a black hairline; rows min 64, 14/18 text, grey-200 rules; 8px status dot */
+.fg-dtable{display:flex;flex-direction:column;background:var(--fg-canvas);border-radius:var(--fg-r);overflow:hidden}
+.fg-dtable-h,.fg-dtable-r{display:flex;gap:var(--fg-space-s);padding:var(--fg-cell-y) var(--fg-cell-x)}
+.fg-dtable-h{border-bottom:var(--fg-bw) solid #000;font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.fg-dtable-r{align-items:center;min-height:var(--fg-row-min);border-bottom:var(--fg-bw) solid var(--fg-grey-200);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.fg-dtable-h>:first-child,.fg-dtable-r>:first-child{flex:none;width:var(--fg-col-key)}
+.fg-dtable-r>:first-child{display:flex;align-items:center;gap:10px;color:var(--fg-grey-900)}
+.fg-dtable-r>:first-child::before{content:"";flex:none;width:var(--fg-dot);height:var(--fg-dot);border-radius:50%;background:var(--fg-status-ok)}
+.fg-dtable-r.is-hot>:first-child::before{background:var(--fg-status-hot)}
+.fg-dtable-h>:last-child,.fg-dtable-r>:last-child{flex:1;min-width:0}
+
+/* Fact table (key / value): mono grey-700 key (170) + 14/18 grey-900 value, grey-300 rule, 14 vertical pad */
+.fg-facts{display:flex;flex-direction:column}
+.fg-fact{display:flex;gap:var(--fg-space-s);padding:var(--fg-cell-y) 0;border-bottom:var(--fg-bw) solid var(--fg-grey-300);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh)}
+.fg-fact dt{flex:none;width:var(--fg-fact-key);margin:0;font-family:var(--font-mono);text-transform:uppercase;color:var(--fg-grey-700)}
+.fg-fact dd{flex:1;min-width:0;margin:0;color:var(--fg-grey-900)}
+
+/* Media / Product UI: grey-100 frame, pad 64/18, 4px radius, soft shadow; 384px screenshot; caption (720) + mono FIG. label */
+.fg-fig{display:flex;flex-direction:column;gap:var(--fg-gap-18);margin:0}
+.fg-fig-frame{padding:var(--fg-fig-pad-y) var(--fg-fig-pad-x);background:var(--fg-grey-100);border-radius:var(--fg-r);box-shadow:var(--fg-shadow-media)}
+.fg-fig-frame img{display:block;width:100%;height:var(--fg-fig-h);object-fit:cover;border-radius:var(--fg-r)}
+.fg-fig figcaption{display:flex;justify-content:space-between;gap:var(--fg-gutter);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.fg-fig figcaption span:first-child{max-width:var(--fg-fig-cap-w)}
+.fg-fig figcaption span:last-child{font-family:var(--font-mono);text-transform:uppercase;white-space:nowrap}
+
+/* Primary result: 72/72 orange numeral + mono label (200) | 1×128 grey-300 rule | 36/42 statement; 56 gap, 40 vertical pad */
+.fg-result{display:flex;align-items:center;gap:var(--fg-result-gap);padding:var(--fg-result-pad) 0}
+.fg-result-key{flex:none;width:var(--fg-result-key);display:flex;flex-direction:column;gap:10px}
+.fg-result-key b{font-weight:400;font-size:var(--fg-t-metric);line-height:var(--fg-t-metric-lh);color:var(--fg-orange)}
+.fg-result-key span{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.fg-result-rule{flex:none;width:1px;align-self:center;height:var(--fg-result-rule-h);background:var(--fg-grey-300)}
+.fg-result p{flex:1;min-width:0;margin:0;font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);color:var(--fg-grey-900)}
+@media (max-width:767px){.fg-result{flex-direction:column;align-items:flex-start}.fg-result-rule{width:100%;height:1px}}
+/* ===== END CASE STUDY ===== */
+
+/* ===== END FIGMA TOKENS ===== */
+
+</style>
+<style>
+/* ===== LYZR PRICING v2.1: page layer on the Figma tokens (--fg-*) =====
+   Principles: structure comes from surface fills (Grey 100) and spacing, not strokes.
+   Hairlines survive only where they carry meaning: the sticky table header, the nav, and focus/selected states. */
+:root{
+  --font-sans:"Aeonik","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --pr-sec:112px;                 /* section rhythm */
+  --pr-head-gap:56px;             /* section head to content */
+  --pr-nav-h:72px;
+  --pr-t-body:16px; --pr-t-body-lh:24px;   /* secondary body, brand body range 14-16 */
+  --pr-rule:rgba(250,250,249,.28);         /* off-white hairline on navy (table header only) */
+}
+@media (max-width:1199px){:root{--pr-sec:80px;--pr-head-gap:44px}}
+@media (max-width:767px){:root{--pr-sec:64px;--pr-head-gap:32px;--pr-nav-h:64px}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--fg-canvas);color:var(--fg-grey-900);font-family:var(--font-sans);font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);font-weight:400;font-synthesis:none;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,p,dl,dd,ul{margin:0;padding:0}
+h1,h2,h3{text-wrap:balance}
+strong,b{font-weight:400}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--fg-orange);outline-offset:3px}
+
+.pr-w{width:100%;max-width:var(--fg-frame);margin:0 auto;padding-left:var(--fg-pad);padding-right:var(--fg-pad)}
+.pr-mono{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase}
+
+/* ---------- nav ---------- */
+.pr-nav{position:sticky;top:0;z-index:50;background:var(--fg-canvas);border-bottom:var(--fg-bw) solid var(--fg-grey-200)}
+.pr-nav-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;height:var(--pr-nav-h)}
+.pr-brand{display:inline-flex;align-items:center;justify-self:start;line-height:0;text-decoration:none}
+.pr-brand svg{display:block;height:28px;width:auto}
+.lp-links{display:flex;align-items:center;gap:36px}
+.lp-links a{font-size:16px;line-height:24px;color:var(--fg-grey-700);text-decoration:none;padding:8px 0;border-bottom:1px solid transparent;transition:color .15s}
+.lp-links a:hover{color:var(--fg-grey-900)}
+.lp-links a.act{color:var(--fg-grey-900);border-bottom-color:var(--fg-grey-900)}
+.pr-nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px}
+.pr-nav-right .fg-btn{font-size:16px}
+.pr-menu-btn{display:none;width:40px;height:40px;border:var(--fg-bw) solid var(--fg-grey-300);border-radius:var(--fg-r);background:#fff;padding:0;cursor:pointer;align-items:center;justify-content:center}
+.pr-menu-btn span,.pr-menu-btn span::before,.pr-menu-btn span::after{display:block;width:16px;height:1px;background:var(--fg-grey-900);content:"";position:relative}
+.pr-menu-btn span::before{position:absolute;top:-5px}
+.pr-menu-btn span::after{position:absolute;top:5px}
+@media (max-width:1199px){
+  .pr-nav-in{grid-template-columns:1fr auto}
+  .pr-menu-btn{display:inline-flex}
+  .lp-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--fg-pad) 16px;background:var(--fg-canvas);border-bottom:var(--fg-bw) solid var(--fg-grey-200)}
+  .pr-nav.is-open .lp-links{display:flex}
+  .lp-links a{width:100%;padding:14px 0;border-bottom:0;font-size:18px}
+  .lp-links a.act{border-bottom:0}
+}
+@media (max-width:767px){
+  .pr-brand svg{height:24px}
+  .pr-nav-right .fg-btn--nav{width:auto;padding:0 14px;font-size:15px}
+}
+
+/* ---------- section scaffolding ---------- */
+.pr-sec{padding-top:var(--pr-sec);padding-bottom:var(--pr-sec)}
+.pr-sec + .pr-sec{padding-top:0}
+.pr-sechead{display:grid;grid-template-columns:minmax(0,1fr) 424px;align-items:end;gap:var(--fg-gutter) 96px;margin-bottom:var(--pr-head-gap)}
+.pr-sechead .t{display:flex;flex-direction:column;gap:var(--fg-gap-12);max-width:600px;text-wrap:balance}
+.pr-sechead h2{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;color:var(--fg-grey-900);text-wrap:balance}
+.pr-sechead .d{font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-700);text-wrap:pretty}
+.pr-sechead--solo{grid-template-columns:minmax(0,1fr)}
+@media (max-width:1199px){.pr-sechead{grid-template-columns:minmax(0,1fr);align-items:start}.pr-sechead .d{max-width:560px}}
+
+[data-r]{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+[data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}}
+
+/* ---------- hero ---------- */
+.pr-hero{padding-top:96px;padding-bottom:var(--pr-sec)}
+.pr-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:var(--fg-gutter) 96px;align-items:end}
+.pr-hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:var(--fg-space-s)}
+.pr-hero-copy .fg-eyebrow{max-width:560px}
+.pr-hero-copy h1{font-size:var(--fg-t-hero);line-height:var(--fg-t-hero-lh);font-weight:400;color:var(--fg-grey-900);max-width:680px}
+.pr-lede{max-width:540px;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-700);text-wrap:pretty}
+.pr-hero-ctas{display:flex;flex-direction:column;align-items:flex-start;gap:var(--fg-gap-16);margin-top:var(--fg-gap-18)}
+.pr-note{max-width:440px;font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.pr-hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--fg-gap-16)}
+.lp-hstat{display:flex;flex-direction:column;justify-content:space-between;gap:var(--fg-gap-40);min-height:200px;padding:var(--fg-card-pad-lg) 32px;border-radius:var(--fg-r);border:1px solid var(--fg-grey-200)}
+.lp-hstat .n{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:var(--fg-primary-blue)}
+.lp-hstat .l{font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-700)}
+@media (max-width:1199px){
+  .pr-hero{padding-top:64px}
+  .pr-hero-grid{grid-template-columns:minmax(0,1fr);gap:56px;align-items:start}
+  .pr-hero-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .lp-hstat{min-height:0;padding:24px 20px;gap:var(--fg-gap-20)}
+  .lp-hstat .n{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh)}
+  .lp-hstat .l{font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh)}
+}
+@media (max-width:767px){
+  .pr-hero{padding-top:40px}
+  .pr-hero-grid{gap:40px}
+  .pr-hero-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+}
+
+/* ---------- layers: one surface per group, spacing does the separating ---------- */
+.lp-layer-group{padding:var(--fg-card-pad-lg);border-radius:var(--fg-r);border:1px solid var(--fg-grey-200)}
+.lp-layer-group + .lp-layer-group{margin-top:var(--fg-space-s)}
+.lp-ghead,.lp-tier{display:grid;grid-template-columns:300px minmax(0,1fr) 260px;column-gap:48px}
+.lp-ghead{align-items:baseline;margin-bottom:var(--fg-gap-40)}
+.lp-ghead .name{color:var(--fg-orange)}
+.lp-ghead .lead{font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-900);text-wrap:pretty}
+.lp-ghead .meta{text-align:right;color:var(--fg-grey-700)}
+.lp-tier{align-items:start}
+.lp-tier + .lp-tier{margin-top:var(--fg-gap-40)}
+.lp-tier--hl{margin-left:-24px;margin-right:-24px;padding:var(--fg-space-s);background:var(--fg-grey-100);border-radius:var(--fg-r)}
+.lp-tier .tname{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900)}
+.lp-tier .tkicker{margin-top:var(--fg-gap-12);color:var(--fg-grey-700)}
+.lp-tier .tbody{max-width:560px}
+.lp-tier .tbody p{font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-700);text-wrap:pretty}
+.lp-tier .tbody p + p{margin-top:var(--fg-gap-12)}
+.lp-tier .tprice{text-align:right}
+.lp-tier .tprice .amt{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:var(--fg-primary-blue)}
+.lp-tier .tprice .note{margin-top:var(--fg-gap-12);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.lp-tier .tprice .extra{margin-top:var(--fg-gap-16);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+@media (max-width:1199px){
+  .lp-ghead,.lp-tier{grid-template-columns:minmax(0,1fr) 220px;column-gap:40px}
+  .lp-ghead{grid-template-rows:auto auto}
+  .lp-ghead .name{grid-column:1;grid-row:1}
+  .lp-ghead .meta{grid-column:2;grid-row:1}
+  .lp-ghead .lead{grid-column:1/-1;grid-row:2;margin-top:var(--fg-gap-12)}
+  .lp-tier .tname-wrap{grid-column:1;grid-row:1}
+  .lp-tier .tbody{grid-column:1;grid-row:2;margin-top:var(--fg-gap-16)}
+  .lp-tier .tprice{grid-column:2;grid-row:1/3}
+}
+@media (max-width:767px){
+  .lp-layer-group{padding:var(--fg-card-pad) 20px}
+  .lp-ghead,.lp-tier{grid-template-columns:minmax(0,1fr)}
+  .lp-ghead .name,.lp-ghead .meta,.lp-ghead .lead,.lp-tier .tname-wrap,.lp-tier .tbody,.lp-tier .tprice{grid-column:1;grid-row:auto}
+  .lp-ghead .meta{text-align:left;margin-top:var(--fg-gap-12)}
+  .lp-ghead .lead{margin-top:var(--fg-gap-12)}
+  .lp-tier--hl{margin-left:-12px;margin-right:-12px;padding:20px 12px}
+  .lp-tier .tprice{text-align:left;margin-top:var(--fg-space-s)}
+  .lp-tier .tprice .amt{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh)}
+}
+
+/* ---------- agent-month (navy ground, reversed type) ---------- */
+.lp-dark{background:var(--fg-blue-panel);color:var(--fg-canvas);padding-top:var(--pr-sec);padding-bottom:var(--pr-sec)}
+.lp-dark .pr-sechead h2{color:var(--fg-canvas)}
+.lp-dark .pr-sechead .d{color:var(--fg-grey-200)}
+.lp-dark .fg-eyebrow{color:var(--fg-grey-300)}
+
+/* tables: one hairline under a sticky header, rows separated by space only */
+.lp-classtable-h,.lp-bandtable-h,.lp-example-head{position:sticky;top:var(--pr-nav-h);z-index:4}
+.lp-classtable-h,.lp-classtable-r{display:grid;grid-template-columns:260px minmax(0,1fr) 120px 300px;column-gap:var(--fg-space-s);align-items:center}
+.lp-classtable-h{padding:var(--fg-gap-18) 0;background:var(--fg-blue-panel);border-bottom:var(--fg-bw) solid var(--pr-rule);font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-300)}
+.lp-classtable-r{padding:var(--fg-space-s) 0}
+.lp-classtable-h + .lp-classtable-r{padding-top:var(--fg-gap-40)}
+.lp-classtable-r .code,.lp-bandtable-row .cls{display:flex;align-items:center;gap:var(--fg-gap-16);font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh)}
+.lp-classtable-r .code span,.lp-bandtable-row .cls span{flex:none;width:20px;font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-300)}
+.lp-classtable-r .what{max-width:520px;font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-200);text-wrap:pretty}
+.lp-classtable-r .draw{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh)}
+.lp-classtable-r .human{font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-200)}
+
+.lp-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--fg-gutter) 48px;margin-top:var(--fg-gap-60);padding-top:var(--fg-gap-60)}
+.lp-principle h3{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);font-weight:400;color:var(--fg-canvas)}
+.lp-principle p{margin-top:var(--fg-gap-16);font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-200);text-wrap:pretty}
+
+.lp-bandtable{margin-top:var(--fg-gap-60);padding-top:var(--fg-gap-60)}
+.lp-bandtable-title{padding-bottom:var(--fg-gap-18);font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-300)}
+.lp-bandtable-h,.lp-bandtable-row{display:grid;grid-template-columns:260px repeat(3,minmax(0,1fr));column-gap:var(--fg-space-s);align-items:center}
+.lp-bandtable-h{padding:var(--fg-gap-18) 0;background:var(--fg-blue-panel);border-bottom:var(--fg-bw) solid var(--pr-rule);font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-300)}
+.lp-bandtable-row{padding:var(--fg-gap-20) 0}
+.lp-bandtable-h + .lp-bandtable-row{padding-top:var(--fg-space-s)}
+.lp-bandtable-row .val{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh)}
+
+.lp-bandnote{max-width:640px;margin-top:var(--fg-gap-40);font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-200);text-wrap:pretty}
+.lp-bandnote strong{color:var(--fg-canvas)}
+
+@media (max-width:1199px){
+  .lp-classtable-h,.lp-classtable-r{grid-template-columns:200px minmax(0,1fr) 90px}
+  .lp-classtable-h>:nth-child(4){display:none}
+  .lp-classtable-r .human{grid-column:2/-1;margin-top:var(--fg-gap-12)}
+  .lp-bandtable-h,.lp-bandtable-row{grid-template-columns:200px repeat(3,minmax(0,1fr))}
+  .lp-principles{grid-template-columns:minmax(0,1fr);gap:var(--fg-gap-40)}
+}
+@media (max-width:767px){
+  .lp-classtable-h{display:none}
+  .lp-classtable-r{grid-template-columns:minmax(0,1fr) auto;row-gap:var(--fg-gap-12);padding:var(--fg-space-s) 0}
+  .lp-classtable-h + .lp-classtable-r{padding-top:0}
+  .lp-classtable-r .code{grid-column:1;grid-row:1}
+  .lp-classtable-r .draw{grid-column:2;grid-row:1}
+  .lp-classtable-r .what,.lp-classtable-r .human{grid-column:1/-1;margin-top:0}
+  .lp-bandtable-h,.lp-bandtable-row{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:12px}
+  .lp-bandtable-h>:first-child{display:none}
+  .lp-bandtable-h{font-size:12px;line-height:16px;align-items:start}
+  .lp-bandtable-row{row-gap:var(--fg-gap-12);padding:var(--fg-gap-18) 0}
+  .lp-bandtable-row .cls{grid-column:1/-1}
+  .lp-bandtable-row .val{font-size:24px;line-height:30px}
+}
+
+/* ---------- worked example ---------- */
+.lp-example{display:grid;grid-template-columns:minmax(0,1fr) 424px;gap:var(--fg-gutter) 72px;align-items:start}
+.lp-example-head,.lp-example-row,.lp-example-total{display:grid;grid-template-columns:minmax(0,1fr) 140px 100px;column-gap:var(--fg-space-s);align-items:center}
+.lp-example-head{padding:var(--fg-gap-18) 0;background:var(--fg-canvas);border-bottom:var(--fg-bw) solid var(--fg-grey-300);font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.lp-example-head>:not(:first-child),.lp-example-row>:not(:first-child),.lp-example-total>:not(:first-child){text-align:right}
+.lp-example-row{padding:var(--fg-space-s) 0}
+.lp-example-head + .lp-example-row{padding-top:var(--fg-gap-40)}
+.lp-example-row .title{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900)}
+.lp-example-row .detail{margin-top:var(--fg-gap-12);max-width:440px;font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.lp-example-row .weight{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.lp-example-row .draw{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900)}
+.lp-example-total{margin-top:var(--fg-gap-18);padding:var(--fg-space-s);background:var(--fg-grey-100);border-radius:var(--fg-r)}
+.lp-example-total .label{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.lp-example-total .val{grid-column:2/-1;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:var(--fg-primary-blue)}
+.lp-example-aside{display:flex;flex-direction:column;gap:var(--fg-gap-16)}
+.lp-stat-card{padding:var(--fg-card-pad-lg);background:var(--fg-grey-100);border-radius:var(--fg-r)}
+.lp-stat-card b{display:block;font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);color:var(--fg-primary-blue)}
+.lp-stat-card p{margin-top:var(--fg-gap-16);font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-700);text-wrap:pretty}
+.lp-stat-card.accent{background:var(--fg-grey-900)}
+.lp-stat-card.accent b{color:#fff}
+.lp-stat-card.accent p{color:var(--fg-grey-300)}
+@media (max-width:1199px){
+  .lp-example{grid-template-columns:minmax(0,1fr);gap:var(--fg-gap-40)}
+  .lp-stat-card{display:grid;grid-template-columns:240px minmax(0,1fr);column-gap:var(--fg-gutter);align-items:start}
+  .lp-stat-card p{margin-top:0}
+}
+@media (max-width:767px){
+  .lp-example-head,.lp-example-row,.lp-example-total{grid-template-columns:minmax(0,1fr) 84px 52px;column-gap:12px}
+  .lp-example-total{padding:20px 16px}
+  .lp-example-row .title{font-size:20px;line-height:26px}
+  .lp-example-row .draw{font-size:20px;line-height:26px}
+  .lp-example-head{font-size:12px;line-height:16px}
+  .lp-stat-card{display:block;padding:var(--fg-card-pad)}
+  .lp-stat-card p{margin-top:var(--fg-gap-16)}
+}
+
+/* ---------- complete the stack ---------- */
+.lp-stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--fg-gutter)}
+.lp-stack-card{display:flex;flex-direction:column;padding:var(--fg-card-pad-lg);background:var(--fg-grey-100);border-radius:var(--fg-r)}
+.lp-stack-card .tkicker{color:var(--fg-grey-700)}
+.lp-stack-card .card-h{margin-top:var(--fg-gap-12);font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);font-weight:400;color:var(--fg-grey-900)}
+.lp-stack-card p{margin-top:var(--fg-gap-16);max-width:520px;font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-700);text-wrap:pretty}
+.lp-stack-card .price-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--fg-gap-16);margin-top:auto;padding-top:var(--fg-gap-60)}
+.lp-stack-card .price-row .amt{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:var(--fg-primary-blue)}
+.lp-stack-card .price-row .note{font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700);text-align:right}
+@media (max-width:1199px){.lp-stack-card .price-row{flex-direction:column;align-items:flex-start;gap:8px}.lp-stack-card .price-row .note{text-align:left}}
+@media (max-width:767px){.lp-stack{grid-template-columns:minmax(0,1fr)}.lp-stack-card{padding:var(--fg-card-pad)}.lp-stack-card .price-row{padding-top:var(--fg-gap-40)}.lp-stack-card .price-row .amt{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh)}}
+
+/* ---------- never on the meter / three ways ---------- */
+.lp-twocol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--fg-gutter);grid-template-rows:auto 1fr}
+.lp-twocol>div{display:grid;grid-template-rows:subgrid;grid-row:span 2;row-gap:var(--fg-gap-40);align-content:start;padding:var(--fg-card-pad-lg);border-radius:var(--fg-r);border:1px solid var(--fg-grey-200)}
+.lp-twocol .hd{display:flex;flex-direction:column;gap:var(--fg-gap-12);max-width:560px}
+.lp-twocol h2{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);font-weight:400;color:var(--fg-grey-900)}
+.fg-checks.lp-checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--fg-gap-20) var(--fg-gutter)}
+.lp-checklist li{display:flex;align-items:center}
+.lp-meter-note{margin-top:var(--fg-gap-40);font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900);text-wrap:balance}
+.lp-starttier + .lp-starttier{margin-top:var(--fg-gap-40)}
+.lp-starttier-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--fg-gap-16)}
+.lp-starttier .name{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900)}
+.lp-starttier .price{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);color:var(--fg-primary-blue)}
+.lp-starttier p{margin-top:var(--fg-gap-12);max-width:520px;font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-700);text-wrap:pretty}
+@media (max-width:1199px){.lp-twocol{grid-template-columns:minmax(0,1fr);grid-template-rows:none;row-gap:var(--pr-sec)}.lp-twocol>div{grid-template-rows:none;grid-row:auto}}
+@media (max-width:767px){.fg-checks.lp-checklist{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- FAQ: surface rows, no rules ---------- */
+.lp-faqwrap{display:grid;grid-template-columns:404px minmax(0,760px);justify-content:space-between;gap:var(--fg-gap-40) var(--fg-gutter);align-items:start}
+.lp-faqwrap .t{display:flex;flex-direction:column;gap:var(--fg-gap-12);max-width:600px;position:sticky;top:calc(var(--pr-nav-h) + 32px)}
+.lp-faqwrap h2{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;color:var(--fg-grey-900);text-wrap:balance}
+.lp-faq{display:flex;flex-direction:column;gap:0}
+.lp-faq-item{border-radius:var(--fg-r);border-bottom:1px solid var(--fg-grey-200)}
+.lp-faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:var(--fg-gap-16);padding:var(--fg-acc-y) var(--fg-space-s) var(--fg-acc-y) 28px;list-style:none;cursor:pointer;font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-700);transition:color .15s}
+.lp-faq-item summary::-webkit-details-marker{display:none}
+.lp-faq-item summary::after{content:"";flex:none;width:var(--fg-check);height:var(--fg-check);background:linear-gradient(var(--fg-grey-900),var(--fg-grey-900)) center/14px 1px no-repeat,linear-gradient(var(--fg-grey-900),var(--fg-grey-900)) center/1px 14px no-repeat}
+.lp-faq-item[open] summary::after{background:linear-gradient(var(--fg-grey-900),var(--fg-grey-900)) center/14px 1px no-repeat}
+.lp-faq-item summary:hover,.lp-faq-item[open] summary{color:var(--fg-grey-900)}
+.lp-faq-item .a{max-width:600px;padding:0 28px var(--fg-space-s);font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-700);text-wrap:pretty}
+@media (max-width:1199px){.lp-faqwrap{grid-template-columns:minmax(0,1fr)}.lp-faqwrap .t{position:static}}
+@media (max-width:767px){.lp-faq-item summary{font-size:20px;line-height:26px;padding:20px 16px 20px 20px}.lp-faq-item .a{padding:0 20px 20px}}
+
+/* ---------- CTA panel ---------- */
+.lp-cta-band{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:var(--fg-gap-40) 96px;padding:var(--fg-gap-60);border-radius:var(--fg-r);background:var(--fg-blue-panel);color:var(--fg-canvas)}
+.lp-cta-band h2{max-width:600px;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;color:var(--fg-canvas)}
+.lp-cta-band p{max-width:520px;margin-top:var(--fg-space-s);font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-200);text-wrap:pretty}
+.lp-cta-actions{display:flex;flex-wrap:wrap;gap:var(--fg-gap-12)}
+.fg-btn--ghost{background:transparent;border:var(--fg-bw) solid var(--pr-rule);color:var(--fg-canvas)}
+.fg-btn--ghost:hover{border-color:var(--fg-canvas)}
+.fg-btn--line{background:#fff;border:var(--fg-bw) solid var(--fg-grey-300);color:var(--fg-grey-900)}
+.fg-btn--line:hover{border-color:var(--fg-grey-900)}
+.fg-btn{transition:opacity .15s,border-color .15s}
+.fg-btn--primary:hover{opacity:.92}
+@media (max-width:1199px){.lp-cta-band{grid-template-columns:minmax(0,1fr);align-items:start}}
+@media (max-width:767px){.lp-cta-band{padding:var(--fg-card-pad-lg) var(--fg-space-s)}.lp-cta-actions .fg-btn{flex:1 1 100%}}
+
+/* ---------- footer ---------- */
+.lp-foot{background:var(--fg-grey-900);color:var(--fg-canvas)}
+.lp-foot-in{display:flex;align-items:center;justify-content:space-between;gap:var(--fg-gap-40);padding-top:var(--fg-gap-60);padding-bottom:var(--fg-gap-60)}
+.lp-foot .pr-brand svg{height:32px}
+.lp-foot p{max-width:380px;text-align:right;font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-400)}
+@media (max-width:767px){.lp-foot-in{flex-direction:column;align-items:flex-start;gap:var(--fg-space-s);padding-top:var(--fg-gap-40);padding-bottom:var(--fg-gap-40)}.lp-foot p{text-align:left}}
+
+/* =====================================================================
+   ESTIMATE VIEW
+   ===================================================================== */
+.es-top{padding-top:80px;padding-bottom:var(--fg-gap-60)}
+.es-top .pr-sechead{margin-bottom:0;align-items:start}
+.es-top h1{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);font-weight:400;color:var(--fg-grey-900);text-wrap:balance}
+@media (max-width:1199px){.es-top{padding-top:56px;padding-bottom:var(--fg-gap-40)}}
+@media (max-width:767px){.es-top{padding-top:40px;padding-bottom:var(--fg-space-s)}}
+
+.es-layout{display:grid;grid-template-columns:minmax(0,1fr) 425px;gap:var(--fg-gap-60);align-items:start;padding-bottom:var(--pr-sec)}
+.es-main>*+*{margin-top:72px}
+.es-bhead{display:flex;flex-direction:column;gap:var(--fg-gap-12);margin-bottom:var(--fg-space-s)}
+.es-bhead .t{font-size:var(--fg-t-blog);line-height:var(--fg-t-blog-lh);font-weight:var(--fg-t-blog-w);color:var(--fg-grey-900)}
+.es-bhead p{max-width:600px;font-size:var(--pr-t-body);line-height:var(--pr-t-body-lh);color:var(--fg-grey-700);text-wrap:pretty}
+
+.es-field label{display:block;margin-bottom:var(--fg-gap-12);font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.es-input{display:block;width:100%;max-width:507px;height:var(--fg-field-h);padding:0 20px;border:var(--fg-bw) solid var(--fg-grey-300);border-radius:var(--fg-r-field);background:#fff;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-900)}
+.es-input::placeholder{color:var(--fg-grey-700);opacity:.7}
+.es-input:hover{border-color:var(--fg-grey-700)}
+.es-input:focus{border-color:var(--fg-grey-900);outline:2px solid var(--fg-orange);outline-offset:3px}
+.es-fieldnote{margin-top:var(--fg-gap-12);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+
+.es-class{padding:var(--fg-card-pad-lg);border-radius:var(--fg-r);border:1px solid var(--fg-grey-200)}
+.es-class + .es-class{margin-top:var(--fg-gap-16)}
+.es-class-head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--fg-gutter)}
+.es-class-head .name{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900)}
+.es-class-head p{margin-top:var(--fg-gap-12);max-width:460px;font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.es-class-head .draw{flex:none;min-width:64px;text-align:right;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:var(--fg-primary-blue)}
+.es-class-head .draw::before{content:"Draw";display:block;margin-bottom:4px;font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.es-stepper-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--fg-gap-12);margin-top:var(--fg-space-s)}
+.es-stepper{display:flex;flex-direction:column;padding:var(--fg-gap-16);background:var(--fg-grey-100);border-radius:var(--fg-r)}
+.es-stepper .band{font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-900);min-height:36px}
+.es-stepper .rate{margin-top:6px;font-family:var(--font-mono);font-size:12px;line-height:16px;text-transform:uppercase;color:var(--fg-grey-700)}
+.es-stepper-controls{display:flex;gap:6px;margin-top:auto;padding-top:var(--fg-gap-16)}
+.es-stepper-btn{flex:none;width:40px;height:40px;display:grid;place-items:center;border:var(--fg-bw) solid var(--fg-grey-300);border-radius:var(--fg-r);background:#fff;font-size:20px;line-height:1;padding:0;cursor:pointer;color:var(--fg-grey-900);transition:border-color .15s,background .15s}
+.es-stepper-btn:hover{border-color:var(--fg-grey-900)}
+.es-stepper-btn:active{background:var(--fg-grey-100)}
+.es-stepper-num{flex:1;min-width:0;width:100%;height:40px;padding:0 4px;border:var(--fg-bw) solid var(--fg-grey-300);border-radius:var(--fg-r);background:#fff;text-align:center;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-900);-moz-appearance:textfield;appearance:textfield}
+.es-stepper-num::-webkit-outer-spin-button,.es-stepper-num::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.es-stepper-num:focus{border-color:var(--fg-grey-900)}
+
+.es-monthlyrow{display:flex;align-items:center;justify-content:space-between;gap:var(--fg-gutter);margin-top:var(--fg-gap-16);padding:var(--fg-space-s) var(--fg-card-pad-lg);border-radius:var(--fg-r);background:var(--fg-grey-900);color:#fff}
+.es-monthlyrow p{max-width:600px;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-300)}
+.es-monthlyrow .val{flex:none;font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:#fff}
+
+.es-addons-list{display:flex;flex-direction:column;gap:var(--fg-gap-12)}
+.es-addon-row{display:grid;grid-template-columns:var(--fg-check) minmax(0,1fr) auto;align-items:start;gap:var(--fg-gap-20);padding:var(--fg-space-s) var(--fg-card-pad);border-radius:var(--fg-r);cursor:pointer;transition:background .15s,border-color .15s;border:1px solid var(--fg-grey-200)}
+.es-addon-row:hover{background:var(--fg-grey-100)}
+.es-addon-row:has(input:checked){background:#fff;border-color:var(--fg-grey-400)}
+.es-addon-row input{appearance:none;-webkit-appearance:none;width:var(--fg-check);height:var(--fg-check);margin:3px 0 0;border:var(--fg-bw) solid var(--fg-grey-400);border-radius:var(--fg-r);background:#fff center/var(--fg-check-icon) no-repeat;cursor:pointer}
+.es-addon-row input:checked{border-color:var(--fg-orange);background-image:var(--fg-check-img)}
+.es-addon-row .name{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900)}
+.es-addon-row p{margin-top:var(--fg-gap-12);max-width:560px;font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.es-addon-row .price{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900);white-space:nowrap}
+
+/* summary: one surface, space between groups, no rules */
+.es-summary{position:sticky;top:calc(var(--pr-nav-h) + 24px);padding:var(--fg-card-pad-lg);background:var(--fg-grey-100);border-radius:var(--fg-r)}
+.es-summary-head{display:flex;flex-direction:column;gap:var(--fg-gap-12);padding-bottom:var(--fg-space-s)}
+.es-summary-head .date{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.es-summary-head .company{font-size:var(--fg-t-sub);line-height:var(--fg-t-sub-lh);color:var(--fg-grey-900);overflow-wrap:anywhere}
+#pr-summary-items{padding:var(--fg-space-s);background:#fff;border-radius:var(--fg-r)}
+.es-summary-item{display:flex;justify-content:space-between;gap:var(--fg-gap-16)}
+.es-summary-item + .es-summary-item{margin-top:var(--fg-gap-20)}
+.es-summary-item .label{font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-900)}
+.es-summary-item .detail{margin-top:6px;font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.es-summary-item .amount{flex:none;font-size:var(--fg-t-para);line-height:var(--fg-t-para-lh);color:var(--fg-grey-900);white-space:nowrap}
+.es-summary-empty{font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.es-summary-total{display:flex;flex-direction:column;gap:var(--fg-gap-12);padding:var(--fg-space-s) 0 var(--fg-gap-18)}
+.es-summary-total .label{font-family:var(--font-mono);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);text-transform:uppercase;color:var(--fg-grey-700)}
+.es-summary-total .val{font-size:var(--fg-t-large);line-height:var(--fg-t-large-lh);color:var(--fg-primary-blue);overflow-wrap:anywhere}
+.es-summary-notes{display:flex;flex-direction:column;gap:var(--fg-gap-12)}
+.es-summary-notes p{font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.es-summary-actions{display:flex;flex-wrap:wrap;gap:var(--fg-gap-12);padding-top:var(--fg-space-s)}
+.es-summary-actions .fg-btn{flex:1 1 auto}
+.es-summary-status{margin-top:var(--fg-gap-12);font-size:var(--fg-t-cap);line-height:var(--fg-t-cap-lh);color:var(--fg-grey-700)}
+.es-summary-status:empty{display:none}
+.es-summary-fine{margin-top:var(--fg-gap-18);font-size:var(--fg-t-micro);line-height:16px;color:var(--fg-grey-700)}
+
+@media (max-width:1199px){
+  .es-layout{grid-template-columns:minmax(0,1fr);gap:56px}
+  .es-summary{position:static}
+}
+@media (max-width:767px){
+  .es-main>*+*{margin-top:48px}
+  .es-class{padding:var(--fg-card-pad)}
+  .es-class-head .draw{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh);min-width:0}
+  .es-stepper-row{grid-template-columns:minmax(0,1fr)}
+  .es-stepper{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:center;column-gap:var(--fg-gap-16)}
+  .es-stepper .band{min-height:0}
+  .es-stepper-controls{grid-column:2;grid-row:1/3;margin-top:0;padding-top:0}
+  .es-stepper .rate{margin-top:6px}
+  .es-monthlyrow{flex-direction:column;align-items:flex-start;gap:var(--fg-gap-12);padding:var(--fg-card-pad)}
+  .es-monthlyrow .val{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh)}
+  .es-addon-row{grid-template-columns:var(--fg-check) minmax(0,1fr);padding:var(--fg-card-pad)}
+  .es-addon-row .price{grid-column:2;margin-top:var(--fg-gap-12)}
+  .es-summary{padding:var(--fg-card-pad)}
+  #pr-summary-items{padding:20px}
+  .es-summary-total .val{font-size:var(--fg-t-small);line-height:var(--fg-t-small-lh)}
+}
+
+@media print{
+  .noprint{display:none!important}
+  body{background:#fff}
+  .es-summary{position:static;background:none;padding:0}
+}
+
+</style>
+</head>
+<body>
+
+<header class="pr-nav noprint" id="top">
+  <div class="pr-w pr-nav-in">
+    <a href="#" class="pr-brand" aria-label="Lyzr pricing home"><svg focusable="false" viewBox="2.449 0 198.551 34" role="img" aria-label="Lyzr"><path fill="#FE4B1E" d="M55 21L47.6267 34H2.89478L55 21Z"/><path fill="#FE4B1E" d="M43.9352 9.21432L40.3648 20.8969L2.44928 31.9337L43.9352 9.21432Z"/><path fill="#FE4B1E" d="M34.1098 10.6493L34.0641 5.80164e-05C33.0913 5.51002 29.7951 9.74939 20.8644 18.5746L34.1098 10.6493Z"/><path fill="#1F2022" d="M67 34.0002V30.9005L71.5415 30.1256V3.97175L67 3.19682V0.097109H81.8808V3.19682L77.146 3.97175V30.1256C79.0303 30.4646 81.301 30.7068 83.7651 30.7068C89.0313 30.7068 94.0077 29.3507 97.0515 25.476H100.627L95.2155 34.0002H67Z"/><path fill="#1F2022" d="M104.675 34.0002V30.9005L109.313 30.1256V24.1199L98.2975 3.97175L94.6256 3.19682V0.097109H108.83V3.19682L104.385 3.97175L112.792 19.7609H112.985L121.585 3.97175L117.14 3.19682V0.097109H129.605V3.24526L125.643 3.97175L114.918 23.5387V30.1256L119.556 30.9005V34.0002H104.675Z"/><path fill="#1F2022" d="M129.995 34.0002V31.0943L153.959 3.77802C151.688 3.43899 149.321 3.29369 146.615 3.29369C140.769 3.29369 136.807 4.74668 134.537 8.81506H130.768L135.889 0.097109H162.655V2.61563L138.305 30.3193C140.817 30.6584 143.523 30.8037 146.615 30.8037C153.041 30.8037 157.341 29.3507 160.046 25.2823H163.815L158.694 34.0002H129.995Z"/><path fill="#1F2022" d="M166.214 34.0002V30.9005L170.949 30.1256V3.97175L166.214 3.19682V0.097109H176.36C178.437 0.097109 181.674 0.000244141 183.22 0.000244141C192.158 0.000244141 197.521 3.39056 197.521 9.15409C197.521 15.1114 191.869 17.7267 186.312 18.1142C188.003 19.5188 189.791 21.0686 192.497 24.3136L197.521 30.3193L201 30.7068V34.0002H192.883C191.144 31.8692 183.993 22.4732 180.321 18.4048H176.553V30.1256L181.384 30.9005V34.0002H166.214ZM176.553 15.2082H181.868C187.182 15.2082 190.854 13.8521 190.854 9.39626C190.854 5.08571 187.472 3.29369 182.496 3.29369C180.515 3.29369 178.437 3.58429 176.553 3.97175V15.2082Z"/></svg></a>
+    <nav class="lp-links" id="pr-links" aria-label="Pricing sections">
+      <a href="#agent-month">How agent-months work</a>
+      <a href="#example">Worked example</a>
+      <a href="#faq">Questions</a>
+      <a href="#estimate" id="nav-estimate-link">Build estimate</a>
+    </nav>
+    <div class="pr-nav-right">
+      <a class="fg-btn fg-btn--nav" href="https://www.lyzr.ai/book-a-demo/" target="_blank" rel="noopener noreferrer">Talk to sales</a>
+      <button type="button" class="pr-menu-btn" id="pr-menu" aria-label="Menu" aria-expanded="false" aria-controls="pr-links"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div id="view-home">
+
+<!-- ============ HERO ============ -->
+<section class="pr-hero">
+  <div class="pr-w pr-hero-grid">
+    <div class="pr-hero-copy" data-r>
+      <div class="fg-eyebrow">If humans are priced by man-month, why can agents be priced by agent-month?</div>
+      <h1>Pay only for the agents that run in production</h1>
+      <p class="pr-lede">Lyzr prices the digital workforce in agent-months: a pool of governed agents in production, budgeted the way a finance team already budgets headcount. Governance, training and hardware are flat. Nothing is metered on tokens.</p>
+      <div class="pr-hero-ctas">
+        <a class="fg-btn fg-btn--primary" href="#estimate">Build your estimate</a>
+        <p class="pr-note">All prices annual and prepaid. Deployed in your own cloud, on Optimus, or Lyzr-hosted.</p>
+      </div>
+    </div>
+    <div class="pr-hero-stats" data-r>
+      <div class="lp-hstat"><span class="n">$250K</span><span class="l">Opencontroller, the control plane, flat per year</span></div>
+      <div class="lp-hstat"><span class="n">150</span><span class="l">Agent-months in one block, for $250K</span></div>
+      <div class="lp-hstat"><span class="n">$1,700</span><span class="l">Per additional agent-month beyond a block</span></div>
+      <div class="lp-hstat"><span class="n">$0</span><span class="l">Charged for tokens, users, or agents in development</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THREE LAYERS ============ -->
+<section class="pr-sec" id="layers">
+  <div class="pr-w">
+    <div class="pr-sechead" data-r>
+      <div class="t"><div class="fg-eyebrow">Three layers. One registry.</div><h2>Govern, build and train, priced separately, reported in one place.</h2></div><p class="d">Govern the estate at a flat price. Build and orchestrate on agent-months. Train on a separate pool. Everything reports into the same control plane.</p>
+    </div>
+
+      <div class="lp-layer-group" data-r>
+    <div class="lp-ghead"><div class="name pr-mono">Govern</div><div class="lead">See, permission and control every agent your company runs.</div><div class="meta pr-mono">Flat, unlimited usage</div></div>
+    <div class="lp-tier">
+      <div class="tname-wrap"><div class="tname">Opencontroller</div><div class="tkicker pr-mono">The control plane</div></div>
+      <div class="tbody"><p>Governs every agent in your estate, Lyzr-built or not: identities, policy, evals, observability and lifecycle. Agents from Copilot, Bedrock, LangGraph and other frameworks come under management the moment you turn policy on. Unlimited agents. Unlimited users.</p></div>
+      <div class="tprice"><div class="amt">$250K</div><div class="note">per year, unlimited</div></div>
+    </div>
+    <div class="lp-tier lp-tier--hl">
+      <div class="tname-wrap"><div class="tname">Opencontroller + basecode</div><div class="tkicker pr-mono">The default stack</div></div>
+      <div class="tbody"><p>Everything in Opencontroller, plus basecode: monitors the coding agents in your pipelines and the agents running on individual laptops across the company, so every autonomous process is on the record. Runs entirely inside your own cloud.</p></div>
+      <div class="tprice"><div class="amt">$500K</div><div class="note">per year, unlimited</div></div>
+    </div>
+  </div>
+
+      <div class="lp-layer-group" data-r>
+    <div class="lp-ghead"><div class="name pr-mono">Build and orchestrate</div><div class="lead">Create agents, compose them into workflows, promote them into production.</div><div class="meta pr-mono">Priced in agent-months</div></div>
+    <div class="lp-tier">
+      <div class="tname-wrap"><div class="tname">Agent Studio, Architect and SuperFlow</div><div class="tkicker pr-mono">Developers, business users, orchestration</div></div>
+      <div class="tbody"><p>Build in Studio, build in Architect, wire it together in SuperFlow. You buy a pool of agent-months and every governed agent in production draws from it each month, weighted by what it is allowed to do. Agents in development draw nothing.</p><p>Each block includes two Lyzr forward deployed engineers for year one. Unused agent-months roll over on multi-year terms.</p></div>
+      <div class="tprice"><div class="amt">$250K</div><div class="note">per block of 150 agent-months</div><div class="extra">Beyond the block: $1,700 per agent-month, or the next block</div></div>
+    </div>
+  </div>
+
+      <div class="lp-layer-group" data-r>
+    <div class="lp-ghead"><div class="name pr-mono">Train</div><div class="lead">Own the model, not just the agent.</div><div class="meta pr-mono">Separate training pool</div></div>
+    <div class="lp-tier">
+      <div class="tname-wrap"><div class="tname">Openfinetuner</div><div class="tkicker pr-mono">Fine-tuning and post-training</div></div>
+      <div class="tbody"><p>Fine-tune and post-train open-weight models on your own data for agentic tasks, inside your own cloud. Training draws on its own pool of tokens and never touches your agent-months.</p></div>
+      <div class="tprice"><div class="amt">$250K</div><div class="note">for 2.5T training tokens</div></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ WHAT AN AGENT-MONTH IS (navy) ============ -->
+<section id="agent-month" class="lp-dark">
+  <div class="pr-w">
+    <div class="pr-sechead" data-r>
+      <div class="t"><div class="fg-eyebrow">The agent-month</div><h2>One governed agent, running in production, for one month.</h2></div><p class="d">The same object as an FTE-month in a labor plan. A governed agent has its own identity, its own policy and its own deployment lifecycle. Runs, sessions, replicas, versions and clones are not separate agents, just as a person working overtime is not a second person.</p>
+    </div>
+
+    <div class="lp-classtable" data-r>
+      <div class="lp-classtable-h"><div>Class</div><div>What it may do</div><div>Draw</div><div>Human equivalent</div></div>
+      <div class="lp-classtable-r">
+        <div class="code"><span>A</span>Retrieve</div>
+        <div class="what">Read only. Answers questions from knowledge, drafts, looks things up. No side effects.</div>
+        <div class="draw">0.25</div>
+        <div class="human">A quarter of a $50-an-hour worker. About $25K of labor a year.</div>
+      </div>
+      <div class="lp-classtable-r">
+        <div class="code"><span>B</span>Act</div>
+        <div class="what">Writes to enterprise systems: SAP, ServiceNow, Guidewire, Salesforce. No shell, filesystem or browser.</div>
+        <div class="draw">1.0</div>
+        <div class="human">One $50-an-hour worker. About $100K of labor a year.</div>
+      </div>
+      <div class="lp-classtable-r">
+        <div class="code"><span>C</span>Privileged</div>
+        <div class="what">Filesystem, code execution, browser or computer use, payments, identity administration. Runs on its own dedicated sandbox, no part-time rate.</div>
+        <div class="draw">2.0</div>
+        <div class="human">One $100-an-hour engineer or analyst. About $200K of labor a year.</div>
+      </div>
+    </div>
+
+    <div class="lp-principles" data-r>
+      <div class="lp-principle">
+        <h3>Interns are free</h3>
+        <p>You do not put someone on the payroll on the day you interview them. Agents in development, in Architect, in Studio or in a sandbox pointed at UAT draw nothing. You pay when an agent is promoted into production with an identity, a policy and a lifecycle.</p>
+      </div>
+      <div class="lp-principle">
+        <h3>One workflow is one agent</h3>
+        <p>A SuperFlow workflow with twenty nodes draws once a month, at the class of its most privileged node. A shared service used by six workflows is billed once for the estate. Good architecture is the cheapest architecture.</p>
+      </div>
+      <div class="lp-principle">
+        <h3>Activity moves the rate</h3>
+        <p>An agent that completes fewer than 100 units of work in a month draws a quarter of its class rate. One that completes more than 100,000 draws one class up. Class C is always full rate.</p>
+      </div>
+    </div>
+
+    <div class="lp-bandtable" data-r>
+      <div class="lp-bandtable-title">Draw per month by activity band</div>
+      <div class="lp-bandtable-h"><div>Class</div><div>Part-time, under 100 runs</div><div>Standard</div><div>Busy, over 100,000 runs</div></div>
+      <div class="lp-bandtable-row"><div class="cls"><span>A</span>Retrieve</div><div class="val">0.06</div><div class="val">0.25</div><div class="val">1.0</div></div>
+      <div class="lp-bandtable-row"><div class="cls"><span>B</span>Act</div><div class="val">0.25</div><div class="val">1.0</div><div class="val">2.0</div></div>
+      <div class="lp-bandtable-row"><div class="cls"><span>C</span>Privileged</div><div class="val">2.0</div><div class="val">2.0</div><div class="val">3.0</div></div>
+    </div>
+
+    <p class="lp-bandnote" data-r>A run is one unit of work completed, not one wake-up: a request answered, a ticket closed, a claim decided, a record processed. A nightly job that clears 10,000 claims is 10,000 runs, not one. Your controller counts them from its own traces, so the band is a fact, not a negotiation, and <strong>the number on the invoice is the number on your screen</strong>.</p>
+  </div>
+</section>
+
+<!-- ============ WORKED EXAMPLE ============ -->
+<section id="example" class="pr-sec">
+  <div class="pr-w">
+    <div class="pr-sechead" data-r>
+      <div class="t"><div class="fg-eyebrow">Worked example</div><h2>One block, one year, one insurer.</h2></div><p class="d">A mid-sized insurer buys one block of 150 agent-months. Over two quarters, working with the two Lyzr engineers included in the block, they promote 19 agents into production.</p>
+    </div>
+
+    <div class="lp-example" data-r>
+      <div>
+        <div class="lp-example-head"><div>Agents in production</div><div>Weight</div><div>Draw</div></div>
+        <div class="lp-example-row">
+          <div><div class="title">2 privileged agents</div><div class="detail">Claims file handler in a sandbox; a coding agent maintaining internal tools</div></div>
+          <div class="weight">2 &times; 2.0</div><div class="draw">4.0</div>
+        </div>
+        <div class="lp-example-row">
+          <div><div class="title">5 acting agents</div><div class="detail">Purchase-request validator, ServiceNow resolver, invoice matcher, onboarding provisioner, renewal assembler</div></div>
+          <div class="weight">5 &times; 1.0</div><div class="draw">5.0</div>
+        </div>
+        <div class="lp-example-row">
+          <div><div class="title">12 retrieve agents</div><div class="detail">Policy questions, HR handbook, product lookups, contract clause search</div></div>
+          <div class="weight">12 &times; 0.25</div><div class="draw">3.0</div>
+        </div>
+        <div class="lp-example-total"><div class="label">Monthly draw</div><div class="val">12.0</div></div>
+      </div>
+      <aside class="lp-example-aside">
+        <div class="lp-stat-card"><b>144</b><p>Agent-months used over the year, inside the block of 150. Room to promote one more acting agent in the autumn.</p></div>
+        <div class="lp-stat-card"><b>12 digital FTEs</b><p>24,000 hours of $50-an-hour work. About $1.2M of labor capacity.</p></div>
+        <div class="lp-stat-card accent"><b>$250K</b><p>One block. Roughly five to one on the license, before the 40 agents still on the development bench, which cost nothing.</p></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPLETE THE STACK ============ -->
+<section class="pr-sec">
+  <div class="pr-w">
+    <div class="pr-sechead" data-r>
+      <div class="t"><div class="fg-eyebrow">Complete the stack</div><h2>The layer your employees use every day, and the box that runs all of it.</h2></div><p class="d">With no traffic leaving the building, when you need it that way.</p>
+    </div>
+    <div class="lp-stack" data-r>
+      <div class="lp-stack-card">
+        <div class="tkicker pr-mono">The consumption layer</div>
+        <h3 class="card-h">Open Cowork</h3>
+        <p>Chat, search and personal agents for everyone in the company, running on your own models and your own data. Unlimited users. Personal agents are free; a promoted Cowork agent becomes governed and draws from your agent-months.</p>
+        <div class="price-row"><div class="amt">$100K</div><div class="note">per year, unlimited users</div></div>
+      </div>
+      <div class="lp-stack-card">
+        <div class="tkicker pr-mono">The on-prem appliance</div>
+        <h3 class="card-h">Lyzr Optimus</h3>
+        <p>The full Lyzr stack on hardware you own, inside your own data center, air-gapped if you need it. Year one covers the hardware alone; the software layers above license on top, same as in the cloud.</p>
+        <div class="price-row"><div class="amt">$500K</div><div class="note">year one, hardware</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEVER ON THE METER / THREE WAYS ============ -->
+<section class="pr-sec">
+  <div class="pr-w">
+    <div class="lp-twocol">
+      <div data-r>
+        <div class="hd"><div class="fg-eyebrow">Never on the meter</div><h2>No per-seat charge for who uses agents, and none for who builds them.</h2></div>
+        <div>
+          <ul class="fg-checks lp-checklist">
+            <li>Users</li><li>Knowledge bases</li>
+            <li>Observability and traces</li><li>The control plane</li>
+            <li>Agents in development</li><li>Tokens</li>
+          </ul>
+          <p class="lp-meter-note">The only thing on the meter is the digital workforce itself.</p>
+        </div>
+      </div>
+      <div data-r>
+        <div class="hd"><div class="fg-eyebrow">Three ways customers start</div><h2>Most teams start with one of these three shapes.</h2></div>
+        <div>
+          <div class="lp-starttier">
+            <div class="lp-starttier-head"><div class="name">Govern the estate</div><div class="price">$500K</div></div>
+            <p>Opencontroller + basecode. Every agent on the record, per year.</p>
+          </div>
+          <div class="lp-starttier">
+            <div class="lp-starttier-head"><div class="name">Govern and build</div><div class="price">$850K</div></div>
+            <p>Opencontroller + basecode, one block of 150 agent-months, Open Cowork. Per year.</p>
+          </div>
+          <div class="lp-starttier">
+            <div class="lp-starttier-head"><div class="name">Fully sovereign</div><div class="price">$1.6M</div></div>
+            <p>Optimus, Opencontroller + basecode, one block of agent-months, Openfinetuner, Open Cowork. Year one, including the hardware.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="pr-sec">
+  <div class="pr-w">
+    <div class="lp-faqwrap">
+      <div class="t" data-r><div class="fg-eyebrow">Questions</div><h2>Questions finance teams ask.</h2></div>
+      <div class="lp-faq" data-r>
+        <details class="lp-faq-item" open><summary>What counts as one agent?</summary><div class="a">Anything with its own identity, its own policy and its own deployment lifecycle. The test: can it be promoted, permissioned and rolled back without touching anything else? Versions, clones, replicas and specialists inside a workflow are part of their parent.</div></details>
+        <details class="lp-faq-item"><summary>Do you charge for tokens?</summary><div class="a">No. You pay your model provider for tokens, or run open-weight models on your own hardware. Lyzr never adds a second line on the same unit of work.</div></details>
+        <details class="lp-faq-item"><summary>How do you tell development from production?</summary><div class="a">By the runtime path, not a checkbox. An agent bound to your production identity provider, production tools and production data plane is in production. Everything else is an intern and draws nothing.</div></details>
+        <details class="lp-faq-item"><summary>Who decides an agent's class?</summary><div class="a">The controller does, from the permissions actually granted. A read-only tool keeps an agent at A. A write into an enterprise system makes it B. An attached sandbox makes it C.</div></details>
+        <details class="lp-faq-item"><summary>What happens when we outgrow a block?</summary><div class="a">Additional agent-months bill monthly in arrears at $1,700 each, or you buy the next block of 150 for $250K. Unused agent-months roll over on multi-year terms.</div></details>
+        <details class="lp-faq-item"><summary>Do agents we did not build on Lyzr cost agent-months?</summary><div class="a">No. Agents from Copilot, Bedrock, LangGraph or anywhere else are governed under Opencontroller at the flat price. Agent-months are only for agents built and run on Lyzr.</div></details>
+        <details class="lp-faq-item"><summary>What if a production agent only runs a few times a month?</summary><div class="a">It is part-time and draws a quarter of its class rate for that month: 0.25 for Class B, 0.06 for Class A. Class C stays at full rate because a sandbox with production credentials is standing capacity.</div></details>
+        <details class="lp-faq-item"><summary>What counts as a run?</summary><div class="a">One unit of work completed: a request answered, a ticket closed, a claim decided, a record processed. A batch that processes 10,000 records is 10,000 runs.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="pr-sec">
+  <div class="pr-w">
+    <div class="lp-cta-band" data-r>
+      <div>
+        <h2>Size your first block with us.</h2>
+        <p>Bring your process list. We will classify it, count the interns, and show you the agent-months before you sign anything.</p>
+      </div>
+      <div class="lp-cta-actions">
+        <a class="fg-btn fg-btn--primary" href="#estimate">Build your estimate</a>
+        <a class="fg-btn fg-btn--ghost" href="https://www.lyzr.ai/book-a-demo/" target="_blank" rel="noopener noreferrer">Talk to sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<div id="view-estimate" style="display:none">
+<section class="es-top">
+  <div class="pr-w">
+    <div class="pr-sechead">
+      <div class="t"><h1>Build your estimate</h1></div>
+      <p class="d">Count the agents you expect in production, pick the layers you need, and the quote updates as you go. Agents in development are interns and cost nothing, so count only what will be on the payroll.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pr-w es-layout">
+  <div class="es-main noprint">
+
+    <div class="es-field">
+      <label for="pr-company">Company</label>
+      <input id="pr-company" class="es-input" type="text" placeholder="Company name" autocomplete="organization">
+      <p class="es-fieldnote">Used as the heading and filename of the exported PDF.</p>
+    </div>
+
+    <div class="es-classgroup">
+      <div class="es-bhead">
+        <div class="t">Agents in production</div>
+        <p>Split each class by how busy it is. Under 100 runs a month is part-time and draws a quarter of the rate; over 100,000 runs draws one class up. Class C is always at least full rate.</p>
+      </div>
+      <div class="es-class" data-class="a">
+        <div class="es-class-head">
+          <div><div class="name">Class A, retrieve</div><p>Read only. Standard weight 0.25, a quarter of a worker.</p></div>
+          <div class="draw" data-draw="a">0</div>
+        </div>
+        <div class="es-stepper-row">
+          <div class="es-stepper" data-band="part"><div class="band">Part-time, under 100 runs</div><div class="rate">&times; 0.06 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class A, retrieve, Part-time, under 100 runs">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class A, retrieve, Part-time, under 100 runs"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class A, retrieve, Part-time, under 100 runs">+</button></div>
+          </div>
+          <div class="es-stepper" data-band="std"><div class="band">Standard</div><div class="rate">&times; 0.25 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class A, retrieve, Standard">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class A, retrieve, Standard"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class A, retrieve, Standard">+</button></div>
+          </div>
+          <div class="es-stepper" data-band="busy"><div class="band">Busy, over 100,000 runs</div><div class="rate">&times; 1 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class A, retrieve, Busy, over 100,000 runs">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class A, retrieve, Busy, over 100,000 runs"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class A, retrieve, Busy, over 100,000 runs">+</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="es-class" data-class="b">
+        <div class="es-class-head">
+          <div><div class="name">Class B, act</div><p>Writes to enterprise systems. Standard weight 1.0, one worker.</p></div>
+          <div class="draw" data-draw="b">0</div>
+        </div>
+        <div class="es-stepper-row">
+          <div class="es-stepper" data-band="part"><div class="band">Part-time, under 100 runs</div><div class="rate">&times; 0.25 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class B, act, Part-time, under 100 runs">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class B, act, Part-time, under 100 runs"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class B, act, Part-time, under 100 runs">+</button></div>
+          </div>
+          <div class="es-stepper" data-band="std"><div class="band">Standard</div><div class="rate">&times; 1 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class B, act, Standard">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class B, act, Standard"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class B, act, Standard">+</button></div>
+          </div>
+          <div class="es-stepper" data-band="busy"><div class="band">Busy, over 100,000 runs</div><div class="rate">&times; 2 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class B, act, Busy, over 100,000 runs">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class B, act, Busy, over 100,000 runs"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class B, act, Busy, over 100,000 runs">+</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="es-class" data-class="c">
+        <div class="es-class-head">
+          <div><div class="name">Class C, privileged</div><p>Sandbox, filesystem, code, browser, payments. Standard weight 2.0, no part-time rate.</p></div>
+          <div class="draw" data-draw="c">0</div>
+        </div>
+        <div class="es-stepper-row">
+          <div class="es-stepper" data-band="part"><div class="band">Part-time, under 100 runs</div><div class="rate">&times; 2 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class C, privileged, Part-time, under 100 runs">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class C, privileged, Part-time, under 100 runs"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class C, privileged, Part-time, under 100 runs">+</button></div>
+          </div>
+          <div class="es-stepper" data-band="std"><div class="band">Standard</div><div class="rate">&times; 2 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class C, privileged, Standard">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class C, privileged, Standard"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class C, privileged, Standard">+</button></div>
+          </div>
+          <div class="es-stepper" data-band="busy"><div class="band">Busy, over 100,000 runs</div><div class="rate">&times; 3 per agent</div>
+            <div class="es-stepper-controls"><button type="button" class="es-stepper-btn" data-act="dec" aria-label="Fewer Class C, privileged, Busy, over 100,000 runs">&minus;</button><input type="number" class="es-stepper-num" min="0" max="999" value="0" data-count aria-label="Class C, privileged, Busy, over 100,000 runs"><button type="button" class="es-stepper-btn" data-act="inc" aria-label="More Class C, privileged, Busy, over 100,000 runs">+</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="es-monthlyrow">
+        <p id="pr-monthly-note">Monthly draw. 0 agent-months a year, 0 blocks of 150.</p>
+        <div class="val" id="pr-monthly-val">0</div>
+      </div>
+    </div>
+
+    <div class="es-addons">
+      <div class="es-bhead">
+        <div class="t">Layers and add-ons</div>
+        <p>Flat annual prices. Tick what you need.</p>
+      </div>
+      <div class="es-addons-list">
+        <label class="es-addon-row" for="opt-controller">
+          <input id="opt-controller" type="checkbox" data-opt="controller" checked>
+          <div><div class="name">Opencontroller</div><p>Govern every agent in the estate, Lyzr-built or not. Unlimited usage.</p></div>
+          <div class="price">$250K</div>
+        </label>
+        <label class="es-addon-row" for="opt-basecode">
+          <input id="opt-basecode" type="checkbox" data-opt="basecode" checked>
+          <div><div class="name">Add basecode</div><p>Monitors coding agents and individual laptop agents. Opencontroller + basecode is $500K together.</p></div>
+          <div class="price">+$250K</div>
+        </label>
+        <label class="es-addon-row" for="opt-cowork">
+          <input id="opt-cowork" type="checkbox" data-opt="cowork">
+          <div><div class="name">Open Cowork</div><p>Chat, search and personal agents for every employee. Unlimited users.</p></div>
+          <div class="price">$100K</div>
+        </label>
+        <label class="es-addon-row" for="opt-finetuner">
+          <input id="opt-finetuner" type="checkbox" data-opt="finetuner">
+          <div><div class="name">Openfinetuner</div><p>Fine-tune and post-train open-weight models. 2.5T training tokens.</p></div>
+          <div class="price">$250K</div>
+        </label>
+        <label class="es-addon-row" for="opt-optimus">
+          <input id="opt-optimus" type="checkbox" data-opt="optimus">
+          <div><div class="name">Lyzr Optimus</div><p>The on-prem appliance. Year one covers the hardware alone.</p></div>
+          <div class="price">$500K</div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <aside class="es-summary">
+    <div class="es-summary-head">
+      <div class="date" id="pr-summary-date">Price estimate</div>
+      <div class="company" id="pr-summary-company">Your company</div>
+    </div>
+    <div id="pr-summary-items"></div>
+    <div class="es-summary-total">
+      <div class="label">Total, year one</div>
+      <div class="val" id="pr-summary-total">$0</div>
+    </div>
+    <div class="es-summary-notes" id="pr-summary-notes"></div>
+    <div class="es-summary-actions noprint">
+      <button type="button" class="fg-btn fg-btn--primary" id="pr-export">Export as PDF</button>
+      <button type="button" class="fg-btn fg-btn--line" id="pr-reset">Reset</button>
+    </div>
+    <p class="es-summary-status noprint" id="pr-summary-status"></p>
+    <p class="es-summary-fine">Estimate only, not a binding quote. All prices annual and prepaid. Agent-months bill on governed agents in production; agents in development draw nothing.</p>
+  </aside>
+</section>
+</div>
+</main>
+
+<footer class="lp-foot noprint">
+  <div class="pr-w lp-foot-in">
+    <a href="#" class="pr-brand" aria-label="Lyzr pricing home"><svg focusable="false" viewBox="2.449 0 198.551 34" role="img" aria-label="Lyzr"><path fill="#FE4B1E" d="M55 21L47.6267 34H2.89478L55 21Z"/><path fill="#FE4B1E" d="M43.9352 9.21432L40.3648 20.8969L2.44928 31.9337L43.9352 9.21432Z"/><path fill="#FE4B1E" d="M34.1098 10.6493L34.0641 5.80164e-05C33.0913 5.51002 29.7951 9.74939 20.8644 18.5746L34.1098 10.6493Z"/><path fill="#FAFAF9" d="M67 34.0002V30.9005L71.5415 30.1256V3.97175L67 3.19682V0.097109H81.8808V3.19682L77.146 3.97175V30.1256C79.0303 30.4646 81.301 30.7068 83.7651 30.7068C89.0313 30.7068 94.0077 29.3507 97.0515 25.476H100.627L95.2155 34.0002H67Z"/><path fill="#FAFAF9" d="M104.675 34.0002V30.9005L109.313 30.1256V24.1199L98.2975 3.97175L94.6256 3.19682V0.097109H108.83V3.19682L104.385 3.97175L112.792 19.7609H112.985L121.585 3.97175L117.14 3.19682V0.097109H129.605V3.24526L125.643 3.97175L114.918 23.5387V30.1256L119.556 30.9005V34.0002H104.675Z"/><path fill="#FAFAF9" d="M129.995 34.0002V31.0943L153.959 3.77802C151.688 3.43899 149.321 3.29369 146.615 3.29369C140.769 3.29369 136.807 4.74668 134.537 8.81506H130.768L135.889 0.097109H162.655V2.61563L138.305 30.3193C140.817 30.6584 143.523 30.8037 146.615 30.8037C153.041 30.8037 157.341 29.3507 160.046 25.2823H163.815L158.694 34.0002H129.995Z"/><path fill="#FAFAF9" d="M166.214 34.0002V30.9005L170.949 30.1256V3.97175L166.214 3.19682V0.097109H176.36C178.437 0.097109 181.674 0.000244141 183.22 0.000244141C192.158 0.000244141 197.521 3.39056 197.521 9.15409C197.521 15.1114 191.869 17.7267 186.312 18.1142C188.003 19.5188 189.791 21.0686 192.497 24.3136L197.521 30.3193L201 30.7068V34.0002H192.883C191.144 31.8692 183.993 22.4732 180.321 18.4048H176.553V30.1256L181.384 30.9005V34.0002H166.214ZM176.553 15.2082H181.868C187.182 15.2082 190.854 13.8521 190.854 9.39626C190.854 5.08571 187.472 3.29369 182.496 3.29369C180.515 3.29369 178.437 3.58429 176.553 3.97175V15.2082Z"/></svg></a>
+    <p>A sovereign full-stack agent platform for enterprises that want to own their intelligence.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================================
+   LYZR PRICING, estimate calculator
+   Logic ported 1:1 from the live pricing.lyzragents.com calculator (same
+   constants, same class weights, same block/extra-agent-month rule, same
+   hand-rolled single-page PDF writer) so the numbers and the exported PDF
+   match exactly. Only the visual layer (markup/CSS) is new.
+   ============================================================================ */
+(function(){
+  "use strict";
+
+  var PRICES = {
+    controller: 250000,
+    controllerPlusBasecode: 500000,
+    block: 250000,
+    blockAgentMonths: 150,
+    extraAgentMonth: 1700,
+    cowork: 100000,
+    finetuner: 250000,
+    optimus: 500000,
+    trainingTokens: "2.5T"
+  };
+  var RATES = {
+    a: { part: 0.06, std: 0.25, busy: 1 },
+    b: { part: 0.25, std: 1,    busy: 2 },
+    c: { part: 2,    std: 2,    busy: 3 }
+  };
+  var CLASS_NAMES = { a: "Class A, retrieve", b: "Class B, act", c: "Class C, privileged" };
+  var BAND_NAMES  = { part: "Part-time, under 100 runs", std: "Standard", busy: "Busy, over 100,000 runs" };
+  var CLASSES = ["a","b","c"];
+  var BANDS   = ["part","std","busy"];
+
+  function emptyCounts(){ return { part: 0, std: 0, busy: 0 }; }
+  function defaultState(){
+    return {
+      company: "",
+      counts: { a: emptyCounts(), b: emptyCounts(), c: emptyCounts() },
+      controller: true,
+      basecode: true,
+      cowork: false,
+      finetuner: false,
+      optimus: false
+    };
+  }
+
+  function money(n){ return "$" + Math.round(n).toLocaleString("en-US"); }
+  function num(n){ return (Math.round(n * 100) / 100).toLocaleString("en-US"); }
+
+  function clampCount(v){
+    var n = typeof v === "number" ? v : parseInt(v, 10);
+    if (isNaN(n) || n < 0) return 0;
+    if (n > 999) return 999;
+    return Math.floor(n);
+  }
+
+  function countTotal(counts, cls){
+    return counts[cls].part + counts[cls].std + counts[cls].busy;
+  }
+  function classDraw(counts, cls){
+    var sum = 0;
+    for (var i = 0; i < BANDS.length; i++){
+      var b = BANDS[i];
+      sum += counts[cls][b] * RATES[cls][b];
+    }
+    return sum;
+  }
+  function blocksFor(annual){
+    if (annual <= 0) return { blocks: 0, extra: 0 };
+    var t = Math.floor(annual / PRICES.blockAgentMonths);
+    var n = Math.ceil(annual - t * PRICES.blockAgentMonths - 1e-9);
+    if (t === 0) return { blocks: 1, extra: 0 };
+    if (n <= 0) return { blocks: t, extra: 0 };
+    if (n * PRICES.extraAgentMonth < PRICES.block) return { blocks: t, extra: n };
+    return { blocks: t + 1, extra: 0 };
+  }
+
+  function compute(state){
+    var draws = { a: classDraw(state.counts, "a"), b: classDraw(state.counts, "b"), c: classDraw(state.counts, "c") };
+    var agents = { a: countTotal(state.counts, "a"), b: countTotal(state.counts, "b"), c: countTotal(state.counts, "c") };
+    var monthly = draws.a + draws.b + draws.c;
+    var annual = monthly * 12;
+    var bx = blocksFor(annual);
+    var blocks = bx.blocks, extra = bx.extra;
+    var items = [];
+
+    if (state.basecode){
+      items.push({ label: "Opencontroller + basecode", detail: "Control plane plus monitoring of coding agents and laptop agents. Unlimited usage.", amount: money(PRICES.controllerPlusBasecode), value: PRICES.controllerPlusBasecode });
+    } else if (state.controller){
+      items.push({ label: "Opencontroller", detail: "Control plane. Unlimited agents, unlimited users.", amount: money(PRICES.controller), value: PRICES.controller });
+    }
+    if (blocks > 0){
+      items.push({
+        label: "Build and orchestrate, " + blocks + " " + (blocks > 1 ? "blocks" : "block"),
+        detail: num(annual) + " agent-months a year from " + agents.a + " Class A, " + agents.b + " Class B and " + agents.c + " Class C agents, weighted by activity band. " + (blocks * PRICES.blockAgentMonths) + " agent-months included.",
+        amount: money(blocks * PRICES.block), value: blocks * PRICES.block
+      });
+    }
+    if (extra > 0){
+      items.push({
+        label: "Additional agent-months, " + extra,
+        detail: "Beyond the block at $1,700 each, billed monthly in arrears. Cheaper than another block.",
+        amount: money(extra * PRICES.extraAgentMonth), value: extra * PRICES.extraAgentMonth
+      });
+    }
+    if (state.cowork) items.push({ label: "Open Cowork", detail: "Employee-facing chat, search and personal agents. Unlimited users.", amount: money(PRICES.cowork), value: PRICES.cowork });
+    if (state.finetuner) items.push({ label: "Openfinetuner", detail: "2.5T training tokens. Separate pool, never draws on agent-months.", amount: money(PRICES.finetuner), value: PRICES.finetuner });
+    if (state.optimus) items.push({ label: "Lyzr Optimus", detail: "On-prem appliance. Year one, hardware alone.", amount: money(PRICES.optimus), value: PRICES.optimus });
+
+    var total = items.reduce(function(a,it){ return a + it.value; }, 0);
+    return {
+      monthly: monthly, annual: annual, blocks: blocks, extra: extra, items: items,
+      total: total, labor: monthly * 100000, included: blocks * PRICES.blockAgentMonths + extra,
+      draws: draws, agents: agents
+    };
+  }
+
+  /* ---- minimal single-page PDF writer (no external library), ported from
+     the live app's exporter so the downloaded file matches format-for-
+     format; only the accent RGB is swapped to Lyzr orange. ---- */
+  function pdfEscape(s){
+    var out = "";
+    var str = String(s);
+    for (var i = 0; i < str.length; i++){
+      var ch = str[i], code = str.charCodeAt(i);
+      if (ch === "(" || ch === ")" || ch === "\\") out += "\\" + ch;
+      else if (code >= 32 && code < 127) out += ch;
+      else if (code >= 160 && code < 256) out += "\\" + code.toString(8).padStart(3, "0");
+      else out += "?";
+    }
+    return out;
+  }
+  var GLYPH_W = { M:833, W:944, m:833, w:722 };
+  var GLYPH_W2 = { ",":278, ".":278, " ":278, i:222, l:222, j:222, t:278, f:278, r:333, I:278, "1":556 };
+  function textWidth(s, size){
+    var w = 0, str = String(s);
+    for (var i = 0; i < str.length; i++){
+      var ch = str[i];
+      if (GLYPH_W[ch] !== undefined) w += GLYPH_W[ch];
+      else if (GLYPH_W2[ch] !== undefined) w += GLYPH_W2[ch];
+      else w += (ch >= "A" && ch <= "Z") ? 667 : 556;
+    }
+    return w / 1000 * size;
+  }
+  function buildEstimatePdf(state, computed, companyDisplay, dateStr){
+    var lines = [];
+    var y = 728;
+    function put(str, size, bold, x){
+      lines.push("0.10 0.09 0.08 rg BT /" + (bold ? "F2" : "F1") + " " + size + " Tf 1 0 0 1 " + (x === undefined ? 72 : x) + " " + y + " Tm (" + pdfEscape(str) + ") Tj ET");
+    }
+    function putAccent(str, size, bold, x){
+      lines.push("0.996 0.294 0.118 rg BT /" + (bold ? "F2" : "F1") + " " + size + " Tf 1 0 0 1 " + (x === undefined ? 72 : x) + " " + y + " Tm (" + pdfEscape(str) + ") Tj ET");
+    }
+    function putRight(str, size, bold){ put(str, size, bold, 540 - textWidth(str, size)); }
+    function rule(w){ lines.push("0.85 0.83 0.79 RG " + w + " w 72 " + y + " m 540 " + y + " l S"); }
+    function wrap(text, size, maxWidth){
+      var words = String(text).split(" "), out = [], cur = "";
+      for (var i = 0; i < words.length; i++){
+        var w = words[i], candidate = cur ? cur + " " + w : w;
+        if (textWidth(candidate, size) > maxWidth && cur){ out.push(cur); cur = w; }
+        else cur = candidate;
+      }
+      if (cur) out.push(cur);
+      return out;
+    }
+
+    putAccent("lyzr", 22, true); y -= 8;
+    putRight("Price estimate", 12, false); y -= 30;
+    put(companyDisplay, 20, true); y -= 20;
+    put("Prepared " + dateStr, 11, false, undefined); y -= 24;
+    lines.push("0.10 0.09 0.08 RG 1.2 w 72 " + y + " m 540 " + y + " l S"); y -= 26;
+    put("Agents in production", 12, true); y -= 18;
+
+    var rows = [];
+    for (var ci = 0; ci < CLASSES.length; ci++){
+      var cls = CLASSES[ci];
+      var parts = [];
+      for (var bi = 0; bi < BANDS.length; bi++){
+        var band = BANDS[bi];
+        if (state.counts[cls][band] > 0){
+          parts.push(state.counts[cls][band] + " " + (band === "part" ? "part-time" : band === "std" ? "standard" : "busy") + " x " + RATES[cls][band]);
+        }
+      }
+      rows.push([CLASS_NAMES[cls], (parts.length ? parts.join(" + ") : "0") + " = " + num(computed.draws[cls]) + " per month"]);
+    }
+    for (var r = 0; r < rows.length; r++){ put(rows[r][0], 11, false); putRight(rows[r][1], 11, false); y -= 16; }
+    put("Monthly draw " + num(computed.monthly) + " agent-months. Annual " + num(computed.annual) + ". Blocks of 150: " + computed.blocks + (computed.extra ? ", plus " + computed.extra + " extra agent-months" : "") + ".", 11, false); y -= 28;
+    rule(0.6); y -= 24;
+    put("Line items, year one", 12, true); y -= 20;
+
+    for (var ii = 0; ii < computed.items.length; ii++){
+      var it = computed.items[ii];
+      put(it.label, 11.5, true); putRight(it.amount, 11.5, true); y -= 15;
+      var detailLines = wrap(it.detail, 9.5, 360);
+      for (var dl = 0; dl < detailLines.length; dl++){ put(detailLines[dl], 9.5, false); y -= 12; }
+      y -= 8;
+    }
+    if (computed.items.length === 0){ put("No layers or agents selected.", 11, false); y -= 20; }
+
+    lines.push("0.10 0.09 0.08 RG 1.2 w 72 " + y + " m 540 " + y + " l S"); y -= 26;
+    put("Total, year one", 14, true); putRight(money(computed.total), 16, true); y -= 34;
+    put("What this includes", 12, true); y -= 18;
+
+    var includes = [
+      (computed.blocks * 2) + " Lyzr forward deployed engineers in year one (two per block).",
+      computed.included + " agent-months included, " + num(Math.max(0, computed.included - computed.annual)) + " unused and rolling over on multi-year terms.",
+      "Labor capacity: about " + money(computed.labor) + " a year of $50-an-hour work (" + num(computed.monthly) + " digital FTEs).",
+      "Unlimited users, knowledge bases, observability and agents in development.",
+      "Additional agent-months at $1,700 each, or the next block of 150 for $250,000."
+    ];
+    for (var iv = 0; iv < includes.length; iv++){
+      var incLines = wrap(includes[iv], 10, 460);
+      for (var il = 0; il < incLines.length; il++){ put(incLines[il], 10, false); y -= 13; }
+      y -= 2;
+    }
+    y -= 14;
+    put("Estimate only, not a binding quote. All prices annual and prepaid. Agent-months bill on governed agents in production.", 9, false); y -= 12;
+    put("Lyzr AI. A sovereign full-stack agent platform for enterprises that want to own their intelligence.", 9, false);
+
+    var content = lines.join("\n");
+    var objs = [];
+    objs[1] = "<< /Type /Catalog /Pages 2 0 R >>";
+    objs[2] = "<< /Type /Pages /Kids [3 0 R] /Count 1 >>";
+    objs[3] = "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>";
+    objs[4] = "<< /Length " + content.length + " >>\nstream\n" + content + "\nendstream";
+    objs[5] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>";
+    objs[6] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>";
+
+    var pdf = "%PDF-1.4\n", offsets = [];
+    for (var oi = 1; oi < objs.length; oi++){ offsets[oi] = pdf.length; pdf += oi + " 0 obj\n" + objs[oi] + "\nendobj\n"; }
+    var xrefStart = pdf.length;
+    pdf += "xref\n0 " + objs.length + "\n0000000000 65535 f \n";
+    for (var xi = 1; xi < objs.length; xi++){ pdf += String(offsets[xi]).padStart(10, "0") + " 00000 n \n"; }
+    pdf += "trailer\n<< /Size " + objs.length + " /Root 1 0 R >>\nstartxref\n" + xrefStart + "\n%%EOF";
+    return new Blob([pdf], { type: "application/pdf" });
+  }
+  function pdfFilename(companyDisplay){
+    var slug = companyDisplay.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    return "lyzr-estimate-" + (slug || "estimate") + ".pdf";
+  }
+
+  window.LyzrPricing = {
+    PRICES: PRICES, RATES: RATES, CLASS_NAMES: CLASS_NAMES, BAND_NAMES: BAND_NAMES,
+    CLASSES: CLASSES, BANDS: BANDS,
+    defaultState: defaultState, money: money, num: num, clampCount: clampCount,
+    compute: compute, buildEstimatePdf: buildEstimatePdf, pdfFilename: pdfFilename
+  };
+})();
+
+</script>
+<script>
+(function(){
+  var P = window.LyzrPricing;
+  var state = P.defaultState();
+  var statusMsg = "";
+
+  var els = {
+    company: document.getElementById("pr-company"),
+    monthlyNote: document.getElementById("pr-monthly-note"),
+    monthlyVal: document.getElementById("pr-monthly-val"),
+    summaryDate: document.getElementById("pr-summary-date"),
+    summaryCompany: document.getElementById("pr-summary-company"),
+    summaryItems: document.getElementById("pr-summary-items"),
+    summaryTotal: document.getElementById("pr-summary-total"),
+    summaryNotes: document.getElementById("pr-summary-notes"),
+    summaryStatus: document.getElementById("pr-summary-status"),
+    exportBtn: document.getElementById("pr-export"),
+    resetBtn: document.getElementById("pr-reset")
+  };
+
+  var todayStr = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+  function render(){
+    var computed = P.compute(state);
+    var companyDisplay = state.company.trim() || "Your company";
+
+    P.CLASSES.forEach(function(cls){
+      var el = document.querySelector('[data-draw="' + cls + '"]');
+      if (el) el.textContent = P.num(computed.draws[cls]);
+    });
+
+    els.monthlyNote.textContent = "Monthly draw. " + P.num(computed.annual) + " agent-months a year, " +
+      (computed.blocks === 1 ? "one block" : computed.blocks + " blocks") + " of 150" +
+      (computed.extra ? " plus " + computed.extra + " extra at $1,700" : "") + ".";
+    els.monthlyVal.textContent = P.num(computed.monthly);
+
+    els.summaryDate.textContent = "Price estimate, " + todayStr;
+    els.summaryCompany.textContent = companyDisplay;
+
+    els.summaryItems.innerHTML = "";
+    if (computed.items.length > 0){
+      computed.items.forEach(function(it){
+        var row = document.createElement("div");
+        row.className = "es-summary-item";
+        row.innerHTML = '<div><div class="label">' + escapeHtml(it.label) + '</div><p class="detail">' + escapeHtml(it.detail) + '</p></div><div class="amount">' + escapeHtml(it.amount) + '</div>';
+        els.summaryItems.appendChild(row);
+      });
+    } else {
+      var empty = document.createElement("p");
+      empty.className = "es-summary-empty";
+      empty.textContent = "Nothing selected yet. Add agents or tick a layer on the left and the quote fills in here.";
+      els.summaryItems.appendChild(empty);
+    }
+
+    els.summaryTotal.textContent = P.money(computed.total);
+
+    var notes = [];
+    notes.push(computed.blocks > 0
+      ? "Includes " + (computed.blocks * 2) + " Lyzr forward deployed engineers for year one."
+      : "Add production agents to include Lyzr forward deployed engineers.");
+    notes.push(computed.blocks > 0
+      ? computed.included + " agent-months included, " + P.num(Math.max(0, computed.included - computed.annual)) + " spare for promotions during the year."
+      : "No agent-months drawn yet. Agents in development are free.");
+    if (computed.monthly > 0){
+      notes.push("About " + P.money(computed.labor) + " a year of $50-an-hour labor capacity, " + P.num(computed.monthly) + " digital FTEs.");
+    }
+    els.summaryNotes.innerHTML = notes.map(function(n){ return "<p>" + escapeHtml(n) + "</p>"; }).join("");
+
+    els.summaryStatus.textContent = statusMsg;
+
+    return computed;
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  document.querySelectorAll(".es-stepper").forEach(function(stepperEl){
+    var classEl = stepperEl.closest(".es-class");
+    var cls = classEl.getAttribute("data-class");
+    var band = stepperEl.getAttribute("data-band");
+    var input = stepperEl.querySelector("[data-count]");
+    var decBtn = stepperEl.querySelector('[data-act="dec"]');
+    var incBtn = stepperEl.querySelector('[data-act="inc"]');
+
+    function setVal(v){
+      v = P.clampCount(v);
+      state.counts[cls][band] = v;
+      input.value = v;
+      statusMsg = "";
+      render();
+    }
+    input.addEventListener("input", function(){ setVal(input.value); });
+    decBtn.addEventListener("click", function(){ setVal(state.counts[cls][band] - 1); });
+    incBtn.addEventListener("click", function(){ setVal(state.counts[cls][band] + 1); });
+  });
+
+  els.company.addEventListener("input", function(){
+    state.company = els.company.value;
+    statusMsg = "";
+    render();
+  });
+
+  document.querySelectorAll("[data-opt]").forEach(function(cb){
+    cb.addEventListener("change", function(){
+      var key = cb.getAttribute("data-opt");
+      if (key === "controller"){
+        if (state.controller){ state.controller = false; state.basecode = false; }
+        else { state.controller = true; }
+      } else if (key === "basecode"){
+        if (state.basecode){ state.basecode = false; }
+        else { state.basecode = true; state.controller = true; }
+      } else {
+        state[key] = !state[key];
+      }
+      document.getElementById("opt-controller").checked = state.controller;
+      document.getElementById("opt-basecode").checked = state.basecode;
+      document.getElementById("opt-cowork").checked = state.cowork;
+      document.getElementById("opt-finetuner").checked = state.finetuner;
+      document.getElementById("opt-optimus").checked = state.optimus;
+      statusMsg = "";
+      render();
+    });
+  });
+
+  els.exportBtn.addEventListener("click", function(){
+    var computed = P.compute(state);
+    var companyDisplay = state.company.trim() || "Your company";
+    var filename = P.pdfFilename(companyDisplay);
+    try {
+      var blob = P.buildEstimatePdf(state, computed, companyDisplay, todayStr);
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = filename; a.click();
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      statusMsg = "Download started: " + filename;
+    } catch (e){
+      statusMsg = "Use your browser's Print to PDF to save this estimate.";
+      window.print();
+    }
+    render();
+  });
+
+  els.resetBtn.addEventListener("click", function(){
+    state = P.defaultState();
+    els.company.value = "";
+    document.querySelectorAll("[data-count]").forEach(function(i){ i.value = 0; });
+    document.getElementById("opt-controller").checked = true;
+    document.getElementById("opt-basecode").checked = true;
+    document.getElementById("opt-cowork").checked = false;
+    document.getElementById("opt-finetuner").checked = false;
+    document.getElementById("opt-optimus").checked = false;
+    statusMsg = "";
+    render();
+  });
+
+  render();
+})();
+
+</script>
+<script>
+(function(){
+  var navEl = document.querySelector('.pr-nav');
+  var viewHome = document.getElementById('view-home');
+  var viewEstimate = document.getElementById('view-estimate');
+  var estLink = document.getElementById('nav-estimate-link');
+  var navBar = document.querySelector('.pr-nav');
+  var menuBtn = document.getElementById('pr-menu');
+  function closeMenu(){ if(navBar){ navBar.classList.remove('is-open'); } if(menuBtn){ menuBtn.setAttribute('aria-expanded','false'); } }
+  if (menuBtn) menuBtn.addEventListener('click', function(){ var o = navBar.classList.toggle('is-open'); menuBtn.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+
+  function showView(name){
+    closeMenu();
+    viewHome.style.display = name === 'home' ? '' : 'none';
+    viewEstimate.style.display = name === 'estimate' ? '' : 'none';
+    if (estLink) estLink.classList.toggle('act', name === 'estimate');
+    if (name === 'home'){
+      // safety net: if this view was hidden while [data-r] elements were
+      // added to the IntersectionObserver, they never got a layout box to
+      // intersect with, so force them visible now rather than leaving them
+      // stuck at opacity:0.
+      viewHome.querySelectorAll('[data-r]:not(.in)').forEach(function(el){ el.classList.add('in'); });
+    }
+  }
+
+  function routeFromHash(){
+    var h = decodeURIComponent(location.hash.slice(1));
+    if (h === 'estimate'){
+      showView('estimate');
+      window.scrollTo(0, 0);
+      return;
+    }
+    showView('home');
+    if (h){
+      requestAnimationFrame(function(){
+        var el = document.getElementById(h);
+        if (!el) return;
+        var off = (navEl ? navEl.getBoundingClientRect().height : 76) + 16;
+        var y = el.getBoundingClientRect().top + window.pageYOffset - off;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  // unify every in-page hash link through the router instead of letting a
+  // click both jump natively AND get re-handled, which caused a double-jump
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      if (!id) return; // bare "#" (brand logo), let the browser scroll top / clear hash natively
+      e.preventDefault();
+      if ('#' + id === location.hash) routeFromHash();
+      else location.hash = id;
+    });
+  });
+  window.addEventListener('hashchange', routeFromHash);
+
+  // ---- reveal on scroll (home view only) ----
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: .06 });
+  viewHome.querySelectorAll('[data-r]').forEach(function(el){ io.observe(el); });
+
+  // ---- scrollspy (home sections only; "Build estimate" active state is
+  // owned by the router above, not by scroll position) ----
+  var spyLinks = {}, secs = [];
+  document.querySelectorAll('.lp-links a[href^="#"]').forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    if (id && id !== 'estimate') spyLinks[id] = a;
+  });
+  ['agent-month', 'example', 'faq'].forEach(function(id){ var el = document.getElementById(id); if (el) secs.push(el); });
+  var cur = null, ticking = false;
+  function spy(){
+    ticking = false;
+    if (viewHome.style.display === 'none') return;
+    var line = window.innerHeight * 0.4, act = null;
+    for (var i = 0; i < secs.length; i++){ var r = secs[i].getBoundingClientRect(); if (r.top <= line) act = secs[i].id; }
+    if (act === cur) return; cur = act;
+    for (var k in spyLinks) spyLinks[k].classList.remove('act');
+    if (act && spyLinks[act]) spyLinks[act].classList.add('act');
+  }
+  addEventListener('scroll', function(){ if (!ticking){ requestAnimationFrame(spy); ticking = true; } }, { passive: true });
+
+  routeFromHash();
+  spy();
+})();
+
+</script>
+</body>
+</html>
