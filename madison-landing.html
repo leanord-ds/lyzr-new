@@ -473,6 +473,57 @@
       .md-foot-top{flex-direction:column;align-items:flex-start}
       .md-foot-bottom{flex-direction:column}
     }
+
+    /* ============================================================================
+      HERO HEADLINE (v18 copy) + THE PROBLEM + FAQ
+      ============================================================================ */
+    .md-hero-top h1,.md-hero-bottom .accent-line{max-width:none}
+
+    .md-problem{background:var(--bg)}
+    .md-scatter{display:grid;grid-template-columns:repeat(5,1fr);align-items:stretch}
+    .md-silo{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 20px 24px;margin:0 22px}
+    .md-silo:first-child{margin-left:0}
+    .md-silo:last-child{margin-right:0}
+    .md-silo b{display:block;font-size:var(--fs-19);font-weight:400;letter-spacing:-.01em;color:var(--text)}
+    .md-silo span{display:block;font-size:var(--fs-14);color:var(--text-muted);margin-top:6px;line-height:1.45}
+    .md-silo:not(:last-child)::before{content:"";position:absolute;right:-45px;top:50%;width:44px;border-top:1.5px dashed var(--grey-300)}
+    .md-silo:not(:last-child)::after{content:"";position:absolute;right:-34px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24' fill='%23D92D20'%3E%3Cpath d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z'/%3E%3C/svg%3E") center/14px 14px no-repeat;border:1px solid var(--grey-300)}
+    .md-costs-cap{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:64px 0 0}
+    .md-costs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:16px;border-top:1px solid var(--grey-200)}
+    .md-cost{padding:26px 28px 0 0}
+    .md-cost+.md-cost{padding-left:28px;border-left:1px solid var(--line)}
+    .md-cost b{display:block;font-size:var(--fs-34);line-height:1.05;font-weight:400;letter-spacing:-.02em;color:var(--accent)}
+    .md-cost span{display:block;margin-top:12px;font-size:var(--fs-19);color:var(--text-soft);max-width:30ch}
+
+    .md-faq{background:var(--bg)}
+    .md-faq-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:70px;align-items:start}
+    .md-faq-left{align-self:start}
+    html:not(.ss-on) .md-faq-left{position:sticky;top:112px}
+    .md-faq-left h2{font-size:var(--fs-48);line-height:1.1;max-width:14ch}
+    .md-faq details{border-top:1px solid var(--line);padding:0}
+    .md-faq details:last-child{border-bottom:1px solid var(--line)}
+    .md-faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-size:var(--fs-22);line-height:1.35;font-weight:400;letter-spacing:-.01em;color:var(--text);transition:color .2s}
+    .md-faq summary::-webkit-details-marker{display:none}
+    .md-faq summary:hover{color:var(--accent)}
+    .md-faq summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--grey-300);background-color:var(--white);background-image:linear-gradient(var(--accent),var(--accent)),linear-gradient(var(--accent),var(--accent));background-position:center,center;background-size:12px 1.5px,1.5px 12px;background-repeat:no-repeat;transition:background-color .25s,border-color .25s}
+    .md-faq details[open] summary::after{background-color:var(--accent);border-color:var(--accent);background-image:linear-gradient(#fff,#fff);background-position:center;background-size:12px 1.5px}
+    .md-faq details p{margin:0 0 26px;max-width:70ch;font-size:var(--fs-19);color:var(--text-soft)}
+    .md-faq details[open] p{animation:faqIn .35s cubic-bezier(.16,1,.3,1)}
+    @keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+    @media (max-width:980px){
+      .md-faq-grid{grid-template-columns:1fr;gap:28px}
+      .md-scatter{grid-template-columns:1fr 1fr;gap:16px}
+      .md-silo,.md-silo:first-child,.md-silo:last-child{margin:0}
+      .md-silo:not(:last-child)::before,.md-silo:not(:last-child)::after{display:none}
+      .md-costs{grid-template-columns:1fr}
+      .md-cost{padding:22px 0}
+      .md-cost+.md-cost{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+    }
+    @media (max-width:640px){
+      .md-scatter{grid-template-columns:1fr}
+      .md-costs-cap{margin-top:48px}
+      .md-faq summary{padding:18px 0}
+    }
     </style>
     </head>
     <body>
@@ -509,7 +560,7 @@
       <div class="md-hero-bg" id="heroBg" aria-hidden="true"></div>
       <div class="md-hero-inner">
         <div class="md-hero-top">
-          <h1>Your bank's compliance, kept current by agents.<span class="sr"> Signed by your people.</span></h1>
+          <h1>Agentic risk<br>and compliance<span class="sr"> for banks and credit unions</span></h1>
           <div class="ctas">
             <a class="ws-btn ws-btn--orange" href="#demo">Book a demo</a>
             <!-- <a class="md-play" href="#connected">See how it works</a> -->
@@ -517,12 +568,37 @@
           <!-- <i><svg viewBox="0 0 10 10"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="#fff"/></svg></i> -->
         </div>
         <div class="md-hero-bottom">
-          <p class="accent-line" aria-hidden="true">Signed by your people.</p>
+          <p class="accent-line" aria-hidden="true">for banks and<br>credit unions</p>
         </div>
       </div>
     </header>
 
     <main>
+
+    <section class="md-problem" id="problem">
+      <div class="md-wrap">
+        <div class="sec-head">
+          <div data-r>
+            <p class="md-eyebrow">The problem</p>
+            <h2 style="font-size:var(--fs-48);line-height:1.1;max-width:18ch">Your compliance program is scattered.</h2>
+          </div>
+          <p class="lede" data-r>When a rule changes or a control breaks, your team pieces it together by hand.</p>
+        </div>
+        <div class="md-scatter" aria-label="Parts of a compliance program, each in a separate place and not linked" data-r>
+          <div class="md-silo"><b>Regulations</b><span>Rule feeds</span></div>
+          <div class="md-silo"><b>Policies</b><span>Shared drives</span></div>
+          <div class="md-silo"><b>Controls</b><span>A GRC tracker</span></div>
+          <div class="md-silo"><b>Tests</b><span>Spreadsheets</span></div>
+          <div class="md-silo"><b>Evidence</b><span>Inboxes</span></div>
+        </div>
+        <p class="md-costs-cap" data-r>What it costs today</p>
+        <div class="md-costs" data-r>
+          <div class="md-cost"><b>Two weeks</b><span>to test one control</span></div>
+          <div class="md-cost"><b>Months</b><span>to assess one amended rule</span></div>
+          <div class="md-cost"><b>Hundreds</b><span>of items in a first day letter</span></div>
+        </div>
+      </div>
+    </section>
 
     <section class="md-connected" id="connected">
       <div class="md-wrap">
@@ -859,6 +935,27 @@
             <p class="md-form-cap">By booking you agree to our <a href="#">privacy notice</a>.</p>
             <div class="done" id="demodone" role="status">Thank you. We'll be in touch within one business day.</div>
           </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="md-faq" id="faq">
+      <div class="md-wrap">
+        <div class="md-faq-grid">
+          <div class="md-faq-left" id="faqLeft">
+            <div data-r>
+              <p class="md-eyebrow">FAQ</p>
+              <h2>Questions we get asked.</h2>
+            </div>
+          </div>
+          <div class="list" data-r>
+            <details open><summary>How is Madison different from a GRC tool?</summary><p>A GRC tool holds the record. Madison does the work behind it: finding the rules that apply, mapping each change to your policies and controls, checking controls for proof and linking evidence as it's produced. A named owner signs every step.</p></details>
+            <details><summary>We already have a GRC platform. Do we replace it?</summary><p>No. It stays your system of record. Madison sits on top of it, does the work, and feeds the results back in.</p></details>
+            <details><summary>Does Madison decide whether we are compliant?</summary><p>No. Agents propose; a named owner at your bank decides and signs.</p></details>
+            <details><summary>Where does Madison run?</summary><p>Your choice: in your own cloud, or on Lyzr's secure cloud. Either way it reads your core systems and never writes to them.</p></details>
+            <details><summary>Who at the bank uses it?</summary><p>Compliance, control testing, internal audit and risk, from one record.</p></details>
+            <details><summary>How is our data protected?</summary><p>SOC 2 Type II, ISO 27001 and ISO 42001. Reports at security.lyzr.ai.</p></details>
+          </div>
         </div>
       </div>
     </section>
@@ -1382,6 +1479,37 @@
           document.getElementById(f.getAttribute('data-done')).classList.add('show');
         });
       });
+
+      /* ---- FAQ: left title pins while the accordion scrolls. Native sticky is used
+        outside the smooth-scroll simulation (see CSS); inside it, a transformed
+        ancestor defeats sticky, so the left column is offset per frame instead. ---- */
+      (function(){
+        var left = document.getElementById('faqLeft');
+        if (!left || !document.documentElement.classList.contains('ss-on')) return;
+        var grid = left.parentNode, TOP = 112;
+        function faqSticky(){
+          if (stacked.matches) { if (left.style.transform) left.style.transform = ''; return; }
+          var g = grid.getBoundingClientRect();
+          if (g.bottom < -200 || g.top > window.innerHeight + 200) return;
+          var max = Math.max(0, g.height - left.offsetHeight);
+          var shift = Math.max(0, Math.min(max, TOP - g.top));
+          left.style.transform = shift ? 'translate3d(0,' + shift + 'px,0)' : '';
+        }
+        ssFrameHooks.push(faqSticky);
+      })();
+
+      /* ---- FAQ accordion: one item open at a time, one always stays open ---- */
+      (function(){
+        var items = Array.prototype.slice.call(document.querySelectorAll('#faq details'));
+        items.forEach(function(d){
+          d.querySelector('summary').addEventListener('click', function(e){
+            e.preventDefault();
+            if (d.open) return;
+            items.forEach(function(o){ if (o !== d) o.open = false; });
+            d.open = true;
+          });
+        });
+      })();
     })();
     </script>
     </body>
