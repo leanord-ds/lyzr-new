@@ -157,11 +157,11 @@ section{padding-top:var(--sec)}
 .tl-blocks a{display:block;padding-right:10px;transition:transform .35s var(--ease)}
 .tl-blocks a:hover{transform:translateY(-3px)}
 .tl-blocks em{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--fg-grey-700)}
-.tl-blocks b{display:block;font-weight:400;font-size:16px;line-height:20px;margin:4px 0;transition:color .25s}
+.tl-blocks b{display:block;font-weight:400;line-height:20px;margin:54px 0 0 0;transition:color .25s}
 .tl-blocks a:hover b{color:var(--fg-orange-ui)}
 .tl-blocks small{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-grey-700)}
 .tl-loop{margin-top:32px;position:relative;height:32px;border:1px dashed var(--fg-orange-ui);border-top:none;border-radius:0 0 var(--fg-r) var(--fg-r)}
-.tl-loop span{position:absolute;left:50%;top:22px;transform:translateX(-50%);padding:0 12px;font-family:var(--font-sans);font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.tl-loop span{position:absolute;left:50%;top:9px;transform:translateX(-50%);padding:0 12px;font-family:var(--font-sans);font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;background:#fff}
 .follow{margin-top:32px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-family:var(--font-sans);font-size:12px;letter-spacing:.05em;text-transform:capitalize;color:var(--fg-grey-700)}
 .follow b{font-weight:400;color:var(--fg-grey-900);border:1px solid var(--fg-grey-200);border-radius:999px;padding:5px 12px;background:#fff}
 @media (max-width:1199px){.tl-phases,.tl-line,.tl-loop{display:none}.tl-blocks{grid-template-columns:repeat(5,1fr);gap:28px 12px}.tl-blocks a{padding:14px 0 0;border-top:2px solid var(--fg-grey-200);transition:border-color .4s}.timeline.in .tl-blocks a{border-top-color:var(--fg-blue-panel)}}
@@ -510,7 +510,7 @@ section{padding:100px 0}
 .phase{border-top:1px solid var(--line);padding-top:36px;margin-bottom:52px;align-items:flex-end}
 .phase .left{gap:20px;align-items:center}
 .phase .word{font-size:var(--fs-64);line-height:1;letter-spacing:-.03em}
-.phase .right p{font-size:var(--fs-34);line-height:1.24;letter-spacing:-.01em;margin-bottom:8px}
+.phase .right p{font-size:var(--fs-22);line-height:1.24;letter-spacing:-.01em;margin-bottom:8px}
 .ptile,.ptile.g,.ptile.b{background:var(--fg-grey-900)}
 .ptile.o{background:var(--fg-orange-ui)}
 .ptile{width:48px;height:48px}
@@ -586,7 +586,7 @@ section{padding:100px 0}
 .close{position:static;isolation:auto;overflow:visible;background:none;border-radius:0;color:#fff;padding:0 0 240px;min-height:0}
 .close h2{color:#fff;font-size:min(44px,calc((100vw - 80px) / 13.6));line-height:1.1}
 @media (min-width:1200px){.close h2{font-size:min(44px,calc(100vw * .0385))}}
-.close p{color:rgba(255,255,255,.78);font-size:var(--fs-19);line-height:1.6;margin:18px 0 32px;max-width:47ch}
+.close p{color:rgba(255,255,255,.78);font-size:var(--fs-19);line-height:1.6;margin:18px 0 32px;max-width:37ch}
 .close .ws-btn,.close .mono{position:relative}
 .close .mono{color:rgba(255,255,255,.55)}
 .close svg{left:-10%;width:120%;max-width:none;height:58%;z-index:-1;opacity:.9}
@@ -740,8 +740,8 @@ footer,footer.md-foot{border-top:0}
 @media (max-width:767px){.live-sec{padding:40px 0 0}}
 .live-sec .live-in{display:grid;align-items:stretch;width:100%;background:var(--fg-grey-100);padding:30px}
 .live-sec .stack{display:flex;min-width:0}
-.live-sec .path{flex:1;min-width:0;border:1px solid var(--line);box-shadow:none}
-.live-sec .ledger{margin:0;border:1px solid var(--line);min-width:0}
+.live-sec .path{flex:1;min-width:0;border:0;box-shadow:none}
+.live-sec .ledger{margin:0;border:0;min-width:0}
 .live-sec .ledger table{min-width:0;height:100%}
 .live-sec .ledger td.w{white-space:normal}
 @media (min-width:1280px){.live-sec .live-in{grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:24px}}
@@ -818,7 +818,7 @@ footer,footer.md-foot{border-top:0}
 .qtable .row.head{padding:20px 20px 20px;color:var(--text-muted);font-size:var(--fg-t-cap-lh);letter-spacing:.08em;border:0;position:sticky;top:76px;z-index:6;background:var(--fg-grey-100);align-items:end}
 .stage{padding:28px;display:flex;flex-direction:column;justify-content:center;min-height:inherit}
 .tabs-stick{position:sticky;top:76px;z-index:6;background:var(--fg-white);padding:12px 0;margin-bottom:12px}
-.live-sec{padding:100px 0 70px;background:var(--bg)}
+.live-sec{padding:140px 0 70px;background:var(--bg)}
 .qtable .row.head{padding:20px 0 20px;color:var(--text-muted);font-size:var(--fg-t-cap-lh);letter-spacing:.08em;border:0;position:sticky;top:76px;z-index:6;background:var(--bg);align-items:end}
 
 /* ---------- Ship: no shaking when the list switches ---------- */
@@ -858,8 +858,8 @@ footer,footer.md-foot{border-top:0}
 .mq-item{display:inline-flex;align-items:center;white-space:nowrap;font-size:26px;line-height:1.1;letter-spacing:-.02em;color:var(--ink);padding-right:56px}
 .mq-item::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--fg-grey-400);margin-left:56px;flex:none}
 .mq{padding:100px 0 0;background:var(--bg);overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.live-sec .path{flex:1;min-width:0;border:1px solid var(--fg-grey-200);box-shadow:none}
-.live-sec .ledger{margin:0;border:1px solid var(--fg-grey-200);min-width:0}
+.live-sec .path{flex:1;min-width:0;border:0;box-shadow:none}
+.live-sec .ledger{margin:0;border:0;min-width:0}
 .ledger th{font-family:var(--font-sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-grey-700);text-align:left;font-weight:400;padding:12px 14px}
 .path .colhead{font-family:var(--font-sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-grey-700);margin-bottom:32px;line-height:14px}
 .ledger td.t,.ledger td.w{font-family:var(--font-sans);font-size:11px;color:var(--fg-grey-700);text-transform:uppercase;letter-spacing:.03em}
@@ -919,6 +919,32 @@ nav.top,nav.top.is-scrolled{background:rgba(23,24,27,.92);-webkit-backdrop-filte
 /* contrast guard: slim dark band behind the marquee text only, under the requested blue gradient */
 .mq.mq--over{padding-top:44px;background:linear-gradient(180deg,rgb(161 192 225 / 5%) 0%,rgb(113 172 219 / 40%) 45%,rgb(62 114 155) 100%)}
 .mq.mq--over .mq-item{text-shadow:0 1px 2px rgb(0 0 0 / 0%),0 0 18px rgb(0 0 0 / 0%)}
+
+/* Ship title matches the Find title */
+.l09-word{font-size:var(--fs-64);line-height:1;letter-spacing:-.03em;color:var(--ink);font-weight:400}
+.l09-word+.l09-h{margin-top:24px}
+
+/* =============== balanced vertical rhythm =============== */
+:root{--S:120px;--H:56px}
+@media (max-width:1199px){:root{--S:96px;--H:48px}}
+@media (max-width:767px){:root{--S:72px;--H:40px}}
+/* every band: same padding top and bottom */
+main > section,#live.live-sec,#why,#platform,#find,#ship,#run,#improve,#architecture,#security,#faq{padding-top:var(--S);padding-bottom:var(--S)}
+/* when the next section shares the background, use one gap instead of two */
+#live.live-sec + #why,#why + #platform,#security + #faq{padding-top:0}
+/* heading → content */
+.sec-head{margin-bottom:var(--H)}
+.phase{margin-bottom:var(--H)}
+.hs-img{margin-top:var(--H)}
+.run-intro{margin-bottom:var(--H)}
+section#run.run{padding-top:var(--S);padding-bottom:var(--S)}
+/* closing band: same inner spacing as every other band */
+.close-sec{padding-top:var(--S);padding-bottom:0}
+.close{padding-bottom:var(--S)}
+@media (max-width:767px){.close{padding-bottom:var(--S)}}
+
+/* timeline titles: the 54px drop is for the desktop line layout; stacked grids keep titles close to their numbers */
+@media (max-width:1199px){.tl-blocks b{margin-top:10px}}
 
 /* ---------- smooth scroll (Lenis) ---------- */
 html.lenis,html.lenis body{height:auto}
@@ -1143,7 +1169,7 @@ html.lenis,html.lenis body{height:auto}
     
     <div class="split split--l09" id="shipSplit">
 <div class="l09-copy">
-<div class="l09-top"><div class="eyebrow">Ship</div><h2 class="l09-h">Release agents like software.</h2></div>
+<div class="l09-top"><div class="l09-word">Ship</div><h2 class="l09-h">Release agents like software.</h2></div>
 <ol class="split-list" role="tablist" aria-orientation="vertical"><li role="presentation"><button type="button" class="split-item is-active" role="tab" id="t-b02" aria-controls="b02" aria-selected="true" tabindex="0"><span class="si-bar" aria-hidden="true"><i></i></span><span class="si-t">Register</span><span class="si-d"><span>Maintain one ownership record across teams. Owner, purpose, versions, tools, MCP servers and risk tier, kept current as teams and agents change.</span></span></button></li><li role="presentation"><button type="button" class="split-item" role="tab" id="t-b03" aria-controls="b03" aria-selected="false" tabindex="-1"><span class="si-bar" aria-hidden="true"><i></i></span><span class="si-t">Identity</span><span class="si-d"><span>Issue every agent its own identity. Each agent gets a workload identity, acts on behalf of real people, and signs in through your existing IdP.</span></span></button></li><li role="presentation"><button type="button" class="split-item" role="tab" id="t-b04" aria-controls="b04" aria-selected="false" tabindex="-1"><span class="si-bar" aria-hidden="true"><i></i></span><span class="si-t">Evals</span><span class="si-d"><span>Gate every release on evals. Multi-turn, red-team and regression evals gate every release, and the evidence ships with the version.</span></span></button></li><li role="presentation"><button type="button" class="split-item" role="tab" id="t-b05" aria-controls="b05" aria-selected="false" tabindex="-1"><span class="si-bar" aria-hidden="true"><i></i></span><span class="si-t">Deploy</span><span class="si-d"><span>Promote releases with built-in rollback. Ordered environments, approvals, canaries, one-step rollback and quarantine. Your CI keeps building.</span></span></button></li></ol>
 </div>
 <div class="split-panels">
