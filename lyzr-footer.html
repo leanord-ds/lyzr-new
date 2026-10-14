@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="color-scheme" content="light only">
+<title>Lyzr footer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* =============================================================================
+   LYZR WEBSITE DESIGN SYSTEM — lyzr.css
+   Source: Lyzr Brand Guidelines → 08 Website design system (UI + Layouts tabs).
+   White theme only. Never add dark mode, prefers-color-scheme overrides or toggles.
+   Every value lives in :root. Components and layouts read tokens only — never
+   hard-code a hex, size or spacing value in a page; add a token here instead.
+   ============================================================================= */
+
+:root{
+  color-scheme: light only;
+
+  /* ---------------------------------------------------------------------------
+     COLOUR — brand palette (primitives)
+     --------------------------------------------------------------------------- */
+  --color-black:    #1F2022;
+  --color-orange:   #FE4B1E;
+  --color-navy:     #043E77;
+  --color-forest:   #063B28;
+  --color-oxblood:  #593D3D;
+  --color-stone:    #A8A298;
+  --color-offwhite: #FAFAF9;
+  --color-white:    #FFFFFF;
+
+  /* neutrals used by the site */
+  --color-grey-50:  #F4F3F1;   /* row rules inside product UI */
+  --color-grey-100: #F1F0EE;   /* fill, media slots, pills */
+  --color-grey-150: #EFEFED;   /* UI card edges, meter track */
+  --color-grey-200: #E3E1DE;   /* line — hairlines, card edges */
+  --color-grey-300: #CFCCC7;   /* indicator track, flow links */
+  --color-grey-400: #B8B4AD;   /* paused status */
+  --color-grey-600: #8A857C;   /* text muted */
+  --color-grey-700: #6B675F;   /* text soft */
+  --color-green:    #2F8F5B;   /* live / passing status */
+
+  /* COLOUR — semantic (use these in components and pages) */
+  --bg:             var(--color-offwhite);   /* page background */
+  --surface:        var(--color-white);      /* cards, UI insets */
+  --fill:           var(--color-grey-100);   /* media slots, quiet fills */
+  --line:           var(--color-grey-200);   /* hairline borders */
+  --line-soft:      var(--color-grey-150);
+  --line-faint:     var(--color-grey-50);
+  --text:           var(--color-black);
+  --text-soft:      var(--color-grey-700);
+  --text-muted:     var(--color-grey-600);
+  --text-on-dark:   var(--color-offwhite);
+  --accent:         var(--color-orange);     /* one orange button per view; indicators; eyebrows */
+  --accent-hover:   #E5401A;
+  --accent-pressed: #C43A13;
+  --accent-tint:    rgba(254,75,30,.12);
+  --data:           var(--color-navy);       /* charts, meters */
+  --panel-navy:     var(--color-navy);
+  --panel-oxblood:  var(--color-oxblood);
+  --panel-forest:   var(--color-forest);
+  --panel-black:    var(--color-black);
+  --status-live:    var(--color-green);
+  --status-review:  var(--color-orange);
+  --status-paused:  var(--color-grey-400);
+  --focus-ring:     var(--color-orange);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------------- */
+  --font-sans: "Aeonik", "Figtree", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --weight-regular: 400;   /* the only weight in the system */
+
+  /* Figma text styles — size / line-height / tracking at 1440 */
+  --text-caption-size: 14px;  --text-caption-lh: 18px;  --text-caption-ls: 0;
+  --text-para-size:    18px;  --text-para-lh:    24px;  --text-para-ls:    0;
+  --text-subhead-size: 24px;  --text-subhead-lh: 26px;  --text-subhead-ls: -.01em;
+  --text-small-size:   36px;  --text-small-lh:   38px;  --text-small-ls:   -.018em;
+  --text-large-size:   48px;  --text-large-lh:   52px;  --text-large-ls:   -.022em;
+  --text-hero-size:    64px;  --text-hero-lh:    68px;  --text-hero-ls:    -.026em;
+  --text-xl-size:      90px;  --text-xl-lh:      94px;  --text-xl-ls:      -.03em;
+  --text-label-size:   14px;  --text-label-lh:   20px;  --text-label-ls:   .06em;   /* mono, uppercase */
+  /* product-UI scale (inside .lz-ui insets) */
+  --text-ui-size:      14px;  --text-ui-lh:      20px;
+  --text-ui-label-size:11px;  --text-ui-mono-size:13px;  --text-ui-pill-size:10.5px;
+  --text-ui-big-size:  34px;  --text-ui-big-lh:  40px;
+
+  /* ---------------------------------------------------------------------------
+     SPACING — base scale (use for padding, margin, gap)
+     --------------------------------------------------------------------------- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;   /* the internal rhythm: headline → copy → action */
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 60px;  /* frame margin; section padding */
+  --space-12: 72px;
+  --space-13: 86px;
+  --space-14: 90px;  /* between major regions */
+  --space-15: 120px;
+
+  /* PADDING — component insets */
+  --pad-btn-x:        18px;
+  --pad-card:         40px;            /* layout cards (L13, L14) */
+  --pad-card-compact: 32px;            /* kit text card, stat card */
+  --pad-card-feature: 28px 26px;       /* feature card (L15) */
+  --pad-panel:        40px;            /* colour / pattern panel */
+  --pad-case:         60px 58px;       /* case-study copy block */
+  --pad-section:      var(--space-11); /* top/bottom of a layout band */
+  --pad-section-hero: 40px var(--margin-page) 60px;
+  --pad-ui-x:         20px;
+  --pad-ui-y:         16px;
+  --pad-ui-row:       12px 20px;
+  --pad-pill:         4px 9px;
+  --pad-input:        8px 12px;
+  --pad-prompt:       16px;
+
+  /* MARGIN — vertical rhythm between elements */
+  --gap-eyebrow:      var(--space-6);  /* eyebrow → headline */
+  --gap-copy:         var(--space-6);  /* headline → paragraph */
+  --gap-action:       var(--space-6);  /* paragraph → button */
+  --gap-action-split: 30px;            /* paragraph → button in split layouts */
+  --gap-list-open:    20px;            /* subhead → paragraph in open lists */
+  --gap-nav-hero:     70px;            /* nav → hero content */
+  --gap-head-body:    var(--space-13); /* section heading → card row */
+  --gap-quote-cite:   var(--space-7);
+  --gap-row:          var(--space-6);  /* ruled row padding */
+
+  /* ---------------------------------------------------------------------------
+     LAYOUT — grid, frame, breakpoints
+     --------------------------------------------------------------------------- */
+  --frame:          1440px;
+  --content:        1320px;
+  --margin-page:    60px;
+  --columns:        12;
+  --column:         88px;
+  --gutter:         24px;
+  --span-3:  312px; --span-4: 424px; --span-5: 536px; --span-6: 648px;
+  --span-7:  760px; --span-10: 1096px;
+  --measure:        62ch;
+  --nav-h:          40px;
+  --nav-bar-h:      120px;          /* nav inside 40px top padding + 40px gap */
+  --bp-mobile:      640px;
+  --bp-tablet:      1024px;
+  --bp-desktop:     1440px;
+
+  /* Component heights at 1440 */
+  --h-btn:          40px;
+  --h-icon:         40px;
+  --h-arrow:        34px;
+  --h-dot:          8px;
+  --h-toggle:       18px;  --w-toggle: 30px;
+  --h-meter:        6px;
+  --h-media:        404px;   /* product card */
+  --h-panel:        520px;
+  --h-hero-img:     570px;
+  --h-square-img:   648px;
+  --h-card-tall:    596px;
+  --h-card-feature: 255px;
+
+  /* ---------------------------------------------------------------------------
+     POSITION — z-index layers and offsets
+     --------------------------------------------------------------------------- */
+  --z-base:      0;
+  --z-raised:    1;
+  --z-overlay:   10;
+  --z-sticky:    20;
+  --z-nav:       50;
+  --z-menu:      55;
+  --z-modal:     60;
+  --top-sticky:  calc(env(safe-area-inset-top, 0px) + var(--space-6));
+  --scroll-offset: 96px;          /* anchor offset under a sticky nav */
+  --ui-inset-top:  57px;          /* product UI inset inside a media card */
+  --ui-inset-left: 60px;
+  --ui-inset-wide: 48px;
+
+  /* ---------------------------------------------------------------------------
+     SHAPE
+     --------------------------------------------------------------------------- */
+  --radius-xs:   2px;    /* grid columns, specimen frames */
+  --radius-btn:  4px;    /* buttons, swatches */
+  --radius-card: 6px;    /* cards, media, panels, icon tile, UI insets */
+  --radius-ui:   8px;    /* KPI tiles and cards inside product UI */
+  --radius-pill: 999px;  /* pills, toggles, meters */
+  --radius-full: 50%;    /* arrow, status dot */
+  --border:      1px;
+  --border-strong: 1.5px;
+  --border-ind:  2px;    /* active indicator / tab underline */
+  --edge:        inset 0 0 0 1px var(--line);       /* hairline card edge */
+  --edge-soft:   inset 0 0 0 1px var(--line-soft);
+  --edge-accent: inset 0 0 0 1.5px var(--accent);
+  --shadow-ui:   0 12px 32px rgba(31,32,34,.07);    /* product UI inset only */
+
+  /* ---------------------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------------------- */
+  --dur-fast:   .12s;
+  --dur-base:   .25s;
+  --dur-reveal: .7s;
+  --dur-count:  1.2s;
+  --ease-out:   cubic-bezier(.2,.7,.2,1);
+  --ease-std:   ease;
+  --stagger:    90ms;
+  --reveal-y:   24px;
+}
+
+/* Responsive token overrides (derived for tablet and mobile) */
+@media (max-width:1024px){
+  :root{
+    --margin-page: 36px; --gutter: 20px; --columns: 8;
+    --text-xl-size: 64px;   --text-xl-lh: 68px;
+    --text-hero-size: 48px; --text-hero-lh: 52px;
+    --text-large-size: 40px;--text-large-lh: 44px;
+    --text-small-size: 30px;--text-small-lh: 34px;
+    --pad-card: 32px; --pad-panel: 32px; --pad-section: 48px;
+    --gap-nav-hero: 48px; --gap-head-body: 48px;
+    --h-hero-img: 440px; --h-square-img: 480px; --h-panel: auto;
+  }
+}
+@media (max-width:640px){
+  :root{
+    --margin-page: 20px; --gutter: 12px; --columns: 4;
+    --text-xl-size: 48px;   --text-xl-lh: 52px;
+    --text-hero-size: 40px; --text-hero-lh: 44px;
+    --text-large-size: 32px;--text-large-lh: 36px;
+    --text-small-size: 26px;--text-small-lh: 30px;
+    --text-subhead-size: 20px; --text-subhead-lh: 24px;
+    --pad-card: 24px; --pad-panel: 24px; --pad-case: 32px 24px; --pad-section: 40px;
+    --gap-nav-hero: 32px; --gap-head-body: 32px;
+    --h-hero-img: 320px; --h-square-img: 340px; --h-media: 340px;
+  }
+}
+
+/* =============================================================================
+   BASE
+   ============================================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--scroll-offset);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);font-weight:var(--weight-regular);
+  font-size:var(--text-para-size);line-height:var(--text-para-lh);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,p,dl,dd,figure,ul,ol,blockquote{margin:0}
+h1,h2,h3,h4,h5{font-weight:var(--weight-regular)}
+ul,ol{padding:0;list-style:none}
+img,svg,video{max-width:100%;display:block}
+a{color:inherit}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px;border-radius:var(--radius-xs)}
+
+/* =============================================================================
+   TYPE
+   ============================================================================= */
+.t-caption{font-size:var(--text-caption-size);line-height:var(--text-caption-lh)}
+.t-para{font-size:var(--text-para-size);line-height:var(--text-para-lh)}
+.t-subhead{font-size:var(--text-subhead-size);line-height:var(--text-subhead-lh);letter-spacing:var(--text-subhead-ls)}
+.t-small{font-size:var(--text-small-size);line-height:var(--text-small-lh);letter-spacing:var(--text-small-ls)}
+.t-large{font-size:var(--text-large-size);line-height:var(--text-large-lh);letter-spacing:var(--text-large-ls)}
+.t-hero{font-size:var(--text-hero-size);line-height:var(--text-hero-lh);letter-spacing:var(--text-hero-ls)}
+.t-xl{font-size:var(--text-xl-size);line-height:var(--text-xl-lh);letter-spacing:var(--text-xl-ls)}
+.t-soft{color:var(--text-soft)}
+.t-muted{color:var(--text-muted)}
+.t-center{text-align:center}
+
+/* Eyebrows and labels — mono, uppercase, tracked */
+.lz-label{font-family:var(--font-mono);font-size:var(--text-label-size);line-height:var(--text-label-lh);
+  letter-spacing:var(--text-label-ls);text-transform:uppercase;color:var(--accent)}          /* eyebrow / number */
+.lz-data-label{font-family:var(--font-mono);font-size:var(--text-ui-label-size);letter-spacing:var(--text-label-ls);
+  text-transform:uppercase;color:var(--text-muted)}                                             /* above a figure */
+.lz-pill{display:inline-block;font-family:var(--font-mono);font-size:var(--text-ui-pill-size);letter-spacing:var(--text-label-ls);
+  text-transform:uppercase;padding:var(--pad-pill);border-radius:var(--radius-pill);background:var(--fill);color:var(--text-soft)}
+.lz-pill--ok{background:rgba(47,143,91,.12);color:var(--status-live)}
+.lz-pill--accent{background:var(--accent-tint);color:var(--accent-pressed)}
+
+/* =============================================================================
+   GRID
+   ============================================================================= */
+.lz-container{max-width:calc(var(--content) + 2*var(--margin-page));margin-inline:auto;padding-inline:var(--margin-page)}
+.lz-section{padding-block:var(--pad-section)}
+.lz-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);row-gap:var(--space-6)}
+.c-1-1{grid-column:1/2}
+.c-1-2{grid-column:1/3}
+.c-1-3{grid-column:1/4}
+.c-1-4{grid-column:1/5}
+.c-1-5{grid-column:1/6}
+.c-1-6{grid-column:1/7}
+.c-1-7{grid-column:1/8}
+.c-1-8{grid-column:1/9}
+.c-1-9{grid-column:1/10}
+.c-1-10{grid-column:1/11}
+.c-1-11{grid-column:1/12}
+.c-1-12{grid-column:1/13}
+.c-2-2{grid-column:2/3}
+.c-2-3{grid-column:2/4}
+.c-2-4{grid-column:2/5}
+.c-2-5{grid-column:2/6}
+.c-2-6{grid-column:2/7}
+.c-2-7{grid-column:2/8}
+.c-2-8{grid-column:2/9}
+.c-2-9{grid-column:2/10}
+.c-2-10{grid-column:2/11}
+.c-2-11{grid-column:2/12}
+.c-2-12{grid-column:2/13}
+.c-3-3{grid-column:3/4}
+.c-3-4{grid-column:3/5}
+.c-3-5{grid-column:3/6}
+.c-3-6{grid-column:3/7}
+.c-3-7{grid-column:3/8}
+.c-3-8{grid-column:3/9}
+.c-3-9{grid-column:3/10}
+.c-3-10{grid-column:3/11}
+.c-3-11{grid-column:3/12}
+.c-3-12{grid-column:3/13}
+.c-4-4{grid-column:4/5}
+.c-4-5{grid-column:4/6}
+.c-4-6{grid-column:4/7}
+.c-4-7{grid-column:4/8}
+.c-4-8{grid-column:4/9}
+.c-4-9{grid-column:4/10}
+.c-4-10{grid-column:4/11}
+.c-4-11{grid-column:4/12}
+.c-4-12{grid-column:4/13}
+.c-5-5{grid-column:5/6}
+.c-5-6{grid-column:5/7}
+.c-5-7{grid-column:5/8}
+.c-5-8{grid-column:5/9}
+.c-5-9{grid-column:5/10}
+.c-5-10{grid-column:5/11}
+.c-5-11{grid-column:5/12}
+.c-5-12{grid-column:5/13}
+.c-6-6{grid-column:6/7}
+.c-6-7{grid-column:6/8}
+.c-6-8{grid-column:6/9}
+.c-6-9{grid-column:6/10}
+.c-6-10{grid-column:6/11}
+.c-6-11{grid-column:6/12}
+.c-6-12{grid-column:6/13}
+.c-7-7{grid-column:7/8}
+.c-7-8{grid-column:7/9}
+.c-7-9{grid-column:7/10}
+.c-7-10{grid-column:7/11}
+.c-7-11{grid-column:7/12}
+.c-7-12{grid-column:7/13}
+.c-8-8{grid-column:8/9}
+.c-8-9{grid-column:8/10}
+.c-8-10{grid-column:8/11}
+.c-8-11{grid-column:8/12}
+.c-8-12{grid-column:8/13}
+.c-9-9{grid-column:9/10}
+.c-9-10{grid-column:9/11}
+.c-9-11{grid-column:9/12}
+.c-9-12{grid-column:9/13}
+.c-10-10{grid-column:10/11}
+.c-10-11{grid-column:10/12}
+.c-10-12{grid-column:10/13}
+.c-11-11{grid-column:11/12}
+.c-11-12{grid-column:11/13}
+.c-12-12{grid-column:12/13}
+.lz-between{display:flex;flex-direction:column;justify-content:space-between}
+.lz-center-v{align-self:center}
+@media (max-width:1024px){
+  .lz-grid{grid-template-columns:repeat(8,minmax(0,1fr))}
+  .lz-grid > [class*="c-"]{grid-column:1/-1}
+  .lz-grid.lz-cards > [class*="c-"]{grid-column:span 4}
+  .lz-between{height:auto!important;gap:var(--space-9)}
+}
+@media (max-width:640px){
+  .lz-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .lz-grid.lz-cards > [class*="c-"]{grid-column:1/-1}
+}
+
+/* =============================================================================
+   BUTTONS — 40 high, 18 across, 4 radius, label in Para
+   Black is primary. Orange is the accent — one per view.
+   ============================================================================= */
+.lz-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:var(--h-btn);padding:0 var(--pad-btn-x);
+  border:0;border-radius:var(--radius-btn);background:var(--color-black);color:var(--text-on-dark);
+  font-size:var(--text-para-size);line-height:var(--text-para-lh);white-space:nowrap;text-decoration:none;cursor:pointer;
+  transition:background-color var(--dur-fast) var(--ease-std),transform var(--dur-fast) var(--ease-std)}
+.lz-btn:hover{background:#34353A}
+.lz-btn--accent{background:var(--accent)}
+.lz-btn--accent:hover{background:var(--accent-hover)}
+.lz-btn--accent:active{background:var(--accent-pressed)}
+.lz-btn:disabled,.lz-btn[aria-disabled="true"]{background:var(--line);color:var(--text-muted);cursor:not-allowed}
+/* Text link — Subhead with an orange arrow */
+.lz-link{display:inline-flex;align-items:center;gap:var(--space-4);text-decoration:none;cursor:pointer;
+  font-size:var(--text-subhead-size);line-height:var(--text-subhead-lh);letter-spacing:var(--text-subhead-ls)}
+.lz-link:hover .lz-arrow{transform:translate(2px,-2px)}
+
+/* =============================================================================
+   ICONS — line icons on a 24 grid, 1.6 stroke
+   ============================================================================= */
+.lz-icon{width:var(--h-icon);height:var(--h-icon);border-radius:var(--radius-card);background:var(--color-black);
+  display:grid;place-items:center;color:var(--text-on-dark);flex:none}
+.lz-icon svg,.lz-icon-plain{width:24px;height:24px}
+.lz-arrow{width:var(--h-arrow);height:var(--h-arrow);border-radius:var(--radius-full);background:var(--accent);
+  display:inline-grid;place-items:center;flex:none;transition:transform var(--dur-fast) var(--ease-std)}
+.lz-arrow svg{width:16px;height:16px}
+.lz-dot{display:inline-block;width:var(--h-dot);height:var(--h-dot);border-radius:var(--radius-full);flex:none;
+  margin-right:var(--space-2);vertical-align:1px;background:var(--status-live)}
+.lz-dot--review{background:var(--status-review)} .lz-dot--paused{background:var(--status-paused)}
+
+/* =============================================================================
+   NAVIGATION — five links split around the lockup, one orange button at the end
+   ============================================================================= */
+.lz-nav{position:sticky;top:0;z-index:var(--z-nav);background:color-mix(in srgb,var(--bg) 94%,transparent);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding-top:env(safe-area-inset-top,0px)}
+.lz-nav-bar{display:flex;align-items:center;justify-content:space-between;height:calc(var(--nav-h) + 2*var(--space-6));
+  font-size:var(--text-para-size);line-height:var(--text-para-lh)}
+.lz-nav-bar a{text-decoration:none}
+.lz-nav-bar a:not(.lz-btn):hover{color:var(--accent)}
+.lz-logo{width:98px;height:auto;--mk:var(--color-orange);--wm:var(--color-black)}
+.lz-logo--rev{--mk:var(--color-orange);--wm:var(--color-offwhite)}
+.lz-logo--black{--mk:var(--color-black);--wm:var(--color-black)}
+.lz-logo--white{--mk:var(--color-offwhite);--wm:var(--color-offwhite)}
+.lz-nav-toggle{display:none;height:var(--h-btn);padding:0 var(--space-3);background:none;border:var(--border) solid var(--line);
+  border-radius:var(--radius-btn);font-family:var(--font-mono);font-size:var(--text-ui-label-size);letter-spacing:var(--text-label-ls);text-transform:uppercase;cursor:pointer}
+.lz-nav-menu{display:none;border-top:var(--border) solid var(--line);padding-bottom:var(--space-3)}
+.lz-nav-menu a{display:block;padding:var(--space-3) 0;border-bottom:var(--border) solid var(--line);text-decoration:none}
+@media (max-width:1024px){
+  .lz-nav-bar .lz-nav-link{display:none}
+  .lz-nav-toggle{display:inline-flex;align-items:center}
+  .lz-nav.is-open .lz-nav-menu{display:block}
+}
+
+/* =============================================================================
+   CARDS — white on off-white, hairline edge, 6 radius.
+   Content pins to the top, the action to the bottom.
+   ============================================================================= */
+.lz-card{position:relative;background:var(--surface);border-radius:var(--radius-card);box-shadow:var(--edge);padding:var(--pad-card)}
+.lz-card--compact{padding:var(--pad-card-compact)}
+.lz-card--feature{padding:var(--pad-card-feature);min-height:var(--h-card-feature);display:flex;flex-direction:column}
+.lz-card--feature .lz-card-body{margin-top:auto;padding-top:var(--space-9)}
+.lz-card--tall{min-height:var(--h-card-tall)}
+.lz-card-title + .lz-card-copy{margin-top:var(--gap-copy)}
+.lz-card-action{margin-top:var(--space-9)}
+/* Product card — fill with a UI inset */
+.lz-media{position:relative;height:var(--h-media);border-radius:var(--radius-card);background:var(--fill);overflow:hidden}
+.lz-media--wide{height:735px}
+.lz-media--tall{height:var(--h-square-img)}
+.lz-ui{position:absolute;top:var(--ui-inset-top);left:var(--ui-inset-left);right:0;bottom:0;background:var(--surface);
+  border-top-left-radius:var(--radius-card);box-shadow:var(--shadow-ui);overflow:hidden}
+.lz-media--wide .lz-ui{top:var(--ui-inset-wide);left:var(--ui-inset-wide);right:var(--ui-inset-wide);border-top-right-radius:var(--radius-card)}
+@media (max-width:640px){.lz-ui{left:var(--space-6);top:var(--space-6)}.lz-media--wide{height:520px}.lz-media--wide .lz-ui{left:var(--space-4);right:var(--space-4);top:var(--space-4)}}
+
+/* =============================================================================
+   IMAGERY — photo slots, the wave pattern
+   ============================================================================= */
+.lz-img{position:relative;overflow:hidden;border-radius:var(--radius-card);background-color:var(--fill);
+  background-size:cover;background-position:center;background-repeat:no-repeat}
+.lz-img--hero{height:var(--h-hero-img)}
+.lz-img--square{height:var(--h-square-img)}
+.lz-img--full{height:841px}
+@media (max-width:1024px){.lz-img--full{height:520px}}
+.lz-shot{width:100%;object-fit:cover;border-radius:var(--radius-card)}
+.lz-wave{position:relative;isolation:isolate}
+.lz-wave::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  background-image:var(--pattern-wave);background-size:cover;background-position:center 30%;transform:scaleX(-1)}
+
+/* =============================================================================
+   TABS AND INDICATORS — orange marks where you are
+   ============================================================================= */
+.lz-tabs{display:flex;gap:26px;border-bottom:var(--border) solid var(--line-soft);font-size:var(--text-ui-size);color:var(--text-muted)}
+.lz-tabs button,.lz-tabs span{padding:var(--space-4) 0 14px;background:none;border:0;cursor:pointer;color:inherit}
+.lz-tabs .is-on,.lz-tabs [aria-selected="true"]{color:var(--text);box-shadow:inset 0 calc(-1*var(--border-ind)) 0 var(--accent)}
+.lz-ind{position:relative;height:var(--border);background:var(--color-grey-300)}
+.lz-ind i{position:absolute;left:0;top:-.5px;height:var(--border-ind);width:58px;background:var(--accent);transition:width var(--dur-reveal) var(--ease-out)}
+.lz-ind--off i{width:0}
+.lz-toggle{width:var(--w-toggle);height:var(--h-toggle);border-radius:var(--radius-pill);background:var(--line);position:relative;flex:none;border:0;cursor:pointer;padding:0}
+.lz-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:var(--radius-full);background:var(--color-white);
+  box-shadow:0 1px 2px rgba(0,0,0,.15);transition:left var(--dur-fast) var(--ease-std)}
+.lz-toggle.is-on,.lz-toggle[aria-checked="true"]{background:var(--accent)}
+.lz-toggle.is-on i,.lz-toggle[aria-checked="true"] i{left:14px}
+.lz-meter{height:var(--h-meter);border-radius:var(--radius-pill);background:var(--line-soft);overflow:hidden;flex:1}
+.lz-meter i{display:block;height:100%;background:var(--data);border-radius:var(--radius-pill)}
+
+/* =============================================================================
+   LISTS — one open, all open, full width
+   ============================================================================= */
+.lz-rows .lz-row{border-top:var(--border) solid var(--line);padding:var(--gap-row) 0}
+.lz-rows .lz-row:last-child{padding-bottom:0}
+.lz-open{border-bottom:var(--border) solid var(--line);padding-bottom:var(--space-5);margin-bottom:var(--space-6)}
+.lz-wrow{padding-bottom:var(--space-5);border-bottom:var(--border) solid var(--line);margin-bottom:var(--space-5)}
+.lz-step{display:block;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer}
+.lz-step .t-subhead{transition:color var(--dur-fast) var(--ease-std)}
+.lz-step:not(.is-on) .t-subhead{color:var(--text-muted)}
+.lz-step:not(.is-on) .lz-step-body{display:none}
+
+/* =============================================================================
+   STATS — a figure in Title / Large over a mono label. Never more than two in a row.
+   ============================================================================= */
+.lz-stat{padding:var(--pad-card-compact);border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--edge)}
+.lz-stat--forest{background:var(--panel-forest);color:var(--text-on-dark);box-shadow:none}
+.lz-stat-l{font-family:var(--font-mono);font-size:var(--text-label-size);line-height:var(--text-label-lh);letter-spacing:var(--text-label-ls);
+  text-transform:uppercase;margin-top:14px;opacity:.85}
+.lz-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gutter)}
+
+/* =============================================================================
+   QUOTES — Title / Small in curly quotes, role and company in Para beneath
+   ============================================================================= */
+.lz-quote q{quotes:"“" "”"}
+.lz-quote-cite{margin-top:var(--gap-quote-cite)}
+
+/* =============================================================================
+   PANELS — navy, oxblood or forest; or the wave pattern
+   ============================================================================= */
+.lz-panel{min-height:var(--h-panel);border-radius:var(--radius-card);padding:var(--pad-panel);color:var(--text-on-dark);background:var(--panel-navy);
+  display:flex;flex-direction:column;justify-content:flex-start}
+.lz-panel--oxblood{background:var(--panel-oxblood)}
+.lz-panel--forest{background:var(--panel-forest)}
+.lz-panel--black{background:var(--panel-black)}
+.lz-panel--pattern{background:none;color:var(--text)}
+.lz-panel .t-para{opacity:.8}
+.lz-panel--pattern .t-para{opacity:1}
+/* case study: copy on cols 1–7 + gutter, photo flush on cols 8–12 */
+.lz-case{display:grid;grid-template-columns:784fr 536fr;min-height:536px;border-radius:var(--radius-card);overflow:hidden}
+.lz-case-copy{background:var(--panel-forest);color:var(--text-on-dark);padding:var(--pad-case);display:flex;flex-direction:column;gap:var(--space-8)}
+.lz-case-copy .lz-stats{margin-top:auto;max-width:530px}
+.lz-case-img{background-size:cover;background-position:center;min-height:320px}
+@media (max-width:1024px){.lz-case{grid-template-columns:1fr}}
+
+/* =============================================================================
+   INPUTS — off-white fields with a hairline edge
+   ============================================================================= */
+.lz-input{display:block;width:100%;max-width:260px;padding:var(--pad-input);border:0;border-radius:var(--radius-card);background:var(--bg);
+  box-shadow:var(--edge);color:var(--text);font-size:13px}
+.lz-input::placeholder{color:var(--text-muted)}
+.lz-prompt{display:flex;gap:14px;align-items:flex-end;padding:var(--pad-prompt);border-radius:var(--radius-ui);background:var(--bg);box-shadow:var(--edge);
+  font-size:15px;line-height:21px}
+.lz-prompt textarea{flex:1;border:0;background:none;resize:none;outline:none;min-height:42px}
+.lz-go{flex:none;padding:var(--space-2) 14px;border:0;border-radius:var(--radius-card);background:var(--accent);color:var(--text-on-dark);font-size:var(--text-ui-size);cursor:pointer}
+
+/* =============================================================================
+   PRODUCT UI — drawn inside .lz-ui insets
+   ============================================================================= */
+.ui{font-size:var(--text-ui-size);line-height:var(--text-ui-lh);height:100%;color:var(--text)}
+.ui-head{display:flex;align-items:center;justify-content:space-between;padding:var(--pad-ui-y) var(--pad-ui-x);border-bottom:var(--border) solid var(--line-soft);font-size:15px}
+.ui-row{display:flex;align-items:center;gap:10px;padding:var(--pad-ui-row);border-bottom:var(--border) solid var(--line-faint)}
+.ui-row .lz-dot{margin-right:0}
+.ui-name{flex:1}
+.ui-muted{color:var(--text-muted)}
+.ui-mono{font-family:var(--font-mono);font-size:var(--text-ui-mono-size)}
+.ui-big{font-size:var(--text-ui-big-size);line-height:var(--text-ui-big-lh);letter-spacing:-.02em;margin-top:var(--space-2)}
+.ui-chart{display:flex;align-items:flex-end;gap:6px;height:130px;margin-top:26px}
+.ui-chart i{flex:1;background:var(--data);border-radius:3px 3px 0 0}
+.ui-chart i.is-on{background:var(--accent)}
+.ui-axis{display:flex;justify-content:space-between;margin-top:var(--space-2);font-family:var(--font-mono);font-size:var(--text-ui-pill-size);letter-spacing:var(--text-label-ls);text-transform:uppercase;color:var(--text-muted)}
+.ui-flow{display:flex;flex-direction:column;align-items:flex-start;margin-top:14px}
+.ui-node{padding:11px 14px;border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--edge);font-size:var(--text-ui-size)}
+.ui-node.is-accent{box-shadow:var(--edge-accent)}
+.ui-link{display:block;width:1px;height:16px;background:var(--color-grey-300);margin-left:22px}
+.ui-split{display:flex;gap:var(--space-3)}
+.ui-eval{margin-bottom:var(--space-4)}
+.ui-eval-t{display:flex;justify-content:space-between;margin-bottom:var(--space-2)}
+.ui-dash{display:grid;grid-template-columns:210px 1fr}
+.ui-side{background:var(--bg);border-right:var(--border) solid var(--line-soft);padding:var(--space-5) 14px;display:flex;flex-direction:column;gap:2px;color:var(--text-soft)}
+.ui-side span{padding:var(--space-2) 10px;border-radius:var(--radius-card)}
+.ui-side span.is-on{background:var(--surface);color:var(--text);box-shadow:var(--edge-soft)}
+.ui-brand{font-size:16px;color:var(--text);padding:2px 10px 18px}
+.ui-main{padding:22px 26px;overflow:hidden}
+.ui-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.ui-title{font-size:24px;letter-spacing:-.015em}
+.ui-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:var(--space-5)}
+.ui-kpi{padding:var(--space-4) 18px;border-radius:var(--radius-ui);box-shadow:var(--edge-soft)}
+.ui-kpi .ui-big{font-size:28px;line-height:34px;margin:6px 0 2px}
+.ui-grid2{display:grid;grid-template-columns:1.7fr 1fr;gap:14px;margin-top:14px}
+.ui-card{border-radius:var(--radius-ui);box-shadow:var(--edge-soft);overflow:hidden}
+.ui-tr{display:grid;grid-template-columns:1.4fr 1fr 1fr .9fr .7fr;padding:11px var(--pad-ui-x);border-bottom:var(--border) solid var(--line-faint);font-size:13.5px;align-items:center}
+.ui-th{font-family:var(--font-mono);font-size:var(--text-ui-pill-size);letter-spacing:var(--text-label-ls);text-transform:uppercase;color:var(--text-muted);padding-top:12px;padding-bottom:10px}
+.ui-hbar{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);font-size:13.5px}
+@media (max-width:1024px){.ui-dash{grid-template-columns:1fr}.ui-side{display:none}.ui-kpis{grid-template-columns:repeat(2,1fr)}.ui-grid2{grid-template-columns:1fr}}
+
+/* =============================================================================
+   MOTION — reveal once, count up, respect reduced motion
+   ============================================================================= */
+@media (prefers-reduced-motion:no-preference){
+  .js .lz-reveal{opacity:0;transform:translateY(var(--reveal-y));
+    transition:opacity var(--dur-reveal) var(--ease-out),transform var(--dur-reveal) var(--ease-out);transition-delay:var(--d,0ms)}
+  .js .lz-reveal.is-in{opacity:1;transform:none}
+  .lz-btn:hover{transform:translateY(-1px)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{min-height:100vh;background:var(--bg)}
+.ft-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* brand sky: navy depth below, warm accent glow above, all from brand colours */
+.ft-page{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:72px var(--margin-page) 0;
+  background:
+    radial-gradient(70% 55% at 85% 0%,rgba(254,75,30,.30) 0%,rgba(254,75,30,0) 70%),
+    radial-gradient(60% 50% at 10% 5%,rgba(89,61,61,.18) 0%,rgba(89,61,61,0) 70%),
+    linear-gradient(180deg,#C9D6EA 0%,#9DBCE4 45%,#3C78C0 80%,#043E77 100%)}
+.ft{width:100%;max-width:var(--content);margin:0 auto}
+.ft-card{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(250,250,249,.86));-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);
+  border-radius:var(--radius-card) var(--radius-card) 0 0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 -20px 60px -30px rgba(4,62,119,.35);padding:80px clamp(48px,5vw,96px) 56px}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+.ft-lead{min-width:0;flex:1 1 auto;max-width:720px}
+.ft-form,.ft-card{box-sizing:border-box}
+.ft-h{margin:0;font-weight:400;font-size:var(--text-large-size);line-height:var(--text-large-lh);letter-spacing:var(--text-large-ls);color:var(--text)}
+.ft-form{display:flex;align-items:center;gap:8px;margin-top:24px;width:min(508px,100%);padding:6px 6px 6px 18px;border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--edge);transition:box-shadow .2s}
+.ft-form:focus-within{box-shadow:inset 0 0 0 1.5px var(--text)}
+.ft-form input{flex:1;min-width:0;height:44px;border:0;background:none;font:inherit;font-size:16px;color:var(--text);outline:none}
+.ft-form input::placeholder{color:var(--text-muted)}
+.ft-form .lz-btn{flex:none;height:44px}
+.ft-form.is-done .lz-btn{background:var(--status-live)}
+.ft-note{margin:12px 0 0;font-size:14px;color:var(--text-muted)}
+.ft-note span{color:var(--text-soft)}
+.ft-social{display:flex;gap:12px;flex:none}
+.ft-soc{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--fill);color:var(--text);transition:background-color .25s,color .25s,transform .35s var(--ease-out)}
+.ft-soc svg{width:20px;height:20px}
+.ft-soc svg{transition:transform .35s cubic-bezier(.22,.8,.24,1)}
+.ft-soc:hover{background:var(--text);color:var(--surface);transform:translateY(-2px)}
+.ft-soc:hover svg{transform:scale(1.08)}
+.ft-soc:focus-visible,.ft-col a:focus-visible,.ft-logo:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+.ft-cols{display:grid;grid-template-columns:repeat(5,minmax(max-content,1fr));gap:64px 40px;margin-top:80px}
+.ft-col{min-width:0}
+.ft-col h3{margin:0 0 22px;font-weight:400}
+.ft-acc{all:unset;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);cursor:default}
+.ft-pm{display:none;width:18px;height:18px;color:var(--accent)}
+.ft-pm-v{transform-origin:center;transform-box:fill-box;transition:transform .35s cubic-bezier(.22,.8,.24,1)}
+.ft-col ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+/* links: one line on wide screens; the arrow always sits right after the last word */
+.ft-col li{line-height:1.35}
+.ft-col a{display:inline-block;max-width:100%;font-size:clamp(14px,1.12vw,16px);line-height:1.35;color:var(--text);text-decoration:none;white-space:nowrap;position:relative;
+  transition:opacity .3s cubic-bezier(.22,.8,.24,1),transform .4s cubic-bezier(.22,.8,.24,1)}
+.ft-t{display:inline}
+.ft-arr{position:absolute;left:100%;top:50%;width:14px;height:14px;margin-left:6px;color:var(--accent);opacity:0;transform:translate(-8px,-50%);
+  transition:opacity .25s ease,transform .4s cubic-bezier(.22,.8,.24,1)}
+.ft-col a:hover,.ft-col a:focus-visible{transform:none}
+.ft-col a:hover .ft-arr,.ft-col a:focus-visible .ft-arr{opacity:1;transform:translate(0,-50%)}
+@media (hover:hover){.ft-col ul:hover a:not(:hover){opacity:.42}}
+@media (prefers-reduced-motion:no-preference){
+  .js .ft-col{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .7s cubic-bezier(.22,.8,.24,1);transition-delay:calc(var(--i) * 45ms)}
+  .js .ft-cols.is-in .ft-col{opacity:1;transform:none}
+  .js .ft-top,.js .ft-bottom{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .7s cubic-bezier(.22,.8,.24,1)}
+  .js .ft-top.is-in,.js .ft-bottom.is-in{opacity:1;transform:none}
+}
+.ft-bottom{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;margin-top:88px}
+.ft-logo .lz-logo{width:176px}
+.ft-addr,.ft-copy{margin:0;font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft)}
+.ft-addr{text-align:center}
+@media (max-width:1279px){.ft-bottom{grid-template-columns:auto auto;justify-content:space-between;row-gap:20px}.ft-addr{grid-column:1/-1;grid-row:2;text-align:left}.ft-card{padding:64px 48px 48px}.ft-cols{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch;gap:56px 48px}.ft-col a{font-size:16px}}
+@media (max-width:900px){
+  .ft-top{flex-direction:column;align-items:stretch}.ft-lead{max-width:none}
+  .ft-cols{grid-template-columns:minmax(0,1fr);gap:0;margin-top:48px;border-top:1px solid var(--line)}
+  .ft-col{border-bottom:1px solid var(--line)}
+  .ft-col h3{margin:0}
+  .ft-acc{cursor:pointer;padding:20px 0;font-size:14px;color:var(--text)}
+  .ft-pm{display:block}
+  .ft-acc[aria-expanded="true"] .ft-pm-v{transform:rotate(90deg) scale(0)}
+  .ft-col ul{gap:0;overflow:hidden}
+  .ft-col ul[hidden]{display:none}
+  .ft-col li a{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 0;white-space:normal}
+  .ft-col li a .ft-arr{position:static;margin-left:16px;flex:none}
+  .ft-col li:last-child a{padding-bottom:22px}
+  .ft-col a .ft-arr{opacity:.55;transform:none!important}
+  .ft-col a:hover,.ft-col a:focus-visible{transform:none}
+  .ft-bottom{grid-template-columns:1fr;gap:16px;margin-top:48px}.ft-addr{text-align:left}
+}
+@media (max-width:640px){.ft-page{padding:40px 12px 0}.ft-card{padding:40px 22px 32px}.ft-soc{width:44px;height:44px}.ft-logo .lz-logo{width:132px}.ft-form{padding-left:14px}}
+@media (max-width:380px){.ft-form{flex-wrap:wrap;padding:6px}.ft-form input{padding:0 10px}.ft-form .lz-btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.ft *{transition:none!important}}
+
+</style></head><body>
+<main class="ft-page">
+<footer class="ft" aria-label="Site footer">
+  <div class="ft-card">
+    <div class="ft-top">
+      <div class="ft-lead">
+        <h2 class="ft-h">Sovereign, Agnostic, Human first.</h2>
+        <form class="ft-form" id="ft-form" novalidate>
+          <label class="ft-sr" for="ft-email">Email address</label>
+          <input id="ft-email" type="email" placeholder="Email address" autocomplete="email" required>
+          <button class="lz-btn" type="submit">Subscribe</button>
+        </form>
+        <p class="ft-note"><span>Join 24,647+ subscribers</span> · Real agent stories. No spam.</p>
+      </div>
+      <div class="ft-social"><a class="ft-soc" href="https://www.linkedin.com/company/lyzr-platform" target="_blank" rel="noopener" aria-label="Lyzr on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.97 1.97 0 1 0 5.25 7a1.97 1.97 0 0 0 0-4Zm14.19 9.93c0-3.06-1.63-4.68-4.07-4.68a3.55 3.55 0 0 0-3.2 1.76V8.5H8.79V20h3.38v-5.69c0-1.5.28-2.95 2.14-2.95 1.84 0 1.86 1.72 1.86 3.05V20h3.38l-.11-7.07Z"/></svg></a><a class="ft-soc" href="https://x.com/lyzr__ai?s=21&amp;t=jui9qWhTJBkojNKICVXssw" target="_blank" rel="noopener" aria-label="Lyzr on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.53 3H20.6l-6.7 7.66L21.8 21h-6.17l-4.83-6.32L5.27 21H2.2l7.17-8.2L1.8 3h6.33l4.37 5.78L17.53 3Zm-1.08 16.18h1.7L7.62 4.73H5.8l10.65 14.45Z"/></svg></a><a class="ft-soc" href="https://www.instagram.com/humansoflyzr" target="_blank" rel="noopener" aria-label="Lyzr on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm6.1-8.1a1.12 1.12 0 1 1-2.24 0 1.12 1.12 0 0 1 2.24 0ZM21 7.1c-.06-1.43-.38-2.7-1.43-3.74S17.27 2 15.84 1.94C14.37 1.86 9.63 1.86 8.16 1.94 6.73 2 5.47 2.32 4.42 3.36S3.06 5.67 3 7.1c-.08 1.47-.08 6.33 0 7.8.06 1.43.38 2.7 1.43 3.74s2.3 1.36 3.73 1.43c1.47.08 6.21.08 7.68 0 1.43-.07 2.7-.39 3.74-1.43S20.94 16.33 21 14.9c.08-1.47.08-6.33 0-7.8Zm-1.86 9.38a3.18 3.18 0 0 1-1.79 1.79c-1.24.49-4.18.38-5.35.38s-4.12.1-5.35-.38a3.18 3.18 0 0 1-1.79-1.79c-.49-1.24-.38-4.18-.38-5.35s-.11-4.12.38-5.35a3.18 3.18 0 0 1 1.79-1.79c1.24-.49 4.18-.38 5.35-.38s4.12-.11 5.35.38a3.18 3.18 0 0 1 1.79 1.79c.49 1.24.38 4.18.38 5.35s.11 4.12-.38 5.35Z"/></svg></a><a class="ft-soc" href="https://www.youtube.com/@LyzrAI" target="_blank" rel="noopener" aria-label="Lyzr on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.5 7.2a2.75 2.75 0 0 0-1.94-1.95C18.85 4.8 12 4.8 12 4.8s-6.85 0-8.56.45A2.75 2.75 0 0 0 1.5 7.2 28.8 28.8 0 0 0 1.05 12c-.01 1.62.14 3.23.45 4.8a2.75 2.75 0 0 0 1.94 1.95c1.71.45 8.56.45 8.56.45s6.85 0 8.56-.45a2.75 2.75 0 0 0 1.94-1.95c.31-1.57.46-3.18.45-4.8.01-1.62-.14-3.23-.45-4.8ZM9.9 15V9l5.4 3-5.4 3Z"/></svg></a></div>
+    </div>
+    <div class="ft-cols"><nav class="ft-col" style="--i:0" aria-labelledby="fh0"><h3 id="fh0"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl0" tabindex="-1">Company<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl0"><li><a href="https://www.lyzr.ai/about-us/"><span class="ft-t">About Us</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/wall-of-love/"><span class="ft-t">Wall of Love</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/pricing/"><span class="ft-t">Pricing</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/resources/newsroom/"><span class="ft-t">News</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/contact/"><span class="ft-t">Contact Us</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://careers.lyzr.ai/"><span class="ft-t">Careers</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:1" aria-labelledby="fh1"><h3 id="fh1"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl1" tabindex="-1">Solutions<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl1"><li><a href="https://www.lyzr.ai/banking-ai-agent-amadeo/"><span class="ft-t">Banking</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/insurance-ai-agent-benjie/"><span class="ft-t">Insurance</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/sales-agents/"><span class="ft-t">Sales</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/marketing-agents/"><span class="ft-t">Marketing</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/hr-agents/"><span class="ft-t">HR</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/customer-service-agents/"><span class="ft-t">Customer Service</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/financial-services-agents/"><span class="ft-t">Financial Services</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:2" aria-labelledby="fh2"><h3 id="fh2"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl2" tabindex="-1">Agents<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl2"><li><a href="https://www.lyzr.ai/jazon/"><span class="ft-t">Jazon · AI SDR</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/skott/"><span class="ft-t">Skott · AI Marketer</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/dwight-ai-rfp-scout/"><span class="ft-t">Dwight · AI RFP Scout</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/diane/"><span class="ft-t">Diane · AI HR agent</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/kathy/"><span class="ft-t">Kony · AI Competitor Analyst</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/jeff/"><span class="ft-t">Jeff · AI Support agent</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:3" aria-labelledby="fh3"><h3 id="fh3"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl3" tabindex="-1">Platform<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl3"><li><a href="https://studio.lyzr.ai/"><span class="ft-t">Agent Studio</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/responsible-ai/"><span class="ft-t">Responsible AI</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/enterprise/"><span class="ft-t">OGI</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/enterprise/"><span class="ft-t">Enterprise</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/partnership/aws/"><span class="ft-t">AWS partnership</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:4" aria-labelledby="fh4"><h3 id="fh4"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl4" tabindex="-1">Case Studies<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl4"><li><a href="https://www.lyzr.ai/case-studies/leading-hr-tech-innovator/"><span class="ft-t">Leading fintech innovator</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/case-studies/leading-energy-provider/"><span class="ft-t">Leading energy provider</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/case-studies/global-it-giant/"><span class="ft-t">Global IT giant</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/case-studies/hr-workforce-leader/"><span class="ft-t">HR &amp; workforce leader</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/case-studies/customer-service-leader/"><span class="ft-t">Customer service leader</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/case-studies/industrial-manufacturing-firm/"><span class="ft-t">Industrial manufacturing firm</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:5" aria-labelledby="fh5"><h3 id="fh5"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl5" tabindex="-1">Comparisons<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl5"><li><a href="https://www.lyzr.ai/compare/lyzr-agent-studio-vs-agentforce/"><span class="ft-t">Lyzr vs Agentforce</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/compare/lyzr-agent-studio-vs-langgraph/"><span class="ft-t">Lyzr vs Langgraph</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/compare/lyzr-agent-studio-vs-crewai/"><span class="ft-t">Lyzr vs Crew AI</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/compare/lyzr-vs-microsoft-copilot/"><span class="ft-t">Lyzr vs Microsoft Copilot</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/compare/lyzr-vs-agentkit/"><span class="ft-t">Lyzr vs Google Agentspace</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/compare/lyzr-vs-n8n/"><span class="ft-t">Lyzr vs n8n</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:6" aria-labelledby="fh6"><h3 id="fh6"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl6" tabindex="-1">Playbooks<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl6"><li><a href="https://www.lyzr.ai/playbook/hr/"><span class="ft-t">HR Automation</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/playbook/sales/"><span class="ft-t">Sales Automation</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/playbook/banking/"><span class="ft-t">Banking Automation</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/playbook/content/"><span class="ft-t">Content Marketing</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/playbook/marketing/"><span class="ft-t">CRM Marketing</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/playbook/how-to-take-agents-to-production/"><span class="ft-t">Agents to production</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:7" aria-labelledby="fh7"><h3 id="fh7"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl7" tabindex="-1">Resources<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl7"><li><a href="https://www.lyzr.ai/blog/"><span class="ft-t">Blog</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/glossaries/"><span class="ft-t">Glossary</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/webinars/"><span class="ft-t">Webinars</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://university.lyzr.ai/"><span class="ft-t">Courses</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/usecases/"><span class="ft-t">Usecases</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/videos/"><span class="ft-t">Videos</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:8" aria-labelledby="fh8"><h3 id="fh8"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl8" tabindex="-1">About<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl8"><li><a href="https://www.lyzr.ai/privacy-policy/"><span class="ft-t">Privacy Policy</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/legal/"><span class="ft-t">Terms of Use</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://security.lyzr.ai/"><span class="ft-t">Security</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/lyzr-data-protection-addendum/"><span class="ft-t">Lyzr DPA</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav><nav class="ft-col" style="--i:9" aria-labelledby="fh9"><h3 id="fh9"><button class="ft-acc" type="button" aria-expanded="false" aria-controls="fl9" tabindex="-1">Templates<svg class="ft-pm" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path class="ft-pm-v" d="M440-200v-560h80v560h-80Z"/><path d="M200-440v-80h560v80H200Z"/></svg></button></h3><ul id="fl9"><li><a href="https://www.lyzr.ai/template/100-use-cases-for-cfos/"><span class="ft-t">100 Use Cases for CFOs</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/template/140-agentic-use-cases-for-healthcare/"><span class="ft-t">140+ Agentic Use Cases for Healthcare</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/template/customer-support-use-cases/"><span class="ft-t">Customer Support Use Cases</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/template/insurance-ai-agents-use-cases/"><span class="ft-t">100+ Insurance Agent Use Cases</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/template/101-ai-use-cases/"><span class="ft-t">101 AI Use Cases</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li><li><a href="https://www.lyzr.ai/template/ai-marketing-agent-use-cases/"><span class="ft-t">12 AI Marketing Use Cases</span><svg class="ft-arr" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a></li></ul></nav></div>
+    <div class="ft-bottom">
+      <a class="ft-logo" href="https://www.lyzr.ai/" aria-label="Lyzr home"><svg class="lz-logo" viewBox="2.449 0 198.551 34" role="img" aria-label="Lyzr">
+  
+  <path fill="var(--mk,#FE4B1E)" d="M55 21L47.6267 34H2.89478L55 21Z"/>
+  <path fill="var(--mk,#FE4B1E)" d="M43.9352 9.21432L40.3648 20.8969L2.44928 31.9337L43.9352 9.21432Z"/>
+  <path fill="var(--mk,#FE4B1E)" d="M34.1098 10.6493L34.0641 5.80164e-05C33.0913 5.51002 29.7951 9.74939 20.8644 18.5746L34.1098 10.6493Z"/>
+  <path fill="var(--wm,#1F2022)" d="M67 34.0002V30.9005L71.5415 30.1256V3.97175L67 3.19682V0.097109H81.8808V3.19682L77.146 3.97175V30.1256C79.0303 30.4646 81.301 30.7068 83.7651 30.7068C89.0313 30.7068 94.0077 29.3507 97.0515 25.476H100.627L95.2155 34.0002H67Z"/>
+  <path fill="var(--wm,#1F2022)" d="M104.675 34.0002V30.9005L109.313 30.1256V24.1199L98.2975 3.97175L94.6256 3.19682V0.097109H108.83V3.19682L104.385 3.97175L112.792 19.7609H112.985L121.585 3.97175L117.14 3.19682V0.097109H129.605V3.24526L125.643 3.97175L114.918 23.5387V30.1256L119.556 30.9005V34.0002H104.675Z"/>
+  <path fill="var(--wm,#1F2022)" d="M129.995 34.0002V31.0943L153.959 3.77802C151.688 3.43899 149.321 3.29369 146.615 3.29369C140.769 3.29369 136.807 4.74668 134.537 8.81506H130.768L135.889 0.097109H162.655V2.61563L138.305 30.3193C140.817 30.6584 143.523 30.8037 146.615 30.8037C153.041 30.8037 157.341 29.3507 160.046 25.2823H163.815L158.694 34.0002H129.995Z"/>
+  <path fill="var(--wm,#1F2022)" d="M166.214 34.0002V30.9005L170.949 30.1256V3.97175L166.214 3.19682V0.097109H176.36C178.437 0.097109 181.674 0.000244141 183.22 0.000244141C192.158 0.000244141 197.521 3.39056 197.521 9.15409C197.521 15.1114 191.869 17.7267 186.312 18.1142C188.003 19.5188 189.791 21.0686 192.497 24.3136L197.521 30.3193L201 30.7068V34.0002H192.883C191.144 31.8692 183.993 22.4732 180.321 18.4048H176.553V30.1256L181.384 30.9005V34.0002H166.214ZM176.553 15.2082H181.868C187.182 15.2082 190.854 13.8521 190.854 9.39626C190.854 5.08571 187.472 3.29369 182.496 3.29369C180.515 3.29369 178.437 3.58429 176.553 3.97175V15.2082Z"/>
+</svg></a>
+      <p class="ft-addr">525 Washington Blvd, 2410, Jersey City, NJ 07310, USA</p>
+      <p class="ft-copy">© 2026 Lyzr AI. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</main>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var mq=matchMedia('(max-width:900px)'),accs=[].slice.call(document.querySelectorAll('.ft-acc')),ease='cubic-bezier(.22,.8,.24,1)';
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setMode(){accs.forEach(function(b){var ul=document.getElementById(b.getAttribute('aria-controls'));
+    if(mq.matches){b.tabIndex=0;if(b.getAttribute('aria-expanded')!=='true')ul.hidden=true}else{b.tabIndex=-1;ul.hidden=false;b.setAttribute('aria-expanded','false')}})}
+  function toggle(b,on){var ul=document.getElementById(b.getAttribute('aria-controls'));if((b.getAttribute('aria-expanded')==='true')===on)return;
+    b.setAttribute('aria-expanded',on);if(ul._a)ul._a.cancel();if(reduce){ul.hidden=!on;return}
+    if(on){ul.hidden=false;var h=ul.scrollHeight;ul._a=ul.animate([{height:'0px',opacity:0},{height:h+'px',opacity:1}],{duration:420,easing:ease});ul._a.onfinish=function(){ul._a=null}}
+    else{var h2=ul.scrollHeight;ul._a=ul.animate([{height:h2+'px',opacity:1},{height:'0px',opacity:0}],{duration:320,easing:ease});ul._a.onfinish=function(){ul.hidden=true;ul._a=null}}}
+  accs.forEach(function(b){b.addEventListener('click',function(){if(!mq.matches)return;var on=b.getAttribute('aria-expanded')!=='true';accs.forEach(function(x){if(x!==b)toggle(x,false)});toggle(b,on)})});
+  (mq.addEventListener?mq.addEventListener('change',setMode):mq.addListener(setMode));setMode();
+  var els=[].slice.call(document.querySelectorAll('.ft-top,.ft-cols,.ft-bottom'));
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('is-in')})}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})}
+var f=document.getElementById('ft-form'),i=document.getElementById('ft-email');
+  f.addEventListener('submit',function(e){e.preventDefault();if(!i.checkValidity()){i.focus();i.setAttribute('aria-invalid','true');return}i.removeAttribute('aria-invalid');f.classList.add('is-done');f.querySelector('button').setAttribute('aria-label','Subscribed')});
+})();
+</script>
+</body></html>
