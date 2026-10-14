@@ -647,11 +647,12 @@ body{min-height:100vh;background:var(--bg)}
 .ft-soc:focus-visible,.ft-col a:focus-visible,.ft-logo:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
 .ft-cols{display:grid;grid-template-columns:repeat(5,minmax(max-content,1fr));gap:64px 40px;margin-top:80px}
 .ft-col{min-width:0}
-.ft-col h3{margin:0 0 22px;font-weight:400}
+.ft-col h3{margin:0 0 13px;font-weight:400}
 .ft-acc{all:unset;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);cursor:default}
 .ft-pm{display:none;width:18px;height:18px;color:var(--accent)}
 .ft-pm-v{transform-origin:center;transform-box:fill-box;transition:transform .35s cubic-bezier(.22,.8,.24,1)}
-.ft-col ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.ft-col ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.ft-col li a{padding:9px 0}
 /* links: one line on wide screens; the arrow always sits right after the last word */
 .ft-col li{line-height:1.35}
 .ft-col a{display:inline-block;max-width:100%;font-size:clamp(14px,1.12vw,16px);line-height:1.35;color:var(--text);text-decoration:none;white-space:nowrap;position:relative;
@@ -661,7 +662,11 @@ body{min-height:100vh;background:var(--bg)}
   transition:opacity .25s ease,transform .4s cubic-bezier(.22,.8,.24,1)}
 .ft-col a:hover,.ft-col a:focus-visible{transform:none}
 .ft-col a:hover .ft-arr,.ft-col a:focus-visible .ft-arr{opacity:1;transform:translate(0,-50%)}
-@media (hover:hover){.ft-col ul:hover a:not(:hover){opacity:.42}}
+@media (hover:hover){
+  .ft-col a{transition-delay:.15s}
+  .ft-cols:has(.ft-col a:hover) .ft-col a:not(:hover){opacity:.42;transition-delay:0s}
+  .ft-col a:hover{transition-delay:0s}
+}
 @media (prefers-reduced-motion:no-preference){
   .js .ft-col{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .7s cubic-bezier(.22,.8,.24,1);transition-delay:calc(var(--i) * 45ms)}
   .js .ft-cols.is-in .ft-col{opacity:1;transform:none}
