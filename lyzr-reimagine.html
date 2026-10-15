@@ -1477,6 +1477,30 @@ ul.r-st2-g li,ul.r-st2-g li:first-child{border:0;border-top:0;padding:10px 0}
 .r-tmq-set .r-lg-img{width:auto;display:block;opacity:.9}
 @media (max-width:640px){.r-tmq-set{gap:64px;padding:0 32px}.r-tmq-set .r-lg-img{transform:scale(.85);transform-origin:center}}
 
+/* ===================== hero visual card on grey-100, content restyled for a light ground ===================== */
+.r-hf-in{background:var(--color-grey-100)!important;color:var(--text);border:1px solid #E3E1DE}
+.r-hf-in::after{display:none}
+.r-hf-top{color:var(--text-soft)}
+.r-hf-co{color:var(--text)}
+.r-hf-sep{background:#CFCCC7}
+.r-hf-tag{background:var(--accent-tint);color:var(--accent-pressed)}
+/* Before: white card, quiet tones */
+.r-hf-col{background:#fff;border:1px solid #E3E1DE!important;color:var(--text)}
+.r-hf-col .r-hf-l{color:var(--text-muted)!important}
+.r-hf-col:not(.r-hf-col--new) .r-hf-big{color:var(--color-grey-600)}
+.r-hf-col:not(.r-hf-col--new) .r-hf-steps li{background:var(--color-grey-100);color:var(--text-soft);border:1px solid #EFEDEA}
+.r-dot{background:#B8B4AD}
+.r-hf-cap{color:var(--text-muted);opacity:1}
+/* Reimagined: white card with an orange outline so the new way stands out */
+.r-hf-col--new{background:#fff;border:1px solid var(--accent)!important}
+.r-hf-col--new .r-hf-l{color:var(--accent)!important}
+.r-hf-col--new .r-hf-big{color:var(--text)}
+.r-hf-col--new .r-hf-steps li{background:#fff;border:1px solid #E3E1DE}
+.r-hf-col--new .r-hf-cap{color:var(--text-soft)}
+
+.r-hf-cap,.r-hf-col .r-hf-cap,.r-hf-col--new .r-hf-cap{color:var(--text-soft)!important}
+.r-hf-tag{background:#FBE3DA!important;color:#A8300F!important}
+
 /* =============================================================================
    Lyzr navigation — lyzr.css tokens, Harvey-style interactions. White theme.
    ============================================================================= */
