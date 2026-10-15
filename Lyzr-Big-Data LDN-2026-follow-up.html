@@ -1337,6 +1337,177 @@ ul.r-st2-g li,ul.r-st2-g li:first-child{border:0;border-top:0;padding:10px 0}
 /* ===================== responsive fix: hero stacks below 1024 (later desktop rule was overriding it) ===================== */
 @media (max-width:1024px){.r-hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}.r-hero-d,.bd-hero-r{margin-top:0;padding-top:0}}
 
+/* ===================== v11: Our method, as in the original source ===================== */
+.rm-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 64px}
+.rm-head>div{flex:1 1 520px;min-width:0}
+.rm-h2{max-width:none}
+.rm-lede{flex:1 1 360px;min-width:0;margin:0;max-width:30em;font-size:17px;line-height:1.6;color:var(--text-soft)}
+.rm-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:48px;align-items:start;margin-top:clamp(48px,6vw,72px)}
+/* dark diagram card */
+.rm-card{display:flex;flex-direction:column;gap:28px;padding:clamp(20px,3vw,36px);border-radius:8px;background:#1F2022;color:#FAFAF9}
+.rm-card .r-orig{max-width:440px}
+.rm-card .ro-face{fill:#26272A;stroke:#46474B}
+.rm-card .ro-ring{stroke:#3A3B3F}
+.rm-card .ro-spoke{stroke:#46474B}
+.rm-card .ro-wedge{fill:#FE4B1E;fill-opacity:.16}
+.rm-card .ro-blip{fill:#A8A298}.rm-card .ro-blip.is-on{fill:#FE4B1E}
+.rm-card .ro-lbl{fill:#FAFAF9}.rm-card .ro-lbl.is-on{fill:#FE4B1E}
+.rm-now{display:flex;flex-direction:column;gap:8px;padding-top:22px;border-top:1px solid #46474B}
+.rm-num{margin:0;font-family:var(--font-mono);font-size:12px;color:#B9B6B0}
+.rm-name{margin:0;font-size:32px;line-height:1.1;letter-spacing:-.035em;color:#FAFAF9}
+.rm-line{margin:0;font-size:15px;line-height:1.55;color:#B9B6B0}
+/* accordion: hairline on top of each stage doubles as its progress bar */
+.rm-list{border-bottom:1px solid #E2E2E0}
+.rm-st{position:relative}
+.rm-bar{position:absolute;left:0;right:0;top:0;height:1px;background:#E2E2E0;overflow:visible}
+.rm-bar i{position:absolute;left:0;top:-.5px;height:2px;width:0;background:var(--accent)}
+.rm-b{width:100%;display:flex;align-items:center;gap:20px;padding:22px 0;min-height:44px;background:none;border:0;text-align:left;cursor:pointer;font:inherit;color:var(--text)}
+.rm-l{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:4px;font-family:var(--font-mono);font-size:17px;background:#EDEDEB;color:#1F2022;transition:background-color .3s ease}
+.rm-st.is-on .rm-l{background:#FE4B1E}
+.rm-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.rm-t b{font-weight:400;font-size:26px;line-height:1.1;letter-spacing:-.03em}
+.rm-t span{font-size:15px;line-height:1.5;color:var(--text-soft)}
+.rm-chev{width:22px;height:22px;flex:none;color:#1F2022;transition:transform .3s ease}
+.rm-b[aria-expanded="true"] .rm-chev{transform:rotate(180deg)}
+.rm-p{overflow:hidden}
+.rm-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px 36px;padding:0 0 30px clamp(0px,5vw,64px)}
+.rm-meta{display:flex;flex-direction:column;gap:20px}
+.rm-k{margin:0;font-family:var(--font-mono);font-size:12px;color:var(--text-soft)}
+.rm-v{margin:8px 0 0;font-size:15px;line-height:1.6;color:var(--text)}
+.rm-note{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 40px;margin-top:clamp(40px,5vw,56px);padding-top:28px;border-top:1px solid #E2E2E0;background:none;border-radius:0}
+.rm-note-h{margin:0;flex:0 1 auto;font-weight:400;font-size:26px;line-height:1.15;letter-spacing:-.03em}
+.rm-note p{margin:0;flex:1 1 420px;min-width:0;max-width:46em;font-size:16px;line-height:1.6;color:var(--text-soft)}
+@media (max-width:1024px){.rm-grid{grid-template-columns:minmax(0,1fr);gap:32px}.rm-card .r-orig{max-width:340px}}
+@media (max-width:480px){.rm-t b{font-size:22px}.rm-name{font-size:28px}.rm-g{padding-left:0}}
+
+/* ===================== v12: Our method on the reference layout ===================== */
+.rm2-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,104px);align-items:stretch}
+.rm2-h2{max-width:16ch}
+.rm2-lede{margin:22px 0 0;max-width:46ch;font-size:17px;line-height:1.6;color:var(--text-soft)}
+.rm2-list{margin-top:clamp(36px,4vw,56px);border-bottom:1px solid #E2E2E0}
+.rm2 .rm-b{padding:26px 0}
+.rm2 .rm-t b{font-size:clamp(22px,2vw,28px);line-height:1.2;letter-spacing:-.02em;color:#A8A298;transition:color .35s}
+.rm2 .rm-st.is-on .rm-t b{color:var(--text)}
+.rm2 .rm-b:hover .rm-t b{color:var(--text)}
+.rm2 .rm-p{padding:0}
+.rm-desc{margin:-6px 0 18px;font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:var(--text-soft)}
+.rm2 .rm-g{padding:0 0 30px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+/* navy panel */
+.rm2-panel{position:relative;display:flex;flex-direction:column;padding:clamp(28px,4vw,64px);border-radius:8px;background:var(--panel-navy);color:#FAFAF9;min-height:100%}
+.rm2-num{margin:0;font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,249,.7)}
+.rm2-vis{margin:28px 0 0}
+.rm2-vis .r-orig{width:100%;max-width:340px;margin:0}
+.rm2 .ro-face{fill:#0A3463;stroke:#3C6596}
+.rm2 .ro-ring{stroke:#2C5584}
+.rm2 .ro-spoke{stroke:#3C6596}
+.rm2 .ro-wedge{fill:#FE4B1E;fill-opacity:.2}
+.rm2 .ro-blip{fill:#8FA9C8}.rm2 .ro-blip.is-on{fill:#FE4B1E}
+.rm2 .ro-lbl{fill:#FAFAF9}.rm2 .ro-lbl.is-on{fill:#FF8A6B}
+.rm2-name{margin:32px 0 0;font-size:clamp(34px,3.4vw,48px);line-height:1.08;letter-spacing:-.03em;color:#fff}
+.rm2-line{margin:16px 0 0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:rgba(250,250,249,.82);max-width:36ch}
+.rm2-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:28px;border-top:1px solid rgba(250,250,249,.18)}
+.rm2-panel .rm2-pills{margin-top:max(40px,auto)}
+.rm2-pill{height:40px;padding:0 16px;border-radius:var(--radius-pill);border:1px solid rgba(250,250,249,.25);background:transparent;color:rgba(250,250,249,.72);font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,background-color .3s}
+.rm2-pill:hover{border-color:rgba(250,250,249,.6);color:#fff}
+.rm2-pill[aria-pressed="true"]{border-color:#fff;color:#fff;background:rgba(250,250,249,.08)}
+@media (max-width:1024px){.rm2-grid{grid-template-columns:minmax(0,1fr)}.rm2-panel{min-height:0}.rm2-vis .r-orig{max-width:300px}}
+@media (max-width:480px){.rm2-pill{height:36px;padding:0 12px;font-size:11.5px}}
+
+/* ===================== v13: Our method, exactly as the reference ===================== */
+.rm2-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,104px);align-items:stretch}
+/* details as one vertical list, no dividers */
+.rm-list3{list-style:none;margin:0;padding:0 0 32px;display:flex;flex-direction:column;gap:22px;max-width:60ch}
+.rm-list3 li{border:0;padding:0;margin:0}
+.rm-list3 .rm-k{margin:0;font-family:var(--font-mono);font-size:12.5px;color:var(--text-soft)}
+.rm-list3 .rm-v{margin:8px 0 0;font-size:16px;line-height:1.6;color:var(--text)}
+.rm2 .rm-desc{margin:-4px 0 22px;font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:var(--text-soft)}
+.rm2 .rm-t b{font-size:clamp(26px,2.4vw,36px);line-height:1.15;letter-spacing:-.025em}
+.rm2 .rm-b{padding:32px 0}
+/* navy panel: label top, large centred diagram, name and line at the bottom */
+.rm2-panel{display:flex;flex-direction:column;padding:clamp(28px,3.6vw,52px);border-radius:10px}
+.rm2-num{font-size:14px;letter-spacing:.1em}
+.rm2-vis{flex:1;display:flex;align-items:center;justify-content:center;margin:clamp(20px,3vw,40px) 0}
+.rm2-vis .r-orig{width:100%;max-width:min(560px,100%);margin:0 auto}
+.rm2-name{margin:0;font-size:clamp(40px,4.4vw,64px);line-height:1.02;letter-spacing:-.035em}
+.rm2-line{margin:18px 0 0;font-size:clamp(17px,1.5vw,21px);max-width:40ch}
+@media (max-width:1024px){
+  .rm2-grid{grid-template-columns:minmax(0,1fr);gap:36px}
+  .rm2-panel{min-height:0}
+  .rm2-vis .r-orig{max-width:420px}
+}
+@media (max-width:640px){
+  .rm2 .rm-t b{font-size:26px}.rm2 .rm-b{padding:24px 0}
+  .rm-list3{gap:18px;padding-bottom:26px}
+  .rm2-vis .r-orig{max-width:300px}
+  .rm2-name{font-size:38px}
+}
+
+/* ===================== v14: reference — header row on top, then list + navy panel ===================== */
+.rm3-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px clamp(40px,6vw,104px);align-items:end}
+.rm3-head .rm2-h2{max-width:20ch}
+.rm3-lede{margin:0;max-width:44ch;font-size:17px;line-height:1.6;color:var(--text-soft);justify-self:end}
+.rm3-grid{margin-top:clamp(48px,6vw,72px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,104px);align-items:stretch}
+.rm3-grid .rm2-list{margin-top:0;align-self:center}
+.rm3-grid .rm2-panel{min-height:0}
+.rm3-grid .rm2-vis .r-orig{max-width:min(400px,100%)}
+@media (max-width:1024px){
+  .rm3-head{grid-template-columns:minmax(0,1fr)}
+  .rm3-lede{justify-self:start}
+  .rm3-grid{grid-template-columns:minmax(0,1fr);gap:36px}
+  .rm3-grid .rm2-vis .r-orig{max-width:380px}
+}
+@media (max-width:640px){.rm3-grid .rm2-vis .r-orig{max-width:290px}}
+
+.rm3-head{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)}
+.rm3-head .rm2-h2{max-width:22ch}
+@media (max-width:1024px){.rm3-head{grid-template-columns:minmax(0,1fr)}}
+
+/* slower, gentler sweep between stages */
+.rm2 .ro-sweep{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.rm2 .ro-ping{transition:cx .9s ease,cy .9s ease}
+
+/* ===================== .r-pmc, exactly as specified (no border) ===================== */
+.r-pmc{position:relative;display:grid;place-items:center;width:34px;height:34px;flex:none;border-radius:50%;border:0;color:var(--accent);transition:background-color .3s,border-color .3s,color .3s}
+
+/* .r-pmc border, exactly as specified */
+.r-pmc{border:1px solid #D6D3CF !important}
+
+/* trusted marquee: real logos */
+.r-tmq-set li{height:64px}
+.r-tmq-set .r-lg-img{width:auto;display:block;opacity:.9}
+@media (max-width:640px){.r-tmq-set{gap:64px;padding:0 32px}.r-tmq-set .r-lg-img{transform:scale(.85);transform-origin:center}}
+
+/* ===================== hero visual card on grey-100, content restyled for a light ground ===================== */
+.r-hf-in{background:var(--color-grey-100)!important;color:var(--text);border:1px solid #E3E1DE}
+.r-hf-in::after{display:none}
+.r-hf-top{color:var(--text-soft)}
+.r-hf-co{color:var(--text)}
+.r-hf-sep{background:#CFCCC7}
+.r-hf-tag{background:var(--accent-tint);color:var(--accent-pressed)}
+/* Before: white card, quiet tones */
+.r-hf-col{background:#fff;border:1px solid #E3E1DE!important;color:var(--text)}
+.r-hf-col .r-hf-l{color:var(--text-muted)!important}
+.r-hf-col:not(.r-hf-col--new) .r-hf-big{color:var(--color-grey-600)}
+.r-hf-col:not(.r-hf-col--new) .r-hf-steps li{background:var(--color-grey-100);color:var(--text-soft);border:1px solid #EFEDEA}
+.r-dot{background:#B8B4AD}
+.r-hf-cap{color:var(--text-muted);opacity:1}
+/* Reimagined: white card with an orange outline so the new way stands out */
+.r-hf-col--new{background:#fff;border:1px solid var(--accent)!important}
+.r-hf-col--new .r-hf-l{color:var(--accent)!important}
+.r-hf-col--new .r-hf-big{color:var(--text)}
+.r-hf-col--new .r-hf-steps li{background:#fff;border:1px solid #E3E1DE}
+.r-hf-col--new .r-hf-cap{color:var(--text-soft)}
+
+.r-hf-cap,.r-hf-col .r-hf-cap,.r-hf-col--new .r-hf-cap{color:var(--text-soft)!important}
+
+/* ===================== hero chips and tag, exactly as specified ===================== */
+.r-who{font-style:normal;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;padding:3px 18px;border-radius:var(--radius-btn)}
+.r-who--agent{background:var(--accent);color:var(--color-white)}
+.r-hf-tag{margin-left:auto;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:6px 20px;border-radius:var(--radius-btn)}
+.r-hf-tag{background:var(--color-black);color:var(--color-offwhite) !important}
+
+.r-who--person{background:#0d3b70;color:#ffffff}
+
 /* ===================== Big Data LDN on the Reimaginer system ===================== */
 .r-brand .lz-logo{width:96px}
 .r-nav-c .lz-btn{white-space:nowrap}
@@ -1462,6 +1633,14 @@ ul.r-st2-g li,ul.r-st2-g li:first-child{border:0;border-top:0;padding:10px 0}
 @media (max-width:1024px){.bd-hero-fig{height:clamp(320px,56vw,520px)}.bd-hero-img{object-position:62% 35%}}
 @media (max-width:640px){.bd-hero-fig{height:auto;aspect-ratio:4/5}.bd-hero-img{object-position:60% 30%}}
 @media (max-width:400px){.bd-hero-fig{aspect-ratio:3/4}}
+/* use cases: one smooth CSS height transition (closing and opening animate together, nothing is measured) */
+.bd-acc .bd-acc-p{display:grid!important;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .65s cubic-bezier(.22,.8,.24,1),opacity .45s ease;padding:0!important}
+.bd-acc.is-on .bd-acc-p{grid-template-rows:1fr;opacity:1;transition:grid-template-rows .65s cubic-bezier(.22,.8,.24,1),opacity .5s ease .12s}
+.bd-acc-in{min-height:0;overflow:hidden}
+.bd-acc-in>:last-child{margin-bottom:28px}
+.bd-acc .r-st2-n{transition:color .45s ease}
+.bd-acc:not(.is-on) .r-st2-n{color:#A8A298}
+@media (prefers-reduced-motion:reduce){.bd-acc .bd-acc-p,.bd-acc.is-on .bd-acc-p{transition:none}}
 
 /* =============================================================================
    Lyzr navigation — lyzr.css tokens, Harvey-style interactions. White theme.
@@ -1816,7 +1995,7 @@ html{scroll-padding-top:calc(var(--nav-h) + 16px)}
   <div class="bd-hero-r lz-reveal" style="--d:120ms"><p class="r-hero-d">At Stand F35 one question came up more than any other: how do we get AI agents into production without our data leaving the building, and without failing our next audit?</p>
    <p class="bd-hero-p">This page is the answer we gave, with the UK and EU use cases enterprises are putting live now. If you met Amol or Srinivas at the show, this is the follow-up we promised.</p></div>
  </div>
- <figure class="bd-hero-fig"><img class="bd-hero-img" data-plx-img src="new.png"></figure>
+ <figure class="bd-hero-fig"><img class="bd-hero-img" data-plx-img src="new.png" alt="Two colleagues reviewing a laptop beside server racks in a data centre" width="2000" height="1333" fetchpriority="high"></figure>
 </div></section><section class="bd-stats" aria-label="Key figures"><div class="lz-container"><div class="bd-stats-g"><div class="bd-st lz-reveal" style="--d:0ms"><span class="bd-st-n" data-count="0%">0%</span><span class="bd-st-l">Data leaving your environment</span></div><div class="bd-st lz-reveal" style="--d:60ms"><span class="bd-st-n" data-count="85%">85%</span><span class="bd-st-l">Of Lyzr projects reach production</span></div><div class="bd-st lz-reveal" style="--d:120ms"><span class="bd-st-n" data-count="30 days">30 days</span><span class="bd-st-l">To your first regulated workflow live</span></div><div class="bd-st lz-reveal" style="--d:180ms"><span class="bd-st-n" data-count="1M+">1M+</span><span class="bd-st-l">Production agents across customers</span></div></div></div></section><section class="r-sec" id="heard" aria-labelledby="heard-title"><div class="lz-container">
  <div class="r-head r-head--wide"><div class="lz-reveal"><p class="lz-label">What we heard in London</p><h2 class="r-h2" id="heard-title">Regulators aren't asking whether you use AI. They're asking how you govern it.</h2></div></div>
  <div class="r-cards3 bd-cards3"><article class="r-card r-card--ic lz-reveal" style="--d:0ms"><svg class="r-ic" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"/></svg><div><p class="r-lbl bd-lbl">01 Sovereign AI</p><h3 class="r-h3">Run it on your terms</h3><p class="r-card-p">Agents, models and governance inside your own cloud region or on-prem. Your underwriting logic, pricing models and customer data never leave your walls. Air-gapped Optimus appliances ship from Q4 2026.</p></div></article><article class="r-card r-card--ic lz-reveal" style="--d:80ms"><svg class="r-ic" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148 98 112-98 112 14 148-144 32-76 128-136-58-136 58Zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24 58 96Zm102-318Zm-42 142 226-226-56-58-170 170-86-84-56 56 142 142Z"/></svg><div><p class="r-lbl bd-lbl">02 Production readiness</p><h3 class="r-h3">Ship it, then keep it running</h3><p class="r-card-p">Most agent projects stall between pilot and production. Lyzr Nitro runs 50,000 simulations before an agent touches a customer, and forward-deployed engineers work alongside your team until it is live.</p></div></article><article class="r-card r-card--ic lz-reveal" style="--d:160ms"><svg class="r-ic" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M240-40q-50 0-85-35t-35-85q0-50 35-85t85-35q14 0 26 3t23 8l57-71q-28-31-39-70t-5-78l-81-27q-17 25-43 40t-58 15q-50 0-85-35T0-580q0-50 35-85t85-35q50 0 85 35t35 85v8l81 28q20-36 53.5-61t75.5-32v-87q-39-11-64.5-42.5T360-840q0-50 35-85t85-35q50 0 85 35t35 85q0 42-26 73.5T510-724v87q42 7 75.5 32t53.5 61l81-28v-8q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-32 0-58.5-15T739-515l-81 27q6 39-5 77.5T614-340l57 70q11-5 23-7.5t26-2.5q50 0 85 35t35 85q0 50-35 85t-85 35q-50 0-85-35t-35-85q0-20 6.5-38.5T624-232l-57-71q-41 23-87.5 23T392-303l-56 71q11 15 17.5 33.5T360-160q0 50-35 85t-85 35Z"/></svg><div><p class="r-lbl bd-lbl">03 Opencontroller</p><h3 class="r-h3">Govern every agent you already have</h3><p class="r-card-p">One control plane over agents built on LangGraph, Agentforce, Bedrock, Copilot or your own code. Inventory, identity, spend and a kill switch, without a rebuild.</p></div></article></div>
@@ -1824,17 +2003,17 @@ html{scroll-padding-top:calc(var(--nav-h) + 16px)}
  <div class="bd-m6-l lz-reveal"><p class="lz-label">UK and EU use cases</p><h2 class="r-h2" id="uc-title">Where UK enterprises are putting agents live first</h2><p class="r-lede">Chosen from the conversations we had at the show. Each starts as a single workflow, inside your own environment, with a named owner on both sides.</p></div>
  <div class="bd-m6-r" id="bd-acc"><div class="r-st2 bd-acc" data-i="0" data-name="KYC refresh and onboarding agents">
  <button class="r-st2-b" type="button" aria-expanded="true" aria-controls="uc0"><span class="r-st2-hbar" aria-hidden="true"><i></i></span><span class="r-st2-n">KYC refresh and onboarding agents</span></button>
- <div class="r-st2-p" id="uc0" ><p class="lz-label bd-acc-l">Banking and building societies</p><p class="bd-acc-d">Agents that pull evidence, check sanctions and PEP lists, and draft the case file for an analyst to sign off. Every step logged for FCA, PRA and Consumer Duty review.</p><p class="bd-acc-v">Lloyds, Nationwide, Shawbrook, Coventry BS teams visited Stand F35</p></div></div><div class="r-st2 bd-acc" data-i="1" data-name="Submission triage and claims severity">
+ <div class="r-st2-p bd-acc-p" id="uc0" ><div class="bd-acc-in"><p class="lz-label bd-acc-l">Banking and building societies</p><p class="bd-acc-d">Agents that pull evidence, check sanctions and PEP lists, and draft the case file for an analyst to sign off. Every step logged for FCA, PRA and Consumer Duty review.</p><p class="bd-acc-v">Lloyds, Nationwide, Shawbrook, Coventry BS teams visited Stand F35</p></div></div></div><div class="r-st2 bd-acc" data-i="1" data-name="Submission triage and claims severity">
  <button class="r-st2-b" type="button" aria-expanded="false" aria-controls="uc1"><span class="r-st2-hbar" aria-hidden="true"><i></i></span><span class="r-st2-n">Submission triage and claims severity</span></button>
- <div class="r-st2-p" id="uc1" hidden><p class="lz-label bd-acc-l">Insurance and the London market</p><p class="bd-acc-d">Read broker submissions, extract risk data, flag what is missing and route it. WTW added 3.1x broker throughput on submission triage with Lyzr agents.</p><p class="bd-acc-v">Aviva, AXA, Admiral, Hiscox, CFC teams visited Stand F35</p></div></div><div class="r-st2 bd-acc" data-i="2" data-name="Governed advice journeys">
+ <div class="r-st2-p bd-acc-p" id="uc1" inert><div class="bd-acc-in"><p class="lz-label bd-acc-l">Insurance and the London market</p><p class="bd-acc-d">Read broker submissions, extract risk data, flag what is missing and route it. WTW added 3.1x broker throughput on submission triage with Lyzr agents.</p><p class="bd-acc-v">Aviva, AXA, Admiral, Hiscox, CFC teams visited Stand F35</p></div></div></div><div class="r-st2 bd-acc" data-i="2" data-name="Governed advice journeys">
  <button class="r-st2-b" type="button" aria-expanded="false" aria-controls="uc2"><span class="r-st2-hbar" aria-hidden="true"><i></i></span><span class="r-st2-n">Governed advice journeys</span></button>
- <div class="r-st2-p" id="uc2" hidden><p class="lz-label bd-acc-l">Pensions and wealth</p><p class="bd-acc-d">WTW brought customers back from public chatbots to its own retirement advisor, governed, compliant and running in production for over a year.</p><p class="bd-acc-v">Royal London, M&G, Quilter, Rothesay teams visited Stand F35</p></div></div><div class="r-st2 bd-acc" data-i="3" data-name="Citizen service request agents">
+ <div class="r-st2-p bd-acc-p" id="uc2" inert><div class="bd-acc-in"><p class="lz-label bd-acc-l">Pensions and wealth</p><p class="bd-acc-d">WTW brought customers back from public chatbots to its own retirement advisor, governed, compliant and running in production for over a year.</p><p class="bd-acc-v">Royal London, M&G, Quilter, Rothesay teams visited Stand F35</p></div></div></div><div class="r-st2 bd-acc" data-i="3" data-name="Citizen service request agents">
  <button class="r-st2-b" type="button" aria-expanded="false" aria-controls="uc3"><span class="r-st2-hbar" aria-hidden="true"><i></i></span><span class="r-st2-n">Citizen service request agents</span></button>
- <div class="r-st2-p" id="uc3" hidden><p class="lz-label bd-acc-l">Public sector</p><p class="bd-acc-d">Intake, triage and routing of citizen requests inside your own tenancy or on-prem. No data leaves UK infrastructure, and every decision can be reconstructed.</p><p class="bd-acc-v">DWP, HMCTS, Home Office, DfE teams visited Stand F35</p></div></div><div class="r-st2 bd-acc" data-i="4" data-name="Resolution at first contact">
+ <div class="r-st2-p bd-acc-p" id="uc3" inert><div class="bd-acc-in"><p class="lz-label bd-acc-l">Public sector</p><p class="bd-acc-d">Intake, triage and routing of citizen requests inside your own tenancy or on-prem. No data leaves UK infrastructure, and every decision can be reconstructed.</p><p class="bd-acc-v">DWP, HMCTS, Home Office, DfE teams visited Stand F35</p></div></div></div><div class="r-st2 bd-acc" data-i="4" data-name="Resolution at first contact">
  <button class="r-st2-b" type="button" aria-expanded="false" aria-controls="uc4"><span class="r-st2-hbar" aria-hidden="true"><i></i></span><span class="r-st2-n">Resolution at first contact</span></button>
- <div class="r-st2-p" id="uc4" hidden><p class="lz-label bd-acc-l">Retail and consumer</p><p class="bd-acc-d">Support agents that resolve issues instead of deflecting them. Verifone cut support escalations by 58% by resolving more merchant issues at first contact.</p><p class="bd-acc-v">ASOS, Boots, ASDA, Kingfisher teams visited Stand F35</p></div></div><div class="r-st2 bd-acc" data-i="5" data-name="Regulatory reporting and asset data agents">
+ <div class="r-st2-p bd-acc-p" id="uc4" inert><div class="bd-acc-in"><p class="lz-label bd-acc-l">Retail and consumer</p><p class="bd-acc-d">Support agents that resolve issues instead of deflecting them. Verifone cut support escalations by 58% by resolving more merchant issues at first contact.</p><p class="bd-acc-v">ASOS, Boots, ASDA, Kingfisher teams visited Stand F35</p></div></div></div><div class="r-st2 bd-acc" data-i="5" data-name="Regulatory reporting and asset data agents">
  <button class="r-st2-b" type="button" aria-expanded="false" aria-controls="uc5"><span class="r-st2-hbar" aria-hidden="true"><i></i></span><span class="r-st2-n">Regulatory reporting and asset data agents</span></button>
- <div class="r-st2-p" id="uc5" hidden><p class="lz-label bd-acc-l">Energy and utilities</p><p class="bd-acc-d">Agents that assemble regulatory submissions and reconcile asset records across systems, with a full audit trail for Ofgem and Ofwat reporting cycles.</p><p class="bd-acc-v">EDF, National Grid, NI Water teams visited Stand F35</p></div></div></div>
+ <div class="r-st2-p bd-acc-p" id="uc5" inert><div class="bd-acc-in"><p class="lz-label bd-acc-l">Energy and utilities</p><p class="bd-acc-d">Agents that assemble regulatory submissions and reconcile asset records across systems, with a full audit trail for Ofgem and Ofwat reporting cycles.</p><p class="bd-acc-v">EDF, National Grid, NI Water teams visited Stand F35</p></div></div></div></div>
 </div></section><section class="r-sec" id="customers" aria-labelledby="peers-title"><div class="lz-container">
  <div class="r-head"><div class="lz-reveal"><p class="lz-label">In production, not in pilot</p><h2 class="r-h2" id="peers-title">Your peers stopped piloting last year</h2></div>
   <blockquote class="bd-quote lz-reveal" style="--d:90ms"><p>“We refuse to share our underwriting handbook with any shared infrastructure. Lyzr gave us the first credible answer, not a policy promise, an architectural one.”</p><cite>Chief Information Officer, global insurance enterprise</cite></blockquote></div>
@@ -1921,7 +2100,7 @@ document.documentElement.classList.add('js');
     else{var h2=p.scrollHeight;p._a=p.animate([{height:h2+'px',opacity:1},{height:'0px',opacity:0}],{duration:320,easing:ease});p._a.onfinish=function(){p.hidden=true;p._a=null}}}
   /* use cases: automatic accordion with a horizontal bar per item */
   var acc=$$('.bd-acc'),bars=$$('.bd-acc .r-st2-hbar i'),cur=0,started=0,DUR=3200,inView=false,seen=false;
-  function setCase(i){cur=i;acc.forEach(function(s,k){var on=k===i,b=s.querySelector('.r-st2-b'),p=s.querySelector('.r-st2-p');s.classList.toggle('is-on',on);if((b.getAttribute('aria-expanded')==='true')!==on){b.setAttribute('aria-expanded',on);animOpen(p,on)}});
+  function setCase(i){cur=i;acc.forEach(function(s,k){var on=k===i,b=s.querySelector('.r-st2-b'),p=s.querySelector('.r-st2-p');s.classList.toggle('is-on',on);b.setAttribute('aria-expanded',on);if(on)p.removeAttribute('inert');else p.setAttribute('inert','')});
     bars.forEach(function(b2){b2.style.width='0%'});started=performance.now()}
   acc.forEach(function(s,i){s.querySelector('.r-st2-b').addEventListener('click',function(){setCase(i)})});
   (function tick(t){if(inView&&!reduce){var k=Math.min(1,(t-started)/DUR);bars[cur].style.width=(k*100)+'%';if(k>=1)setCase((cur+1)%acc.length)}else started=t-(parseFloat(bars[cur].style.width||0)/100)*DUR;requestAnimationFrame(tick)})(0);
