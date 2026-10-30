@@ -1096,6 +1096,13 @@ main a:not(.btn) .mi:only-of-type{}
  .cta2 .b a.tlink{height:auto;min-height:48px;padding:12px 20px}
 }
 </style>
+<style>
+/* customer stories: 2-column cards */
+.pr3{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px!important;overflow:visible!important}
+.pr3 .pc3{flex:none!important;width:auto}
+.casebd .res-nav,.casebd .res-dots{display:none!important}
+@media(max-width:767px){.pr3{grid-template-columns:minmax(0,1fr)}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
