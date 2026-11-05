@@ -1545,6 +1545,37 @@ main>section:has(#tc) .sec-head .eyebrow{grid-column:1/-1}
 .wtab button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
 @media(max-width:900px){main>section:has(#tc) .sec-head{grid-template-columns:1fr!important}.wtab{grid-column:1;grid-row:auto;justify-self:start;margin-top:20px}}
 </style>
+<style>
+/* why sovereign: centre card stays white in the Sovereign state too */
+.tc .tr:nth-child(2) .b{background:#fff!important;border:1px solid var(--g200)!important}
+.tc .tr:nth-child(2) .b h3{color:var(--ink)!important}
+.tc .tr:nth-child(2) .b p{color:var(--g700)!important}
+.tc .tr:nth-child(2) .b .lb.ic{color:#003C27!important}
+/* built to stay yours: no rail behind cards */
+.kp::before,.kp::after{display:none!important;content:none!important}
+/* consistent eyebrow -> title spacing */
+.sec-head .eyebrow,.side-c small,.cases__intro .eyebrow{display:block;margin-bottom:20px!important}
+.wrap>.sec-head:has(>p){row-gap:0}
+main>section:has(.st2)>.wrap>.sec-head{gap:0!important}
+main>section:has(.st2)>.wrap>.sec-head .eyebrow{margin-bottom:20px!important}
+main>section:has(.st2)>.wrap>.sec-head>p{margin-top:24px!important}
+main>section:has(#tc) .sec-head{row-gap:0!important}
+/* how it comes together: stack the link under the title on small screens */
+@media(max-width:767px){
+ main>section:has(.st2) .layers .lyr{grid-template-columns:1fr!important;row-gap:10px}
+ main>section:has(.st2) .layers .lyr a{grid-column:1!important;grid-row:auto!important;align-self:flex-start!important;margin-top:4px!important}
+ main>section:has(.st2) .layers .lyr h3{font-size:20px!important;line-height:26px!important}
+ main>section:has(.st2) .layers .lyr.on h3{font-size:26px!important;line-height:32px!important}
+ main>section:has(.st2)>.wrap>.sec-head h2{font-size:32px!important;line-height:38px!important}
+}
+@media(min-width:768px) and (max-width:999px){
+ main>section:has(.st2)>.wrap{grid-template-columns:1fr!important}
+ main>section:has(.st2)>.wrap>.sec-head{max-width:none!important;margin-bottom:40px!important}
+}
+@media(min-width:1000px){main>section:has(.st2)>.wrap{grid-template-columns:minmax(0,424px) minmax(0,760px)!important}}
+@media(min-width:1000px) and (max-width:1279px){main>section:has(.st2)>.wrap{grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important;column-gap:48px!important}}
+main>section:has(.st2) .layers,main>section:has(.st2) .layers .lyr{min-width:0;max-width:100%}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
