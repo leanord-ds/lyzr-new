@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lyzr: World’s #1 agent infrastructure company</title>
+  <title>Lyzr: World’s #1 agent infrastructure company (fit copy)</title>
   <meta name="description"
     content="Build agents anywhere. Control them from one place. Your data stays in your environment. Your IP stays yours. Enterprise agentic AI, deployed on your terms.">
   <meta name="theme-color" content="#160F0A">
@@ -6960,7 +6960,7 @@
     .hp-stats__grid { display: grid; grid-template-columns: 4fr 8fr; gap: 24px; }
     .hp-stats__title { font-size: 36px; line-height: 42px; letter-spacing: -.02em; max-width: 320px; }
     .hp-stat { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: center; padding: 24px 0; border-top: 1px solid var(--hp-rule); }
-    .hp-stat:last-child { border-bottom: 1px solid var(--hp-rule); }
+    .hp-stat:first-child { border-top: 0; }
     .hp-stat__v { font-size: 64px; line-height: 68px; letter-spacing: -.035em; color: var(--hp-navy); font-variant-numeric: tabular-nums; }
     .hp-stat__l { font-size: 18px; line-height: 24px; color: var(--hp-muted); max-width: 420px; }
 
@@ -6977,7 +6977,7 @@
       background: radial-gradient(circle at 62% 48%, #FBD6C6 0%, #F7A88E 38%, #F2876A 70%, #EE7A5C 100%); }
     .hp-ring { position: absolute; left: 0; top: 0; }
     .hp-reason { position: absolute; right: 0; top: 0; width: 388px; transform-origin: right center;
-      transform: rotate(var(--a)) translate(-492px, -50%); text-align: right; background: none; border: 0; padding: 0; cursor: pointer;
+      transform: rotate(calc(var(--a) + var(--dr, 0deg))) translate(-492px, -50%); text-align: right; background: none; border: 0; padding: 0; cursor: pointer;
       font: inherit; color: inherit; transition: opacity .6s var(--hp-ease), transform 1s var(--hp-ease); }
     .hp-reason::after { content: ""; position: absolute; left: calc(100% + 22px); top: 50%; width: 64px; border-top: 1px dashed #A9A39A; }
     .hp-reason__t { display: block; font-size: 18px; line-height: 24px; color: #BAB4AC; transition: color .5s, font-size .5s; }
@@ -7340,6 +7340,214 @@
     .cases__viewport { scroll-snap-type: x proximity; overscroll-behavior: auto; overscroll-behavior-x: contain; contain: layout paint; }
     .case-card { backface-visibility: hidden; }
     .case-card__bg { will-change: auto; }
+
+    /* ---------- COPY: product band fits one screen (below the sticky nav), no scrolling needed ---------- */
+    @media (min-height: 560px) {
+      .hp-prod { height: calc(100vh - var(--nxh, 78px)); height: calc(100svh - var(--nxh, 78px)); min-height: 560px; max-height: 1080px;
+        padding: clamp(12px, 2.2vh, 30px) 0; box-sizing: border-box; }
+      .hp-prod > .hp-wrap { height: 100%; }
+      .hp-prod__card { height: 100%; display: flex; flex-direction: column; align-items: center; padding-top: clamp(18px, 3.6vh, 50px); }
+      .hp-prod .hp-tabs { flex: none; }
+      #hpProdPanel { flex: 1 1 auto; min-height: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
+      .hp-prod__head { flex: none; margin-top: clamp(16px, 3.4vh, 46px); min-height: 0; }
+      .hp-prod__title { font-size: clamp(28px, 4.6vh, 48px); line-height: 1.08; }
+      .hp-prod__head .hp-link { margin-top: clamp(12px, 2.2vh, 24px); }
+      .hp-win { flex: 1 1 auto; height: auto; min-height: 240px; max-height: 588px; width: 100%; margin-top: clamp(18px, 3.8vh, 48px); }
+      .hp-win__body { height: calc(100% - 62px); }
+    }
+    @media (min-height: 560px) and (max-width: 560px) {
+      .hp-win__body { height: calc(100% - 50px); }
+      .hp-win { min-height: 220px; }
+    }
+
+    /* ---------- Open Controller card: same minute dot grid, tuned for the stone background ---------- */
+    .hp-why__card::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(112, 106, 98, .42) .8px, transparent 1.2px);
+      background-size: 12px 12px; background-position: 6px 6px;
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.5) 24%, rgba(0,0,0,.08) 42%, rgba(0,0,0,.08) 58%, rgba(0,0,0,.5) 76%, #000 100%);
+              mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.5) 24%, rgba(0,0,0,.08) 42%, rgba(0,0,0,.08) 58%, rgba(0,0,0,.5) 76%, #000 100%); }
+    .hp-why__card > * { z-index: 1; }
+    .hp-why__card > .hp-why__intro, .hp-why__card > .hp-why__nav { z-index: 2; }
+    @media (max-width: 1279px) { .hp-why__card { position: relative; } .hp-why__card > * { position: relative; } .hp-why__card > .hp-dial { position: static; } }
+
+    /* ---------- Security CTA: email module bottom-right ---------- */
+    .hp-cta .hp-email { position: absolute; right: 40px; bottom: 40px; margin: 0; width: 507px; max-width: calc(100% - 80px); }
+    @media (max-width: 834px) {
+      .hp-cta__card { display: flex; flex-direction: column; justify-content: space-between; gap: 30px; }
+      .hp-cta .hp-email { position: relative; right: auto; bottom: auto; align-self: flex-end; max-width: 100%; }
+    }
+    @media (max-width: 560px) { .hp-cta .hp-email { width: 100%; } }
+
+    /* ---------- Studio window: View full product next to Pause ---------- */
+    .hp-win__actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+    .hp-win__actions .hp-win__pause { margin-left: 0; }
+    .hp-win__full { height: 28px; padding: 0 10px 0 12px; border-radius: 4px; background: var(--hp-ink); color: #fff; text-decoration: none;
+      font: 400 13px/1 var(--hp-sans); display: inline-flex; align-items: center; gap: 4px; transition: background .12s; white-space: nowrap; }
+    .hp-win__full:hover { background: var(--hp-or-h); }
+    .hp-win__full .mi { font-size: 15px; }
+    @media (max-width: 560px) { .hp-win__full span:not(.mi) { display: none; } .hp-win__full { padding: 0 7px; } .hp-win__actions { gap: 6px; } }
+
+    /* ---------- Coverflow swipe / drag ---------- */
+    .hp-flow { touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; --drag: 0px; }
+    .hp-flow.is-drag { cursor: grabbing; }
+    .hp-fcard { translate: var(--drag) 0; transition: transform .7s var(--hp-ease), background .7s, opacity .7s, translate .45s var(--hp-ease); }
+    .hp-flow.is-drag .hp-fcard { transition: transform .7s var(--hp-ease), background .7s, opacity .7s, translate 0s; }
+    .hp-fcard img, .hp-fcard svg { pointer-events: none; }
+
+    /* ---------- Coverflow drag-hand cursor + touch swipe hint ---------- */
+    .hp-grab { position: absolute; left: 0; top: 0; z-index: 20; width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 50%;
+      background: var(--hp-ink); color: #fff; display: grid; place-items: center; align-content: center; gap: 2px; pointer-events: none;
+      opacity: 0; transform: translate3d(var(--gx, -200px), var(--gy, -200px), 0) scale(.4);
+      transition: opacity .25s var(--hp-ease), transform .25s var(--hp-ease) , width .25s, height .25s; will-change: transform; }
+    .hp-grab .mi { font-size: 24px; font-variation-settings: "FILL" 1, "wght" 400; transition: transform .25s var(--hp-ease); }
+    .hp-grab__l { font: 400 10px/1 var(--hp-mono); letter-spacing: .06em; text-transform: uppercase; }
+    .hp-flow.is-grab-on .hp-grab { opacity: 1; transform: translate3d(var(--gx), var(--gy), 0) scale(1); }
+    .hp-flow.is-drag .hp-grab { transform: translate3d(var(--gx), var(--gy), 0) scale(.82); background: var(--hp-or); }
+    .hp-flow.is-drag .hp-grab .mi { transform: scale(.9) rotate(-8deg); }
+    @media (hover: hover) and (pointer: fine) {
+      .hp-flow, .hp-flow.is-drag, .hp-flow .hp-fcard { cursor: none; }
+    }
+    .hp-swipehint { position: absolute; left: 50%; bottom: -2px; z-index: 20; width: 52px; height: 52px; margin-left: -26px; border-radius: 50%;
+      background: var(--hp-ink); color: #fff; display: none; place-items: center; pointer-events: none; opacity: 0; }
+    .hp-swipehint .mi { font-size: 26px; font-variation-settings: "FILL" 1, "wght" 400; }
+    @media (hover: none), (pointer: coarse) {
+      .hp-swipehint { display: grid; }
+      .hp-flow.is-hint .hp-swipehint { animation: hp-swipehint 2.4s var(--hp-ease) 1 both; }
+      .hp-grab .hp-grab__l { display: none; }
+      .hp-grab { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
+    }
+    @keyframes hp-swipehint {
+      0% { opacity: 0; transform: translateX(0); }
+      15% { opacity: 1; transform: translateX(0); }
+      40% { transform: translateX(-34px); }
+      65% { transform: translateX(34px); }
+      85% { opacity: 1; transform: translateX(0); }
+      100% { opacity: 0; transform: translateX(0); }
+    }
+
+    /* ---------- Open Controller drag / swipe ---------- */
+    .hp-why__card { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+    .hp-why__card.is-drag .hp-reason { transition: opacity .6s var(--hp-ease), transform 0s; }
+    .hp-why__card > .hp-grab { position: absolute; z-index: 20; }
+    .hp-why__card.is-grab-on .hp-grab { opacity: 1; transform: translate3d(var(--gx), var(--gy), 0) scale(1); }
+    .hp-why__card.is-drag .hp-grab { transform: translate3d(var(--gx), var(--gy), 0) scale(.82); background: var(--hp-or); }
+    .hp-why__card.is-drag .hp-grab .mi { transform: scale(.9) rotate(-8deg); }
+    @media (hover: hover) and (pointer: fine) { .hp-why__card, .hp-why__card .hp-reason { cursor: none; } }
+    @media (max-width: 1279px) { .hp-why__card > .hp-grab { position: absolute; } }
+
+    /* ---------- Choose how you want to start: same minute dot grid, faded at edges ---------- */
+    .hp-choose { position: relative; isolation: isolate; }
+    .hp-choose::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(112, 106, 98, .4) .8px, transparent 1.2px);
+      background-size: 12px 12px; background-position: 6px 6px;
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.45) 24%, rgba(0,0,0,.06) 42%, rgba(0,0,0,.06) 58%, rgba(0,0,0,.45) 76%, #000 100%),
+                          linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+      -webkit-mask-composite: source-in;
+              mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.45) 24%, rgba(0,0,0,.06) 42%, rgba(0,0,0,.06) 58%, rgba(0,0,0,.45) 76%, #000 100%),
+                          linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+              mask-composite: intersect; }
+    .hp-choose > .hp-wrap { position: relative; z-index: 1; }
+
+    /* ---------- Full product pop-up (View full product) ---------- */
+    .hp-win__full { border: 0; cursor: pointer; }
+    .hp-pm { position: fixed; inset: 0; z-index: 10000; display: none; font-family: var(--hp-sans); color: var(--hp-ink); }
+    .hp-pm.is-open { display: block; }
+    .hp-pm__scrim { position: absolute; inset: 0; background: rgba(31, 32, 34, .9); opacity: 0; transition: opacity .35s var(--hp-ease); }
+    .hp-pm.is-in .hp-pm__scrim { opacity: 1; }
+    .hp-pm__shell { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr auto; padding: 20px 24px 24px; gap: 16px;
+      opacity: 0; transform: translateY(16px) scale(.985); transition: opacity .4s var(--hp-ease), transform .5s var(--hp-ease); }
+    .hp-pm.is-in .hp-pm__shell { opacity: 1; transform: none; }
+    .hp-pm__top { display: flex; align-items: center; gap: 16px; color: #fff; }
+    .hp-pm__k { font: 400 14px/18px var(--hp-mono); text-transform: uppercase; letter-spacing: .04em; color: rgba(255,255,255,.7); white-space: nowrap; }
+    .hp-pm__t { font-size: 24px; line-height: 30px; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: opacity .25s; }
+    .hp-pm__x { margin-left: auto; flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: transparent; color: #fff;
+      display: grid; place-items: center; cursor: pointer; transition: background .12s, color .12s; }
+    .hp-pm__x:hover { background: #fff; color: var(--hp-ink); }
+    .hp-pm__x .mi { font-size: 24px; }
+    .hp-pm__view { position: relative; overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+    .hp-pm__view.is-drag { cursor: grabbing; }
+    .hp-pm__track { display: flex; height: 100%; transform: translate3d(calc(var(--i, 0) * -100% + var(--dx, 0px)), 0, 0); transition: transform .55s cubic-bezier(.65, 0, .25, 1); }
+    .hp-pm__view.is-drag .hp-pm__track { transition: none; }
+    .hp-pm__slide { flex: 0 0 100%; height: 100%; display: grid; place-items: center; overflow: hidden; }
+    .hp-pm__slide { position: relative; }
+    .hp-pm__fit { position: absolute; left: 50%; top: 50%; width: 1110px; transform-origin: center center; transform: translate(-50%, -50%) scale(var(--s, 1)); }
+    .hp-pm .hp-win { height: auto; max-height: none; margin: 0; border-radius: 4px; overflow: hidden; }
+    .hp-pm .hp-win__body { height: auto; border-radius: 4px; margin-bottom: 16px; }
+    .hp-pm .hp-panel { min-height: 210px; padding-bottom: 8px; }
+    .hp-pm .hp-main { padding-bottom: 24px; }
+    .hp-pm .hp-brief { position: relative; right: auto; bottom: auto; width: auto; max-width: 520px; margin: 12px 0 0; border-radius: 4px; }
+    .hp-pm .hp-pill { position: relative; left: auto; bottom: auto; margin: 12px 0 0; }
+    .hp-pm .hp-win__actions, .hp-pm .hp-win__prog { display: none; }
+    .hp-pm .hp-main .hp-pill { display: inline-flex; }
+    .hp-pm__bot { display: flex; align-items: center; justify-content: center; gap: 24px; }
+    .hp-pm__bot .hp-circle { border-color: rgba(255,255,255,.6); color: #fff; }
+    .hp-pm__bot .hp-circle:hover { background: #fff; color: var(--hp-ink); }
+    .hp-pm__dots { display: flex; gap: 8px; }
+    .hp-pm__dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 4px; background: rgba(255,255,255,.35); cursor: pointer; transition: width .3s var(--hp-ease), background .3s; }
+    .hp-pm__dots button[aria-current="true"] { width: 28px; background: var(--hp-or); }
+    .hp-pm__hint { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: none; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 18px;
+      background: rgba(31,32,34,.85); color: #fff; font: 400 12px/1 var(--hp-mono); text-transform: uppercase; letter-spacing: .05em; pointer-events: none; transition: opacity .4s; }
+    .hp-pm__hint .mi { font-size: 18px; }
+    @media (max-width: 834px) {
+      .hp-pm__shell { padding: 14px 14px 18px; gap: 12px; }
+      .hp-pm__t { font-size: 18px; line-height: 24px; white-space: normal; }
+      .hp-pm__k { display: none; }
+      .hp-pm__slide { place-items: start center; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+      .hp-pm__fit { position: relative; left: auto; top: auto; width: 100%; transform: none; }
+      /* full product on small screens: every panel visible, stacked */
+      .hp-pm .hp-win__body { grid-template-columns: minmax(0, 1fr); }
+      .hp-pm .hp-win, .hp-pm .hp-side, .hp-pm .hp-main { min-width: 0; max-width: 100%; }
+      .hp-pm .hp-side__it { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .hp-pm .hp-side { display: block; border-right: 0; border-bottom: 1px solid var(--hp-rule); columns: 2; column-gap: 12px; }
+      .hp-pm .hp-side__brand, .hp-pm .hp-side__grp { break-inside: avoid; }
+      .hp-pm .hp-metrics { display: flex; flex-wrap: wrap; gap: 10px; }
+      .hp-pm .hp-metrics svg, .hp-pm .hp-seg { display: none; }
+      .hp-pm .hp-panels { display: grid; grid-template-columns: 1fr; }
+      .hp-pm .hp-panels .hp-panel:last-child { display: block; }
+      .hp-pm .hp-brief { display: block; }
+      .hp-pm .hp-tiles { grid-template-columns: repeat(2, 1fr); }
+      .hp-pm__hint { display: inline-flex; }
+    }
+    @media (max-width: 560px) { .hp-pm .hp-win__body { margin: 10px; } .hp-pm .hp-row { grid-template-columns: 18px 1fr auto; } .hp-pm .hp-row__t { display: none; } }
+
+    /* pop-up header: product name is the headline, its line sits under it as a normal-size description */
+    .hp-pm__top { align-items: flex-start; }
+    .hp-pm__head { min-width: 0; display: grid; gap: 6px; }
+    .hp-pm__head .hp-pm__k { margin: 0; font: 400 14px/18px var(--hp-mono); color: rgba(255,255,255,.6); }
+    .hp-pm__name { margin: 0; font-weight: 400; font-size: 48px; line-height: 52px; letter-spacing: -.025em; color: #fff; }
+    .hp-pm__head .hp-pm__t { margin: 0; font-size: 20px; line-height: 26px; color: rgba(255,255,255,.78); white-space: normal; overflow: visible; }
+    @media (max-width: 834px) {
+      .hp-pm__head .hp-pm__k { display: block; font-size: 12px; }
+      .hp-pm__name { font-size: 32px; line-height: 36px; }
+      .hp-pm__head .hp-pm__t { font-size: 17px; line-height: 23px; }
+    }
+    @media (max-height: 700px) and (min-width: 835px) { .hp-pm__name { font-size: 36px; line-height: 40px; } .hp-pm__head .hp-pm__t { font-size: 18px; line-height: 24px; } }
+
+    /* ---------- Pop-up v3: counter on top, name + line centred above a larger product ---------- */
+    .hp-pm__shell { padding: 16px 24px 16px; gap: 12px; }
+    .hp-pm__top { display: grid; grid-template-columns: 1fr minmax(0, auto) 1fr; align-items: start; gap: 16px; }
+    .hp-pm__count { margin: 0; justify-self: start; padding-top: 12px; font: 400 14px/18px var(--hp-mono); color: rgba(255,255,255,.6); letter-spacing: .04em; }
+    .hp-pm__top .hp-pm__x { justify-self: end; margin-left: 0; }
+    .hp-pm__head { text-align: center; justify-items: center; gap: 4px; }
+    .hp-pm__name { font-size: 40px; line-height: 44px; }
+    .hp-pm__head .hp-pm__t { font-size: 18px; line-height: 24px; }
+    .hp-pm__slide { display: flex; flex-direction: column; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,.3) transparent; place-items: initial; }
+    .hp-pm__size { position: relative; flex: none; margin: auto; max-width: 100%; }
+    .hp-pm__fit { position: absolute; left: 0; top: 0; width: 1110px; transform-origin: 0 0; transform: scale(var(--s, 1)); }
+    .hp-pm__bot { gap: 20px; }
+    .hp-pm__bot .hp-circle { width: 36px; height: 36px; }
+    @media (max-height: 760px) and (min-width: 835px) { .hp-pm__name { font-size: 32px; line-height: 36px; } .hp-pm__head .hp-pm__t { font-size: 16px; line-height: 22px; } }
+    @media (max-width: 834px) {
+      .hp-pm__top { grid-template-columns: 1fr auto; row-gap: 8px; }
+      .hp-pm__count { grid-column: 1; grid-row: 1; padding-top: 14px; font-size: 12px; }
+      .hp-pm__top .hp-pm__x { grid-column: 2; grid-row: 1; }
+      .hp-pm__head { grid-column: 1 / -1; grid-row: 2; }
+      .hp-pm__name { font-size: 30px; line-height: 34px; }
+      .hp-pm__head .hp-pm__t { font-size: 16px; line-height: 22px; }
+      .hp-pm__size { width: 100%; margin: 0; }
+      .hp-pm__fit { position: relative; transform: none; width: 100%; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .hp *, .hp *::before, .hp *::after { transition: none !important; animation: none !important; }
     }
@@ -8943,6 +9151,52 @@ body{min-height:100vh;background:var(--bg)}
           <path d="M42 4 78 16v30c0 24-16 40-36 48C22 86 6 70 6 46V16Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.1 17.3) scale(.64)" />
           <path d="M42 4 78 16v30c0 24-16 40-36 48C22 86 6 70 6 46V16Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.7 25.9) scale(.46)" />
         </symbol>
+        <symbol id="hp-ic-radar" viewBox="0 0 84 96">
+          <path d="M42 10a38 38 0 1 1 0 76a38 38 0 1 1 0-76Z" fill="#F7A68B" fill-opacity=".55" />
+          <path d="M42 10a38 38 0 1 1 0 76a38 38 0 1 1 0-76Z" fill="url(#hpShieldGlow)" transform="translate(7.56 8.64) scale(.82)" />
+          <path d="M42 10a38 38 0 1 1 0 76a38 38 0 1 1 0-76Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.12 17.28) scale(.64)" />
+          <path d="M42 10a38 38 0 1 1 0 76a38 38 0 1 1 0-76Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.68 25.92) scale(.46)" />
+          <path d="M42 48 66 30" stroke="#F48A6B" stroke-width="1.5" stroke-linecap="round" /><circle cx="42" cy="48" r="3.5" fill="#F48A6B" /><circle cx="60" cy="58" r="2.5" fill="#F48A6B" fill-opacity=".8" /><circle cx="30" cy="34" r="2" fill="#F48A6B" fill-opacity=".6" />
+        </symbol>
+        <symbol id="hp-ic-rise" viewBox="0 0 84 96">
+          <path d="M42 6 80 44H60v44H24V44H4Z" fill="#F7A68B" fill-opacity=".55" />
+          <path d="M42 6 80 44H60v44H24V44H4Z" fill="url(#hpShieldGlow)" transform="translate(7.56 8.64) scale(.82)" />
+          <path d="M42 6 80 44H60v44H24V44H4Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.12 17.28) scale(.64)" />
+          <path d="M42 6 80 44H60v44H24V44H4Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.68 25.92) scale(.46)" />
+          <path d="M42 34v30" stroke="#F48A6B" stroke-width="1.5" stroke-linecap="round" /><path d="m34 42 8-8 8 8" fill="none" stroke="#F48A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </symbol>
+        <symbol id="hp-ic-cost" viewBox="0 0 84 96">
+          <path d="M42 6 78 27v42L42 90 6 69V27Z" fill="#F7A68B" fill-opacity=".55" />
+          <path d="M42 6 78 27v42L42 90 6 69V27Z" fill="url(#hpShieldGlow)" transform="translate(7.56 8.64) scale(.82)" />
+          <path d="M42 6 78 27v42L42 90 6 69V27Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.12 17.28) scale(.64)" />
+          <path d="M42 6 78 27v42L42 90 6 69V27Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.68 25.92) scale(.46)" />
+          <path d="M28 40l9 9 7-6 12 13" fill="none" stroke="#F48A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M50 56h6v-6" fill="none" stroke="#F48A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </symbol>
+        <symbol id="hp-ic-audit" viewBox="0 0 84 96">
+          <path d="M14 6h42l20 20v64H14Z" fill="#F7A68B" fill-opacity=".55" />
+          <path d="M14 6h42l20 20v64H14Z" fill="url(#hpShieldGlow)" transform="translate(7.56 8.64) scale(.82)" />
+          <path d="M14 6h42l20 20v64H14Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.12 17.28) scale(.64)" />
+          <path d="M14 6h42l20 20v64H14Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.68 25.92) scale(.46)" />
+          <path d="m31 50 8 8 15-16" fill="none" stroke="#F48A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        </symbol>
+        <symbol id="hp-ic-control" viewBox="0 0 84 96">
+          <path d="M4 48C14 28 28 18 42 18s28 10 38 30C70 68 56 78 42 78S14 68 4 48Z" fill="#F7A68B" fill-opacity=".55" />
+          <path d="M4 48C14 28 28 18 42 18s28 10 38 30C70 68 56 78 42 78S14 68 4 48Z" fill="url(#hpShieldGlow)" transform="translate(7.56 8.64) scale(.82)" />
+          <path d="M4 48C14 28 28 18 42 18s28 10 38 30C70 68 56 78 42 78S14 68 4 48Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.12 17.28) scale(.64)" />
+          <path d="M4 48C14 28 28 18 42 18s28 10 38 30C70 68 56 78 42 78S14 68 4 48Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.68 25.92) scale(.46)" />
+        </symbol>
+        <symbol id="hp-ic-build" viewBox="0 0 84 96">
+          <path d="M38 8h8v8h14a14 14 0 0 1 14 14v38a14 14 0 0 1-14 14H24A14 14 0 0 1 10 68V30a14 14 0 0 1 14-14h14Z" fill="#F7A68B" fill-opacity=".55" />
+          <path d="M38 8h8v8h14a14 14 0 0 1 14 14v38a14 14 0 0 1-14 14H24A14 14 0 0 1 10 68V30a14 14 0 0 1 14-14h14Z" fill="url(#hpShieldGlow)" transform="translate(7.56 8.64) scale(.82)" />
+          <path d="M38 8h8v8h14a14 14 0 0 1 14 14v38a14 14 0 0 1-14 14H24A14 14 0 0 1 10 68V30a14 14 0 0 1 14-14h14Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.12 17.28) scale(.64)" />
+          <path d="M38 8h8v8h14a14 14 0 0 1 14 14v38a14 14 0 0 1-14 14H24A14 14 0 0 1 10 68V30a14 14 0 0 1 14-14h14Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.68 25.92) scale(.46)" />
+        </symbol>
+        <symbol id="hp-ic-cloud" viewBox="0 0 84 96">
+          <path d="M24 72a17 17 0 0 1-2.5-33.8A22 22 0 0 1 63 33.5a19.3 19.3 0 0 1 2 38.5Z" fill="#F7A68B" fill-opacity=".55" />
+          <path d="M24 72a17 17 0 0 1-2.5-33.8A22 22 0 0 1 63 33.5a19.3 19.3 0 0 1 2 38.5Z" fill="url(#hpShieldGlow)" transform="translate(7.56 8.64) scale(.82)" />
+          <path d="M24 72a17 17 0 0 1-2.5-33.8A22 22 0 0 1 63 33.5a19.3 19.3 0 0 1 2 38.5Z" fill="none" stroke="#F48A6B" stroke-opacity=".55" transform="translate(15.12 17.28) scale(.64)" />
+          <path d="M24 72a17 17 0 0 1-2.5-33.8A22 22 0 0 1 63 33.5a19.3 19.3 0 0 1 2 38.5Z" fill="none" stroke="#F48A6B" stroke-opacity=".4" transform="translate(22.68 25.92) scale(.46)" />
+        </symbol>
       </defs>
     </svg>
 
@@ -8993,7 +9247,7 @@ body{min-height:100vh;background:var(--bg)}
               <div class="hp-win__bar">
                 <span class="hp-win__dot" style="background:#EE6A5F"></span><span class="hp-win__dot" style="background:#F5BE4F"></span><span class="hp-win__dot" style="background:#62C554"></span>
                 <span class="hp-win__url" aria-hidden="true">studio.lyzr.ai &middot; <span data-hp-url>architect</span></span>
-                <button class="hp-win__pause" type="button" data-hp-pause aria-pressed="false" aria-label="Pause tab autoplay"></button>
+                <div class="hp-win__actions"><button class="hp-win__full" type="button" data-hp-full aria-haspopup="dialog"><span>View full product</span><span class="mi" aria-hidden="true">open_in_full</span></button><button class="hp-win__pause" type="button" data-hp-pause aria-pressed="false" aria-label="Pause tab autoplay"></button></div>
               </div>
               <div class="hp-win__body" aria-hidden="true">
                 <div class="hp-side">
@@ -9081,7 +9335,8 @@ body{min-height:100vh;background:var(--bg)}
     <!-- ===================== 4. FIVE REASONS (Figma: Group 1321315115) ===================== -->
     <section class="hp-why" id="open-controller" aria-labelledby="hpWhyTitle">
       <div class="hp-wrap">
-        <div class="hp-why__card reveal">
+        <div class="hp-why__card reveal" data-hp-why-card>
+          <span class="hp-grab" aria-hidden="true"><span class="mi">pan_tool</span><span class="hp-grab__l">Drag</span></span>
           <div class="hp-why__intro">
             <p class="hp-eyebrow">Lyzr Open Controller</p>
             <h2 class="hp-why__title" id="hpWhyTitle">5 Reasons why CIO&rsquo;s build on Lyzr</h2>
@@ -9215,6 +9470,8 @@ body{min-height:100vh;background:var(--bg)}
         <h2 class="hp-h2 hp-start__h hp-prod__swap" id="hpStartTitle" aria-live="polite" data-hp-start-h>Our data can&rsquo;t leave the building</h2>
       </div>
       <div class="hp-flow" data-hp-flow>
+        <span class="hp-grab" aria-hidden="true"><span class="mi">pan_tool</span><span class="hp-grab__l">Drag</span></span>
+        <span class="hp-swipehint" aria-hidden="true"><span class="mi">swipe</span></span>
         <button class="hp-fcard" type="button" data-problem="Our data can&rsquo;t leave the building">
           <svg aria-hidden="true"><use href="#hp-shield" /></svg>
           <span class="hp-fcard__t">Give every employee one governed AI workspace</span>
@@ -9222,25 +9479,25 @@ body{min-height:100vh;background:var(--bg)}
           <span class="hp-fcard__l">Explore OpenCowork <span class="mi" aria-hidden="true">arrow_outward</span></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="We have agents everywhere and no way to see them">
-          <svg aria-hidden="true"><use href="#hp-shield" /></svg>
+          <svg aria-hidden="true"><use href="#hp-ic-radar" /></svg>
           <span class="hp-fcard__t">Take control of the agents you already run</span>
           <span class="hp-fcard__d">One register for every agent, its owner, its access and its spend. Read-only, live in under a week.</span>
           <span class="hp-fcard__l">Explore OpenController <span class="mi" aria-hidden="true">arrow_outward</span></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="Our pilots never reach production">
-          <svg aria-hidden="true"><use href="#hp-shield" /></svg>
+          <svg aria-hidden="true"><use href="#hp-ic-rise" /></svg>
           <span class="hp-fcard__t">Ship governed agents in weeks</span>
           <span class="hp-fcard__d">Describe a process in plain language and get a working, governed agent you can take live.</span>
           <span class="hp-fcard__l">Explore Architect <span class="mi" aria-hidden="true">arrow_outward</span></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="Our AI bill keeps climbing">
-          <svg aria-hidden="true"><use href="#hp-shield" /></svg>
+          <svg aria-hidden="true"><use href="#hp-ic-cost" /></svg>
           <span class="hp-fcard__t">Prove a smaller model is good enough</span>
           <span class="hp-fcard__d">Replay real traffic against cheaper models and switch only when quality holds.</span>
           <span class="hp-fcard__l">Explore Simulation Engine <span class="mi" aria-hidden="true">arrow_outward</span></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="Auditors want proof, not policy">
-          <svg aria-hidden="true"><use href="#hp-shield" /></svg>
+          <svg aria-hidden="true"><use href="#hp-ic-audit" /></svg>
           <span class="hp-fcard__t">Keep a live record of every agent decision</span>
           <span class="hp-fcard__d">Traces, approvals and access history that stand up to an examiner, exported on demand.</span>
           <span class="hp-fcard__l">Explore Responsible AI <span class="mi" aria-hidden="true">arrow_outward</span></span>
@@ -9263,7 +9520,7 @@ body{min-height:100vh;background:var(--bg)}
         </div>
         <div>
           <article class="hp-opt reveal">
-            <svg aria-hidden="true"><use href="#hp-shield" /></svg>
+            <svg aria-hidden="true"><use href="#hp-ic-control" /></svg>
             <div>
               <h3 class="hp-opt__t">Take control of the agents you already run</h3>
               <p class="hp-opt__d">Connect one environment and see every agent, its owner, its access and its spend. Read-only, live in under a week.</p>
@@ -9271,7 +9528,7 @@ body{min-height:100vh;background:var(--bg)}
             </div>
           </article>
           <article class="hp-opt reveal">
-            <svg aria-hidden="true"><use href="#hp-shield" /></svg>
+            <svg aria-hidden="true"><use href="#hp-ic-build" /></svg>
             <div>
               <h3 class="hp-opt__t">Build your first agent for free</h3>
               <p class="hp-opt__d">Describe the process, pick any model and get a working agent in Agent Studio. No card, no sales call.</p>
@@ -9279,7 +9536,7 @@ body{min-height:100vh;background:var(--bg)}
             </div>
           </article>
           <article class="hp-opt reveal">
-            <svg aria-hidden="true"><use href="#hp-shield" /></svg>
+            <svg aria-hidden="true"><use href="#hp-ic-cloud" /></svg>
             <div>
               <h3 class="hp-opt__t">Run Lyzr inside your own cloud</h3>
               <p class="hp-opt__d">Deploy the full platform in your VPC or on-prem, so data, prompts and traces stay inside your walls.</p>
@@ -11331,6 +11588,115 @@ body{min-height:100vh;background:var(--bg)}
         window.addEventListener('resize', function () { placeInd(true); });
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { placeInd(true); });
         go(cur, true);
+
+        /* ---------- Full product pop-up: every product, full window, swipe between them ---------- */
+        (function () {
+          var btn = $('[data-hp-full]'), src = $('.hp-win'); if (!btn || !src) return;
+          var names = tabs.map(function (t) { return t.textContent.trim(); });
+          var pm = document.createElement('div');
+          pm.className = 'hp hp-pm'; pm.setAttribute('data-lenis-prevent', ''); pm.setAttribute('role', 'dialog'); pm.setAttribute('aria-modal', 'true'); pm.setAttribute('aria-label', 'Lyzr products');
+          pm.innerHTML = '<div class="hp-pm__scrim" data-pm-close></div><div class="hp-pm__shell">' +
+            '<div class="hp-pm__top"><p class="hp-pm__count"><span data-pm-k></span></p><div class="hp-pm__head" aria-live="polite"><h2 class="hp-pm__name" data-pm-name></h2><p class="hp-pm__t" data-pm-t></p></div>' +
+            '<button class="hp-pm__x" type="button" data-pm-close aria-label="Close"><span class="mi" aria-hidden="true">close</span></button></div>' +
+            '<div class="hp-pm__view" data-pm-view><div class="hp-pm__track" data-pm-track></div><span class="hp-pm__hint"><span class="mi" aria-hidden="true">swipe</span>Swipe for more</span></div>' +
+            '<div class="hp-pm__bot"><button class="hp-circle" type="button" data-pm-prev aria-label="Previous product"><span class="mi" aria-hidden="true">chevron_left</span></button>' +
+            '<div class="hp-pm__dots" data-pm-dots></div><button class="hp-circle" type="button" data-pm-next aria-label="Next product"><span class="mi" aria-hidden="true">chevron_right</span></button></div></div>';
+          document.body.appendChild(pm);
+          var track = $('[data-pm-track]', pm), view = $('[data-pm-view]', pm), dotsEl = $('[data-pm-dots]', pm), kEl = $('[data-pm-k]', pm), tEl = $('[data-pm-t]', pm), nEl = $('[data-pm-name]', pm);
+          var slides = [], pi = 0, lastFocus = null, wasPaused = false;
+          function fill(root, d) {
+            function q(sel) { return root.querySelector(sel); }
+            q('[data-hp-url]').textContent = d.u; q('[data-hp-bk]').textContent = d.k; q('[data-hp-bq]').textContent = d.q;
+            q('[data-hp-bc]').innerHTML = d.c.map(function (c) { return '<span>' + c + '</span>'; }).join('');
+            q('[data-hp-pill]').textContent = d.p;
+            q('[data-hp-m1]').textContent = d.m[0]; q('[data-hp-m2]').textContent = d.m[1]; q('[data-hp-m3]').textContent = d.m[2];
+            root.querySelectorAll('.hp-side__it').forEach(function (s) { s.classList.toggle('is-on', +s.getAttribute('data-side') === d.side); });
+            /* move the brief + prompt pill into the main column so nothing overlaps or gets cut */
+            var main = q('.hp-main'), brief = q('.hp-brief'), pill = q('.hp-pill');
+            if (brief) { brief.classList.remove('hp-prod__swap', 'is-out', 'is-in'); main.appendChild(brief); }
+            if (pill) main.appendChild(pill);
+            root.querySelectorAll('*').forEach(function (n) {
+              Array.prototype.slice.call(n.attributes).forEach(function (a) { if (a.name.indexOf('data-hp-') === 0) n.removeAttribute(a.name); });
+              if (n.id) n.removeAttribute('id');
+            });
+          }
+          TABS.forEach(function (d, i) {
+            var sl = document.createElement('div'); sl.className = 'hp-pm__slide'; sl.setAttribute('role', 'group');
+            sl.setAttribute('aria-roledescription', 'slide'); sl.setAttribute('aria-label', (i + 1) + ' of ' + TABS.length + ': ' + names[i]);
+            var sizer = document.createElement('div'); sizer.className = 'hp-pm__size';
+            var fit = document.createElement('div'); fit.className = 'hp-pm__fit';
+            var w = src.cloneNode(true); w.removeAttribute('aria-hidden'); fit.appendChild(w); fill(w, d); sizer.appendChild(fit); sl.appendChild(sizer); track.appendChild(sl); slides.push(sl);
+            var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', names[i]);
+            b.addEventListener('click', function () { pmGo(i); }); dotsEl.appendChild(b);
+          });
+          var pdots = $$('button', dotsEl);
+          function fitAll() {
+            var small = matchMedia('(max-width: 834px)').matches;
+            var vw = view.clientWidth - 16;
+            slides.forEach(function (sl) {
+              var sz = sl.firstChild, f = sz.firstChild, w = f.firstChild;
+              if (small) { sz.style.width = ''; sz.style.height = ''; f.style.removeProperty('--s'); return; }
+              /* fill the width (up to 120%); if it ends up taller than the pop-up, it scrolls inside instead of shrinking */
+              var sc = Math.min(1.2, vw / 1110), h = (w && w.offsetHeight) || 700;
+              f.style.setProperty('--s', sc.toFixed(4)); sz.style.width = Math.round(1110 * sc) + 'px'; sz.style.height = Math.round(h * sc) + 'px';
+            });
+          }
+          function pmGo(i) {
+            pi = Math.max(0, Math.min(TABS.length - 1, i));
+            track.style.setProperty('--i', pi); track.style.setProperty('--dx', '0px');
+            pdots.forEach(function (d, k) { d.setAttribute('aria-current', k === pi ? 'true' : 'false'); });
+            kEl.textContent = ('0' + (pi + 1)).slice(-2) + ' / ' + ('0' + TABS.length).slice(-2); nEl.textContent = names[pi]; tEl.textContent = TABS[pi].t;
+            $('[data-pm-prev]', pm).disabled = pi === 0; $('[data-pm-next]', pm).disabled = pi === TABS.length - 1;
+            slides.forEach(function (sl, k) { sl.setAttribute('aria-hidden', k === pi ? 'false' : 'true'); if (k !== pi) sl.scrollTop = 0; });
+          }
+          function open() {
+            lastFocus = document.activeElement; wasPaused = paused; paused = true;
+            pm.classList.add('is-open'); document.body.style.overflow = 'hidden';
+            track.style.transition = 'none'; pmGo(cur); void track.offsetWidth; track.style.transition = '';
+            requestAnimationFrame(function () { fitAll(); pm.classList.add('is-in'); $('.hp-pm__x', pm).focus(); setTimeout(fitAll, 520); });
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+            var hint = $('.hp-pm__hint', pm); hint.style.opacity = '1'; setTimeout(function () { hint.style.opacity = '0'; }, 2600);
+          }
+          function close() {
+            pm.classList.remove('is-in'); document.body.style.overflow = '';
+            setTimeout(function () { pm.classList.remove('is-open'); }, reduced ? 0 : 380);
+            paused = wasPaused; if (pi !== cur) go(pi);     /* leave the section on the product they were looking at */
+            if (lastFocus) lastFocus.focus();
+          }
+          btn.addEventListener('click', open);
+          $$('[data-pm-close]', pm).forEach(function (c) { c.addEventListener('click', close); });
+          $('[data-pm-prev]', pm).addEventListener('click', function () { pmGo(pi - 1); });
+          $('[data-pm-next]', pm).addEventListener('click', function () { pmGo(pi + 1); });
+          document.addEventListener('keydown', function (e) {
+            if (!pm.classList.contains('is-open')) return;
+            if (e.key === 'Escape') { e.preventDefault(); close(); }
+            else if (e.key === 'ArrowRight') { e.preventDefault(); pmGo(pi + 1); }
+            else if (e.key === 'ArrowLeft') { e.preventDefault(); pmGo(pi - 1); }
+            else if (e.key === 'Tab') {   /* keep focus inside the dialog */
+              var f = $$('button:not([disabled])', pm).filter(function (b) { return b.offsetParent !== null; });
+              if (!f.length) return; var a = f[0], z = f[f.length - 1];
+              if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+              else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+            }
+          });
+          window.addEventListener('resize', function () { if (pm.classList.contains('is-open')) fitAll(); });
+          /* swipe / drag between products */
+          var sx = null, sy = 0, dx = 0, drag = false, pid = null;
+          view.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse' && e.button !== 0) return; sx = e.clientX; sy = e.clientY; dx = 0; drag = false; pid = e.pointerId; });
+          view.addEventListener('pointermove', function (e) {
+            if (sx === null || e.pointerId !== pid) return;
+            var mx = e.clientX - sx, my = e.clientY - sy;
+            if (!drag) { if (Math.abs(mx) < 8) return; if (Math.abs(my) > Math.abs(mx)) { sx = null; return; } drag = true; view.classList.add('is-drag'); try { view.setPointerCapture(pid); } catch (er) {} }
+            dx = mx; var edge = (pi === 0 && dx > 0) || (pi === TABS.length - 1 && dx < 0);
+            track.style.setProperty('--dx', (edge ? dx * .3 : dx) + 'px');
+          });
+          function end() {
+            if (sx === null) return; sx = null; if (!drag) return; drag = false; view.classList.remove('is-drag');
+            var w = view.clientWidth; if (Math.abs(dx) > Math.min(80, w * .18)) pmGo(pi + (dx < 0 ? 1 : -1)); else pmGo(pi);
+          }
+          view.addEventListener('pointerup', end); view.addEventListener('pointercancel', end); view.addEventListener('lostpointercapture', end);
+          view.addEventListener('dragstart', function (e) { e.preventDefault(); });
+        })();
         requestAnimationFrame(tick);
       }
 
@@ -11361,6 +11727,49 @@ body{min-height:100vh;background:var(--bg)}
         document.addEventListener('visibilitychange', function () { if (document.hidden) clearInterval(rTimer); else rAuto(); });
         rGo(0);
         rAuto();
+        /* drag / swipe: mouse drags up-down or sideways (wheel preview on desktop); touch swipes sideways */
+        (function () {
+          var card = $('[data-hp-why-card]'); if (!card) return;
+          var gi = $('.hp-grab .mi', card);
+          var sx = null, sy = 0, d = 0, on = false, moved = false, pid = null, axis = null;
+          function wheelMode() { return matchMedia('(min-width: 1280px)').matches; }
+          function at(e) { var r = card.getBoundingClientRect(); card.style.setProperty('--gx', (e.clientX - r.left) + 'px'); card.style.setProperty('--gy', (e.clientY - r.top) + 'px'); }
+          card.addEventListener('pointerdown', function (e) {
+            if (e.pointerType === 'mouse' && e.button !== 0) return;
+            if (e.target.closest('.hp-why__nav')) return;
+            sx = e.clientX; sy = e.clientY; d = 0; on = false; moved = false; axis = null; pid = e.pointerId; at(e);
+            if (e.pointerType === 'mouse') gi.textContent = 'back_hand';
+          });
+          card.addEventListener('pointermove', function (e) {
+            at(e); if (e.pointerType === 'mouse' || on) card.classList.add('is-grab-on');
+            if (sx === null || e.pointerId !== pid) return;
+            var mx = e.clientX - sx, my = e.clientY - sy;
+            if (!on) {
+              if (Math.max(Math.abs(mx), Math.abs(my)) < 8) return;
+              axis = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+              if (axis === 'y' && e.pointerType !== 'mouse') { sx = null; return; }
+              on = true; moved = true; clearInterval(rTimer); card.classList.add('is-drag');
+              try { card.setPointerCapture(pid); } catch (err) {}
+            }
+            d = axis === 'x' ? -mx : my;
+            if (wheelMode()) card.style.setProperty('--dr', (Math.max(-1.5, Math.min(1.5, d / 160)) * -STEP) + 'deg');
+          });
+          function end(cancel) {
+            gi.textContent = 'pan_tool';
+            if (sx === null) return; sx = null;
+            if (!on) return;
+            on = false; card.classList.remove('is-drag'); card.style.setProperty('--dr', '0deg');
+            if (!cancel && Math.abs(d) > 45) rGo(ri + (d > 0 ? 1 : -1) * (Math.abs(d) > 260 ? 2 : 1));
+            rAuto();
+          }
+          card.addEventListener('pointerup', function (e) { end(false); if (e.pointerType !== 'mouse') card.classList.remove('is-grab-on'); });
+          card.addEventListener('pointercancel', function () { end(true); card.classList.remove('is-grab-on'); });
+          card.addEventListener('lostpointercapture', function () { end(false); });
+          card.addEventListener('pointerleave', function () { if (!on) card.classList.remove('is-grab-on'); });
+          card.addEventListener('click', function (e) { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+          card.addEventListener('dragstart', function (e) { e.preventDefault(); });
+        })();
+
       }
 
       /* ---------- Where teams start — coverflow ---------- */
@@ -11390,9 +11799,57 @@ body{min-height:100vh;background:var(--bg)}
         $('[data-hp-flow-next]').addEventListener('click', function () { fGo(fi + 1); fAuto(); });
         flow.addEventListener('mouseenter', function () { clearInterval(fTimer); });
         flow.addEventListener('mouseleave', fAuto);
-        var sx = null;
-        flow.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
-        flow.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) { fGo(fi + (dx < 0 ? 1 : -1)); fAuto(); } sx = null; });
+        /* swipe / drag (touch, pen and mouse): cards follow the finger, release past 50px to change card */
+        var sx = null, sy = 0, dx = 0, dragging = false, moved = false, pid = null;
+        flow.addEventListener('pointerdown', function (e) {
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          sx = e.clientX; sy = e.clientY; dx = 0; dragging = false; moved = false; pid = e.pointerId;
+        });
+        flow.addEventListener('pointermove', function (e) {
+          if (sx === null || e.pointerId !== pid) return;
+          var mx = e.clientX - sx, my = e.clientY - sy;
+          if (!dragging) {
+            if (Math.abs(mx) < 8) return;
+            if (Math.abs(my) > Math.abs(mx)) { sx = null; return; }  /* vertical gesture: let the page scroll */
+            dragging = true; moved = true; clearInterval(fTimer); flow.classList.add('is-drag');
+            try { flow.setPointerCapture(pid); } catch (err) {}
+          }
+          dx = mx;
+          var lim = flow.clientWidth * .4, eased = Math.max(-lim, Math.min(lim, dx * .85));
+          flow.style.setProperty('--drag', eased + 'px');
+        });
+        function endDrag(cancel) {
+          if (sx === null) return;
+          sx = null;
+          if (!dragging) return;
+          dragging = false; flow.classList.remove('is-drag'); flow.style.setProperty('--drag', '0px');
+          if (!cancel && Math.abs(dx) > 50) fGo(fi + (dx < 0 ? 1 : -1));
+          fAuto();
+        }
+        flow.addEventListener('pointerup', function () { endDrag(false); });
+        flow.addEventListener('pointercancel', function () { endDrag(true); });
+        flow.addEventListener('lostpointercapture', function () { endDrag(false); });
+        /* a drag should never also count as a click on a side card */
+        flow.addEventListener('click', function (e) { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+        flow.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight') { e.preventDefault(); fGo(fi + 1); fAuto(); }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); fGo(fi - 1); fAuto(); }
+        });
+        flow.addEventListener('dragstart', function (e) { e.preventDefault(); });
+        /* drag-hand symbol: follows the pointer over the cards; on touch it appears under the finger while swiping */
+        var grab = $('.hp-grab', flow), grabIcon = $('.hp-grab .mi', flow), fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+        function grabAt(e) { var r = flow.getBoundingClientRect(); flow.style.setProperty('--gx', (e.clientX - r.left) + 'px'); flow.style.setProperty('--gy', (e.clientY - r.top) + 'px'); }
+        flow.addEventListener('pointermove', function (e) { grabAt(e); if (e.pointerType === 'mouse' || dragging) flow.classList.add('is-grab-on'); });
+        flow.addEventListener('pointerdown', function (e) { grabAt(e); if (e.pointerType === 'mouse') grabIcon.textContent = 'back_hand'; });
+        flow.addEventListener('pointerup', function (e) { grabIcon.textContent = 'pan_tool'; if (e.pointerType !== 'mouse') flow.classList.remove('is-grab-on'); });
+        flow.addEventListener('pointercancel', function () { grabIcon.textContent = 'pan_tool'; flow.classList.remove('is-grab-on'); });
+        flow.addEventListener('pointerleave', function (e) { if (!dragging) flow.classList.remove('is-grab-on'); });
+        /* one-time swipe hint the first time the section is seen on a touch device */
+        if (!fine && !reduced) {
+          var hinted = false;
+          inView(flow, function (v) { if (v && !hinted) { hinted = true; setTimeout(function () { flow.classList.add('is-hint'); }, 600); setTimeout(function () { flow.classList.remove('is-hint'); }, 3200); } });
+          flow.addEventListener('pointerdown', function () { flow.classList.remove('is-hint'); });
+        }
         fGo(0, true);
         inView(flow, function (v) { if (v) fAuto(); else clearInterval(fTimer); });
       }
@@ -11633,6 +12090,14 @@ var f=document.getElementById('ft-form'),i=document.getElementById('ft-email');
       if (vmEl) new MutationObserver(sync).observe(vmEl, { attributes: true, attributeFilter: ['hidden'] });
       new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['style'] });
     });
+  </script>
+
+  <script>
+    /* COPY: expose the sticky nav height so the product band can fill exactly one screen */
+    (function () {
+      function set() { var n = document.getElementById('nx'); document.documentElement.style.setProperty('--nxh', (n ? n.offsetHeight : 78) + 'px'); }
+      set(); window.addEventListener('resize', set); window.addEventListener('load', set);
+    })();
   </script>
 </body>
 
