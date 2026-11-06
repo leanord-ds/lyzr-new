@@ -6814,9 +6814,8 @@
     .hp-wrap { width: 100%; max-width: 1440px; margin: 0 auto; padding-inline: 60px; }
     .hp-eyebrow { font: 400 14px/18px var(--hp-mono); text-transform: uppercase; letter-spacing: .02em; color: var(--hp-or); }
     .hp-h2 { font-size: 48px; line-height: 52px; letter-spacing: -.025em; color: var(--hp-ink); }
-    .mi { font-family: "Material Symbols Outlined"; font-weight: 300; font-style: normal; font-size: 20px; line-height: 1;
-      display: inline-block; text-transform: none; letter-spacing: normal; white-space: nowrap; direction: ltr;
-      -webkit-font-smoothing: antialiased; font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24; }
+    .mi { width: 1em; height: 1em; font-size: 20px; display: inline-block; flex: none; vertical-align: middle; fill: currentColor; overflow: visible; }
+    .mi use { pointer-events: none; }
     .hp-go { width: 24px; height: 24px; border-radius: 50%; background: var(--hp-or); color: #fff;
       display: inline-grid; place-items: center; transition: background .12s; flex: none; }
     .hp-go .mi { font-size: 16px; font-variation-settings: "wght" 500; }
@@ -7029,7 +7028,7 @@
     .hp-fcard[data-pos="-2"] { transform: translateX(-516px) scale(.63); z-index: 3; background: var(--hp-sub); }
     .hp-fcard[data-pos="2"] { transform: translateX(514px) scale(.63); z-index: 3; background: var(--hp-sub); }
     .hp-fcard[data-pos="hide"] { transform: scale(.5); opacity: 0; z-index: 1; pointer-events: none; }
-    .hp-fcard svg { width: 72px; height: 82px; display: block; margin-top: 18px; }
+    .hp-fcard svg:not(.mi) { width: 72px; height: 82px; display: block; margin-top: 18px; }
     .hp-fcard__t { display: block; margin-top: 74px; font-size: 24px; line-height: 30px; letter-spacing: -.01em; }
     .hp-fcard__d { display: block; margin-top: 18px; font-size: 18px; line-height: 24px; }
     .hp-fcard__l { display: inline-flex; align-items: center; gap: 4px; margin-top: 18px; font-size: 18px; line-height: 24px; color: var(--hp-or); }
@@ -7051,7 +7050,7 @@
       max-width: 455px;
     }
     .hp-opt { display: grid; grid-template-columns: 84px 1fr; gap: 30px; padding-bottom: 30px; min-height: 282px; }
-    .hp-opt svg { width: 84px; height: 96px; }
+    .hp-opt svg:not(.mi) { width: 84px; height: 96px; }
     .hp-opt__t { font-size: 36px; line-height: 42px; letter-spacing: -.02em; max-width: 450px; }
     .hp-opt__d { font-size: 18px; line-height: 24px; margin-top: 24px; max-width: 475px; }
     .hp-opt__l { display: inline-flex; align-items: center; gap: 2px; margin-top: 24px; font-size: 18px; color: var(--hp-ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .12s; }
@@ -7163,7 +7162,7 @@
       .hp-hero__sub, .hp-choose__desc { font-size: 20px; line-height: 26px; }
       .hp-quote__band { padding: 48px 36px; } .hp-quote__text { font-size: 28px; line-height: 34px; }
       .hp-choose__grid { grid-template-columns: 1fr; } .hp-choose__l { position: static; }
-      .hp-opt { min-height: 0; grid-template-columns: 60px 1fr; gap: 20px; } .hp-opt svg { width: 60px; height: 69px; }
+      .hp-opt { min-height: 0; grid-template-columns: 60px 1fr; gap: 20px; } .hp-opt svg:not(.mi) { width: 60px; height: 69px; }
       .hp-opt__t { font-size: 28px; line-height: 34px; }
       .hp-arts { grid-template-columns: 1fr; }
       .hp-comp__head, .hp-awards__head, .hp-foot__top { flex-direction: column; align-items: flex-start; }
@@ -7392,7 +7391,7 @@
     .hp-flow.is-drag { cursor: grabbing; }
     .hp-fcard { translate: var(--drag) 0; transition: transform .7s var(--hp-ease), background .7s, opacity .7s, translate .45s var(--hp-ease); }
     .hp-flow.is-drag .hp-fcard { transition: transform .7s var(--hp-ease), background .7s, opacity .7s, translate 0s; }
-    .hp-fcard img, .hp-fcard svg { pointer-events: none; }
+    .hp-fcard img, .hp-fcard svg:not(.mi) { pointer-events: none; }
 
     /* ---------- Coverflow drag-hand cursor + touch swipe hint ---------- */
     .hp-grab { position: absolute; left: 0; top: 0; z-index: 20; width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 50%;
@@ -7544,6 +7543,14 @@
     .hp-cases-nav { display: flex; gap: 12px; flex: none; align-self: flex-end; }
     .cases__head { align-items: flex-end; }
     @media (max-width: 560px) { .cases__head { flex-wrap: wrap; row-gap: 18px; } .cases__title { flex: 1 1 100%; } .hp-cases-nav { margin-left: auto; } }
+
+    /* ---------- Choose: text buttons — ink label + small orange arrow ---------- */
+    .hp-opt__l { gap: 14px; margin-top: 24px; font-size: 20px; line-height: 26px; color: var(--hp-ink); border-bottom: 0; text-decoration: none; }
+    .hp-opt__l .mi { font-size: 24px; stroke: currentColor; stroke-width: 22; color: var(--hp-or); transition: transform .25s var(--hp-ease); }
+    .hp-opt__l:hover { color: var(--hp-ink); }
+    .hp-opt__l:hover .mi { transform: translate(3px, -3px); }
+    .hp-opt__l:focus-visible { outline: 2px solid var(--hp-ink); outline-offset: 4px; border-radius: 2px; }
+    @media (max-width: 560px) { .hp-opt__l { font-size: 18px; line-height: 24px; } .hp-opt__l .mi { font-size: 22px; } }
     @media (prefers-reduced-motion: reduce) {
       .hp *, .hp *::before, .hp *::after { transition: none !important; animation: none !important; }
     }
@@ -7558,7 +7565,7 @@
     .hp-flow { height: 500px; }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0&display=block">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=block">
 <style>
 /* =============================================================================
    LYZR WEBSITE DESIGN SYSTEM — lyzr.css
@@ -9094,6 +9101,7 @@ body{min-height:100vh;background:var(--bg)}
 </head>
 
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Material Symbols (Outlined) --><defs><symbol id="ms-account_tree" viewBox="0 -960 960 960"><path d="M610-130v-120H450v-400H350v120H90v-300h260v120h260v-120h260v300H610v-120H510v340h100v-120h260v300H610ZM150-770v180-180Zm520 400v180-180Zm0-400v180-180Zm0 180h140v-180H670v180Zm0 400h140v-180H670v180ZM150-590h140v-180H150v180Z"/></symbol><symbol id="ms-add" viewBox="0 -960 960 960"><path d="M450-450H220v-60h230v-230h60v230h230v60H510v230h-60v-230Z"/></symbol><symbol id="ms-arrow_forward" viewBox="0 -960 960 960"><path d="M665.08-450H180v-60h485.08L437.23-737.85 480-780l300 300-300 300-42.77-42.15L665.08-450Z"/></symbol><symbol id="ms-arrow_outward" viewBox="0 -960 960 960"><path d="M251.77-254.23 210-296l393.62-394H245.77v-60h460v460h-60v-357.85l-394 393.62Z"/></symbol><symbol id="ms-back_hand" viewBox="0 -960 960 960"><path d="M512-40q-82 0-154-37.5T240-182L48-464l19-19q20-21 49.5-24t53.5 14l110 76v-383q0-17 11.5-28.5T320-840q17 0 28.5 11.5T360-800v320h80v-400q0-17 11.5-28.5T480-920q17 0 28.5 11.5T520-880v400h80v-360q0-17 11.5-28.5T640-880q17 0 28.5 11.5T680-840v360h80v-280q0-17 11.5-28.5T800-800q17 0 28.5 11.5T840-760v392q0 137-95.5 232.5T512-40Z"/></symbol><symbol id="ms-bolt" viewBox="0 -960 960 960"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-78.92 129.69 40-277.69h-185l329.61-475.77h49.23L537.31-540H757.3L392.31-102.31h-49.23ZM471-470Z"/></symbol><symbol id="ms-chat_bubble" viewBox="0 -960 960 960"><path d="M100-118.46v-669.23Q100-818 121-839q21-21 51.31-21h615.38Q818-860 839-839q21 21 21 51.31v455.38Q860-302 839-281q-21 21-51.31 21H241.54L100-118.46ZM216-320h571.69q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-455.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H172.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v523.08L216-320Zm-56 0v-480 480Z"/></symbol><symbol id="ms-chevron_left" viewBox="0 -960 960 960"><path d="M560-253.85 333.85-480 560-706.15 602.15-664l-184 184 184 184L560-253.85Z"/></symbol><symbol id="ms-chevron_right" viewBox="0 -960 960 960"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></symbol><symbol id="ms-close" viewBox="0 -960 960 960"><path d="M256-213.85 213.85-256l224-224-224-224L256-746.15l224 224 224-224L746.15-704l-224 224 224 224L704-213.85l-224-224-224 224Z"/></symbol><symbol id="ms-dataset" viewBox="0 -960 960 960"><path d="M290-290h140v-140H290v140Zm240 0h140v-140H530v140ZM290-530h140v-140H290v140Zm240 0h140v-140H530v140ZM212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85ZM200-760v560-560Z"/></symbol><symbol id="ms-home" viewBox="0 -960 960 960"><path d="M240-200h133.85v-237.69h212.3V-200H720v-360L480-740.77 240-560v360Zm-60 60v-450l300-225.77L780-590v450H526.15v-237.69h-92.3V-140H180Zm300-330.38Z"/></symbol><symbol id="ms-hub" viewBox="0 -960 960 960"><path d="M240.05-50q-45.82 0-77.93-32.07Q130-114.14 130-159.95q0-45.82 32.09-77.93Q194.17-270 240.01-270q12.84 0 25.22 3.19 12.39 3.2 23.39 8.58l79.3-98.69q-24.92-27.16-34.38-60.77-9.46-33.62-3.85-67.62l-115.23-38.15q-15.08 24.23-39.65 38.84Q150.24-470 120-470q-45.83 0-77.92-32.07Q10-534.14 10-579.95q0-45.82 32.07-77.93Q74.14-690 119.95-690q45.82 0 77.93 32.08Q230-625.83 230-580q0 3.54-.19 5.92-.2 2.39-.2 4.77l114.85 39.93Q361-560 389.89-581.92q28.88-21.92 66.26-28.15v-122.78q-38.61-9.07-62.38-39.04Q370-801.85 370-840.16q0-45.61 32.07-77.72Q434.14-950 479.95-950q45.82 0 77.93 32.08Q590-885.83 590-840q0 38.15-24.08 68.11-24.07 29.97-62.07 39.04v122.78q37.38 6.23 66.07 28.15 28.69 21.92 45.62 52.54l114.85-39.93q-.39-2.77-.39-4.96V-580q0-45.83 32.07-77.92Q794.14-690 839.95-690q45.82 0 77.93 32.07Q950-625.86 950-580.05q0 45.82-32.08 77.93Q885.83-470 840-470q-30.12 0-55.06-14.62-24.94-14.61-39.4-38.84l-115.23 38.15q5.61 34-3.85 67.31t-34.38 60.69l79.3 98.08q11-5 23.39-7.88 12.38-2.89 25.22-2.89 45.84 0 77.92 32.07Q830-205.86 830-160.05q0 45.82-32.07 77.93Q765.86-50 720.05-50q-45.82 0-77.93-32.08Q610-114.17 610-160q0-18.92 6.12-36.42 6.11-17.5 18.27-32.12L555.08-328q-34.08 20.31-75.2 20.31-41.11 0-75.57-20.31l-78.7 99.46q11.77 14.62 18.08 32.12Q350-178.92 350-160q0 45.83-32.07 77.92Q285.86-50 240.05-50ZM120-530q20.85 0 35.42-14.58Q170-559.15 170-580t-14.58-35.42Q140.85-630 120-630t-35.42 14.58Q70-600.85 70-580t14.58 35.42Q99.15-530 120-530Zm120 420q20.85 0 35.42-14.58Q290-139.15 290-160t-14.58-35.42Q260.85-210 240-210t-35.42 14.58Q190-180.85 190-160t14.58 35.42Q219.15-110 240-110Zm240-680q20.85 0 35.42-14.58Q530-819.15 530-840t-14.58-35.42Q500.85-890 480-890t-35.42 14.58Q430-860.85 430-840t14.58 35.42Q459.15-790 480-790Zm0 422.31q38.54 0 65.42-26.89 26.89-26.88 26.89-65.42 0-38.54-26.89-65.42-26.88-26.89-65.42-26.89-38.54 0-65.42 26.89-26.89 26.88-26.89 65.42 0 38.54 26.89 65.42 26.88 26.89 65.42 26.89ZM720-110q20.85 0 35.42-14.58Q770-139.15 770-160t-14.58-35.42Q740.85-210 720-210t-35.42 14.58Q670-180.85 670-160t14.58 35.42Q699.15-110 720-110Zm120-420q20.85 0 35.42-14.58Q890-559.15 890-580t-14.58-35.42Q860.85-630 840-630t-35.42 14.58Q790-600.85 790-580t14.58 35.42Q819.15-530 840-530ZM480-840ZM120-580Zm360 120Zm360-120ZM240-160Zm480 0Z"/></symbol><symbol id="ms-layers" viewBox="0 -960 960 960"><path d="M480-164.16 152.31-418.77l49.08-37.69L480-240.77l278.61-215.69 49.08 37.69L480-164.16Zm0-177.38L152.31-596.15 480-850.77l327.69 254.62L480-341.54Zm0-254.61Zm0 178 230-178-230-178-230 178 230 178Z"/></symbol><symbol id="ms-menu_book" viewBox="0 -960 960 960"><path d="M557.69-570.15v-52.62q32.62-15.15 68.27-22.73 35.66-7.58 74.04-7.58 24.08 0 46.77 3.43 22.69 3.42 45.54 9.04v50.15q-22.46-7.85-44.66-11.39-22.19-3.54-47.65-3.54-38.38 0-74.35 9.12-35.96 9.12-67.96 26.12Zm0 219.23v-53.39q31.85-15.15 68.08-22.73 36.23-7.57 74.23-7.57 24.08 0 46.77 3.42 22.69 3.42 45.54 9.04V-372q-22.46-7.85-44.66-11.39-22.19-3.53-47.65-3.53-38.38 0-74.35 9.19-35.96 9.19-67.96 26.81Zm0-109.23v-53.39q32.62-15.15 68.27-22.73 35.66-7.58 74.04-7.58 24.08 0 46.77 3.43 22.69 3.42 45.54 9.04v50.15q-22.46-7.85-44.66-11.39-22.19-3.53-47.65-3.53-38.38 0-74.35 9.5-35.96 9.5-67.96 26.5ZM260-319.23q49.69 0 96.69 11.27T450-272.61v-393.24q-42.15-27.46-91.23-41.19-49.08-13.73-98.77-13.73-36 0-67.27 5.65-31.27 5.66-64.27 18.5-4.61 1.54-6.54 4.43-1.92 2.88-1.92 6.34v378.31q0 5.39 3.85 7.89 3.84 2.5 8.46.57 28.46-9.69 60.07-14.92 31.62-5.23 67.62-5.23Zm250 46.62q46.31-24.08 93.31-35.35 47-11.27 96.69-11.27 36 0 67.62 5.23 31.61 5.23 60.07 14.92 4.62 1.93 8.46-.57 3.85-2.5 3.85-7.89v-378.31q0-3.46-1.92-6.15-1.93-2.69-6.54-4.62-33-12.84-64.27-18.5-31.27-5.65-67.27-5.65-49.69 0-98.77 13.73T510-665.85v393.24Zm-30 87.99q-48.38-35.69-104.38-55.15-56-19.46-115.62-19.46-36.61 0-71.92 8.11Q152.77-243 120-227.23q-21.38 9.84-40.69-3.12T60-267.08v-434.3q0-12.93 6.66-24.27Q73.31-737 85.85-742q40.61-19.77 84.65-29.27 44.04-9.5 89.5-9.5 58.38 0 114.08 15.96 55.69 15.97 105.92 47.12 50.23-31.15 105.92-47.12 55.7-15.96 114.08-15.96 45.46 0 89.5 9.5T874.15-742q12.54 5 19.19 16.35 6.66 11.34 6.66 24.27v434.3q0 23.77-20.08 36.35-20.08 12.57-42.23 2.73-32.38-15.39-67.11-23.31-34.73-7.92-70.58-7.92-59.62 0-115.62 19.46-56 19.46-104.38 55.15ZM285-496.69Z"/></symbol><symbol id="ms-mic" viewBox="0 -960 960 960"><path d="M480-420q-41.92 0-70.96-29.04Q380-478.08 380-520v-240q0-41.92 29.04-70.96Q438.08-860 480-860q41.92 0 70.96 29.04Q580-801.92 580-760v240q0 41.92-29.04 70.96Q521.92-420 480-420Zm0-220Zm-30 510v-131.85q-99-11.31-164.5-84.92Q220-420.39 220-520h60q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h60q0 99.61-65.5 173.23Q609-273.16 510-261.85V-130h-60Zm30-350q17 0 28.5-11.5T520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480Z"/></symbol><symbol id="ms-monitoring" viewBox="0 -960 960 960"><path d="M130-130v-65.77l60-60V-130h-60Zm160 0v-225.77l60-60V-130h-60Zm160 0v-285.77l60 61V-130h-60Zm160 0v-224.77l60-60V-130h-60Zm160 0v-385.77l60-60V-130h-60ZM130-351.23v-84.54l270-270 160 160 270-270v84.54l-270 270-160-160-270 270Z"/></symbol><symbol id="ms-open_in_full" viewBox="0 -960 960 960"><path d="M140-140v-300h60v198.23L718.23-760H520v-60h300v300h-60v-198.23L241.77-200H440v60H140Z"/></symbol><symbol id="ms-pan_tool" viewBox="0 -960 960 960"><path d="M402-40q-30 0-56-13.5T303-92L48-465l24-23q19-19 45-22t47 12l116 81v-383q0-17 11.5-28.5T320-840q17 0 28.5 11.5T360-800v320h80v-400q0-17 11.5-28.5T480-920q17 0 28.5 11.5T520-880v400h80v-360q0-17 11.5-28.5T640-880q17 0 28.5 11.5T680-840v360h80v-280q0-17 11.5-28.5T800-800q17 0 28.5 11.5T840-760v560q0 66-47 113T680-40H402Z"/></symbol><symbol id="ms-pause" viewBox="0 -960 960 960"><path d="M530-220v-520h210v520H530Zm-310 0v-520h210v520H220Zm370-60h90v-400h-90v400Zm-310 0h90v-400h-90v400Zm0-400v400-400Zm310 0v400-400Z"/></symbol><symbol id="ms-play_arrow" viewBox="0 -960 960 960"><path d="M340-236.16v-487.68L723.07-480 340-236.16ZM400-480Zm0 134 210.77-134L400-614v268Z"/></symbol><symbol id="ms-science" viewBox="0 -960 960 960"><path d="M200-140q-38.27 0-54.4-34.15-16.14-34.16 7.79-63.54L380-513.08V-760h-47.69q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.37 8.63-8.62 21.38-8.62h295.38q12.75 0 21.38 8.63 8.62 8.63 8.62 21.38 0 12.76-8.62 21.37-8.63 8.62-21.38 8.62H580v246.92l226.61 275.39q23.93 29.38 7.79 63.54Q798.27-140 760-140H200Zm0-60h560L520-492v-268h-80v268L200-200Zm280-280Z"/></symbol><symbol id="ms-share" viewBox="0 -960 960 960"><path d="M720.05-90q-45.82 0-77.93-32.08Q610-154.17 610-200q0-7.49 1.19-15.51 1.2-8.03 3.58-14.8L318.92-403.54q-15.84 15.77-36.07 24.65Q262.62-370 240-370q-45.83 0-77.92-32.07Q130-434.14 130-479.95q0-45.82 32.08-77.93Q194.17-590 240-590q22.62 0 42.85 8.89 20.23 8.88 36.07 24.65l295.85-173.23q-2.38-6.77-3.58-14.8Q610-752.51 610-760q0-45.83 32.07-77.92Q674.14-870 719.95-870q45.82 0 77.93 32.07Q830-805.86 830-760.05q0 45.82-32.08 77.93Q765.83-650 720-650q-22.62 0-42.85-8.89-20.23-8.88-36.07-24.65L345.23-510.31q2.38 6.77 3.58 14.77 1.19 8 1.19 15.46 0 7.46-1.19 15.54-1.2 8.08-3.58 14.85l295.85 173.23q15.84-15.77 36.07-24.65Q697.38-310 720-310q45.83 0 77.92 32.07Q830-245.86 830-200.05q0 45.82-32.07 77.93Q765.86-90 720.05-90ZM720-710q20.85 0 35.42-14.58Q770-739.15 770-760t-14.58-35.42Q740.85-810 720-810t-35.42 14.58Q670-780.85 670-760t14.58 35.42Q699.15-710 720-710ZM240-430q20.85 0 35.42-14.58Q290-459.15 290-480t-14.58-35.42Q260.85-530 240-530t-35.42 14.58Q190-500.85 190-480t14.58 35.42Q219.15-430 240-430Zm480 280q20.85 0 35.42-14.58Q770-179.15 770-200t-14.58-35.42Q740.85-250 720-250t-35.42 14.58Q670-220.85 670-200t14.58 35.42Q699.15-150 720-150Zm0-610ZM240-480Zm480 280Z"/></symbol><symbol id="ms-shield" viewBox="0 -960 960 960"><path d="M480-100.77q-129.77-35.39-214.88-152.77Q180-370.92 180-516v-230.15l300-112.31 300 112.31V-516q0 145.08-85.12 262.46Q609.77-136.16 480-100.77Zm0-63.23q104-33 172-132t68-220v-189l-240-89.62L240-705v189q0 121 68 220t172 132Zm0-315.62Z"/></symbol><symbol id="ms-smart_toy" viewBox="0 -960 960 960"><path d="M180-380q-41.92 0-70.96-29.04Q80-438.08 80-480q0-41.92 29.04-70.96Q138.08-580 180-580v-87.69q0-29.83 21.24-51.07Q222.48-740 252.31-740H380q0-41.92 29.04-70.96Q438.08-840 480-840q41.92 0 70.96 29.04Q580-781.92 580-740h127.69q29.83 0 51.07 21.24Q780-697.52 780-667.69V-580q41.92 0 70.96 29.04Q880-521.92 880-480q0 41.92-29.04 70.96Q821.92-380 780-380v167.69q0 29.83-21.24 51.07Q737.52-140 707.69-140H252.31q-29.83 0-51.07-21.24Q180-182.48 180-212.31V-380Zm179.95-70q20.82 0 35.43-14.57Q410-479.14 410-499.95q0-20.82-14.57-35.43Q380.86-550 360.05-550q-20.82 0-35.43 14.57Q310-520.86 310-500.05q0 20.82 14.57 35.43Q339.14-450 359.95-450Zm240 0q20.82 0 35.43-14.57Q650-479.14 650-499.95q0-20.82-14.57-35.43Q620.86-550 600.05-550q-20.82 0-35.43 14.57Q550-520.86 550-500.05q0 20.82 14.57 35.43Q579.14-450 599.95-450ZM330-290h300v-60H330v60Zm-77.69 90h455.38q5.39 0 8.85-3.46t3.46-8.85v-455.38q0-5.39-3.46-8.85t-8.85-3.46H252.31q-5.39 0-8.85 3.46t-3.46 8.85v455.38q0 5.39 3.46 8.85t8.85 3.46ZM480-440Z"/></symbol><symbol id="ms-swipe" viewBox="0 -960 960 960"><path d="M880-680H680v-60h116q-66-58-147-89t-169-31q-88 0-169 31t-147 89h116v60H80v-200h60v81q72-59 159-90t181-31q94 0 181 31t159 90v-81h60v200ZM473-80q-24 0-46-9t-39-26L184-320l30-31q16-16 37.5-21.5t42.5.5l66 19v-327q0-17 11.5-28.5T400-720q17 0 28.5 11.5T440-680v280h40v-120q0-17 11.5-28.5T520-560q17 0 28.5 11.5T560-520v120h40v-80q0-17 11.5-28.5T640-520q17 0 28.5 11.5T680-480v80h40q0-17 11.5-28.5T760-440q17 0 28.5 11.5T800-400v160q0 66-47 113T640-80H473Z"/></symbol><symbol id="ms-trending_up" viewBox="0 -960 960 960"><path d="M142.15-258.08 100-300.23l274.08-276.08 160 160 224.54-221.77H640v-60h220v220h-60v-117.84L534.08-330l-160-160-231.93 231.92Z"/></symbol></defs></svg>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ===================== NAVIGATION (lyzr-navigation.html) ===================== -->
@@ -9236,45 +9244,45 @@ body{min-height:100vh;background:var(--bg)}
           <div id="hpProdPanel" role="tabpanel" aria-live="polite">
             <div class="hp-prod__head hp-prod__swap" data-hp-swap>
               <h2 class="hp-prod__title" data-hp-title>Prove a smaller model is good enough</h2>
-              <a class="hp-link" href="#open-controller" data-hp-link><span data-hp-linktext>Explore Opencontroller</span> <span class="hp-go"><span class="mi" aria-hidden="true">arrow_outward</span></span></a>
+              <a class="hp-link" href="#open-controller" data-hp-link><span data-hp-linktext>Explore Opencontroller</span> <span class="hp-go"><svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span></a>
             </div>
 
             <div class="hp-win">
               <div class="hp-win__bar">
                 <span class="hp-win__dot" style="background:#EE6A5F"></span><span class="hp-win__dot" style="background:#F5BE4F"></span><span class="hp-win__dot" style="background:#62C554"></span>
                 <span class="hp-win__url" aria-hidden="true">studio.lyzr.ai &middot; <span data-hp-url>architect</span></span>
-                <div class="hp-win__actions"><button class="hp-win__full" type="button" data-hp-full aria-haspopup="dialog"><span>View full product</span><span class="mi" aria-hidden="true">open_in_full</span></button><button class="hp-win__pause" type="button" data-hp-pause aria-pressed="false" aria-label="Pause tab autoplay"></button></div>
+                <div class="hp-win__actions"><button class="hp-win__full" type="button" data-hp-full aria-haspopup="dialog"><span>View full product</span><svg class="mi" aria-hidden="true"><use href="#ms-open_in_full"/></svg></button><button class="hp-win__pause" type="button" data-hp-pause aria-pressed="false" aria-label="Pause tab autoplay"></button></div>
               </div>
               <div class="hp-win__body" aria-hidden="true">
                 <div class="hp-side">
                   <div class="hp-side__brand"><span class="hp-side__mark">L</span>lyzr</div>
-                  <div class="hp-side__it" data-side="0"><span class="mi">home</span>Home</div>
-                  <div class="hp-side__it" data-side="1"><span class="mi">smart_toy</span>Agent Registry</div>
-                  <div class="hp-side__it" data-side="2"><span class="mi">add</span>Create Agent</div>
-                  <div class="hp-side__it" data-side="3"><span class="mi">mic</span>Voice</div>
+                  <div class="hp-side__it" data-side="0"><svg class="mi"><use href="#ms-home"/></svg>Home</div>
+                  <div class="hp-side__it" data-side="1"><svg class="mi"><use href="#ms-smart_toy"/></svg>Agent Registry</div>
+                  <div class="hp-side__it" data-side="2"><svg class="mi"><use href="#ms-add"/></svg>Create Agent</div>
+                  <div class="hp-side__it" data-side="3"><svg class="mi"><use href="#ms-mic"/></svg>Voice</div>
                   <div class="hp-side__grp">Orchestrate</div>
-                  <div class="hp-side__it" data-side="4"><span class="mi">hub</span>Lyzr Manager</div>
-                  <div class="hp-side__it" data-side="5"><span class="mi">bolt</span>SuperFlow<span class="hp-side__tag">New</span></div>
+                  <div class="hp-side__it" data-side="4"><svg class="mi"><use href="#ms-hub"/></svg>Lyzr Manager</div>
+                  <div class="hp-side__it" data-side="5"><svg class="mi"><use href="#ms-bolt"/></svg>SuperFlow<span class="hp-side__tag">New</span></div>
                   <div class="hp-side__grp">Knowledge</div>
-                  <div class="hp-side__it" data-side="6"><span class="mi">menu_book</span>Knowledge Base</div>
-                  <div class="hp-side__it" data-side="7"><span class="mi">share</span>Knowledge Graph</div>
-                  <div class="hp-side__it" data-side="8"><span class="mi">dataset</span>Semantic Model</div>
+                  <div class="hp-side__it" data-side="6"><svg class="mi"><use href="#ms-menu_book"/></svg>Knowledge Base</div>
+                  <div class="hp-side__it" data-side="7"><svg class="mi"><use href="#ms-share"/></svg>Knowledge Graph</div>
+                  <div class="hp-side__it" data-side="8"><svg class="mi"><use href="#ms-dataset"/></svg>Semantic Model</div>
                   <div class="hp-side__grp">Safety and evaluations</div>
-                  <div class="hp-side__it" data-side="9"><span class="mi">shield</span>Responsible AI</div>
-                  <div class="hp-side__it" data-side="10"><span class="mi">science</span>Simulation Engine<span class="hp-side__tag">New</span></div>
-                  <div class="hp-side__it" data-side="11"><span class="mi">trending_up</span>Improvement Engine<span class="hp-side__tag">Beta</span></div>
+                  <div class="hp-side__it" data-side="9"><svg class="mi"><use href="#ms-shield"/></svg>Responsible AI</div>
+                  <div class="hp-side__it" data-side="10"><svg class="mi"><use href="#ms-science"/></svg>Simulation Engine<span class="hp-side__tag">New</span></div>
+                  <div class="hp-side__it" data-side="11"><svg class="mi"><use href="#ms-trending_up"/></svg>Improvement Engine<span class="hp-side__tag">Beta</span></div>
                   <div class="hp-side__grp">Monitoring</div>
-                  <div class="hp-side__it" data-side="12"><span class="mi">monitoring</span>Traces</div>
+                  <div class="hp-side__it" data-side="12"><svg class="mi"><use href="#ms-monitoring"/></svg>Traces</div>
                 </div>
                 <div class="hp-main">
                   <p class="hp-main__h">Build, deploy and govern AI agents</p>
                   <p class="hp-main__s">Ship enterprise AI agents with confidence.</p>
-                  <span class="hp-main__btn">Explore Architect <span class="mi">arrow_outward</span></span>
+                  <span class="hp-main__btn">Explore Architect <svg class="mi"><use href="#ms-arrow_outward"/></svg></span>
                   <div class="hp-tiles">
-                    <div class="hp-tile"><span class="hp-tile__i" style="background:#E6EEFB;color:#3567C8"><span class="mi">chat_bubble</span></span><div><b>Agent</b><span>Single agent for a focused task or workflow.</span></div></div>
-                    <div class="hp-tile"><span class="hp-tile__i" style="background:#EEE9FB;color:#6A55C9"><span class="mi">account_tree</span></span><div><b>Managerial</b><span>Orchestrate multiple agents with a manager.</span></div></div>
-                    <div class="hp-tile"><span class="hp-tile__i" style="background:#E3F4EE;color:#1C8A62"><span class="mi">bolt</span></span><div><b>SuperFlow</b><span>Multi-step flows that chain tools and agents.</span></div></div>
-                    <div class="hp-tile"><span class="hp-tile__i" style="background:#FDEDE4;color:#D2552B"><span class="mi">mic</span></span><div><b>Voice</b><span>Create voice-first agents for calls and IVR.</span></div></div>
+                    <div class="hp-tile"><span class="hp-tile__i" style="background:#E6EEFB;color:#3567C8"><svg class="mi"><use href="#ms-chat_bubble"/></svg></span><div><b>Agent</b><span>Single agent for a focused task or workflow.</span></div></div>
+                    <div class="hp-tile"><span class="hp-tile__i" style="background:#EEE9FB;color:#6A55C9"><svg class="mi"><use href="#ms-account_tree"/></svg></span><div><b>Managerial</b><span>Orchestrate multiple agents with a manager.</span></div></div>
+                    <div class="hp-tile"><span class="hp-tile__i" style="background:#E3F4EE;color:#1C8A62"><svg class="mi"><use href="#ms-bolt"/></svg></span><div><b>SuperFlow</b><span>Multi-step flows that chain tools and agents.</span></div></div>
+                    <div class="hp-tile"><span class="hp-tile__i" style="background:#FDEDE4;color:#D2552B"><svg class="mi"><use href="#ms-mic"/></svg></span><div><b>Voice</b><span>Create voice-first agents for calls and IVR.</span></div></div>
                   </div>
                   <div class="hp-metrics">
                     <div class="hp-metric"><b data-hp-m1>6</b><span>RUNS &middot; 7D</span></div>
@@ -9287,16 +9295,16 @@ body{min-height:100vh;background:var(--bg)}
                     <div class="hp-panel">
                       <div class="hp-panel__h">Continue working <small>View all</small></div>
                       <div class="hp-panel__s">Your most recently opened agents</div>
-                      <div class="hp-row"><span class="hp-row__i"><span class="mi">smart_toy</span></span><span>Verifone Customer Support Agent<code>anthropic/claude-sonnet-4-6</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 1d ago</span></div>
-                      <div class="hp-row"><span class="hp-row__i"><span class="mi">smart_toy</span></span><span>Manager Notifier Agent<code>gpt-4.1</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 4d ago</span></div>
-                      <div class="hp-row"><span class="hp-row__i"><span class="mi">smart_toy</span></span><span>Resume Scorer Agent<code>claude-sonnet-4-5</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 4d ago</span></div>
-                      <div class="hp-row"><span class="hp-row__i"><span class="mi">smart_toy</span></span><span>ATS Resume Fetcher Agent<code>gpt-4.1</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 4d ago</span></div>
+                      <div class="hp-row"><span class="hp-row__i"><svg class="mi"><use href="#ms-smart_toy"/></svg></span><span>Verifone Customer Support Agent<code>anthropic/claude-sonnet-4-6</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 1d ago</span></div>
+                      <div class="hp-row"><span class="hp-row__i"><svg class="mi"><use href="#ms-smart_toy"/></svg></span><span>Manager Notifier Agent<code>gpt-4.1</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 4d ago</span></div>
+                      <div class="hp-row"><span class="hp-row__i"><svg class="mi"><use href="#ms-smart_toy"/></svg></span><span>Resume Scorer Agent<code>claude-sonnet-4-5</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 4d ago</span></div>
+                      <div class="hp-row"><span class="hp-row__i"><svg class="mi"><use href="#ms-smart_toy"/></svg></span><span>ATS Resume Fetcher Agent<code>gpt-4.1</code></span><span class="hp-row__tag">Agent</span><span class="hp-row__t">Opened 4d ago</span></div>
                     </div>
                     <div class="hp-panel">
                       <div class="hp-panel__h">Start from a blueprint <small>View all</small></div>
                       <div class="hp-panel__s">Proven multi-agent setups</div>
-                      <div class="hp-bp"><span class="mi">layers</span>STORM Research</div>
-                      <div class="hp-bp"><span class="mi">layers</span>Invoice Reconciliation</div>
+                      <div class="hp-bp"><svg class="mi"><use href="#ms-layers"/></svg>STORM Research</div>
+                      <div class="hp-bp"><svg class="mi"><use href="#ms-layers"/></svg>Invoice Reconciliation</div>
                     </div>
                   </div>
                 </div>
@@ -9348,8 +9356,8 @@ body{min-height:100vh;background:var(--bg)}
             </div>
           </div>
           <div class="hp-why__nav">
-            <button class="hp-circle" type="button" data-hp-why-prev aria-label="Previous reason"><span class="mi" aria-hidden="true">chevron_left</span></button>
-            <button class="hp-circle" type="button" data-hp-why-next aria-label="Next reason"><span class="mi" aria-hidden="true">chevron_right</span></button>
+            <button class="hp-circle" type="button" data-hp-why-prev aria-label="Previous reason"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_left"/></svg></button>
+            <button class="hp-circle" type="button" data-hp-why-next aria-label="Next reason"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_right"/></svg></button>
           </div>
         </div>
       </div>
@@ -9360,8 +9368,8 @@ body{min-height:100vh;background:var(--bg)}
       <div class="cases__head reveal">
         <h2 class="cases__title" id="casesTitle">The world&rsquo;s top enterprises<br>run on Lyzr</h2>
         <div class="hp hp-cases-nav">
-          <button class="hp-circle" type="button" data-cases-prev aria-label="Previous story" aria-controls="casesViewport"><span class="mi" aria-hidden="true">chevron_left</span></button>
-          <button class="hp-circle" type="button" data-cases-next aria-label="Next story" aria-controls="casesViewport"><span class="mi" aria-hidden="true">chevron_right</span></button>
+          <button class="hp-circle" type="button" data-cases-prev aria-label="Previous story" aria-controls="casesViewport"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_left"/></svg></button>
+          <button class="hp-circle" type="button" data-cases-next aria-label="Next story" aria-controls="casesViewport"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_right"/></svg></button>
         </div>
       </div>
 
@@ -9380,7 +9388,7 @@ body{min-height:100vh;background:var(--bg)}
               <h3 class="case-card__title">Verifone cut support escalations by 58% by using agents to resolve more
                 merchant issues at first contact.</h3>
               <span class="case-card__more">Read full story
-                <span class="case-card__go"><span class="mi" aria-hidden="true">arrow_outward</span></span>
+                <span class="case-card__go"><svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
               </span>
             </div>
           </a>
@@ -9396,7 +9404,7 @@ body{min-height:100vh;background:var(--bg)}
               <h3 class="case-card__title">WTW scaled submission triage across carrier workflows adding 3.1x more broker
                 throughput</h3>
               <span class="case-card__more">Read full story
-                <span class="case-card__go"><span class="mi" aria-hidden="true">arrow_outward</span></span>
+                <span class="case-card__go"><svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
               </span>
             </div>
           </a>
@@ -9412,7 +9420,7 @@ body{min-height:100vh;background:var(--bg)}
               <h3 class="case-card__title">Accenture took a client&rsquo;s finance close from pilot to production in
                 nine weeks by rebuilding core workflows around agents.</h3>
               <span class="case-card__more">Read full story
-                <span class="case-card__go"><span class="mi" aria-hidden="true">arrow_outward</span></span>
+                <span class="case-card__go"><svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
               </span>
             </div>
           </a>
@@ -9449,43 +9457,43 @@ body{min-height:100vh;background:var(--bg)}
         <h2 class="hp-h2 hp-start__h hp-prod__swap" id="hpStartTitle" aria-live="polite" data-hp-start-h>Our data can&rsquo;t leave the building</h2>
       </div>
       <div class="hp-flow" data-hp-flow>
-        <span class="hp-grab" aria-hidden="true"><span class="mi">pan_tool</span><span class="hp-grab__l">Drag</span></span>
-        <span class="hp-swipehint" aria-hidden="true"><span class="mi">swipe</span></span>
+        <span class="hp-grab" aria-hidden="true"><svg class="mi"><use href="#ms-pan_tool"/></svg><span class="hp-grab__l">Drag</span></span>
+        <span class="hp-swipehint" aria-hidden="true"><svg class="mi"><use href="#ms-swipe"/></svg></span>
         <button class="hp-fcard" type="button" data-problem="Our data can&rsquo;t leave the building">
           <svg aria-hidden="true"><use href="#hp-shield" /></svg>
           <span class="hp-fcard__t">Give every employee one governed AI workspace</span>
           <span class="hp-fcard__d">Chat, permission aware search and agents on approval models in your own environment</span>
-          <span class="hp-fcard__l">Explore OpenCowork <span class="mi" aria-hidden="true">arrow_outward</span></span>
+          <span class="hp-fcard__l">Explore OpenCowork <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="We have agents everywhere and no way to see them">
           <svg aria-hidden="true"><use href="#hp-ic-radar" /></svg>
           <span class="hp-fcard__t">Take control of the agents you already run</span>
           <span class="hp-fcard__d">One register for every agent, its owner, its access and its spend. Read-only, live in under a week.</span>
-          <span class="hp-fcard__l">Explore OpenController <span class="mi" aria-hidden="true">arrow_outward</span></span>
+          <span class="hp-fcard__l">Explore OpenController <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="Our pilots never reach production">
           <svg aria-hidden="true"><use href="#hp-ic-rise" /></svg>
           <span class="hp-fcard__t">Ship governed agents in weeks</span>
           <span class="hp-fcard__d">Describe a process in plain language and get a working, governed agent you can take live.</span>
-          <span class="hp-fcard__l">Explore Architect <span class="mi" aria-hidden="true">arrow_outward</span></span>
+          <span class="hp-fcard__l">Explore Architect <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="Our AI bill keeps climbing">
           <svg aria-hidden="true"><use href="#hp-ic-cost" /></svg>
           <span class="hp-fcard__t">Prove a smaller model is good enough</span>
           <span class="hp-fcard__d">Replay real traffic against cheaper models and switch only when quality holds.</span>
-          <span class="hp-fcard__l">Explore Simulation Engine <span class="mi" aria-hidden="true">arrow_outward</span></span>
+          <span class="hp-fcard__l">Explore Simulation Engine <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
         </button>
         <button class="hp-fcard" type="button" data-problem="Auditors want proof, not policy">
           <svg aria-hidden="true"><use href="#hp-ic-audit" /></svg>
           <span class="hp-fcard__t">Keep a live record of every agent decision</span>
           <span class="hp-fcard__d">Traces, approvals and access history that stand up to an examiner, exported on demand.</span>
-          <span class="hp-fcard__l">Explore Responsible AI <span class="mi" aria-hidden="true">arrow_outward</span></span>
+          <span class="hp-fcard__l">Explore Responsible AI <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
         </button>
       </div>
       <div class="hp-flow__ui">
-        <button class="hp-circle" type="button" data-hp-flow-prev aria-label="Previous problem"><span class="mi" aria-hidden="true">chevron_left</span></button>
+        <button class="hp-circle" type="button" data-hp-flow-prev aria-label="Previous problem"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_left"/></svg></button>
         <div class="hp-dots" data-hp-flow-dots aria-label="Choose a problem"></div>
-        <button class="hp-circle" type="button" data-hp-flow-next aria-label="Next problem"><span class="mi" aria-hidden="true">chevron_right</span></button>
+        <button class="hp-circle" type="button" data-hp-flow-next aria-label="Next problem"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_right"/></svg></button>
       </div>
     </section>
 
@@ -9503,7 +9511,7 @@ body{min-height:100vh;background:var(--bg)}
             <div>
               <h3 class="hp-opt__t">Take control of the agents you already run</h3>
               <p class="hp-opt__d">Connect one environment and see every agent, its owner, its access and its spend. Read-only, live in under a week.</p>
-              <a class="hp-opt__l" href="#open-controller">Explore OpenController <span class="mi" aria-hidden="true">arrow_outward</span></a>
+              <a class="hp-opt__l" href="#open-controller">Explore OpenController <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
             </div>
           </article>
           <article class="hp-opt reveal">
@@ -9511,7 +9519,7 @@ body{min-height:100vh;background:var(--bg)}
             <div>
               <h3 class="hp-opt__t">Build your first agent for free</h3>
               <p class="hp-opt__d">Describe the process, pick any model and get a working agent in Agent Studio. No card, no sales call.</p>
-              <a class="hp-opt__l" href="https://studio.lyzr.ai/">Open Agent Studio <span class="mi" aria-hidden="true">arrow_outward</span></a>
+              <a class="hp-opt__l" href="https://studio.lyzr.ai/">Open Agent Studio <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
             </div>
           </article>
           <article class="hp-opt reveal">
@@ -9519,7 +9527,7 @@ body{min-height:100vh;background:var(--bg)}
             <div>
               <h3 class="hp-opt__t">Run Lyzr inside your own cloud</h3>
               <p class="hp-opt__d">Deploy the full platform in your VPC or on-prem, so data, prompts and traces stay inside your walls.</p>
-              <a class="hp-opt__l" href="#security">Explore Sovereign <span class="mi" aria-hidden="true">arrow_outward</span></a>
+              <a class="hp-opt__l" href="#security">Explore Sovereign <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
             </div>
           </article>
         </div>
@@ -9534,8 +9542,8 @@ body{min-height:100vh;background:var(--bg)}
           <h2 class="hp-h2" id="hpAwardsTitle">Industry leaders recognize Lyzr's impact</h2>
         </div>
         <div class="hp-awards__nav">
-          <button class="hp-circle" type="button" data-hp-aw-prev aria-label="Previous awards"><span class="mi" aria-hidden="true">chevron_left</span></button>
-          <button class="hp-circle" type="button" data-hp-aw-next aria-label="Next awards"><span class="mi" aria-hidden="true">chevron_right</span></button>
+          <button class="hp-circle" type="button" data-hp-aw-prev aria-label="Previous awards"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_left"/></svg></button>
+          <button class="hp-circle" type="button" data-hp-aw-next aria-label="Next awards"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_right"/></svg></button>
         </div>
       </div>
       <div class="hp-rail" data-hp-aw-rail tabindex="0" role="region" aria-label="Awards, scrollable">
@@ -9579,14 +9587,14 @@ body{min-height:100vh;background:var(--bg)}
             <div class="hp-art__meta"><span>Article</span><span>September 24, 2026</span></div>
             <h3 class="hp-art__t">Designing intelligence into the spaces where work happens</h3>
             <p class="hp-art__d">A practical guide to buildings that adapt, endure, and keep people at the center of every system.</p>
-            <span class="hp-art__more">Read this <span class="mi" aria-hidden="true">arrow_forward</span></span>
+            <span class="hp-art__more">Read this <svg class="mi" aria-hidden="true"><use href="#ms-arrow_forward"/></svg></span>
           </a>
           <a class="hp-art reveal" href="#">
             <div class="hp-art__thumb hp-thumb--b"><div class="hp-vs"><span>LYZR</span><small>VS</small><span>BUILD</span></div></div>
             <div class="hp-art__meta"><span>Article</span><span>September 17, 2026</span></div>
             <h3 class="hp-art__t">Build or buy: the real cost of an in-house agent platform</h3>
             <p class="hp-art__d">What it takes to govern agents yourself, and where a control plane pays for itself.</p>
-            <span class="hp-art__more">Read this <span class="mi" aria-hidden="true">arrow_forward</span></span>
+            <span class="hp-art__more">Read this <svg class="mi" aria-hidden="true"><use href="#ms-arrow_forward"/></svg></span>
           </a>
           <a class="hp-art reveal" href="#">
             <div class="hp-art__thumb hp-thumb--c">
@@ -9600,7 +9608,7 @@ body{min-height:100vh;background:var(--bg)}
             <div class="hp-art__meta"><span>Article</span><span>September 10, 2026</span></div>
             <h3 class="hp-art__t">How examiners are starting to audit AI agents</h3>
             <p class="hp-art__d">The questions regulators now ask, and the evidence that answers them in minutes.</p>
-            <span class="hp-art__more">Read this <span class="mi" aria-hidden="true">arrow_forward</span></span>
+            <span class="hp-art__more">Read this <svg class="mi" aria-hidden="true"><use href="#ms-arrow_forward"/></svg></span>
           </a>
         </div>
       </div>
@@ -11560,7 +11568,7 @@ body{min-height:100vh;background:var(--bg)}
         function setPause(v) {
           paused = v; pauseBtn.setAttribute('aria-pressed', String(v));
           pauseBtn.setAttribute('aria-label', v ? 'Play tab autoplay' : 'Pause tab autoplay');
-          pauseBtn.innerHTML = '<span class="mi" aria-hidden="true">' + (v ? 'play_arrow' : 'pause') + '</span>' + (v ? 'Play' : 'Pause');
+          pauseBtn.innerHTML = '<svg class="mi" aria-hidden="true"><use href="#ms-' + (v ? 'play_arrow' : 'pause') + '"/></svg>' + (v ? 'Play' : 'Pause');
         }
         if (reduced) { pauseBtn.hidden = true; } else { setPause(false); pauseBtn.addEventListener('click', function () { setPause(!paused); }); }
         inView(tabsEl, function (v) { visible = v; });
@@ -11576,10 +11584,10 @@ body{min-height:100vh;background:var(--bg)}
           pm.className = 'hp hp-pm'; pm.setAttribute('data-lenis-prevent', ''); pm.setAttribute('role', 'dialog'); pm.setAttribute('aria-modal', 'true'); pm.setAttribute('aria-label', 'Lyzr products');
           pm.innerHTML = '<div class="hp-pm__scrim" data-pm-close></div><div class="hp-pm__shell">' +
             '<div class="hp-pm__top"><p class="hp-pm__count"><span data-pm-k></span></p><div class="hp-pm__head" aria-live="polite"><h2 class="hp-pm__name" data-pm-name></h2><p class="hp-pm__t" data-pm-t></p></div>' +
-            '<button class="hp-pm__x" type="button" data-pm-close aria-label="Close"><span class="mi" aria-hidden="true">close</span></button></div>' +
-            '<div class="hp-pm__view" data-pm-view><div class="hp-pm__track" data-pm-track></div><span class="hp-pm__hint"><span class="mi" aria-hidden="true">swipe</span>Swipe for more</span></div>' +
-            '<div class="hp-pm__bot"><button class="hp-circle" type="button" data-pm-prev aria-label="Previous product"><span class="mi" aria-hidden="true">chevron_left</span></button>' +
-            '<div class="hp-pm__dots" data-pm-dots></div><button class="hp-circle" type="button" data-pm-next aria-label="Next product"><span class="mi" aria-hidden="true">chevron_right</span></button></div></div>';
+            '<button class="hp-pm__x" type="button" data-pm-close aria-label="Close"><svg class="mi" aria-hidden="true"><use href="#ms-close"/></svg></button></div>' +
+            '<div class="hp-pm__view" data-pm-view><div class="hp-pm__track" data-pm-track></div><span class="hp-pm__hint"><svg class="mi" aria-hidden="true"><use href="#ms-swipe"/></svg>Swipe for more</span></div>' +
+            '<div class="hp-pm__bot"><button class="hp-circle" type="button" data-pm-prev aria-label="Previous product"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_left"/></svg></button>' +
+            '<div class="hp-pm__dots" data-pm-dots></div><button class="hp-circle" type="button" data-pm-next aria-label="Next product"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_right"/></svg></button></div></div>';
           document.body.appendChild(pm);
           var track = $('[data-pm-track]', pm), view = $('[data-pm-view]', pm), dotsEl = $('[data-pm-dots]', pm), kEl = $('[data-pm-k]', pm), tEl = $('[data-pm-t]', pm), nEl = $('[data-pm-name]', pm);
           var slides = [], pi = 0, lastFocus = null, wasPaused = false;
@@ -11777,9 +11785,9 @@ body{min-height:100vh;background:var(--bg)}
         var grab = $('.hp-grab', flow), grabIcon = $('.hp-grab .mi', flow), fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
         function grabAt(e) { var r = flow.getBoundingClientRect(); flow.style.setProperty('--gx', (e.clientX - r.left) + 'px'); flow.style.setProperty('--gy', (e.clientY - r.top) + 'px'); }
         flow.addEventListener('pointermove', function (e) { grabAt(e); if (e.pointerType === 'mouse' || dragging) flow.classList.add('is-grab-on'); });
-        flow.addEventListener('pointerdown', function (e) { grabAt(e); if (e.pointerType === 'mouse') grabIcon.textContent = 'back_hand'; });
-        flow.addEventListener('pointerup', function (e) { grabIcon.textContent = 'pan_tool'; if (e.pointerType !== 'mouse') flow.classList.remove('is-grab-on'); });
-        flow.addEventListener('pointercancel', function () { grabIcon.textContent = 'pan_tool'; flow.classList.remove('is-grab-on'); });
+        flow.addEventListener('pointerdown', function (e) { grabAt(e); if (e.pointerType === 'mouse') grabIcon.querySelector('use').setAttribute('href', '#ms-back_hand'); });
+        flow.addEventListener('pointerup', function (e) { grabIcon.querySelector('use').setAttribute('href', '#ms-pan_tool'); if (e.pointerType !== 'mouse') flow.classList.remove('is-grab-on'); });
+        flow.addEventListener('pointercancel', function () { grabIcon.querySelector('use').setAttribute('href', '#ms-pan_tool'); flow.classList.remove('is-grab-on'); });
         flow.addEventListener('pointerleave', function (e) { if (!dragging) flow.classList.remove('is-grab-on'); });
         /* one-time swipe hint the first time the section is seen on a touch device */
         if (!fine && !reduced) {
