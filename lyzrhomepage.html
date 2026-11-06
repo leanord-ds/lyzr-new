@@ -7551,6 +7551,18 @@
     .hp-opt__l:hover .mi { transform: translate(3px, -3px); }
     .hp-opt__l:focus-visible { outline: 2px solid var(--hp-ink); outline-offset: 4px; border-radius: 2px; }
     @media (max-width: 560px) { .hp-opt__l { font-size: 18px; line-height: 24px; } .hp-opt__l .mi { font-size: 22px; } }
+
+    /* ---------- Coverflow: real links on the centre card ---------- */
+    .hp-fcard__l { text-decoration: none; position: relative; z-index: 1; }
+    .hp-fcard__l .mi { transition: transform .25s var(--hp-ease); }
+    .hp-fcard[data-pos="0"] .hp-fcard__l:hover .mi { transform: translate(3px, -3px); }
+    .hp-fcard[data-pos="0"] .hp-fcard__l:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+    .hp-fcard:not([data-pos="0"]) .hp-fcard__l { pointer-events: none; }
+    .hp-fcard__l:focus-visible { outline: 2px solid var(--hp-ink); outline-offset: 3px; border-radius: 2px; }
+    .hp-fcard:focus-visible { outline: 2px solid var(--hp-ink); outline-offset: 4px; }
+    @media (hover: hover) and (pointer: fine) {
+      .hp-flow .hp-fcard[data-pos="0"] .hp-fcard__l, .hp-flow .hp-fcard[data-pos="0"] .hp-fcard__l * { cursor: pointer; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .hp *, .hp *::before, .hp *::after { transition: none !important; animation: none !important; }
     }
@@ -9459,36 +9471,36 @@ body{min-height:100vh;background:var(--bg)}
       <div class="hp-flow" data-hp-flow>
         <span class="hp-grab" aria-hidden="true"><svg class="mi"><use href="#ms-pan_tool"/></svg><span class="hp-grab__l">Drag</span></span>
         <span class="hp-swipehint" aria-hidden="true"><svg class="mi"><use href="#ms-swipe"/></svg></span>
-        <button class="hp-fcard" type="button" data-problem="Our data can&rsquo;t leave the building">
+        <div class="hp-fcard" role="group" aria-roledescription="slide" data-problem="Our data can&rsquo;t leave the building">
           <svg aria-hidden="true"><use href="#hp-shield" /></svg>
           <span class="hp-fcard__t">Give every employee one governed AI workspace</span>
           <span class="hp-fcard__d">Chat, permission aware search and agents on approval models in your own environment</span>
-          <span class="hp-fcard__l">Explore OpenCowork <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
-        </button>
-        <button class="hp-fcard" type="button" data-problem="We have agents everywhere and no way to see them">
+          <a class="hp-fcard__l" href="#">Explore OpenCowork <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
+        </div>
+        <div class="hp-fcard" role="group" aria-roledescription="slide" data-problem="We have agents everywhere and no way to see them">
           <svg aria-hidden="true"><use href="#hp-ic-radar" /></svg>
           <span class="hp-fcard__t">Take control of the agents you already run</span>
           <span class="hp-fcard__d">One register for every agent, its owner, its access and its spend. Read-only, live in under a week.</span>
-          <span class="hp-fcard__l">Explore OpenController <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
-        </button>
-        <button class="hp-fcard" type="button" data-problem="Our pilots never reach production">
+          <a class="hp-fcard__l" href="#open-controller">Explore OpenController <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
+        </div>
+        <div class="hp-fcard" role="group" aria-roledescription="slide" data-problem="Our pilots never reach production">
           <svg aria-hidden="true"><use href="#hp-ic-rise" /></svg>
           <span class="hp-fcard__t">Ship governed agents in weeks</span>
           <span class="hp-fcard__d">Describe a process in plain language and get a working, governed agent you can take live.</span>
-          <span class="hp-fcard__l">Explore Architect <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
-        </button>
-        <button class="hp-fcard" type="button" data-problem="Our AI bill keeps climbing">
+          <a class="hp-fcard__l" href="#platform">Explore Architect <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
+        </div>
+        <div class="hp-fcard" role="group" aria-roledescription="slide" data-problem="Our AI bill keeps climbing">
           <svg aria-hidden="true"><use href="#hp-ic-cost" /></svg>
           <span class="hp-fcard__t">Prove a smaller model is good enough</span>
           <span class="hp-fcard__d">Replay real traffic against cheaper models and switch only when quality holds.</span>
-          <span class="hp-fcard__l">Explore Simulation Engine <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
-        </button>
-        <button class="hp-fcard" type="button" data-problem="Auditors want proof, not policy">
+          <a class="hp-fcard__l" href="#platform">Explore Simulation Engine <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
+        </div>
+        <div class="hp-fcard" role="group" aria-roledescription="slide" data-problem="Auditors want proof, not policy">
           <svg aria-hidden="true"><use href="#hp-ic-audit" /></svg>
           <span class="hp-fcard__t">Keep a live record of every agent decision</span>
           <span class="hp-fcard__d">Traces, approvals and access history that stand up to an examiner, exported on demand.</span>
-          <span class="hp-fcard__l">Explore Responsible AI <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></span>
-        </button>
+          <a class="hp-fcard__l" href="#security">Explore Responsible AI <svg class="mi" aria-hidden="true"><use href="#ms-arrow_outward"/></svg></a>
+        </div>
       </div>
       <div class="hp-flow__ui">
         <button class="hp-circle" type="button" data-hp-flow-prev aria-label="Previous problem"><svg class="mi" aria-hidden="true"><use href="#ms-chevron_left"/></svg></button>
@@ -11724,7 +11736,8 @@ body{min-height:100vh;background:var(--bg)}
         fc.forEach(function (c, k) {
           var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Problem ' + (k + 1));
           b.addEventListener('click', function () { fGo(k); fAuto(); }); dotsEl.appendChild(b);
-          c.addEventListener('click', function () { if (k !== fi) { fGo(k); fAuto(); } });
+          c.addEventListener('click', function (e) { if (k !== fi) { e.preventDefault(); fGo(k); fAuto(); } });
+          c.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && k !== fi && e.target === c) { e.preventDefault(); fGo(k); fAuto(); } });
         });
         var dots = $$('button', dotsEl);
         function fGo(i, first) {
@@ -11748,6 +11761,7 @@ body{min-height:100vh;background:var(--bg)}
         var sx = null, sy = 0, dx = 0, dragging = false, moved = false, pid = null;
         flow.addEventListener('pointerdown', function (e) {
           if (e.pointerType === 'mouse' && e.button !== 0) return;
+          if (e.target.closest('.hp-fcard[data-pos="0"] .hp-fcard__l')) return;   /* links stay links */
           sx = e.clientX; sy = e.clientY; dx = 0; dragging = false; moved = false; pid = e.pointerId;
         });
         flow.addEventListener('pointermove', function (e) {
@@ -11784,7 +11798,12 @@ body{min-height:100vh;background:var(--bg)}
         /* drag-hand symbol: follows the pointer over the cards; on touch it appears under the finger while swiping */
         var grab = $('.hp-grab', flow), grabIcon = $('.hp-grab .mi', flow), fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
         function grabAt(e) { var r = flow.getBoundingClientRect(); flow.style.setProperty('--gx', (e.clientX - r.left) + 'px'); flow.style.setProperty('--gy', (e.clientY - r.top) + 'px'); }
-        flow.addEventListener('pointermove', function (e) { grabAt(e); if (e.pointerType === 'mouse' || dragging) flow.classList.add('is-grab-on'); });
+        flow.addEventListener('pointermove', function (e) {
+          grabAt(e);
+          var onLink = !dragging && !!e.target.closest('.hp-fcard[data-pos="0"] .hp-fcard__l');
+          flow.classList.toggle('is-link', onLink);
+          if ((e.pointerType === 'mouse' || dragging) && !onLink) flow.classList.add('is-grab-on'); else flow.classList.remove('is-grab-on');
+        });
         flow.addEventListener('pointerdown', function (e) { grabAt(e); if (e.pointerType === 'mouse') grabIcon.querySelector('use').setAttribute('href', '#ms-back_hand'); });
         flow.addEventListener('pointerup', function (e) { grabIcon.querySelector('use').setAttribute('href', '#ms-pan_tool'); if (e.pointerType !== 'mouse') flow.classList.remove('is-grab-on'); });
         flow.addEventListener('pointercancel', function () { grabIcon.querySelector('use').setAttribute('href', '#ms-pan_tool'); flow.classList.remove('is-grab-on'); });
