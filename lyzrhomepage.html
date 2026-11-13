@@ -8734,6 +8734,14 @@
       .hp .hp-art__meta, .hp .hp-demo__note { font-size: 13px; }
     }
 
+
+    /* ---------- Video lightbox ---------- */
+    .hp-vlb { position: fixed; inset: 0; z-index: 10001; display: none; place-items: center; padding: 56px 24px; background: rgba(15, 16, 18, .92); }
+    .hp-vlb.is-open { display: grid; }
+    .hp-vlb__f { width: min(1280px, 100%, calc((100vh - 112px) * 16 / 9)); aspect-ratio: 16 / 9; border-radius: 4px; overflow: hidden; background: #000; }
+    .hp-vlb__f iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .hp-vlb__x { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: transparent; color: #fff; display: grid; place-items: center; cursor: pointer; }
+    .hp-vlb__x:hover { background: #fff; color: var(--hp-ink); }
     @media (prefers-reduced-motion: reduce) {
       .hp *, .hp *::before, .hp *::after { transition: none !important; animation: none !important; }
     }
@@ -10764,6 +10772,29 @@ a{color:#1F2022}a:hover{color:#FE4B1E}
 .case .ph::after{border-radius:inherit}
 h2,h3{text-wrap:balance}p{text-wrap:pretty}::selection{background:rgba(254,75,30,.16)}
 @media (max-width:560px){.h-sec{font-size:30px !important;line-height:36px !important}.fund-r h2{font-size:24px !important;line-height:30px !important}}
+
+.vid-sub{max-width:420px;font-size:17px;line-height:25px;color:#6D675E}
+.vid-thumb{color:transparent;font-size:0}
+.vid--real::before{z-index:1;background:linear-gradient(180deg,rgba(10,14,24,.05) 40%,rgba(10,14,24,.6) 100%)}
+.vid-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.vid--real:hover .vid-thumb{transform:scale(1.02)}
+.vid--real .vid-play{z-index:2}
+.vid-bar{position:absolute;z-index:2;left:24px;right:24px;bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.vid-bar .vid-lb{position:static}
+.vid-acts{display:flex;gap:8px}
+.vid-btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:4px;border:0;background:#fff;color:#1F2022;font:inherit;font-size:14px;cursor:pointer;transition:background .15s,color .15s}
+.vid-btn:hover{background:#FE4B1E;color:#fff}
+.vid-btn--ghost{background:rgba(255,255,255,.14);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.vid-btn:focus-visible,.vid-play:focus-visible,.vid-ch button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.vid iframe{position:absolute;inset:0;z-index:3;width:100%;height:100%;border:0}
+.vid.is-playing .vid-play,.vid.is-playing .vid-bar{display:none}
+.vid-ch{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.vid-ch button{width:100%;text-align:left;display:grid;gap:4px;padding:14px 16px;border:1px solid #E3E1DE;border-radius:4px;background:#fff;color:#1F2022;font:inherit;font-size:15px;line-height:20px;cursor:pointer;transition:border-color .15s}
+.vid-ch button span{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;color:#FE4B1E}
+.vid-ch button:hover{border-color:#1F2022}
+@media (max-width:900px){.vid-ch{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.vid-bar{left:14px;right:14px;bottom:12px}.vid-bar .vid-lb{display:none}.vid-btn{height:32px;padding:0 10px;font-size:13px}.vid-ch{grid-template-columns:1fr 1fr}.vid-sub{font-size:16px;line-height:24px}}
+
 </style>
 <div class="pg">
 
@@ -10786,10 +10817,18 @@ h2,h3{text-wrap:balance}p{text-wrap:pretty}::selection{background:rgba(254,75,30
 
 <!-- VIDEO -->
 <section class="w sec" id="video">
- <div class="shead"><div><p class="eb">Watch</p><h2 class="h-sec">[Video headline goes here]</h2></div></div>
- <div class="vid">
-  <button class="vid-play" type="button" aria-label="Play video"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></button>
-  <span class="vid-lb mono">Video placeholder · 16:9</span>
+ <div class="shead"><div><p class="eb">Watch · 2:40</p><h2 class="h-sec">Lyzr: sovereign, on-prem AI agent infrastructure.</h2></div>
+  <p class="vid-sub">Siva Surendira on how Lyzr builds, orchestrates and secures enterprise agents fully on-prem, from Opencontroller to Lyzr Optimus.</p></div>
+ <div class="vid vid--real" data-vid data-embed="https://www.tella.tv/video/lyzr-sovereign-on-prem-ai-agent-infrastructure-4uj4/embed?b=0&title=0&a=1&loop=0&autoPlay=true&t=0&muted=0&wt=0">
+  <img class="vid-thumb" onerror="this.remove()" src="https://www.tella.tv/api/stories/vid_cmuy6t09z003x06nba3w44uj4/thumb.jpg?version=2026-10-07T14:35:13.730Z&amp;resolution=1920x1090&amp;ff=Bw.2iBQ3V49ZJ0Gowd29SHOhGl_ubm3v7LPbryqJm21jlQ&amp;inpoint=0" alt="Lyzr: Sovereign On-Prem AI Agent Infrastructure, video thumbnail" loading="lazy" decoding="async">
+  <button class="vid-play" type="button" data-vid-play aria-label="Play video here"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></button>
+  <div class="vid-bar">
+   <span class="vid-lb mono">Siva Surendira · CEO, Lyzr</span>
+   <div class="vid-acts">
+    <button class="vid-btn" type="button" data-vid-play><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>Play here</button>
+    <button class="vid-btn vid-btn--ghost" type="button" data-vid-full><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Full screen</button>
+   </div>
+  </div>
  </div>
 </section>
 
@@ -13703,6 +13742,42 @@ var f=document.getElementById('ft-form'),i=document.getElementById('ft-email');
   </script>
 
   
+
+  <script>
+    /* Watch section: thumbnail first; play inline or in a full-screen lightbox */
+    (function () {
+      function wire() {
+        var host = document.querySelector('[data-board=Proof]'), r = host && host.shadowRoot; if (!r) return false;
+        var box = r.querySelector('[data-vid]'); if (!box) return false;
+        var base = box.getAttribute('data-embed');
+        function src(t) { return base + (t ? '&t=' + t : ''); }
+        function inline(t) {
+          var f = box.querySelector('iframe');
+          if (!f) { f = document.createElement('iframe'); f.title = 'Lyzr: Sovereign On-Prem AI Agent Infrastructure'; f.allow = 'autoplay; fullscreen; picture-in-picture'; f.allowFullscreen = true; box.appendChild(f); }
+          f.src = src(t); box.classList.add('is-playing');
+        }
+        var lb;
+        function full(t) {
+          if (!lb) {
+            lb = document.createElement('div'); lb.className = 'hp-vlb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Video');
+            lb.innerHTML = '<button class="hp-vlb__x" type="button" aria-label="Close video"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="hp-vlb__f"></div>';
+            document.body.appendChild(lb);
+            lb.addEventListener('click', function (e) { if (e.target === lb || e.target.closest('.hp-vlb__x')) close(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('is-open')) close(); });
+          }
+          var f = box.querySelector('iframe'); if (f) { f.remove(); box.classList.remove('is-playing'); }
+          lb.querySelector('.hp-vlb__f').innerHTML = '<iframe title="Lyzr: Sovereign On-Prem AI Agent Infrastructure" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="' + src(t) + '"></iframe>';
+          lb.classList.add('is-open'); document.body.style.overflow = 'hidden'; lb.querySelector('.hp-vlb__x').focus();
+        }
+        function close() { lb.classList.remove('is-open'); lb.querySelector('.hp-vlb__f').innerHTML = ''; document.body.style.overflow = ''; }
+        r.querySelectorAll('[data-vid-play]').forEach(function (b) { b.addEventListener('click', function () { inline(0); }); });
+        r.querySelectorAll('[data-vid-full]').forEach(function (b) { b.addEventListener('click', function () { full(0); }); });
+        r.querySelectorAll('[data-vid-t-removed]').forEach(function (b) { b.addEventListener('click', function () { inline(+b.getAttribute('data-vid-t')); box.scrollIntoView({ behavior: 'smooth', block: 'center' }); }); });
+        return true;
+      }
+      if (!wire()) window.addEventListener('load', wire);
+    })();
+  </script>
 </body>
 
 </html>
