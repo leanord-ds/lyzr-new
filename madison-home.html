@@ -1859,6 +1859,7 @@ html:not(.js) .pa-step{color:var(--ink)}
 
 /* ===================== product scroll hands back to the page at its ends ===================== */
 .pa .pa-main,.pa .pa-side{overscroll-behavior:auto}
+html.lenis .pa .pa-main,html.lenis .pa .pa-side{overscroll-behavior:contain}
 
 /* ===================== the step rail: glass, 4px, every step named, draggable ===================== */
 .pa .pa-steps{border-radius:4px;padding:6px;gap:2px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:saturate(1.6) blur(20px);backdrop-filter:saturate(1.6) blur(20px);border:1px solid rgba(31,32,34,.1);user-select:none;-webkit-user-select:none;cursor:grab;touch-action:none}
@@ -1934,6 +1935,17 @@ html.pa-lock .pa .pa-steps{display:none}
   .pa.is-inview .pa-steps{transform:translate(0,-50%)}
   .pa.rail-moved .pa-steps,.pa.rail-moved.is-inview .pa-steps{left:0;top:0;transform:translate3d(var(--x,0),var(--y,0),0)}
 }
+
+/* quote attribution: centred, no initials badge */
+.who-q{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;margin-top:36px}
+.who-q__tx{justify-items:center;text-align:center}
+
+/* brand blue for the active step and the control-card labels */
+.pa .pa-step[aria-current="step"],.pa .pa-step[aria-current="step"]:hover,.pa-step[aria-current="step"]{background:var(--blue,#003F7B);color:#fff}
+.ctl__head .pill{background:var(--blue,#003F7B);color:#fff}
+
+/* rail: lighter to paint while the page moves */
+.pa .pa-steps{-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);background:rgba(255,255,255,.82);contain:layout paint;transform-style:flat}
 </style>
 </head>
 <body>
@@ -2070,7 +2082,7 @@ html.pa-lock .pa .pa-steps{display:none}
   <div class="wrap">
     <figure class="quote__box" data-reveal style="margin:0">
       <blockquote id="q">“Most banks know the rules. Very few can show, on any given day, that the controls behind them still work.”</blockquote>
-      <figcaption class="who-q"><span class="who-q__av" aria-hidden="true">JS</span><span class="who-q__tx"><b>Jeremiah Sadow</b><span>Chief Business Officer, Madison</span><span>Previously Chief Compliance Officer for AI at BNY</span></span></figcaption>
+      <figcaption class="who-q"><span class="who-q__tx"><b>Jeremiah Sadow</b><span>Chief Business Officer, Madison</span><span>Previously Chief Compliance Officer for AI at BNY</span></span></figcaption>
     </figure>
   </div>
 </section>
@@ -2234,11 +2246,18 @@ var e={elena:{name:`Elena Petrova`,first:`Elena`,initials:`EP`,role:`Compliance 
 })();
 </script>
 <script>
-/* show the step rail only while the grey stage is on screen */
+/* show the step rail while the grey stage fills the screen; hide it as soon as the next section starts to come up */
 (() => {
-  const pa = document.querySelector('[data-pa]'), stage = pa && pa.querySelector('.pa-bg');
-  if (!stage || !('IntersectionObserver' in window)) { pa && pa.classList.add('is-inview'); return; }
-  new IntersectionObserver(([e]) => pa.classList.toggle('is-inview', e.isIntersecting), { rootMargin: '-35% 0px -35% 0px' }).observe(stage);
+  const pa = document.querySelector('[data-pa]'), stage = pa && pa.querySelector('.pa-bg'); if (!stage) return;
+  let ticking = false, on = null;
+  const check = () => {
+    ticking = false;
+    const r = stage.getBoundingClientRect(), h = innerHeight;
+    const show = r.top < h * .55 && r.bottom > h * .92;
+    if (show !== on) { on = show; pa.classList.toggle('is-inview', show); }
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+  addEventListener('resize', check); check();
 })();
 </script>
 <script>
@@ -2248,20 +2267,31 @@ var e={elena:{name:`Elena Petrova`,first:`Elena`,initials:`EP`,role:`Compliance 
   const win = pa.querySelector('.pa-win'), frame = pa.querySelector('.pa-frame'), rail = pa.querySelector('.pa-steps');
   const navH = () => (document.getElementById('nav')?.offsetHeight || 64);
 
-  /* 1. the wheel scrolls the product only while the part under the pointer can still scroll that way;
-        at its top or bottom the same wheel moves the page on to the next section */
-  win.addEventListener('wheel', e => {
-    const dy = e.deltaY; if (!dy) return;
-    for (let el = e.target; el && el !== pa; el = el.parentElement) {
+  /* 1. one gesture, one scroller. A wheel/trackpad gesture that starts on a product list that can scroll that way
+        scrolls only that list (and stops at its end); any other gesture scrolls only the page. A short pause
+        (220 ms) ends the gesture. This keeps the page and the product from moving at the same time. */
+  const canScroll = (el, dy) => dy < 0 ? el.scrollTop > 0 : el.scrollTop + el.clientHeight < el.scrollHeight - 1;
+  const innerFor = (target, dy) => {
+    for (let el = target; el && el !== pa; el = el.parentElement) {
       if (el.nodeType !== 1) continue;
       const oy = getComputedStyle(el).overflowY;
-      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1) {
-        const top = el.scrollTop <= 0, end = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
-        if ((dy < 0 && !top) || (dy > 0 && !end)) { e.stopPropagation(); return; }
-      }
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1 && canScroll(el, dy)) return el;
       if (el === win) break;
     }
-  }, { passive: true });
+    return null;
+  };
+  let latch = null, lastWheel = 0;
+  win.addEventListener('wheel', e => {
+    const dy = e.deltaY; if (!dy) return;
+    const now = performance.now();
+    if (now - lastWheel > 220) latch = null;
+    lastWheel = now;
+    if (latch === null) latch = innerFor(e.target, dy) || 'page';
+    if (latch === 'page') return;                       /* the page (smooth scroll) takes it */
+    e.stopPropagation();                                /* the list takes it, the page stays still */
+    const L = window.__lenis; if (L && L.isScrolling) L.scrollTo(scrollY, { immediate: true });
+    if (!canScroll(latch, dy)) e.preventDefault();      /* at the list's end: wait for the next gesture */
+  }, { passive: false });
 
   /* 2. the rail: a labelled handle, drag it anywhere with eased, GPU-smooth movement (a click still picks a step) */
   const grip = document.createElement('li'); grip.className = 'pa-grip';
